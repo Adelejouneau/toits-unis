@@ -2,16 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\HostRepository;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: HostRepository::class)]
-class Host
+class Host extends User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    protected ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $entreprise = null;

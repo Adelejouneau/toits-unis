@@ -2,17 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\GuestRepository;
+use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GuestRepository::class)]
-class Guest
+class Guest extends User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    protected ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $hobbiesGuest = null;
