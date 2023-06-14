@@ -42,8 +42,8 @@
                 <td>{{ lodging.slugLod }}</td>
                 <td>{{ lodging.titleLod }}</td>
                 <td class="text-end">
-                    <a href="{{ path('app_admin_association_show', {'id': association.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
-                    <a href="{{ path('app_admin_association_edit', {'id': association.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>>
+                    <a href="{{ path('app_admin_lodging_show', {'id': lodging.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_lodging_edit', {'id': lodging.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>>
                 </td>
             </tr>
         {% else %}
