@@ -2,51 +2,58 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use ORM\MappedSuperclass;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\MappedSuperclass]
+
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    protected ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    private ?string $email = null;
+    protected ?string $email = null;
 
     #[ORM\Column]
-    private array $roles = [];
+    protected array $roles = [];
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
-    private ?string $password = null;
+    protected ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $lastName = null;
+    protected ?string $lastName = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $firstName = null;
+    protected ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $emailUser = null;
+    protected ?string $emailUser = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $phoneUser = null;
+    protected ?string $phoneUser = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $imageNameUser = null;
+    protected ?string $imageNameUser = null;
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
+    protected ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $gender = null;
+    protected ?string $gender = null;
+
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Address $address = null;
 
     public function getId(): ?int
     {
@@ -217,6 +224,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGender(string $gender): static
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): static
+    {
+        $this->address = $address;
 
         return $this;
     }
