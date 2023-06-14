@@ -1,9 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-backend.html.twig' %}
 
 {% block title %}Lodging index{% endblock %}
 
 {% block body %}
-    <h1>Lodging index</h1>
+
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+{% endfor %}
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+    <h1>Logement</h1>
+    <a href="{{ path('app_admin_lodging_new') }}"class="btn btn-success"><i class="align-middle" data-feather="plus"></i></a> 
+    </div>
+
+    
 
     <table class="table">
         <thead>
@@ -15,7 +28,7 @@
                 <th>Latitude</th>
                 <th>SlugLod</th>
                 <th>TitleLod</th>
-                <th>actions</th>
+                <th class="text-end">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,9 +41,9 @@
                 <td>{{ lodging.latitude }}</td>
                 <td>{{ lodging.slugLod }}</td>
                 <td>{{ lodging.titleLod }}</td>
-                <td>
-                    <a href="{{ path('app_admin_lodging_show', {'id': lodging.id}) }}">show</a>
-                    <a href="{{ path('app_admin_lodging_edit', {'id': lodging.id}) }}">edit</a>
+                <td class="text-end">
+                    <a href="{{ path('app_admin_association_show', {'id': association.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_association_edit', {'id': association.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +54,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_lodging_new') }}">Create new</a>
 {% endblock %}

@@ -1,9 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-backend.html.twig' %}
 
 {% block title %}Category index{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+{% endfor %}
+     <div class="d-flex flex-wrap justify-content-between align-items-center">
+    <h1>Catégorie</h1>
+    <a href="{{ path('app_admin_category_new') }}"class="btn btn-success"><i class="align-middle" data-feather="plus"></i></a> 
+    </div>
 
     <table class="table">
         <thead>
@@ -12,7 +22,7 @@
                 <th>NameCat</th>
                 <th>UpdatedAt</th>
                 <th>SlugCat</th>
-                <th>actions</th>
+                <th class="text-end">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +32,9 @@
                 <td>{{ category.nameCat }}</td>
                 <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ category.slugCat }}</td>
-                <td>
-                    <a href="{{ path('app_admin_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_admin_category_edit', {'id': category.id}) }}">edit</a>
+                <td class="text-end">
+                    <a href="{{ path('app_admin_association_show', {'id': association.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_association_edit', {'id': association.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +45,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_category_new') }}">Create new</a>
 {% endblock %}

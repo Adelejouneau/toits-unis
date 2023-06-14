@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin/lodging')]
 class AdminLodgingController extends AbstractController
@@ -22,13 +23,15 @@ class AdminLodgingController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_lodging_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, LodgingRepository $lodgingRepository): Response
+    public function new(Request $request, LodgingRepository $lodgingRepository, SluggerInterface $slugger): Response
     {
         $lodging = new Lodging();
         $form = $this->createForm(LodgingType::class, $lodging);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $lodging->setSlugLod(strtolower($slugger->slugLog($lodging->getTitleLod())));
+            $lodging->setTitleLod(ucfirst($lodging->getTitleLod()));
             $lodgingRepository->save($lodging, true);
 
             return $this->redirectToRoute('app_admin_lodging_index', [], Response::HTTP_SEE_OTHER);
