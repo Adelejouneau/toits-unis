@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LodgingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +33,26 @@ class Lodging
 
     #[ORM\Column(length: 255)]
     private ?string $titleLod = null;
+
+    #[ORM\OneToMany(mappedBy: 'lodging', targetEntity: Matched::class)]
+    private Collection $matcheds;
+
+    #[ORM\ManyToOne(inversedBy: 'lodgings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
+    #[ORM\ManyToMany(targetEntity: Date::class, inversedBy: 'lodgings')]
+    private Collection $date;
+
+    #[ORM\ManyToOne(inversedBy: 'lodgings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Host $host = null;
+
+    public function __construct()
+    {
+        $this->matcheds = new ArrayCollection();
+        $this->date = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +127,84 @@ class Lodging
     public function setTitleLod(string $titleLod): static
     {
         $this->titleLod = $titleLod;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Matched>
+     */
+    public function getMatcheds(): Collection
+    {
+        return $this->matcheds;
+    }
+
+    public function addMatched(Matched $matched): static
+    {
+        if (!$this->matcheds->contains($matched)) {
+            $this->matcheds->add($matched);
+            $matched->setLodging($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMatched(Matched $matched): static
+    {
+        if ($this->matcheds->removeElement($matched)) {
+            // set the owning side to null (unless already changed)
+            if ($matched->getLodging() === $this) {
+                $matched->setLodging(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Date>
+     */
+    public function getDate(): Collection
+    {
+        return $this->date;
+    }
+
+    public function addDate(Date $date): static
+    {
+        if (!$this->date->contains($date)) {
+            $this->date->add($date);
+        }
+
+        return $this;
+    }
+
+    public function removeDate(Date $date): static
+    {
+        $this->date->removeElement($date);
+
+        return $this;
+    }
+
+    public function getHost(): ?Host
+    {
+        return $this->host;
+    }
+
+    public function setHost(?Host $host): static
+    {
+        $this->host = $host;
 
         return $this;
     }
