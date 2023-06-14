@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lodging{% endblock %}
+
+{% block body %}
+    <h1>Lodging</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lodging.id }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionLod</th>
+                <td>{{ lodging.descriptionLod }}</td>
+            </tr>
+            <tr>
+                <th>ImageNameLod</th>
+                <td>{{ lodging.imageNameLod }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ lodging.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ lodging.latitude }}</td>
+            </tr>
+            <tr>
+                <th>SlugLod</th>
+                <td>{{ lodging.slugLod }}</td>
+            </tr>
+            <tr>
+                <th>TitleLod</th>
+                <td>{{ lodging.titleLod }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_lodging_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_lodging_edit', {'id': lodging.id}) }}">edit</a>
+
+    {{ include('admin_lodging/_delete_form.html.twig') }}
+{% endblock %}
