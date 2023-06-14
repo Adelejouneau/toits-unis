@@ -13,7 +13,10 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('nameCat')
-            ->add('updatedAt')
+            ->remove('updatedAt', DateTimeType::class, [
+                'widget' => 'single_text',
+                'data' => new \DateTimeImmutable(),
+            ])
             ->add('slugCat')
         ;
     }
