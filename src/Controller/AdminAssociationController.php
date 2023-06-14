@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Association;
 use App\Form\AssociationType;
 use App\Repository\AssociationRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/association')]
 class AdminAssociationController extends AbstractController
@@ -22,15 +23,17 @@ class AdminAssociationController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_association_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, AssociationRepository $associationRepository): Response
+    public function new(Request $request, AssociationRepository $associationRepository, SluggerInterface $slugger): Response
     {
         $association = new Association();
         $form = $this->createForm(AssociationType::class, $association);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $association->setslugAsso(strtolower($slugger->slugAsso($association->getNameAsso())));
+            $association->setnameAsso(ucfirst($association->getNameAsso()));
             $associationRepository->save($association, true);
-
+            $this->addFlash('success',"l'\association".$association->getNameAsso().' a bien été ajouté.');
             return $this->redirectToRoute('app_admin_association_index', [], Response::HTTP_SEE_OTHER);
         }
 

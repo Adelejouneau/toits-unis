@@ -3,9 +3,8 @@
 {% block title %}New Comment{% endblock %}
 
 {% block body %}
-    <h1>Create new Comment</h1>
-
+    <h1>Créer un nouveau commentaire</h1>
+<a href="{{ path('app_admin_comment_index') }}"class="btn btn-dark mb-3">Retour</a>
     {{ include('admin_comment/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_comment_index') }}">back to list</a>
 {% endblock %}

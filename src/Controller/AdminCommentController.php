@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin/comment')]
 class AdminCommentController extends AbstractController
@@ -22,13 +23,14 @@ class AdminCommentController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_comment_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CommentRepository $commentRepository): Response
+    public function new(Request $request, CommentRepository $commentRepository, SluggerInterface $slugger): Response
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setDescriptionComment(ucfirst($comment->getDescriptionComment()));
             $commentRepository->save($comment, true);
 
             return $this->redirectToRoute('app_admin_comment_index', [], Response::HTTP_SEE_OTHER);
