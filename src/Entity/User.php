@@ -51,6 +51,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     protected ?string $gender = null;
 
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Address $address = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -220,6 +224,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGender(string $gender): static
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): static
+    {
+        $this->address = $address;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AssociationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +36,18 @@ class Association
 
     #[ORM\Column(length: 255)]
     private ?string $slugAsso = null;
+
+    #[ORM\OneToMany(mappedBy: 'association', targetEntity: Guest::class)]
+    private Collection $guests;
+
+    #[ORM\ManyToOne(inversedBy: 'association')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Address $address = null;
+
+    public function __construct()
+    {
+        $this->guests = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +134,48 @@ class Association
     public function setSlugAsso(string $slugAsso): static
     {
         $this->slugAsso = $slugAsso;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Guest>
+     */
+    public function getGuests(): Collection
+    {
+        return $this->guests;
+    }
+
+    public function addGuest(Guest $guest): static
+    {
+        if (!$this->guests->contains($guest)) {
+            $this->guests->add($guest);
+            $guest->setAssociation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGuest(Guest $guest): static
+    {
+        if ($this->guests->removeElement($guest)) {
+            // set the owning side to null (unless already changed)
+            if ($guest->getAssociation() === $this) {
+                $guest->setAssociation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): static
+    {
+        $this->address = $address;
 
         return $this;
     }

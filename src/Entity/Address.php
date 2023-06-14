@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AddressRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
@@ -24,6 +26,18 @@ class Address
 
     #[ORM\Column(length: 255)]
     private ?string $city = null;
+
+    #[ORM\OneToMany(mappedBy: 'address', targetEntity: Association::class)]
+    private Collection $association;
+
+    #[ORM\OneToMany(mappedBy: 'address', targetEntity: User::class)]
+    private Collection $user;
+
+    public function __construct()
+    {
+        $this->association = new ArrayCollection();
+        $this->user = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +88,66 @@ class Address
     public function setCity(string $city): static
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Association>
+     */
+    public function getAssociation(): Collection
+    {
+        return $this->association;
+    }
+
+    public function addAssociation(Association $association): static
+    {
+        if (!$this->association->contains($association)) {
+            $this->association->add($association);
+            $association->setAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssociation(Association $association): static
+    {
+        if ($this->association->removeElement($association)) {
+            // set the owning side to null (unless already changed)
+            if ($association->getAddress() === $this) {
+                $association->setAddress(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->user->contains($user)) {
+            $this->user->add($user);
+            $user->setAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->user->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getAddress() === $this) {
+                $user->setAddress(null);
+            }
+        }
 
         return $this;
     }

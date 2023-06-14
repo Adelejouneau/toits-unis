@@ -20,6 +20,9 @@ class Comment
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $descriptionComment = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Comment')]
+    private ?Matched $matched = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Comment
     public function setDescriptionComment(?string $descriptionComment): static
     {
         $this->descriptionComment = $descriptionComment;
+
+        return $this;
+    }
+
+    public function getMatched(): ?Matched
+    {
+        return $this->matched;
+    }
+
+    public function setMatched(?Matched $matched): static
+    {
+        $this->matched = $matched;
 
         return $this;
     }
