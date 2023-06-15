@@ -1,4 +1,8 @@
 /*  css pour la navbar */
+body{
+    margin: 0;
+    padding: 0;
+}
 
 #navbarNav{
     color:#FFF0BD
