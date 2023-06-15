@@ -13,7 +13,7 @@ class AssociationType extends AbstractType
     {
         $builder
             ->add('nameAsso')
-            ->add('descriptionAsso')
+            ->add('descriptionAsso', CKEditorType::class)
             ->add('websiteUrl')
             ->add('imageNameAsso')
             ->add('phoneNumberAsso')
