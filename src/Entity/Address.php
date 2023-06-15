@@ -33,6 +33,10 @@ class Address
     #[ORM\OneToMany(mappedBy: 'address', targetEntity: User::class)]
     private Collection $user;
 
+    #[ORM\ManyToOne(inversedBy: 'addresses')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Department $department = null;
+
     public function __construct()
     {
         $this->association = new ArrayCollection();
@@ -148,6 +152,18 @@ class Address
                 $user->setAddress(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDepartment(): ?Department
+    {
+        return $this->department;
+    }
+
+    public function setDepartment(?Department $department): static
+    {
+        $this->department = $department;
 
         return $this;
     }
