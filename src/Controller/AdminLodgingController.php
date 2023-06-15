@@ -30,9 +30,10 @@ class AdminLodgingController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $lodging->setSlugLod(strtolower($slugger->slugLog($lodging->getTitleLod())));
+            $lodging->setSlugLod(strtolower($slugger->slug($lodging->getTitleLod())));
             $lodging->setTitleLod(ucfirst($lodging->getTitleLod()));
             $lodgingRepository->save($lodging, true);
+            $this->addFlash('success','le logement a bien été ajouté');
 
             return $this->redirectToRoute('app_admin_lodging_index', [], Response::HTTP_SEE_OTHER);
         }

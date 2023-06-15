@@ -33,7 +33,7 @@ class AdminAssociationController extends AbstractController
             $association->setslugAsso(strtolower($slugger->slug($association->getNameAsso())));
             $association->setnameAsso(ucfirst($association->getNameAsso()));
             $associationRepository->save($association, true);
-            $this->addFlash('success',"l'\association".$association->getNameAsso().' a bien été ajouté.');
+            $this->addFlash('success',"l'\association".$association->getNameAsso().' a bien été ajouté');
             return $this->redirectToRoute('app_admin_association_index', [], Response::HTTP_SEE_OTHER);
         }
 

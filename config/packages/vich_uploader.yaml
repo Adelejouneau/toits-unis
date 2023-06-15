@@ -1,16 +1,23 @@
 vich_uploader:
     db_driver: orm
 
-# metadata:
-#         type: attribute
+    metadata:
+        type: attribute
 
-#         mappings:
-#         Association:
-#             uri_prefix: /images/Association
-#             upload_destination: '%kernel.project_dir%/public/images/Association'
-#             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-#         lodging:
-#             uri_prefix: /images/lodging
-#             upload_destination: '%kernel.project_dir%/public/images/lodging'
-#             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-
+    mappings:
+        associations:
+            uri_prefix: /images/asso
+            upload_destination: '%kernel.project_dir%/public/images/asso'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        # guests:
+        #     uri_prefix: /images/guest
+        #     upload_destination: '%kernel.project_dir%/public/images/guest'
+        #     namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        lodgings:
+            uri_prefix: /images/lodging
+            upload_destination: '%kernel.project_dir%/public/images/lodging'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        # comments:
+        #     uri_prefix: /images/comment
+        #     upload_destination: '%kernel.project_dir%/public/images/comment'
+        #     namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

@@ -18,7 +18,7 @@ class CategoryType extends AbstractType
                 'widget' => 'single_text',
                 'data' => new \DateTimeImmutable(),
             ])
-            ->add('slugCat')
+            ->remove('slugCat')
         ;
     }
 

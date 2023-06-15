@@ -32,6 +32,7 @@ class AdminCommentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setDescriptionComment(ucfirst($comment->getDescriptionComment()));
             $commentRepository->save($comment, true);
+            $this->addFlash('success','le témoignage a bien été ajouté');
 
             return $this->redirectToRoute('app_admin_comment_index', [], Response::HTTP_SEE_OTHER);
         }
