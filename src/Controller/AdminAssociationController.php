@@ -30,7 +30,7 @@ class AdminAssociationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $association->setslugAsso(strtolower($slugger->slugAsso($association->getNameAsso())));
+            $association->setslugAsso(strtolower($slugger->slug($association->getNameAsso())));
             $association->setnameAsso(ucfirst($association->getNameAsso()));
             $associationRepository->save($association, true);
             $this->addFlash('success',"l'\association".$association->getNameAsso().' a bien été ajouté.');
