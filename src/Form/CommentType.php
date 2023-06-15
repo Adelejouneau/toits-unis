@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,7 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('updatedAt')
-            ->add('descriptionComment')
+            ->add('descriptionComment',  CKEditorType::class)
         ;
     }
 
