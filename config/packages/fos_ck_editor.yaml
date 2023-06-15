@@ -1,0 +1,5 @@
+# pour ajouter des options like word (italique,gras,taille)
+fos_ck_editor:
+    configs:
+        my_config:
+            toolbar: basic

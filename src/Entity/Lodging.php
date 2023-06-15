@@ -48,6 +48,9 @@ class Lodging
     #[ORM\JoinColumn(nullable: false)]
     private ?Host $host = null;
 
+    #[ORM\ManyToOne(inversedBy: 'lodgings')]
+    private ?Department $department = null;
+
     public function __construct()
     {
         $this->matcheds = new ArrayCollection();
@@ -205,6 +208,18 @@ class Lodging
     public function setHost(?Host $host): static
     {
         $this->host = $host;
+
+        return $this;
+    }
+
+    public function getDepartment(): ?Department
+    {
+        return $this->department;
+    }
+
+    public function setDepartment(?Department $department): static
+    {
+        $this->department = $department;
 
         return $this;
     }

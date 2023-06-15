@@ -2,30 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Association;
+use App\Entity\Department;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AssociationType extends AbstractType
+class DepartmentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nameAsso')
-            ->add('descriptionAsso', CKEditorType::class)
-            ->add('websiteUrl')
-            ->add('imageNameAsso')
-            ->add('phoneNumberAsso')
-            ->add('emailAsso')
-            ->add('slugAsso')
+            ->add('nameDepartment')
+            ->add('codeDepartment')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Association::class,
+            'data_class' => Department::class,
         ]);
     }
 }
