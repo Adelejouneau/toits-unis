@@ -34,8 +34,8 @@ class Address
     private Collection $user;
 
 
-    #[ORM\Column(length: 255)]
-    private ?string $nameAddress = null;
+    // #[ORM\Column(length: 255)]
+    // private ?string $nameAddress = null;
 
     #[ORM\ManyToOne(inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: false)]
@@ -161,17 +161,17 @@ public function removeUser(User $user): self
     return $this;
 }
 
-public function getNameAddress(): ?string
-{
-    return $this->nameAddress;
-}
+// public function getNameAddress(): ?string
+// {
+//     return $this->nameAddress;
+// }
 
-public function setNameAddress(string $nameAddress): self
-{
-    $this->nameAddress = $nameAddress;
+// public function setNameAddress(string $nameAddress): self
+// {
+//     $this->nameAddress = $nameAddress;
 
-    return $this;
-}
+//     return $this;
+// }
 
 public function getDepartment(): ?Department
 {

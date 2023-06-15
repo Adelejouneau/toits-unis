@@ -3,18 +3,41 @@
 {% block title %}Hello ProfilController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<h1>Mon compte</h1>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes infos</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Mes favoris</button>
+    </li>
+</ul>
+    <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <div class="col-12">
+    {# On affiche un formulaire #}
+    {{form_start(form) }}
+    {{form_widget(form) }}
+    <button type="submit" class="btn btn-primary">Modifier</button>
+    {{form_end(form) }}
+    </div>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
+    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <h2>favoris</h2>
+
+    {#Afficher les favoris  #}
+    {% if app.user.lodging|length > 0 %}
     <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/php-decodeuse/toits-unis/src/Controller/ProfilController.php'|file_link(0) }}">src/Controller/ProfilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/php-decodeuse/toits-unis/templates/profil/index.html.twig'|file_link(0) }}">templates/profil/index.html.twig</a></code></li>
+    {% for lodging in app.user.lodging %}
+    <li>{{lodging.titleLod }} <a href="{{ path ('remove_lodging', {id: lodging.id}) }}" >supprimé les favoris</a></li>
+    {% endfor %}
     </ul>
-</div>
+    {% else %}
+    <p>Vous n'avez aucun favori por l'instant</p>
+    {% endif %}
+    </div>
+    </div>
 {% endblock %}
+
