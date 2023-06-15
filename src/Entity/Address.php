@@ -33,6 +33,9 @@ class Address
     #[ORM\OneToMany(mappedBy: 'address', targetEntity: User::class)]
     private Collection $user;
 
+    #[ORM\Column(length: 255)]
+    private ?string $nameAddress = null;
+
     public function __construct()
     {
         $this->association = new ArrayCollection();
@@ -148,6 +151,18 @@ class Address
                 $user->setAddress(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNameAddress(): ?string
+    {
+        return $this->nameAddress;
+    }
+
+    public function setNameAddress(string $nameAddress): static
+    {
+        $this->nameAddress = $nameAddress;
 
         return $this;
     }
