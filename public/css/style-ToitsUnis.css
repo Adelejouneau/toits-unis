@@ -1,0 +1,24 @@
+/*  css pour la navbar */
+
+#navbarNav{
+    color:#FFF0BD
+}
+
+/* css footer */
+
+#footer-alignement{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: center;
+    gap: 100px;
+    color:#124367;
+}
+
+/* page home */
+
+#banniere-home{
+    width: 100wv;
+}
+
