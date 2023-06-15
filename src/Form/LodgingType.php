@@ -16,7 +16,7 @@ class LodgingType extends AbstractType
             ->add('imageNameLod')
             ->add('longitude')
             ->add('latitude')
-            ->add('slugLod')
+            ->remove('slugLod')
             ->add('titleLod')
         ;
     }

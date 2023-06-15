@@ -25,7 +25,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("Utopia 56 Paris");
-        $address-> setDepartment("75");
+        // $address-> setDepartment("75");
         $address-> setStreetNumber("12");
         $address-> setStreetName("rue Colbert");
         $address-> setZipCode("75001");
@@ -35,7 +35,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("Fondation Abbé Pierre");
-        $address-> setDepartment("75");
+        // $address-> setDepartment("75");
         $address-> setStreetNumber("78-80");
         $address-> setStreetName("rue de la Réunion");
         $address-> setZipCode("75020");
@@ -45,7 +45,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("Croix-rouge française");
-        $address-> setDepartment("75");
+        // $address-> setDepartment("75");
         $address-> setStreetNumber("66");
         $address-> setStreetName("rue des couronnes");
         $address-> setZipCode("75020");
@@ -55,7 +55,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("ALC");
-        $address-> setDepartment("06");
+        // $address-> setDepartment("06");
         $address-> setStreetNumber("2");
         $address-> setStreetName("avenue du Docteur Emile Roux");
         $address-> setZipCode("06200");
@@ -65,7 +65,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("BAAM");
-        $address-> setDepartment("75");
+        // $address-> setDepartment("75");
         $address-> setStreetNumber("8");
         $address-> setStreetName("rue Duchefdelaville");
         $address-> setZipCode("75013");
@@ -75,7 +75,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("Bureaux du coeur");
-        $address-> setDepartment("44");
+        // $address-> setDepartment("44");
         $address-> setStreetNumber("35");
         $address-> setStreetName("rue Jules Verne ");
         $address-> setZipCode("44700");
@@ -85,7 +85,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("Info migrants");
-        $address-> setDepartment("75");
+        // $address-> setDepartment("75");
         $address-> setStreetNumber("35");
         $address-> setStreetName("rue Lune Gerbe");
         $address-> setZipCode("75019");
@@ -95,7 +95,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("Samu social");
-        $address-> setDepartment("75");
+        // $address-> setDepartment("75");
         $address-> setStreetNumber("35");
         $address-> setStreetName("avenue Courteline");
         $address-> setZipCode("75012");
@@ -105,7 +105,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("Aurore");
-        $address-> setDepartment("75");
+        // $address-> setDepartment("75");
         $address-> setStreetNumber("34");
         $address-> setStreetName("boulevard Sébastopol");
         $address-> setZipCode("75004");
@@ -115,7 +115,7 @@ class AddressFixtures extends Fixture
 
         $address = new Address();
         $address-> setNameAddress("France Terre d'Asile");
-        $address-> setDepartment("75");
+        // $address-> setDepartment("75");
         $address-> setStreetNumber("24");
         $address-> setStreetName("rue Marc Seguin");
         $address-> setZipCode("75018");

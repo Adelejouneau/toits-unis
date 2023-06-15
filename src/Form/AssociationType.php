@@ -18,7 +18,7 @@ class AssociationType extends AbstractType
             ->add('imageNameAsso')
             ->add('phoneNumberAsso')
             ->add('emailAsso')
-            ->add('slugAsso')
+            ->remove('slugAsso')
         ;
     }
 

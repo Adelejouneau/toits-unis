@@ -33,6 +33,7 @@ class AdminCategoryController extends AbstractController
             $category->setSlugCat(strtolower($slugger->slug($category->getNameCat())));
             $category->setNameCat(ucfirst($category->getNameCat()));
             $categoryRepository->save($category, true);
+            $this->addFlash('success',"la catégorie".$category->getNameCat().' a bien été ajoutée');
 
             return $this->redirectToRoute('app_admin_category_index', [], Response::HTTP_SEE_OTHER);
         }

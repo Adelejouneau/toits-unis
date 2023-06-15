@@ -10,59 +10,60 @@ class DepartmentFixtures extends Fixture
 {
     // public const APPARTEMENT='appartement';
     public const AIN='Ain';
-    public const NUMERO_DE_DEPARTEMENT='01';
+    // public const NUMERO_DE_DEPARTEMENT='01';
     public const AISNE='Aisne';
-    public const NUMERO_DE_DEPARTEMENT='02';
+    // public const NUMERO_DE_DEPARTEMENT='02';
     public const ALLIER='Allier';
-    public const NUMERO_DE_DEPARTEMENT='03';
+    // public const NUMERO_DE_DEPARTEMENT='03';
     public const ALPES_DE_HAUTE_PROVENCE='Alpes-de-Haute-Provence';
-    public const NUMERO_DE_DEPARTEMENT='04';
+    // public const NUMERO_DE_DEPARTEMENT='04';
     public const HAUTES_ALPES='Hautes-Alpes';
-    public const NUMERO_DE_DEPARTEMENT='05';
-    public const ALPES_MARITIMES 'Alpes-Maritimes';
-    public const NUMERO_DE_DEPARTEMENT='06';
-    public const Ardèche='ARDECHE';
-    public const NUMERO_DE_DEPARTEMENT='07';
+    // public const NUMERO_DE_DEPARTEMENT='05';
+    public const ALPES_MARITIMES='Alpes-Maritimes';
+    // public const NUMERO_DE_DEPARTEMENT='06';
+    public const ARDECHE='Ardèche';
+    // public const NUMERO_DE_DEPARTEMENT='07';
     public const ARDENNE='Ardènne';
-    public const NUMERO_DE_DEPARTEMENT='08';
+    // public const NUMERO_DE_DEPARTEMENT='08';
     public const ARIEGE='Ariège';
-    public const NUMERO_DE_DEPARTEMENT='09';
-    public const AUBE= 'Aube';
-    public const NUMERO_DE_DEPARTEMENT='10';
-    public const AUDE= 'Aude';
-    public const NUMERO_DE_DEPARTEMENT='11';
+    // public const NUMERO_DE_DEPARTEMENT='09';
+    public const AUBE='Aube';
+    // public const NUMERO_DE_DEPARTEMENT='10';
+    public const AUDE='Aude';
+    // public const NUMERO_DE_DEPARTEMENT='11';
     public const AVEYRON='Aveyron';
-    public const NUMERO_DE_DEPARTEMENT='12';
+    // public const NUMERO_DE_DEPARTEMENT='12';
     public const PARIS= 'Paris';
-    public const NUMERO_DE_DEPARTEMENT='75';
+    // public const NUMERO_DE_DEPARTEMENT='75';
     public const SEINE_MARITIME='Seine-Maritime';
-    public const NUMERO_DE_DEPARTEMENT='76';
-    public const SEINE_ET_MARITIME='Seine-et-Marne';
-    public const NUMERO_DE_DEPARTEMENT='77';
+    // public const NUMERO_DE_DEPARTEMENT='76';
+    public const SEINE_ET_MARNE='Seine-et-Marne';
+    // public const NUMERO_DE_DEPARTEMENT='77';
     public const YVELINES='Yvelines';
-    public const NUMERO_DE_DEPARTEMENT='78';
+    // public const NUMERO_DE_DEPARTEMENT='78';
     public const DEUX_SEVRES='Deux-Sèvres';
-    public const NUMERO_DE_DEPARTEMENT='79';
+    // public const NUMERO_DE_DEPARTEMENT='79';
     public const SOMME='Somme';
-    public const NUMERO_DE_DEPARTEMENT='80';
+    // public const NUMERO_DE_DEPARTEMENT='80';
     public const ESSONNE='Essonne';
-    public const NUMERO_DE_DEPARTEMENT='91';
-    public const HAUT_DE_SEINE='Hauts-de-Seine';
-    public const NUMERO_DE_DEPARTEMENT='92';
+    // public const NUMERO_DE_DEPARTEMENT='91';
+    public const HAUTS_DE_SEINE='Hauts-de-Seine';
+    // public const NUMERO_DE_DEPARTEMENT='92';
     public const SEINE_ST_DENIS='Seine-St-Denis';
-    public const NUMERO_DE_DEPARTEMENT='93';
+    // public const NUMERO_DE_DEPARTEMENT='93';
     public const VAL_DE_MARNE='Val-de-Marne';
-    public const NUMERO_DE_DEPARTEMENT='94';
-    public const VAL_D_OISE='Val-DOise';
-    public const NUMERO_DE_DEPARTEMENT='95';
+    // public const NUMERO_DE_DEPARTEMENT='94';
+    public const VAL_DOISE='Val-Doise';
+    // public const NUMERO_DE_DEPARTEMENT='95';
     public const GUADELOUPE='Guadeloupe';
-    public const NUMERO_DE_DEPARTEMENT='971';
+    // public const NUMERO_DE_DEPARTEMENT='971';
     public const MARTINIQUE='Martinique';
-    public const NUMERO_DE_DEPARTEMENT='972';
+    // public const NUMERO_DE_DEPARTEMENT='972';
     public const GUYANE='Guyane';
-    public const NUMERO_DE_DEPARTEMENT='973';
+    // public const NUMERO_DE_DEPARTEMENT='973';
     public const MAYOTTE='Mayotte';
-    public const NUMERO_DE_DEPARTEMENT='974';
+    // public const NUMERO_DE_DEPARTEMENT='974';
+    public const LA_REUNION='La Réunion';
 
 
     public function load(ObjectManager $manager): void
@@ -89,19 +90,19 @@ class DepartmentFixtures extends Fixture
         $department = new Department();
         $department->setNameDepartment("Alpes-de-Haute-Provence");
         $department->setCodeDepartment("04");
-        $this->addReference(self::ALPES-DE-HAUTE-PROVENCE, $department);
+        $this->addReference(self::ALPES_DE_HAUTE_PROVENCE, $department);
         $manager->persist($department);
 
         $department = new Department();
         $department->setNameDepartment("Hautes-Alpes");
         $department->setCodeDepartment("05");
-        $this->addReference(self::HAUTES-ALPES, $department);
+        $this->addReference(self::HAUTES_ALPES, $department);
         $manager->persist($department);
 
         $department = new Department();
         $department->setNameDepartment("Alpes-Maritimes");
         $department->setCodeDepartment("06");
-        $this->addReference(self::ALPES-MARITIMES, $department);
+        $this->addReference(self::ALPES_MARITIMES, $department);
         $manager->persist($department);
 
         $department = new Department();
@@ -113,7 +114,7 @@ class DepartmentFixtures extends Fixture
         $department = new Department();
         $department->setNameDepartment("Ardennes");
         $department->setCodeDepartment("08");
-        $this->addReference(self::ARDENNES, $department);
+        $this->addReference(self::ARDENNE, $department);
         $manager->persist($department);
 
         $department = new Department();
@@ -149,13 +150,13 @@ class DepartmentFixtures extends Fixture
         $department = new Department();
         $department->setNameDepartment("Seine-Maritime");
         $department->setCodeDepartment("76");
-        $this->addReference(self:: SEINE-MARITIME, $department);
+        $this->addReference(self:: SEINE_MARITIME, $department);
         $manager->persist($department);
 
         $department = new Department();
         $department->setNameDepartment("Seine-et-Marne");
         $department->setCodeDepartment("77");
-        $this->addReference(self::SEINE-ET-MARNE, $department);
+        $this->addReference(self::SEINE_ET_MARNE, $department);
         $manager->persist($department);
 
         $department = new Department();
@@ -167,7 +168,7 @@ class DepartmentFixtures extends Fixture
         $department = new Department();
         $department->setNameDepartment("Deux-Sèvres");
         $department->setCodeDepartment("79");
-        $this->addReference(self::DEUX-SEVRES , $department);
+        $this->addReference(self::DEUX_SEVRES , $department);
         $manager->persist($department);
 
         $department = new Department();
@@ -185,25 +186,25 @@ class DepartmentFixtures extends Fixture
         $department = new Department();
         $department->setNameDepartment("Hauts-de-Seine");
         $department->setCodeDepartment("92");
-        $this->addReference(self::HAUTS-DE-SEINE , $department);
+        $this->addReference(self::HAUTS_DE_SEINE , $department);
         $manager->persist($department);
 
         $department = new Department();
         $department->setNameDepartment("Seine St Denis");
         $department->setCodeDepartment("93");
-        $this->addReference(self::SEINE-ST-DENIS , $department);
+        $this->addReference(self::SEINE_ST_DENIS , $department);
         $manager->persist($department);
 
         $department = new Department();
         $department->setNameDepartment("Val-de-Marne ");
         $department->setCodeDepartment("94");
-        $this->addReference(self::VAL-De-MARNE, $department);
+        $this->addReference(self::VAL_DE_MARNE, $department);
         $manager->persist($department);
 
         $department = new Department();
         $department->setNameDepartment("Val-D'Oise ");
         $department->setCodeDepartment("95");
-        $this->addReference(self::VAL-DOISE, $department);
+        $this->addReference(self::VAL_DOISE, $department);
         $manager->persist($department);
 
         $department = new Department();
@@ -227,7 +228,7 @@ class DepartmentFixtures extends Fixture
         $department = new Department();
         $department->setNameDepartment("La Réunion");
         $department->setCodeDepartment("974");
-        $this->addReference(self::LAREUNION, $department);
+        $this->addReference(self::LA_REUNION, $department);
         $manager->persist($department);
 
         $department = new Department();

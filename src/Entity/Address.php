@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\AddressRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AddressRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
 class Address
@@ -131,55 +131,57 @@ class Address
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUser(): Collection
-    {
-        return $this->user;
+/**
+ * @return Collection<int, User>
+ */
+public function getUser(): Collection
+{
+    return $this->user;
+}
+
+public function addUser(User $user): self
+{
+    if (!$this->user->contains($user)) {
+        $this->user->add($user);
+        $user->setAddress($this);
     }
 
-    public function addUser(User $user): static
-    {
-        if (!$this->user->contains($user)) {
-            $this->user->add($user);
-            $user->setAddress($this);
+    return $this;
+}
+
+public function removeUser(User $user): self
+{
+    if ($this->user->removeElement($user)) {
+        // set the owning side to null (unless already changed)
+        if ($user->getAddress() === $this) {
+            $user->setAddress(null);
         }
-
-        return $this;
     }
 
-    public function removeUser(User $user): static
-    {
-        if ($this->user->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getAddress() === $this) {
-                $user->setAddress(null);
-            }
-        }
+    return $this;
+}
 
-        return $this;
-    }
+public function getNameAddress(): ?string
+{
+    return $this->nameAddress;
+}
 
+public function setNameAddress(string $nameAddress): self
+{
+    $this->nameAddress = $nameAddress;
 
-    public function getNameAddress(): ?string
-    {
-        return $this->nameAddress;
-    }
+    return $this;
+}
 
-    public function setNameAddress(string $nameAddress): static
-    {
-        $this->nameAddress = $nameAddress;
+public function getDepartment(): ?Department
+{
+    return $this->department;
+}
 
-    public function getDepartment(): ?Department
-    {
-        return $this->department;
-    }
+public function setDepartment(?Department $department): self
+{
+    $this->department = $department;
 
-    public function setDepartment(?Department $department): static
-    {
-        $this->department = $department;
-
-        return $this;
-    }
+    return $this;
+}
 }
