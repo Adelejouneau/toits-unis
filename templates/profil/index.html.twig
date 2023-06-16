@@ -28,7 +28,7 @@
     <h2>favoris</h2>
 
     {#Afficher les favoris  #}
-    {% if app.user.lodging|length > 0 %}
+    {# {% if app.user.lodging|length > 0 %}
     <ul>
     {% for lodging in app.user.lodging %}
     <li>{{lodging.titleLod }} <a href="{{ path ('remove_lodging', {id: lodging.id}) }}" >supprimé les favoris</a></li>
@@ -36,7 +36,7 @@
     </ul>
     {% else %}
     <p>Vous n'avez aucun favori por l'instant</p>
-    {% endif %}
+    {% endif %} #}
     </div>
     </div>
 {% endblock %}

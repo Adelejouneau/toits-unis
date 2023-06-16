@@ -2,15 +2,18 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\Guest;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class GuestFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $guest = newGuest();
-        // $manager->persist($guest);
+        $guest = new Guest();
+        $guest->setHobbiesGuest('');
+        $guest->setNbrLitsGuest('');
+        $manager->persist($guest);
 
         $manager->flush();
     }
