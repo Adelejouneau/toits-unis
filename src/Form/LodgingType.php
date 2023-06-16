@@ -19,6 +19,10 @@ class LodgingType extends AbstractType
             ->add('latitude')
             ->remove('slugLod')
             ->add('titleLod')
+            ->add('imageFile', FileType::class, [
+                'required' => false,
+                'label' => "Image du logement",
+            ])
         ;
     }
 

@@ -19,6 +19,10 @@ class AssociationType extends AbstractType
             ->add('phoneNumberAsso')
             ->add('emailAsso')
             ->remove('slugAsso')
+            ->add('imageFile', FileType::class, [
+                'required' => false,
+                'label' => "Image de l'asso",
+            ])
         ;
     }
 
