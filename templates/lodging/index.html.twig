@@ -1,20 +1,87 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LodgingController!{% endblock %}
+{% block title %}Lodging!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="card">
+    <img src="{{ asset('/images/banniere.png') }}" class="card-img-top" alt="...">
+<div class="card-body">
+<h1 class="mb-3"><i data-feather="home"></i> Nos derniers logements <i data-feather="home"></i></h1>
+<div class="row d-flex justify-content-center">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/php-decodeuse/toits-unis/src/Controller/LodgingController.php'|file_link(0) }}">src/Controller/LodgingController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/php-decodeuse/toits-unis/templates/lodging/index.html.twig'|file_link(0) }}">templates/lodging/index.html.twig</a></code></li>
-    </ul>
+    {% for lodging in lodgings %}
+
+        <div class="col-12 col-md-4 col-xl-3 mb-3"> 
+            <div class="card shadow">
+
+                <div class="position-relative">
+                    {% if lodging.imageName is defined and lodging.imageName is not null %}
+                        <img src="{{ asset('/images/toits-unis/' ~ lodging.imageName) }}" class="card-img-top" alt="{{ lodging.title }}">
+                    {% else %}
+                        <img src="{{ asset('/images/lodging/placeholder.jpg') }}" class="img-fluid" alt="{{ lodging.title }}">
+                    {% endif %}
+                    <a href="{{ path('app_lodging_show', { slug: lodging.slug }) }}" class="btn btn-primary rounded-circle position-absolute top-50 start-50 translate-middle p-2">
+                        <i data-feather="play"></i>
+                    </a>
+
+                    {# {% if lodging not in app.user.lodgings %} #}
+                        {# <a href="{{ path('add_favori', { id: lodging.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                            <i data-feather="star" class="text-danger"></i>
+                        </a> #}
+                    {# {% else %}
+                        <a href="{{ path('remove_lodging', { id: lodging.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                            <i data-feather="star" class="text-light"></i>
+                        </a> #}
+                    {# {% endif %} #}
+
+                </div>
+
+                <div class="card-body text-center">
+                    <a href="{{ path('app_lodging_show', { slug: lodging.slug }) }}" class="btn btn-primary">{{ lodging.title }}</a>
+                </div>
+
+            </div>
+        </div>
+
+    {# {% endfor %} #}
 </div>
+
+<h1 class="mb-3"><i data-feather="star"></i> Mes favoris <i data-feather="star"></i></h1>
+
+<div class="row d-flex justify-content-center">
+    {# {% if app.user.lodging|length > 0 %}
+
+        {% for lodging in app.user.lodgings %} #}
+            <div class="col-12 col-md-4 col-xl-3 mb-3"> 
+                <div class="card shadow">
+
+                    <div class="position-relative">
+                        {% if lodging.imageName is defined and lodging.imageName is not null %}
+                            <img src="{{ asset('/images/lodging/' ~ lodging.imageNameLog) }}" class="card-img-top" alt="{{ lodging.title }}">
+                        {% else %}
+                            <img src="{{ asset('/images/lodging/placeholder.jpg') }}" class="img-fluid" alt="{{ lodging.title }}">
+                        {% endif %}
+                        <a href="{{ path('app_lodging_show', { slug: lodging.slug }) }}" class="btn btn-primary rounded-circle position-absolute top-50 start-50 translate-middle p-2">Voir plus</a>
+
+                        <a href="{{ path('remove_lodging', { id: lodging.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                            <i data-feather="star" class="text-light"></i>
+                        </a>
+                    </div>
+
+                    <div class="card-body text-center">
+                        <a href="{{ path('app_lodging_show', { slug: lodging.slug }) }}" class="btn btn-primary">{{ lodging.titleLog }}</a>
+                    </div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+
+    {# {% else %} #} 
+        {# <p class="text-center">Vous n'avez aucun favori pour l'instant.</p> #}
+
+    {# {% endif %} #}
+</div>
+
 {% endblock %}

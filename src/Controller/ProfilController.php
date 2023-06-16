@@ -58,17 +58,17 @@ class ProfilController extends AbstractController
         $em->persist($user);
         $em->flush();
         //On redirige vers la page des livres
-        return $this->redirectToRoute('app_logement');
+        return $this->redirectToRoute('app_lodging');
     }
 
-    #[Route('/remove-livre/{id}', name: 'remove_livre')]
+    #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
     public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
-        //On r"cupère le livre dans la bdd
+        //On r"cupère la donnee dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
         $user = $this->getUser();
-        //On ajoute le livre à la liste des favoris de l'utilisateur
+        //On ajoute le lodging à la liste des favoris de l'utilisateur
         $user->removeLodging($lodging);
         //On met en place un msg flash
         $this->addFlash('success','Le lodging a bien été retirer à vos favoris');
