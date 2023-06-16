@@ -28,6 +28,7 @@ class UserFixtures extends Fixture
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user-> setRoles(['ROLE_USER', 'ROLE_ADMIN']);
         $user->setIsVerified(true);
+        $user-> setAddress($this->getReference(AddressFixtures::CHARLES_DE_GAULLE_SAINT_HERBLAIN));
         $manager->persist($user);
 
 
@@ -42,6 +43,7 @@ class UserFixtures extends Fixture
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user-> setRoles(['ROLE_USER']);
         $user->setIsVerified(true);
+        $user-> setAddress($this->getReference(AddressFixtures::DOCTEUR_EMILE_ROUX_NICE));
         $manager->persist($user);
 
     

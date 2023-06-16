@@ -43,7 +43,7 @@ class Department
         return $this->nameDepartment;
     }
 
-    public function setNameDepartment(string $nameDepartment): static
+    public function setNameDepartment(string $nameDepartment): self
     {
         $this->nameDepartment = $nameDepartment;
 
@@ -55,7 +55,7 @@ class Department
         return $this->codeDepartment;
     }
 
-    public function setCodeDepartment(int $codeDepartment): static
+    public function setCodeDepartment(int $codeDepartment): self
     {
         $this->codeDepartment = $codeDepartment;
 
@@ -70,7 +70,7 @@ class Department
         return $this->lodgings;
     }
 
-    public function addLodging(Lodging $lodging): static
+    public function addLodging(Lodging $lodging): self
     {
         if (!$this->lodgings->contains($lodging)) {
             $this->lodgings->add($lodging);
@@ -80,7 +80,7 @@ class Department
         return $this;
     }
 
-    public function removeLodging(Lodging $lodging): static
+    public function removeLodging(Lodging $lodging): self
     {
         if ($this->lodgings->removeElement($lodging)) {
             // set the owning side to null (unless already changed)
@@ -92,7 +92,7 @@ class Department
         return $this;
     }
 
-    /**
+/**
      * @return Collection<int, Address>
      */
     public function getAddresses(): Collection
@@ -100,7 +100,7 @@ class Department
         return $this->addresses;
     }
 
-    public function addAddress(Address $address): static
+    public function addAddress(Address $address): self
     {
         if (!$this->addresses->contains($address)) {
             $this->addresses->add($address);
@@ -110,7 +110,7 @@ class Department
         return $this;
     }
 
-    public function removeAddress(Address $address): static
+    public function removeAddress(Address $address): self
     {
         if ($this->addresses->removeElement($address)) {
             // set the owning side to null (unless already changed)

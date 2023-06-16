@@ -6,65 +6,38 @@ use App\Entity\Department;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
-class DepartmentFixtures extends Fixture
+class AADepartmentFixtures extends Fixture
 {
-    // public const APPARTEMENT='appartement';
-    public const AIN='Ain';
-    // public const NUMERO_DE_DEPARTEMENT='01';
-    public const AISNE='Aisne';
-    // public const NUMERO_DE_DEPARTEMENT='02';
-    public const ALLIER='Allier';
-    // public const NUMERO_DE_DEPARTEMENT='03';
-    public const ALPES_DE_HAUTE_PROVENCE='Alpes-de-Haute-Provence';
-    // public const NUMERO_DE_DEPARTEMENT='04';
-    public const HAUTES_ALPES='Hautes-Alpes';
-    // public const NUMERO_DE_DEPARTEMENT='05';
-    public const ALPES_MARITIMES='Alpes-Maritimes';
-    // public const NUMERO_DE_DEPARTEMENT='06';
-    public const ARDECHE='Ardèche';
-    // public const NUMERO_DE_DEPARTEMENT='07';
-    public const ARDENNE='Ardènne';
-    // public const NUMERO_DE_DEPARTEMENT='08';
-    public const ARIEGE='Ariège';
-    // public const NUMERO_DE_DEPARTEMENT='09';
-    public const AUBE='Aube';
-    // public const NUMERO_DE_DEPARTEMENT='10';
-    public const AUDE='Aude';
-    // public const NUMERO_DE_DEPARTEMENT='11';
-    public const AVEYRON='Aveyron';
-    // public const NUMERO_DE_DEPARTEMENT='12';
-    public const PARIS= 'Paris';
-    // public const NUMERO_DE_DEPARTEMENT='75';
-    public const SEINE_MARITIME='Seine-Maritime';
-    // public const NUMERO_DE_DEPARTEMENT='76';
-    public const SEINE_ET_MARNE='Seine-et-Marne';
-    // public const NUMERO_DE_DEPARTEMENT='77';
-    public const YVELINES='Yvelines';
-    // public const NUMERO_DE_DEPARTEMENT='78';
-    public const DEUX_SEVRES='Deux-Sèvres';
-    // public const NUMERO_DE_DEPARTEMENT='79';
-    public const SOMME='Somme';
-    // public const NUMERO_DE_DEPARTEMENT='80';
-    public const ESSONNE='Essonne';
-    // public const NUMERO_DE_DEPARTEMENT='91';
-    public const HAUTS_DE_SEINE='Hauts-de-Seine';
-    // public const NUMERO_DE_DEPARTEMENT='92';
-    public const SEINE_ST_DENIS='Seine-St-Denis';
-    // public const NUMERO_DE_DEPARTEMENT='93';
-    public const VAL_DE_MARNE='Val-de-Marne';
-    // public const NUMERO_DE_DEPARTEMENT='94';
-    public const VAL_DOISE='Val-Doise';
-    // public const NUMERO_DE_DEPARTEMENT='95';
-    public const GUADELOUPE='Guadeloupe';
-    // public const NUMERO_DE_DEPARTEMENT='971';
-    public const MARTINIQUE='Martinique';
-    // public const NUMERO_DE_DEPARTEMENT='972';
-    public const GUYANE='Guyane';
-    // public const NUMERO_DE_DEPARTEMENT='973';
-    public const MAYOTTE='Mayotte';
-    // public const NUMERO_DE_DEPARTEMENT='974';
-    public const LA_REUNION='La Réunion';
 
+    public const AIN='Ain';
+    public const AISNE='Aisne';
+    public const ALLIER='Allier';
+    public const ALPES_DE_HAUTE_PROVENCE='Alpes-de-Haute-Provence';
+    public const HAUTES_ALPES='Hautes-Alpes';
+    public const ALPES_MARITIMES='Alpes-Maritimes';
+    public const ARDECHE='Ardèche';
+    public const ARDENNE='Ardènne';
+    public const ARIEGE='Ariège';
+    public const AUBE='Aube';
+    public const AUDE='Aude';
+    public const AVEYRON='Aveyron';
+    // public const PARIS='Paris';
+    public const SEINE_MARITIME='Seine-Maritime';
+    public const SEINE_ET_MARNE='Seine-et-Marne';
+    public const YVELINES='Yvelines';
+    public const DEUX_SEVRES='Deux-Sèvres';
+    public const SOMME='Somme';
+    public const ESSONNE='Essonne';
+    public const HAUTS_DE_SEINE='Hauts-de-Seine';
+    public const SEINE_ST_DENIS='Seine-St-Denis';
+    public const VAL_DE_MARNE='Val-de-Marne';
+    public const VAL_DOISE='Val-Doise';
+    public const GUADELOUPE='Guadeloupe';
+    public const MARTINIQUE='Martinique';
+    public const GUYANE='Guyane';
+    public const MAYOTTE='Mayotte';
+    public const LA_REUNION='La Réunion';
+    public const LOIRE_ATLANTIQUE='loire-atlantique';
 
     public function load(ObjectManager $manager): void
     {
@@ -142,10 +115,16 @@ class DepartmentFixtures extends Fixture
         $manager->persist($department);
 
         $department = new Department();
-        $department->setNameDepartment("Paris");
-        $department->setCodeDepartment("75");
-        $this->addReference(self::PARIS , $department);
+        $department->setNameDepartment("Loire Atlantique");
+        $department->setCodeDepartment("44");
+        $this->addReference(self:: LOIRE_ATLANTIQUE, $department);
         $manager->persist($department);
+
+        // $department = new Department();
+        // $department->setNameDepartment("Paris");
+        // $department->setCodeDepartment("75");
+        // $this->addReference(self::PARIS, $department);
+        // $manager->persist($department);
 
         $department = new Department();
         $department->setNameDepartment("Seine-Maritime");
