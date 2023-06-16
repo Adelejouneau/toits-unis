@@ -23,6 +23,10 @@ body{
 /* page home */
 
 #banniere-home{
-    width: 100wv;
+    width: 100vw;
+    text-align: center;
+    background-color: #fbf4ec;
 }
+
+
 
