@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/php-decodeuse/toits-unis/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/php-decodeuse/toits-unis/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
+<div class="img-contact">
+    <img src="images/Contact.jpg" alt="image contactez-nous">
 </div>
+{# <div class="container-contact xl py-4 px-0"> #}
+{# Chatgpt où trouver dans la documentation bootstrap pour les display flex ou dans la barre de recherche #}
+{# ligne initial au-dessus <div class="container py-0 px-0"></div> #}
+{# </div>  #}
+<div class="container-contact">
+  <div class="row">
+    <div class="col-sm-5 col-md-6 " style="text-align:center">.col-sm-5 .col-md-6
+    <p>Nous sommes joignables par téléphone au <br>01.77.32.56.61 ainsi que par email <br>à contact@toitsunis.org</p>
+    <p>Toits unis <br>15 rue Henri Chevreau <br> 75020 Paris</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.411929779011!2d2.386572075258653!3d48.869423299931654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66dec95f16a43%3A0x9dce95c1a3524b8e!2s15%20Rue%20Henri%20Chevreau%2C%2075020%20Paris!5e0!3m2!1sfr!2sfr!4v1686927668321!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
+    <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+  </div>
+</div>
+
 {% endblock %}
