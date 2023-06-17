@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 use App\Entity\Association;
-use App\Entity\User;
-// use App\Entity\Guest;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -138,7 +136,7 @@ public function getUsers(): Collection
     return $this->users;
 }
 
-public function setUser(User $user): self
+public function addUser(User $user): self
 {
     if (!$this->users->contains($user)) {
         $this->users->add($user);

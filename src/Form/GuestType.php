@@ -2,39 +2,37 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Guest;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class UserType extends AbstractType
+class GuestType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email')
-            ->add('plainPassword' , PasswordType::class, [
-                'label'=>"Nouveau mot de passe",
-                'mapped' => false,
-                ])
+            ->add('roles')
+            ->add('password')
             ->add('lastName')
             ->add('firstName')
-            ->add('address')
             ->add('phoneUser')
             ->add('imageNameUser')
-            ->remove('updatedAt')
+            ->add('updatedAt')
             ->add('gender')
-            // ->add('roles')
-            // ->add('password')
-            // ->add('isVerified')
+            ->add('isVerified')
+            ->add('hobbiesGuest')
+            ->add('NbrLitsGuest')
+            ->add('address')
+            ->add('association')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Guest::class,
         ]);
     }
 }
