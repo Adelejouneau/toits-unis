@@ -20,7 +20,7 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setLastName('sidibe');
         $user->setFirstName('bintou');
-        $user->setEmailUser('sidib.bintou@gmail.com');
+        $user->setEmail('sidib.bintou@gmail.com');
         $user->setPhoneUser('06.11.22.33.44');
         $user->setImageNameUser('lorem ipsem');
         $user->setUpdatedAt(new \DateTimeImmutable());
@@ -35,7 +35,7 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setLastName('SI-Bachir');
         $user->setFirstName('Nassima');
-        $user->setEmailUser('bibi@bibi.com');
+        $user->setEmail('bibi@bibi.com');
         $user->setPhoneUser('06.11.22.33.44');
         $user->setImageNameUser('lorem ipsem');
         $user->setUpdatedAt(new \DateTimeImmutable());
