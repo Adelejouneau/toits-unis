@@ -52,3 +52,37 @@ color: yellow;}
 .container-contact {
     height: 100%;
 }
+
+/* page comment ça marche GUEST  */
+
+    .info-guest-start{
+        display: flex;
+        align-items: flex-start;
+        justify-content:flex-start;
+        align-self: start;
+        margin-bottom: 50px;
+    }
+    .info-guest-end{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        margin-bottom: 50px;
+        padding: 30PX 30PX;
+    }
+    .color-card-guest{
+        background-color: #F78F52;
+        border-radius: 15px;
+        padding: 30px;
+    }
+
+/* page création compte host */
+
+.bannerhost{
+    background-image: url('../images/comptehost.jpg');
+
+    text-align: center;
+}
+
+h1{
+margin-left: 100px;
+}

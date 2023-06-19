@@ -21,7 +21,7 @@ class AADepartmentFixtures extends Fixture
     public const AUBE='Aube';
     public const AUDE='Aude';
     public const AVEYRON='Aveyron';
-    // public const PARIS='Paris';
+    public const PARIS='Paris';
     public const SEINE_MARITIME='Seine-Maritime';
     public const SEINE_ET_MARNE='Seine-et-Marne';
     public const YVELINES='Yvelines';
@@ -120,11 +120,11 @@ class AADepartmentFixtures extends Fixture
         $this->addReference(self:: LOIRE_ATLANTIQUE, $department);
         $manager->persist($department);
 
-        // $department = new Department();
-        // $department->setNameDepartment("Paris");
-        // $department->setCodeDepartment("75");
-        // $this->addReference(self::PARIS, $department);
-        // $manager->persist($department);
+        $department = new Department();
+        $department->setNameDepartment("Paris");
+        $department->setCodeDepartment("75");
+        $this->addReference(self::PARIS, $department);
+        $manager->persist($department);
 
         $department = new Department();
         $department->setNameDepartment("Seine-Maritime");

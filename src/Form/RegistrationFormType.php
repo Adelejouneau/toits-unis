@@ -17,6 +17,10 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+            ->add('lastName')
+            ->add('firstName')
+            ->add('phoneUser')
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'label'=>"J'accepte les conditions d'utilisation",
@@ -44,7 +48,9 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('plainPasswordConfirm')
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

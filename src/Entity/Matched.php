@@ -15,8 +15,6 @@ class Matched
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'matcheds')]
-    private ?Guest $guest = null;
 
     #[ORM\ManyToOne(inversedBy: 'matcheds')]
     private ?Lodging $lodging = null;
@@ -34,17 +32,6 @@ class Matched
         return $this->id;
     }
 
-    public function getGuest(): ?Guest
-    {
-        return $this->guest;
-    }
-
-    public function setGuest(?Guest $guest): static
-    {
-        $this->guest = $guest;
-
-        return $this;
-    }
 
     public function getLodging(): ?Lodging
     {

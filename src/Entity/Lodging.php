@@ -52,10 +52,6 @@ class Lodging
     private Collection $date;
 
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Host $host = null;
-
-    #[ORM\ManyToOne(inversedBy: 'lodgings')]
     private ?Department $department = null;
 
     public function __construct()
@@ -232,17 +228,6 @@ class Lodging
         return $this;
     }
 
-    public function getHost(): ?Host
-    {
-        return $this->host;
-    }
-
-    public function setHost(?Host $host): static
-    {
-        $this->host = $host;
-
-        return $this;
-    }
 
     public function getDepartment(): ?Department
     {

@@ -1,13 +1,48 @@
 {% extends 'base.html.twig' %}
 {% block title %}Hello CommentCaMarcheController!{% endblock %}
+{% block stylesheets %}
+<head>
+    <meta charset="UTF-8">
+    <title>Page Admin</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+{% endblock %}
 {% block body %}
-    <div class="banner">
-        <img src="/images/banniere3.png" alt="BannièrePageLodging">
+<div class="banner-host">
         <div class="banner-text">
-            <h1>Comment trouver <br>un logement ?</h1>
+            <h1 class="titlehost">Devenir Hôte</h1>
         </div>
-    </div>
-    {# <div class="container"> #}
+</div>
+        <h3 class="title-infos">Informations personnelles</h3>
+    <div>
+
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+<section class="cadre">
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.lastName) }}
+        {{ form_row(registrationForm.firstName) }}
+
+        {{ form_row(registrationForm.phoneUser) }}
+        {{ form_row(registrationForm.email) }}
+
+        {{ form_row(registrationForm.entreprise) }}
+        {{ form_row(registrationForm.profession) }}
+        
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+
+        {{ form_row(registrationForm.agreeTerms) }}
+</section>
+
+        <button type="submit" class="btn btn-success">Valider</button>
+    {{ form_end(registrationForm) }}
+    
+{% endblock %}
+        {# </div>
         <div class="container ">
             <div class=" row">
                 <div class="col-md-12 info-guest-start">
@@ -52,5 +87,4 @@
                 <a href="#" class="btn btn-dark mb-3">Trouver mon logement</a>
             </div>
         </div>
-    {# </div> #}
-{% endblock %}
+    </div> #}

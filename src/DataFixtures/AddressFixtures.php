@@ -21,7 +21,7 @@ class AddressFixtures extends Fixture
     public const MARC_SEGUIN_PARIS='24-rue-marc-seguin';
     public const ROMAINVILLE_PARIS='3-rue-romainville';
     public const CHARENTON_PARIS='103-rue-de-charenton';
-    public const CHARLES_DE_GAULLE_SAINT_HERBLAIN='16-boulevars-charles-de-gaulle';
+    public const CHARLES_DE_GAULLE_SAINT_HERBLAIN = '16-boulevard-charles-de-gaulle';
     public const CAMILLE_DESMOULINS_ISSY_LES_MOULINEAUX='80-rue-camille-desmoulins';
 
 
