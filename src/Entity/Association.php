@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Entity;
+use App\Entity\Address;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AssociationRepository;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: AssociationRepository::class)]
@@ -31,7 +32,6 @@ class Association
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageNameAsso = null;
 
-// NOTE: This is not a mapped field of entity metadata, just a simple property.
     #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageNameAsso')]
     private ?File $imageFile = null;
 
@@ -44,17 +44,8 @@ class Association
     #[ORM\Column(length: 255)]
     private ?string $slugAsso = null;
 
-    #[ORM\OneToMany(mappedBy: 'association', targetEntity: Guest::class)]
-    private Collection $guests;
-
-    #[ORM\ManyToOne(inversedBy: 'association')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'associations')]
     private ?Address $address = null;
-
-    public function __construct()
-    {
-        $this->guests = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -66,7 +57,7 @@ class Association
         return $this->nameAsso;
     }
 
-    public function setNameAsso(string $nameAsso): static
+    public function setNameAsso(string $nameAsso): self
     {
         $this->nameAsso = $nameAsso;
 
@@ -78,7 +69,7 @@ class Association
         return $this->descriptionAsso;
     }
 
-    public function setDescriptionAsso(?string $descriptionAsso): static
+    public function setDescriptionAsso(?string $descriptionAsso): self
     {
         $this->descriptionAsso = $descriptionAsso;
 
@@ -90,7 +81,7 @@ class Association
         return $this->websiteUrl;
     }
 
-    public function setWebsiteUrl(?string $websiteUrl): static
+    public function setWebsiteUrl(?string $websiteUrl): self
     {
         $this->websiteUrl = $websiteUrl;
 
@@ -102,7 +93,7 @@ class Association
         return $this->imageNameAsso;
     }
 
-    public function setImageNameAsso(?string $imageNameAsso): static
+    public function setImageNameAsso(?string $imageNameAsso): self
     {
         $this->imageNameAsso = $imageNameAsso;
 
@@ -139,7 +130,7 @@ class Association
         return $this->phoneNumberAsso;
     }
 
-    public function setPhoneNumberAsso(string $phoneNumberAsso): static
+    public function setPhoneNumberAsso(string $phoneNumberAsso): self
     {
         $this->phoneNumberAsso = $phoneNumberAsso;
 
@@ -151,7 +142,7 @@ class Association
         return $this->emailAsso;
     }
 
-    public function setEmailAsso(?string $emailAsso): static
+    public function setEmailAsso(?string $emailAsso): self
     {
         $this->emailAsso = $emailAsso;
 
@@ -163,49 +154,20 @@ class Association
         return $this->slugAsso;
     }
 
-    public function setSlugAsso(string $slugAsso): static
+    public function setSlugAsso(string $slugAsso): self
     {
         $this->slugAsso = $slugAsso;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Guest>
-     */
-    public function getGuests(): Collection
-    {
-        return $this->guests;
-    }
-
-    public function addGuest(Guest $guest): static
-    {
-        if (!$this->guests->contains($guest)) {
-            $this->guests->add($guest);
-            $guest->setAssociation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGuest(Guest $guest): static
-    {
-        if ($this->guests->removeElement($guest)) {
-            // set the owning side to null (unless already changed)
-            if ($guest->getAssociation() === $this) {
-                $guest->setAssociation(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getAddress(): ?Address
     {
         return $this->address;
     }
 
-    public function setAddress(?Address $address): static
+    public function setAddress(?Address $address): self
     {
         $this->address = $address;
 

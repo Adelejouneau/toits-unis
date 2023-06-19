@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Entity;
+use App\Entity\Address;
+use Doctrine\DBAL\Types\Types;
+
 
 use ORM\MappedSuperclass;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\MappedSuperclass]
+// #[ORM\MappedSuperclass]
 
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -37,9 +40,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     protected ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
-    protected ?string $emailUser = null;
-
-    #[ORM\Column(length: 255)]
     protected ?string $phoneUser = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -52,11 +52,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     protected ?string $gender = null;
 
     #[ORM\ManyToOne(inversedBy: 'user')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Address $address = null;
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nombreLit = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $entreprise = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $fonction = null;
 
     public function getId(): ?int
     {
@@ -171,18 +183,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getEmailUser(): ?string
-    {
-        return $this->emailUser;
-    }
-
-    public function setEmailUser(string $emailUser): static
-    {
-        $this->emailUser = $emailUser;
-
-        return $this;
-    }
-
     public function getPhoneUser(): ?string
     {
         return $this->phoneUser;
@@ -251,6 +251,54 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getNombreLit(): ?int
+    {
+        return $this->nombreLit;
+    }
+
+    public function setNombreLit(?int $nombreLit): static
+    {
+        $this->nombreLit = $nombreLit;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getEntreprise(): ?string
+    {
+        return $this->entreprise;
+    }
+
+    public function setEntreprise(?string $entreprise): static
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    public function getFonction(): ?string
+    {
+        return $this->fonction;
+    }
+
+    public function setFonction(?string $fonction): static
+    {
+        $this->fonction = $fonction;
 
         return $this;
     }

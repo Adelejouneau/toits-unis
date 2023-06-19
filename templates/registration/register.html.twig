@@ -1,23 +1,80 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Inscription{% endblock %}
-
+{% block title %}Hello CommentCaMarcheController!{% endblock %}
+{% block stylesheets %}
+<head>
+    <meta charset="UTF-8">
+    <title>Page Admin</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+{% endblock %}
 {% block body %}
+<div class="banner-host">
+    <div class="banner-text">
+        <h1 class="titlehost">Devenir Hôte</h1>
+    </div>
+</div>
+<h3 class="title-infos">Informations personnelles</h3>
+<div>
+
     {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Inscription</h1>
-    <div class="fluid-container w-50 m-auto">
+    <section class="cadre">
+        {{ form_start(registrationForm) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(registrationForm.lastName) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(registrationForm.firstName) }}
+            </div>
+        </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(registrationForm.phoneUser) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(registrationForm.email) }}
+            </div>
+        </div>
+        {# 
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(registrationForm.entreprise) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(registrationForm.fonction) }}
+            </div>
+        </div>
+        #}
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+            </div>
+        </div>
+
+        <div class="row">
+    <div class="col-md-6">
+        {{ form_row(registrationForm.plainPasswordConfirm, {
+            label: 'Confirm Password'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn btn-dark">S'inscrire</button>
-    {{ form_end(registrationForm) }}
     </div>
+</div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(registrationForm.agreeTerms) }}
+            </div>
+        </div>
+    </section>
+
+    <button type="submit" class="btn btn-success">Valider</button>
+    {{ form_end(registrationForm) }}
+
+</div>
 {% endblock %}

@@ -26,7 +26,7 @@ class Lodging
     private ?string $imageNameLod = null;
 
     // NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageNameLod')]
+    #[Vich\UploadableField(mapping: 'lodging', fileNameProperty: 'imageNameLod')]
     private ?File $imageFile = null;
 
     #[ORM\Column]
@@ -50,10 +50,6 @@ class Lodging
 
     #[ORM\ManyToMany(targetEntity: Date::class, inversedBy: 'lodgings')]
     private Collection $date;
-
-    #[ORM\ManyToOne(inversedBy: 'lodgings')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Host $host = null;
 
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
     private ?Department $department = null;
@@ -232,17 +228,6 @@ class Lodging
         return $this;
     }
 
-    public function getHost(): ?Host
-    {
-        return $this->host;
-    }
-
-    public function setHost(?Host $host): static
-    {
-        $this->host = $host;
-
-        return $this;
-    }
 
     public function getDepartment(): ?Department
     {
