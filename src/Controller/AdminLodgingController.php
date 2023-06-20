@@ -18,7 +18,7 @@ class AdminLodgingController extends AbstractController
     public function index(LodgingRepository $lodgingRepository): Response
     {
         return $this->render('admin_lodging/index.html.twig', [
-            'lodgings' => $lodgingRepository->findAll(),
+            'lodgings' => $lodgings,
         ]);
     }
 
@@ -33,7 +33,7 @@ class AdminLodgingController extends AbstractController
             $lodging->setSlugLod(strtolower($slugger->slug($lodging->getTitleLod())));
             $lodging->setTitleLod(ucfirst($lodging->getTitleLod()));
             $lodgingRepository->save($lodging, true);
-            $this->addFlash('success','le logement a bien été ajouté');
+            $this->addFlash('success', 'Le logement a bien été ajouté');
 
             return $this->redirectToRoute('app_admin_lodging_index', [], Response::HTTP_SEE_OTHER);
         }
