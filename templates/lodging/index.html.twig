@@ -5,9 +5,15 @@
 {% block body %}
 
 <div class="card">
-    <img src="{{ asset('/images/banniere.png') }}" class="card-img-top" alt="...">
+
+    <div class="banner">
+    <img src="/images/banniere3.png" alt="BannièrePageLodging">
+    <div class="banner-text">
+        <h1>Comment trouver <br>un logement ?</h1>
+    </div>
+</div>
 <div class="card-body">
-<h1 class="mb-3"><i data-feather="home"></i> Nos derniers logements <i data-feather="home"></i></h1>
+<h1 class="text-center mb-3"><i data-feather="home"></i> Nos derniers logements <i data-feather="home"></i></h1>
 <div class="row d-flex justify-content-center">
 
     {% for lodging in lodgings %}
@@ -22,18 +28,19 @@
                         <img src="{{ asset('/images/lodging/placeholder.jpg') }}" class="img-fluid" alt="{{ lodging.title }}">
                     {% endif %}
                     <a href="{{ path('app_lodging_show', { slug: lodging.slug }) }}" class="btn btn-primary rounded-circle position-absolute top-50 start-50 translate-middle p-2">
-                        <i data-feather="play"></i>
+                        <i data-feather="play"></i>gogogo
                     </a>
-
-                    {# {% if lodging not in app.user.lodgings %} #}
-                        {# <a href="{{ path('add_favori', { id: lodging.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                    {% if app.user is not null %}
+                    {% if lodging not in app.user.lodging %}
+                        <a href="{{ path('add_favori', { id: lodging.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                             <i data-feather="star" class="text-danger"></i>
-                        </a> #}
-                    {# {% else %}
+                        </a>
+                    {% else %}
                         <a href="{{ path('remove_lodging', { id: lodging.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                             <i data-feather="star" class="text-light"></i>
-                        </a> #}
-                    {# {% endif %} #}
+                        </a>
+                    {% endif %} 
+            {% endif %} 
 
                 </div>
 
@@ -44,27 +51,31 @@
             </div>
         </div>
 
-    {# {% endfor %} #}
+    {% endfor %}
 </div>
 
-<h1 class="mb-3"><i data-feather="star"></i> Mes favoris <i data-feather="star"></i></h1>
+<h1 class="text-center mb-3"><i data-feather="star"></i><i data-feather="star"></i></h1>
 
 <div class="row d-flex justify-content-center">
-    {# {% if app.user.lodging|length > 0 %}
+{% if app.user is not null %}
+    {% if app.user.lodging|length > 0 %}
 
-        {% for lodging in app.user.lodgings %} #}
+        {% for lodging in app.user.lodging %}
             <div class="col-12 col-md-4 col-xl-3 mb-3"> 
                 <div class="card shadow">
 
                     <div class="position-relative">
-                        {% if lodging.imageName is defined and lodging.imageName is not null %}
+                        {# {% if lodging.imageName is defined and lodging.imageName is not null %}
                             <img src="{{ asset('/images/lodging/' ~ lodging.imageNameLog) }}" class="card-img-top" alt="{{ lodging.title }}">
                         {% else %}
                             <img src="{{ asset('/images/lodging/placeholder.jpg') }}" class="img-fluid" alt="{{ lodging.title }}">
-                        {% endif %}
+                        {% endif %} #}
                         <a href="{{ path('app_lodging_show', { slug: lodging.slug }) }}" class="btn btn-primary rounded-circle position-absolute top-50 start-50 translate-middle p-2">Voir plus</a>
 
-                        <a href="{{ path('remove_lodging', { id: lodging.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                        <a href="{{ path('remove_lodging', { id:lodging.id }) }}" class="btn btn-primary rounded-circle position-absolute top-50 start-50 translate-middle p-2"></a>
+
+
+                        {# lodging.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2"> #}
                             <i data-feather="star" class="text-light"></i>
                         </a>
                     </div>
@@ -78,10 +89,11 @@
 
         {% endfor %}
 
-    {# {% else %} #} 
-        {# <p class="text-center">Vous n'avez aucun favori pour l'instant.</p> #}
+    {% else %}
+        <p class="text-center">Vous n'avez aucun favori pour l'instant.</p>
 
-    {# {% endif %} #}
+    {% endif %}
+{% endif %} 
 </div>
 
 {% endblock %}

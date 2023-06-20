@@ -4,7 +4,7 @@ body{
     padding: 0;
 }
 
-#navbarNav{
+.color-logo{
     color:#FFF0BD
 }
 
@@ -28,3 +28,199 @@ body{
 
 #a {
 color: yellow;}
+
+/* lodging */
+
+    .banner {
+    position: relative;
+    text-align:end;
+    }
+
+    .banner img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    }
+
+    .banner-text {
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .banner-text h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+    }
+
+    .banner-text p {
+    font-size: 18px;
+    }
+
+    /* page comment sa marche guest */
+
+
+    .info-guest-start{
+        display: flex;
+        align-items: flex-start;
+        justify-content:flex-start;
+        align-self: start;
+        margin-bottom: 30px;
+        gap :40px;
+        justify-content: space-between;
+        
+        
+    }
+
+    .info-guest-end{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+        gap :40px;
+        justify-content: space-between;
+        
+    }
+
+    .color-card-guest{
+        background-color: #F78F52;
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        gap:15px;
+        width: 450px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .img-fonction-right{
+        display: flex;
+        float: right;
+
+    }
+
+    .img-fonction-left{
+        display: flex;
+        float: left;
+    }
+
+    #text-CCM{
+        font-size: 30px;
+        margin-bottom: 75px;
+    }
+
+    .number-container{
+        background-color: red;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .find-lodging{
+        background-color: #124367;
+        color: #FFF0BD;
+        width: 250px;
+        margin-bottom: 80px;
+        padding: 15px;
+        text-align: center;
+
+    }
+
+    .images-CCM{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap :40px;
+        justify-content: space-around;
+    }
+
+    .images-CCM2{
+        DISPLAY: flex;
+        FLEX-DIRECTION: row-reverse;
+        gap :40px;
+        justify-content: space-around;
+    }
+
+    .background-banniere{
+        background-color: #FFF0BD;
+    }
+
+
+     /* page comment sa marche host */
+
+
+    .info-host-start{
+        display: flex;
+        align-items: flex-start;
+        justify-content:flex-start;
+        align-self: start;
+        margin-bottom: 30px;
+        gap :40px;
+        justify-content: space-between;
+        
+    }
+
+    .color-card-host{
+        background-color: #FFF0BD;
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        gap:15px;
+        width: 450px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+    }
+
+    .info-host-end{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+        gap :40px;
+        justify-content: space-between;
+        
+    }
+
+
+    .find-lodging{
+        background-color: #124367;
+        color: #FFF0BD;
+        width: 250px;
+        margin-bottom: 80px;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+
+    }
+
+    .find-lodging:hover{
+        background-color:#F78F52 ;
+        color: #124367;
+    }
+
+    /* page compte profil Guest */
+
+
+    .size-imput{
+            width: 600px;
+            display: flex;
+            gap: 40px ;
+            margin-bottom: 20px;
+    }
+
+    .titre-profil-guest{
+        font-weight: bold;
+        color: #F78F52;
+
+    }
+

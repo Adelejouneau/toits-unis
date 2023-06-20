@@ -11,8 +11,8 @@ class GuestFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $guest = new Guest();
-        $guest->setHobbiesGuest('');
-        $guest->setNbrLitsGuest('');
+        $guest->setHobbiesGuest('une description');
+        $guest->setNbrLitsGuest('1');
         $manager->persist($guest);
 
         $manager->flush();

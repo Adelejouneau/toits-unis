@@ -19,11 +19,11 @@ class LodgingFixtures extends Fixture
         $lodging->setLongitude("2.3522");
         $lodging->setTitleLod("apparement avec un chambre amenagé");
         $lodging->setSlugLod("logement-1");
-        $lodging->setDepartment($this->getReference(DepartmentFixtures::AIN));
-        // $lodging->->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
-        // $lodging->->addHost($this->getReference(HostFixtures::CORINNE));
+        $lodging->setDepartment($this->getReference(AADepartmentFixtures::AIN));
+        // $lodging->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
+        // $lodging->addHost($this->getReference(HostFixtures::CORINNE));
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(ecrire l'address)));
+        // $lodging->addAddress($this->getReference(AddressFixtures::COLBERT_PARIS));
         $manager->persist($lodging);
 
         $lodging = new Lodging();
@@ -33,7 +33,7 @@ class LodgingFixtures extends Fixture
         $lodging->setLongitude("1.4440");
         $lodging->setTitleLod("local entreprise");
         $lodging->setSlugLod("logement-2");
-        $lodging->setDepartment($this->getReference(DepartmentFixtures::HAUTES_ALPES));
+        $lodging->setDepartment($this->getReference(AADepartmentFixtures::HAUTES_ALPES));
         // $lodging->->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
         // $lodging->->addHost($this->getReference(HostFixtures::CORINNE));
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
@@ -47,7 +47,7 @@ class LodgingFixtures extends Fixture
         $lodging->setLongitude("-1.6778");
         $lodging->setTitleLod("hotel");
         $lodging->setSlugLod("logement-3");
-        $lodging->setDepartment($this->getReference(DepartmentFixtures::PARIS));
+        $lodging->setDepartment($this->getReference(AADepartmentFixtures::PARIS));
         // $lodging->->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
         // $lodging->->addHost($this->getReference(HostFixtures::CORINNE));
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
@@ -61,7 +61,7 @@ class LodgingFixtures extends Fixture
         $lodging->setLongitude("-1.5536");
         $lodging->setTitleLod("coin-salon-agréable");
         $lodging->setSlugLod("logement-4");
-        $lodging->setDepartment($this->getReference(DepartmentFixtures::YVELINES));
+        $lodging->setDepartment($this->getReference(AADepartmentFixtures::YVELINES));
         // $lodging->->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
         // $lodging->->addHost($this->getReference(HostFixtures::CORINNE));
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
@@ -80,7 +80,7 @@ class LodgingFixtures extends Fixture
         // $lodging->->addHost($this->getReference(HostFixtures::CORINNE));
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
         // $lodging->->setAddress($this->getReference(AddressFixtures::(ecrire l'address)));
-        $lodging->setDepartment($this->getReference(DepartmentFixtures::AIN));
+        $lodging->setDepartment($this->getReference(AADepartmentFixtures::AIN));
         $manager->persist($lodging);
 
         $manager->flush();

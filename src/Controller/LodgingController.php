@@ -23,7 +23,7 @@ class LodgingController extends AbstractController
     {
        //On récupère le lodging correspondant au slug
         $lodging = $lodgingRepository->findOneBy(['slug' => $slug]);
-       //On rend la page en lui passant le livre
+       //On rend la page en lui passant le lodging
         return $this->render('lodging/show.html.twig', [
         'lodging' => $lodging,
         ]);  
