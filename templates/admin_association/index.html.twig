@@ -12,7 +12,7 @@
 {% endfor %}
 
     <div class="d-flex flex-wrap justify-content-between align-items-center">
-    <h1>Association</h1>
+    <h1>Liste des associations</h1>
     <a href="{{ path('app_admin_association_new') }}"class="btn btn-success"><i class="align-middle" data-feather="plus"></i></a> 
     </div>
 
@@ -20,14 +20,14 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>nameAsso</th>
-                <th>descriptionAsso</th>
-                <th>WebsiteUrl</th>
-                <th>imageNameAsso</th>
-                <th>phoneNumberAsso</th>
-                <th>emailAsso</th>
-                <th>slugAsso</th>
-                <thclass="text-end">actions</thclass=>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Site Web</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Slug</th>
+                <th>Logo</th>
+                <th class="text-end">Actions</th>
             
             </tr>
         </thead>
@@ -38,18 +38,18 @@
                 <td>{{ association.nameAsso }}</td>
                 <td>{{ association.descriptionAsso }}</td>
                 <td>{{ association.websiteUrl }}</td>
-                <td>{{ association.imageNameAsso }}</td>
                 <td>{{ association.phoneNumberAsso }}</td>
                 <td>{{ association.emailAsso }}</td>
                 <td>{{ association.slugAsso }}</td>
-                <td class="text-end">
+                <td>{{ association.imageFile }}</td>
+                <td>
                     <a href="{{ path('app_admin_association_show', {'id': association.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
                     <a href="{{ path('app_admin_association_edit', {'id': association.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="11">Aucune association n'a été renseignée</td>
             </tr>
         {% endfor %}
         </tbody>

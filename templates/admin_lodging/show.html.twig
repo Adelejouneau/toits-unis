@@ -3,7 +3,8 @@
 {% block title %}Lodging{% endblock %}
 
 {% block body %}
-    <h1>logement</h1>
+<a href="{{ path('app_admin_lodging_index') }}" class="btn btn-dark">Retour</a>
+    <h1>Logement</h1>
 
     <table class="table">
         <tbody>
@@ -12,11 +13,15 @@
                 <td>{{ lodging.id }}</td>
             </tr>
             <tr>
-                <th>DescriptionLod</th>
+                <th>Nom</th>
+                <td>{{ lodging.titleLod }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
                 <td>{{ lodging.descriptionLod }}</td>
             </tr>
             <tr>
-                <th>ImageNameLod</th>
+                <th>Nom de l'image</th>
                 <td>{{ lodging.imageNameLod }}</td>
             </tr>
             <tr>
@@ -28,17 +33,11 @@
                 <td>{{ lodging.latitude }}</td>
             </tr>
             <tr>
-                <th>SlugLod</th>
+                <th>Slug</th>
                 <td>{{ lodging.slugLod }}</td>
-            </tr>
-            <tr>
-                <th>TitleLod</th>
-                <td>{{ lodging.titleLod }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_lodging_index') }}">back to list</a>
 
     <a href="{{ path('app_admin_lodging_edit', {'id': lodging.id}) }}" class="btn btn-success">Modifier</a>
 

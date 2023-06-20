@@ -3,6 +3,7 @@
 namespace App\Entity;
 use App\Entity\Association;
 use App\Entity\User;
+use App\Entity\Department;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -35,16 +36,19 @@ class Address
     private Collection $associations;
 
     #[ORM\OneToMany(mappedBy: 'address', targetEntity: User::class)]
-    protected Collection $users;
+    private Collection $users;
 
-    #[ORM\ManyToOne(inversedBy: 'addresses')]
-    private ?Department $department = null;
+    #[ORM\OneToMany(mappedBy: 'address', targetEntity: Department::class)]
+    private Collection $departments;
+
 
     public function __construct()
     {
         $this->associations = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->departments = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -160,11 +164,25 @@ public function removeUser(User $user): self
 }
 
 /**
- * @return Collection<int, Department>
- */
-public function addAADepartment(Department $department): self
+     * @return Collection<int, AADepartment>
+     */
+    public function getDepartments(): Collection
+    {
+        return $this->departments;
+    }
+
+    public function addDepartment(Department $department): self
 {
-    $this->department = $department;
+    if (!$this->departments->contains($department)) {
+        $this->departments->add($department);
+    }
+
+    return $this;
+}
+
+public function removeDepartment(Department $department): self
+{
+    $this->departments->removeElement($department);
 
     return $this;
 }
