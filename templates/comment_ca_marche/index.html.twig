@@ -1,56 +1,211 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello CommentCaMarcheController!{% endblock %}
+
+{% block title %}Comment ça marche ? Controller!{% endblock %}
+
 {% block body %}
-    <div class="banner">
+    <div class="banner background-banniere">
         <img src="/images/banniere3.png" alt="BannièrePageLodging">
         <div class="banner-text">
             <h1>Comment trouver <br>un logement ?</h1>
         </div>
     </div>
-    {# <div class="container"> #}
-        <div class="container ">
-            <div class=" row">
-                <div class="col-md-12 info-guest-start">
-                    <div class=" mb-3">
-                        <div class="card-body color-card-guest">
-                            <h5>Reseigner vos informations</h5>
-                            <p>Identité, coordonnées et contact</p>
-                        </div>
-                    </div>
-                    <img src="" class="img-thumbnail" alt="...">
-                </div>
-                <div class="col-md-12 info-guest-end">
-                    <div class="mb-3 ">
-                        <div class="card-body color-card-guest">
-                            <h5>Dites nous l'association qui vous suit</h5>
-                            <p>Nom de l'association et son immatriculation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=" row ">
-                <div class="col-md-12 info-guest-start">
-                    <div class="mb-3 ">
-                        <div class="card-body color-card-guest">
-                            <h5>Reseigner vos informations</h5>
-                            <p>Identité, coordonnées et contact</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 info-guest-end">
-                    <div class="mb-3 ">
-                        <div class="card-body color-card-guest">
-                            <h5>Dites nous l'association qui vous suit</h5>
-                            <p>Nom de l'association et son immatriculation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <div class="container-lg py-5">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <a href="#" class="btn btn-dark mb-3">Trouver mon logement</a>
-            </div>
+                <div class="col-md-12 info-guest-start">
+                    <div class="mb-3">
+                        <div class="card-body color-card-guest">
+                            <div class="number-container text-center fs-2   ">1</div>
+                            <div class="text-align">
+                                <h5>Reseigner vos informations</h5>
+                                <p>Identité, coordonnées et contact...</p>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+                <div class="col-md-12 info-guest-end">
+                    <div class="mb-3 images-CCM2">
+                        <img src="/images/CommentCaMarcheGuest.png" class="img-fonction-right w-25" alt="...">
+                        <img src="/images/fleche1.png" class=" w-25" alt="..."> 
+                    </div> 
+                </div> 
+
+                <p class="text-center" id="text-CCM">Valider votre inscription puis finaliser votre profil.</p>
+
+                <div class="col-md-12 info-guest-end">
+                        <div class="mb-3">
+                            <div class="card-body color-card-guest">
+                                <div class="number-container fs-2">2</div>
+                                <div>
+                                    <h5>Dites nous l'association qui vous suit</h5>
+                                    <p>Nom de l'association et son immatriculation...</p>
+                                </div>
+                            </div>
+                        </div>
+                </div>    
         </div>
-    {# </div> #}
+
+        <div class="col-md-12 info-guest-start">
+                <div class="mb-3 images-CCM">
+                    <img src="/images/fleche1.png" class=" w-25" alt="...">
+                    <img src="/images/CommentCaMarcheGuest1.png" class=" w-25" alt="...">
+                </div>    
+        </div>
+
+     <div class="container-lg py-5">
+        <div class="row">
+            <div class="col-md-12 info-guest-start">
+                <div class="mb-3 ">
+                    <div class="card-body color-card-guest">
+                    <div class="number-container text-center fs-2">3</div>
+                    <div>
+                        <h5>Inscrivez ce que vous recherchez</h5>
+                        <p>Nombre de personne, lieu...</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 info-guest-start">
+                <div class="mb-3 images-CCM">
+                    <img src="/images/fleche1.png" class=" w-25" alt="...">
+                    <img src="/images/CommentCaMarcheGuest2.png" class="img-fonction-right w-25" alt="...">
+                </div>    
+            </div>
+
+            <div class="col-md-12 info-guest-end">
+                        <div class="mb-3">
+                            <div class="card-body color-card-guest">
+                            <div class="number-container text-center fs-2">4</div>
+                            <div>
+                                <h5>Accepter les conditions et valider</h5>
+                                <p>Conditions générales d’utilisation</p>
+                            </div>
+                            </div>
+                        </div>
+                </div> 
+            </div>   
+        </div>
+
+
+        <div class="col-md-12 info-guest-start">
+                <div class="mb-3 images-CCM">
+                    <img src="/images/fleche1.png" class=" w-25" alt="...">
+                    <img src="/images/CommentCaMarcheGuest3.png" class=" w-25" alt="...">
+
+                </div>    
+        </div>
+    </div>    
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="{{path('app_lodging') }}" class="btn find-lodging text-center">Trouver mon logement</a>
+        </div>
+    </div>
+<div class="banner background-banniere">
+        <img src="/images/banniere3.png" alt="BannièrePageLodging">
+        <div class="banner-text">
+            <h1>Comment trouver <br>un logement ?</h1>
+        </div>
+    </div>
+
+    <div class="container-lg py-5">
+        <div class="row">
+                <div class="col-md-12 info-guest-start">
+                    <div class="mb-3">
+                        <div class="card-body color-card-guest">
+                            <div class="number-container text-center fs-2   ">1</div>
+                            <div class="text-align">
+                                <h5>Reseigner vos informations</h5>
+                                <p>Identité, coordonnées et contact...</p>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+                <div class="col-md-12 info-guest-end">
+                    <div class="mb-3 images-CCM2">
+                        <img src="/images/CommentCaMarcheGuest.png" class="img-fonction-right w-25" alt="...">
+                        <img src="/images/fleche1.png" class=" w-25" alt="..."> 
+                    </div> 
+                </div> 
+
+                <p class="text-center" id="text-CCM">Valider votre inscription puis finaliser votre profil.</p>
+
+                <div class="col-md-12 info-guest-end">
+                        <div class="mb-3">
+                            <div class="card-body color-card-guest">
+                                <div class="number-container fs-2">2</div>
+                                <div>
+                                    <h5>Dites nous l'association qui vous suit</h5>
+                                    <p>Nom de l'association et son immatriculation...</p>
+                                </div>
+                            </div>
+                        </div>
+                </div>    
+        </div>
+
+        <div class="col-md-12 info-guest-start">
+                <div class="mb-3 images-CCM">
+                    <img src="/images/fleche1.png" class=" w-25" alt="...">
+                    <img src="/images/CommentCaMarcheGuest1.png" class=" w-25" alt="...">
+                </div>    
+        </div>
+
+     <div class="container-lg py-5">
+        <div class="row">
+            <div class="col-md-12 info-guest-start">
+                <div class="mb-3 ">
+                    <div class="card-body color-card-guest">
+                    <div class="number-container text-center fs-2">3</div>
+                    <div>
+                        <h5>Inscrivez ce que vous recherchez</h5>
+                        <p>Nombre de personne, lieu...</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 info-guest-start">
+                <div class="mb-3 images-CCM">
+                    <img src="/images/fleche1.png" class=" w-25" alt="...">
+                    <img src="/images/CommentCaMarcheGuest2.png" class="img-fonction-right w-25" alt="...">
+                </div>    
+            </div>
+
+            <div class="col-md-12 info-guest-end">
+                        <div class="mb-3">
+                            <div class="card-body color-card-guest">
+                            <div class="number-container text-center fs-2">4</div>
+                            <div>
+                                <h5>Accepter les conditions et valider</h5>
+                                <p>Conditions générales d’utilisation</p>
+                            </div>
+                            </div>
+                        </div>
+                </div> 
+            </div>   
+        </div>
+
+
+        <div class="col-md-12 info-guest-start">
+                <div class="mb-3 images-CCM">
+                    <img src="/images/fleche1.png" class=" w-25" alt="...">
+                    <img src="/images/CommentCaMarcheGuest3.png" class=" w-25" alt="...">
+
+                </div>    
+        </div>
+    </div>    
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="{{path('app_lodging') }}" class="btn find-lodging text-center">Trouver mon logement</a>
+        </div>
+    </div>
+
 {% endblock %}
