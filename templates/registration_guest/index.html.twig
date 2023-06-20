@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompteGuestController!{% endblock %}
+
+{% block body %}
+<div class="titreConnexionGuest">
+<h1 class="text-center titre-profil-guest">Enregistrer un nouveau guest</h1>
+</div>
+<div class="info-asso container col-6 my-">
+        <div class=" form-group info-asso-style">
+            <label for="inputInterets" class="titre-select-job">Organisme qui effectue l’inscription   </label>
+            <div class="custom-select-wrapper">
+                <select class="form custom-select select-job" id="inputInterets" onchange="updateSelectedInterests()">
+                    <option placeholder="sport"></option>
+                    <option value="sport">Sport</option>
+                    <option value="musique">Musique</option>
+                    <option value="lecture">Lecture</option>
+                    <option value="voyages">Voyages</option>
+                </select>
+            </div>
+        </div>
+
+        <div class=" form-group info-asso-style">
+            <label for="inputInterets" class="titre-select-job">Numéro d’immatriculation de l’organisme</label>
+            <div class="custom-select-wrapper  ">
+                <select class="form custom-select select-job" id="inputInterets" onchange="updateSelectedInterests()">
+                    <option placeholder="sport"></option>
+                    <option value="sport">Sport</option>
+                    <option value="musique">Musique</option>
+                    <option value="lecture">Lecture</option>
+                    <option value="voyages">Voyages</option>
+                </select>
+            </div>
+    </div>
+</div>
+
+<h3 class="text-center sousTitre-profil-guest">Informations personnelles</h3>
+
+<form class="form-style">
+        <div class="form-row size-imput">
+    <div class="form-group col-md-6">
+        <label for="inputNom">Nom</label>
+        <input type="text" class="form-width" id="inputNom" placeholder="Nom">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputPrenom">Prénom</label>
+        <input type="text" class="form-width" id="inputPrenom" placeholder="Prénom">
+    </div>
+    </div>
+    <div class="form-row size-imput size-imput">
+    <div class="form-group col-md-6">
+      <label for="inputDateNaissance">Date de naissance</label>
+      <input type="date" class="form-width" id="inputDateNaissance" placeholder="Date de naissance">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email</label>
+      <input type="email" class="form-width" id="inputEmail" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-row size-imput size-imput">
+    <div class="form-group col-md-6">
+      <label for="inputTelephone">Numéro de téléphone</label>
+      <input type="tel" class="form-width" id="inputTelephone" placeholder="Numéro de téléphone">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputSituation">Situation professionnelle</label>
+      <input type="text" class="form-width" id="inputSituation" placeholder="Situation professionnelle">
+    </div>
+  </div>
+  <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    J’ai lu et j’accepte les conditions générales d’utilisation *
+  </label>
+</div>
+  <button type="submit" class="btn" id="BtnSendGuest">Valider</button>
+</form>
+
+{% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+<div>
+    <img src="/images/welcomehome.png" class="rounded mx-auto d-block w-25 img-fluid" alt="..."> 
+</div>
+
+
+
+{% endblock %}

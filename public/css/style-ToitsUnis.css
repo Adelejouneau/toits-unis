@@ -8,8 +8,6 @@ body{
 .color-logo{
     color:#FFF0BD
 
-#navbarNav{
-    color:#FFF0BD !important;
 
 }
 /* css footer */
@@ -27,18 +25,11 @@ body{
     width: 100wv;
 }
 
-#a {
-
-.color{
-    color: #124367 
-}
 
 .card-text,color {
     color: #124367 ;
 }
 
-
-color: yellow;}
 
 /* lodging */
 
@@ -235,6 +226,85 @@ color: yellow;}
 
     }
 
+    .sousTitre-profil-guest{
+        font-weight: bold;
+
+    }
+
+    .info-asso-style{
+        display: flex;
+        width: 80%;
+        gap: 50px;
+        margin-top: 20px;
+        
+    }
+
+    .titre-select-job {
+    font-weight: bolder;
+    }
+
+    .info-asso{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+        align-items: center;
+        border-radius: 20px;
+        background-color: #F78F52;
+        padding-bottom: 30px;
+    
+    }
+    
+    .select-job{
+        width: 300px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #FFF0BD;
+}
+
+    
+    .form-style{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .form-width{
+        width: 100%;
+        width: 300px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: white;
+        border: 0.5px solid gray;
+    }
+
+    .titreConnexionGuest{
+        margin-top: 30px;
+    }
+
+    input::placeholder {
+        color: rgb(226, 223, 223);
+    }
+
+    #BtnSendGuest{
+        background-color: #124367;
+        margin: 0px 30px 0px 30px;
+        color: #F78F52;
+        margin-top: 50px;
+        margin-bottom: 40px;
+        border-radius:15px ;
+        width: 150px;
+    }
+
+    .sousTitre-profil-guest{
+        margin-bottom: 80px;
+        margin-top: 100px;
+    }
+    
+
+
+
 /* page Contact */
 #contact-title{
     /* font-size: 23px; */
@@ -259,8 +329,14 @@ color: yellow;}
 #contact-form {
     background-color: #FFF0BD;
 }
+
+
+
 /* page Qui sommes nous ? */
 .qsn-container {
     padding: 25px !important;
 }
+
+
+
 
