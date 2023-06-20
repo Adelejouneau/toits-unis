@@ -14,7 +14,7 @@ body{
 .color-logo{
     color:#FFF0BD
 }
-/* 
+
 #navbarNav{
     color:#FFF0BD !important;
 } */
@@ -30,10 +30,25 @@ body{
     gap: 100px;
     color:#124367;
 }
-/* page home */
+
+
+
+
+
+/* début home page */
+
 #banniere-home{
     width: 100wv;
-    
+
+}
+
+
+.titrehebergement{
+
+    color:#124367 ;
+    margin-bottom: 100px;
+    margin-top: 100px;
+
 }
 
 .card-text,color {
@@ -43,9 +58,31 @@ body{
 /*----------------PAGE CONTACT---------------*/
 
 
-.card-text,color {
-    color: #124367 ;
+.imgtoto{
+    width: 300px;
 }
+
+
+.quisommenous{
+    color: #124367 ;
+
+}
+.sponsor-logo{
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-around;
+    margin-left: 30px;
+    align-items: baseline;
+    width: 100px;
+}
+
+
+.titre-home{
+    color: #F78F52;
+}
+
+
+/* fin home page */
 
 /* lodging */
 
