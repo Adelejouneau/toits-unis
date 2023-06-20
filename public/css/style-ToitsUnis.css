@@ -3,13 +3,10 @@ body{
     margin: 0;
     padding: 0;
 }
-
 #navbarNav{
-    color:#FFF0BD
+    color:#FFF0BD !important;
 }
-
 /* css footer */
-
 #footer-alignement{
     display: flex;
     justify-content: space-between;
@@ -19,29 +16,35 @@ body{
     gap: 100px;
     color:#124367;
 }
-
 /* page home */
-
 #banniere-home{
-    width: 100vw;
-    text-align: center;
-    background-color: #fbf4ec;
+    width: 100wv;
 }
-
-/* .{
-    width: 50px;
-    text-align: center;
-    color: aquamarine;
-} */
-
-.color{
-    color: #124367 
+/* page Contact */
+#contact-title{
+    /* font-size: 23px; */
+    color:#124367;
 }
-
-.card-text,color {
-    color: #124367 ;
+.contact-container {
+    height: 100%;
+    margin: 50px 50px 50px 50px !important;
 }
-
-.card-title-color{
-    color:#FFF0BD";
+/* Contact submit button */
+#btncontact {
+    background-color: #124367;
+    color: black;
+    font-size: 20px;
+    color: #FFF0BD;
+    font-weight: bold;
+}
+#btncontact:hover {
+    background-color: #F78F52;
+    color:black;
+}
+#contact-form {
+    background-color: #FFF0BD;
+}
+/* page Qui sommes nous ? */
+.qsn-container {
+    padding: 25px !important;
 }
