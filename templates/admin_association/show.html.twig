@@ -3,7 +3,7 @@
 {% block title %}Association{% endblock %}
 
 {% block body %}
-   <a href="{{ path('app_admin_association_index') }}" class="btn btn-dark">Retour</a>
+    <a href="{{ path('app_admin_association_index') }}" class="btn btn-dark">Retour</a>
     <h1>Association</h1>
 
     <table class="table">
@@ -13,37 +13,37 @@
                 <td>{{ association.id }}</td>
             </tr>
             <tr>
-                <th>NameAsso</th>
+                <th>Nom</th>
                 <td>{{ association.nameAsso }}</td>
             </tr>
             <tr>
-                <th>DescriptionAsso</th>
+                <th>Description</th>
                 <td>{{ association.descriptionAsso }}</td>
             </tr>
             <tr>
-                <th>WebsiteUrl</th>
+                <th>Site Web</th>
                 <td>{{ association.websiteUrl }}</td>
             </tr>
             <tr>
-                <th>ImageNameAsso</th>
-                <td>{{ association.imageNameAsso }}</td>
-            </tr>
-            <tr>
-                <th>PhoneNumberAsso</th>
+                <th>Téléphone</th>
                 <td>{{ association.phoneNumberAsso }}</td>
             </tr>
             <tr>
-                <th>EmailAsso</th>
+                <th>Email</th>
                 <td>{{ association.emailAsso }}</td>
             </tr>
             <tr>
-                <th>SlugAsso</th>
+                <th>Slug</th>
                 <td>{{ association.slugAsso }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ association.imageFile }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_association_edit', {'id': association.id}) }}" class="btn btn-success">modifier</a>
+    <a href="{{ path('app_admin_association_edit', {'id': association.id}) }}" class="btn btn-success">Modifier</a>
 
     {{ include('admin_association/_delete_form.html.twig') }}
 {% endblock %}

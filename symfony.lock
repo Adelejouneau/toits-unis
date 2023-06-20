@@ -303,7 +303,6 @@
             "config/packages/messenger.yaml"
         ]
     },
-
     "symfony/webpack-encore-bundle": {
         "version": "2.0",
         "recipe": {
@@ -320,7 +319,6 @@
             "./webpack.config.js"
         ]
     },
-
     "symfonycasts/verify-email-bundle": {
         "version": "v1.13.0"
     },

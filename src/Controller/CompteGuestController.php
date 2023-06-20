@@ -5,18 +5,19 @@ namespace App\Controller;
 use App\Form\UserType;
 use App\Repository\LodgingRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class ProfilController extends AbstractController
+class CompteGuestController extends AbstractController
 {
-    #[Route('/profil', name: 'app_profil')]
+    #[Route('/compte/guest', name: 'app_compte_guest')]
     public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $encoder): Response
     {
-        // On recupere l'utilisateur
+
+         // On recupere l'utilisateur
         $user = $this->getUser();
         // On crée un formulaire avec les données de l'utilisateur
         $form = $this->createForm(UserType::class, $user);
@@ -36,28 +37,26 @@ class ProfilController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-
         }
-        return $this->render('profil/index.html.twig', [
-            'form' => $form->createView(),
+        return $this->render('compte_guest/index.html.twig', [
+            'controller_name' => 'CompteGuestController',
         ]);
     }
-
     #[Route('/add-favori/{id}', name: 'add_favori')]
     public function addFavori($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
-        //On r"cupère le logement dans la bdd
+        //On récupère le logement dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
-        $user = $this->getUser();
+        $lodging = $this->getLodging();
         //On ajoute le logement à la liste des favoris de l'utilisateur
-        $user->addLodging($lodging);
+        $lodging->addLodging($lodging);
         //On met en place un msg flash
         $this->addFlash('success','Le logement a bien été ajouter à vos favoris');
         //On enregistre les modifs
-        $em->persist($user);
+        $em->persist($lodging);
         $em->flush();
-        //On redirige vers la page des livres
+        //On redirige vers la page des logements
         return $this->redirectToRoute('app_lodging');
     }
 
@@ -67,16 +66,16 @@ class ProfilController extends AbstractController
         //On r"cupère la donnee dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
-        $user = $this->getUser();
+        $lodging = $this->getLodging();
         //On ajoute le lodging à la liste des favoris de l'utilisateur
-        $user->removeLodging($lodging);
+        $lodging->removeLodging($lodging);
         //On met en place un msg flash
-        $this->addFlash('success','Le lodging a bien été retirer à vos favoris');
+        $this->addFlash('success','Le logement a bien été retirer à vos favoris');
         //On enregistre les modifs
-        $em->persist($user);
+        $em->persist($lodging);
         $em->flush();
         //On redirige vers la page des lodging
-        return $this->redirectToRoute('app_profil');
+        return $this->redirectToRoute('app_lodging');
     }
-}
 
+}
