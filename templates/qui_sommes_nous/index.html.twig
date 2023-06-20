@@ -1,75 +1,155 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<head>
-    <meta charset="UTF-8">
-    <title>Page Admin</title>
-    <link rel="stylesheet" href="./css/styledtoitsunis.css">
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Page Admin</title>
+		<link rel="stylesheet" href="./css/styledtoitsunis.css">
+	</head>
 {% endblock %}
 
 {% block title %}Qui sommes nous ?
 {% endblock %}
 
 {% block body %}
+	{# bannière #}
 	<div class="qsn-banner">
 		<img src="/images/illustration qui sommes nous.png" alt="illustration qui sommes nous">
 	</div>
-	<div class="qsn-container" style="background:#FFF0BD">
-		<div id="qsn-text" class="col-7 mx-auto">
-			<h1 style="text-align:center">Qui sommes nous ?</h1>
-			<br>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
+	{# partie Présentation  #}
+	<div class="qsn-wrap">
+		<div class="qsn-container">
+			<div id="qsn-text" class="col-7 mx-auto">
+				<h1 class="qsn-titre">Qui sommes nous ?</h1>
 				<br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
+					<br>
 
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
-				<br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
+					<br>
 
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
-				<br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
+					<br>
 
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia,
-			</p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia,
+				</p>
+			</div>
 		</div>
 	</div>
-	<div class="col-7 mx-auto">
-		<div class="row align-items-center" style="text-align: center">
-			<div>
-				<h2>Nos objectifs</h2>
-			</div>
-			<div class="col">
-				{# One of three columns #}
-				<p>1 Un toit pour tous</p>
-				<br>
-				<img src="/images/Qui sommes nous/un toit aimant.png" alt="icone un toit pour tous">
-			</div>
-			<div class="col">
-				<p>2 Se loger rapidement</p>
-				<br>
-				<img src="/images/Qui sommes nous/Loger rapide vert.png" alt="icone un toit avec un chronomètre ">
-			</div>
-			<div class="col">
-				<p>3 Sécurité & Fiabilité</p>
-				<br>
-				<img src="/images/Qui sommes nous/Sécurité Fiabilité 2.png" alt="icone bonhomme vérifié">
+	{# partie Nos objectifs #}
+	<div class="qsn-wrapper-objectifs">
+		<div class="col-7 mx-auto">
+			<div class="qsn-objectifs">
+				<div class="troisobj">
+					<div class="row align-items-center">
+						<h2 class="qsn-titre">Nos objectifs</h2>
+						<div
+							class="col">
+							{# One of three columns #}
+							<p class="engagement">Un toit
+								<br>
+								pour tous</p>
+							<br>
+							<img src="/images/Qui sommes nous/un toit aimant_s.png" alt="icone un toit pour tous">
+						</div>
+						<div class="col">
+							<p class="engagement">Se loger
+								<br>rapidement</p>
+							<br>
+							<img src="/images/Qui sommes nous/Loger rapide vert_s.png" alt="icone un toit avec un chronomètre ">
+						</div>
+						<div class="col">
+							<p class="engagement">Sécurité
+								<br>
+								Fiabilité</p>
+							<br>
+							<img src="/images/Qui sommes nous/Sécurité Fiabilité_s.png" alt="icone bonhomme vérifié">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="col-12 text-center">
-			<h2>Notre histoire</h2>
-			<img src="/images/Qui sommes nous/famille-farouk.jpg" alt="image famille Farouk parents et enfants">
+		{# partie Notre histoire #}
+		<div class="qsn-wrap">
+			<div class="qsn-container">
+				<div class="col-7 mx-auto">
+					<div id="qsn-text" class="col-7 mx-auto">
+						<div class="img-histoire">
+							<h2 class="qsn-titre">Notre histoire</h2>
+							<img src="/images/Qui sommes nous/famille-farouk.jpg" class="col-12 text-center" alt="image famille Farouk parents et enfants">
+						</div>
+					</div>
+					<br>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
+						<br>
+
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
+						<br>
+
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
+						<br>
+
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia,
+					</p>
+				</div>
+			</div>
 		</div>
-		<br>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
-			<br>
-
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
-			<br>
-
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
-			<br>
-
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.
-		</p>
+		{# partie Notre équipe #}
+		<div class="qsn-wrap-equipe">
+			<div class="col-7 mx-auto">
+				<div class="qsn-objectifs">
+					<div class="equipe-ligne-uno">
+						<div class="row align-items-center" style="text-align: center">
+							<h2 class="qsn-titre">Notre équipe</h2>
+							<div
+								class="col">
+								{# One of three columns #}
+								<img src="images/Qui sommes nous/brun-homme-avatar-96 (2).png" alt="icone un toit pour tous">
+								<p><strong>Omar Farouk</strong></p>
+								<p>Président</p>
+								<a href="mailto:omar@toitsunis.org">omar@toitsunis.org</a>
+							</div>
+							<div class="col">
+								<img src="images/Qui sommes nous/redhair-avatar-96 (3).png" alt="icone un toit avec un chronomètre ">
+								<p><strong>Leïla Farouk</strong></p>
+								<p>Communication</p>
+								<a href="mailto:leila@toitsunis.org">leila@toitsunis.org</a>
+							</div>
+							<div class="col">
+								<img src="images/Qui sommes nous/blond-homme-avatar-96 (4).png" alt="icone bonhomme vérifié">
+								<p><strong>Pierre Dubois</strong></p>
+								<p>Partenaires</p>
+								<a href="mailto:pierre@toitsunis.org">pierre@toitsunis.org</a>
+							</div>
+						</div>
+					</div>
+					<div class="equipe-ligne-dos">
+						<div class="row align-items-center" style="text-align: center">
+							<div
+								class="col">
+								{# One of three columns #}
+								
+								<img src="images/Qui sommes nous/brune-avatar-96 (1).png" alt="icone un toit pour tous">
+								<p><strong>Emillia Tran</strong></p>
+								<p>Suivi</p>
+								<a href="mailto:emilia@toitsunis.org">emilia@toitsunis.org</a>
+							</div>
+							<div class="col">
+								<img src="images/Qui sommes nous/Blonde avatar-96.png" alt="icone un toit avec un chronomètre">
+								<p><strong>Sophie Martin</strong></p>
+								<p>Coordination</p>
+								<a href="mailto:sophie@toitsunis.org">sophie@toitsunis.org</a>
+							</div>
+							<div class="col">
+								<img src="images/Qui sommes nous/icons8-avatar-96.png" alt="icone bonhomme vérifié">
+								<p><strong>Aminata Coulibaly</strong></p>
+								<p>Trésorie</p>
+								<a href="mailto:aminata@toitsunis.org">aminata@toitsunis.org</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-{% endblock %}
+</div>{% endblock %}

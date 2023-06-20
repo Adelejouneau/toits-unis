@@ -1,4 +1,10 @@
-/*  css pour la navbar */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;500&display=swap');
+ /* CSS rules to specify families 
+ font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif; */
+
+/*----------------NAVBAR---------------*/
+
 body{
     margin: 0;
     padding: 0;
@@ -12,7 +18,9 @@ body{
     color:#FFF0BD !important;
 
 }
-/* css footer */
+
+/*----------------FOOTER---------------*/
+
 #footer-alignement{
     display: flex;
     justify-content: space-between;
@@ -26,6 +34,11 @@ body{
 #banniere-home{
     width: 100wv;
 }
+
+
+/*----------------PAGE CONTACT---------------*/
+
+#contact-title {
 
 #a {
 
@@ -238,13 +251,16 @@ color: yellow;}
 /* page Contact */
 #contact-title{
     /* font-size: 23px; */
+
     color:#124367;
 }
+
 .contact-container {
     height: 100%;
     margin: 50px 50px 50px 50px !important;
 }
-/* Contact submit button */
+
+/* Bouton envoyer */
 #btncontact {
     background-color: #124367;
     color: black;
@@ -252,15 +268,75 @@ color: yellow;}
     color: #FFF0BD;
     font-weight: bold;
 }
+
 #btncontact:hover {
     background-color: #F78F52;
     color:black;
 }
+
+/* Zone de saisie du formulaire */
 #contact-form {
     background-color: #FFF0BD;
 }
-/* page Qui sommes nous ? */
+
+.captcha {
+    padding-top: 25px;
+}
+
+/*------------PAGE QUI SOMMES NOUS ?-----------*/
+
 .qsn-container {
+    padding-bottom: 25px !important;
+}
+
+.qsn-objectifs {
+    padding: 50px;
+    text-align: center;
+}
+
+.qsn-histoire .img-histoire {
     padding: 25px !important;
+}
+
+
+.qsn-titre {
+    color: #124367;
+    text-align: center;
+    padding: 50px;
+}
+
+.qsn-text {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.qsn-wrapper-objectifs {
+    text-align: start;
+}
+
+.engagement {
+    color: #F78F52;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+.troisobj {
+    padding-bottom: 50px;
+}
+
+.img-histoire {
+    padding-bottom: 50px;
+}
+
+.qsn-wrap {
+    background-color: #FFF0BD;
+}
+
+/* partie équipe */
+.equipe-ligne-uno {
+    padding-bottom: 50px;
+}
+
+.qsn-wrap-equipe {
+    padding-bottom: 50px;
 }
 
