@@ -4,12 +4,12 @@ namespace App\Entity;
 use App\Entity\Address;
 use Doctrine\DBAL\Types\Types;
 
-
 use ORM\MappedSuperclass;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 // #[ORM\MappedSuperclass]
@@ -33,6 +33,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     protected ?string $password = null;
 
+    /**
+     * @var string The plain password confirmation
+     */
+    protected ?string $plainPassword = null;
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your first name must be at least {{ limit }} characters long',
+        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
+    )]
+
+
+
     #[ORM\Column(length: 255)]
     protected ?string $lastName = null;
 
@@ -48,8 +61,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     protected ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\Column(length: 255)]
-    protected ?string $gender = null;
+#[ORM\Column(length: 255, nullable: true)]
+protected ?string $gender = null;
 
     #[ORM\ManyToOne(inversedBy: 'user')]
     #[ORM\JoinColumn(nullable: true)]
@@ -302,4 +315,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getPlainPassword(): ?string
+
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string|null $plainPassword
+     */
+    public function setPlainPassword(?string $plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
+    }
 }
+
+
+
+
+
+
