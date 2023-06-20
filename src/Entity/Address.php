@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Entity;
+use App\Entity\Association;
+use App\Entity\User;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AddressRepository;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
@@ -28,24 +32,18 @@ class Address
     private ?string $city = null;
 
     #[ORM\OneToMany(mappedBy: 'address', targetEntity: Association::class)]
-    private Collection $association;
+    private Collection $associations;
 
     #[ORM\OneToMany(mappedBy: 'address', targetEntity: User::class)]
-    private Collection $user;
-
-
-    // #[ORM\Column(length: 255)]
-    // private ?string $nameAddress = null;
+    protected Collection $users;
 
     #[ORM\ManyToOne(inversedBy: 'addresses')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?Department $department = null;
-
 
     public function __construct()
     {
-        $this->association = new ArrayCollection();
-        $this->user = new ArrayCollection();
+        $this->associations = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,7 +56,7 @@ class Address
         return $this->streetNumber;
     }
 
-    public function setStreetNumber(string $streetNumber): static
+    public function setStreetNumber(string $streetNumber): self
     {
         $this->streetNumber = $streetNumber;
 
@@ -70,7 +68,7 @@ class Address
         return $this->streetName;
     }
 
-    public function setStreetName(string $streetName): static
+    public function setStreetName(string $streetName): self
     {
         $this->streetName = $streetName;
 
@@ -82,7 +80,7 @@ class Address
         return $this->zipCode;
     }
 
-    public function setZipCode(string $zipCode): static
+    public function setZipCode(string $zipCode): self
     {
         $this->zipCode = $zipCode;
 
@@ -94,7 +92,7 @@ class Address
         return $this->city;
     }
 
-    public function setCity(string $city): static
+    public function setCity(string $city): self
     {
         $this->city = $city;
 
@@ -104,24 +102,24 @@ class Address
     /**
      * @return Collection<int, Association>
      */
-    public function getAssociation(): Collection
+    public function getAssociations(): Collection
     {
-        return $this->association;
+        return $this->associations;
     }
 
-    public function addAssociation(Association $association): static
+    public function setAssociation(Association $association): self
     {
-        if (!$this->association->contains($association)) {
-            $this->association->add($association);
+        if (!$this->associations->contains($association)) {
+            $this->associations->add($association);
             $association->setAddress($this);
         }
 
         return $this;
     }
 
-    public function removeAssociation(Association $association): static
+    public function removeAssociation(Association $association): self
     {
-        if ($this->association->removeElement($association)) {
+        if ($this->associations->removeElement($association)) {
             // set the owning side to null (unless already changed)
             if ($association->getAddress() === $this) {
                 $association->setAddress(null);
@@ -134,15 +132,15 @@ class Address
 /**
  * @return Collection<int, User>
  */
-public function getUser(): Collection
+public function getUsers(): Collection
 {
-    return $this->user;
+    return $this->users;
 }
 
-public function addUser(User $user): self
+public function setUser(User $user): self
 {
-    if (!$this->user->contains($user)) {
-        $this->user->add($user);
+    if (!$this->users->contains($user)) {
+        $this->users->add($user);
         $user->setAddress($this);
     }
 
@@ -151,7 +149,7 @@ public function addUser(User $user): self
 
 public function removeUser(User $user): self
 {
-    if ($this->user->removeElement($user)) {
+    if ($this->users->removeElement($user)) {
         // set the owning side to null (unless already changed)
         if ($user->getAddress() === $this) {
             $user->setAddress(null);
@@ -161,27 +159,14 @@ public function removeUser(User $user): self
     return $this;
 }
 
-// public function getNameAddress(): ?string
-// {
-//     return $this->nameAddress;
-// }
-
-// public function setNameAddress(string $nameAddress): self
-// {
-//     $this->nameAddress = $nameAddress;
-
-//     return $this;
-// }
-
-public function getDepartment(): ?Department
-{
-    return $this->department;
-}
-
-public function setDepartment(?Department $department): self
+/**
+ * @return Collection<int, Department>
+ */
+public function addAADepartment(Department $department): self
 {
     $this->department = $department;
 
     return $this;
 }
+
 }
