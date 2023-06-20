@@ -3,8 +3,14 @@ body{
     margin: 0;
     padding: 0;
 }
+
+
+.color-logo{
+    color:#FFF0BD
+
 #navbarNav{
     color:#FFF0BD !important;
+
 }
 /* css footer */
 #footer-alignement{
@@ -20,35 +26,8 @@ body{
 #banniere-home{
     width: 100wv;
 }
-/* page Contact */
-#contact-title{
-    /* font-size: 23px; */
-    color:#124367;
-}
-.contact-container {
-    height: 100%;
-    margin: 50px 50px 50px 50px !important;
-}
-/* Contact submit button */
-#btncontact {
-    background-color: #124367;
-    color: black;
-    font-size: 20px;
-    color: #FFF0BD;
-    font-weight: bold;
-}
-#btncontact:hover {
-    background-color: #F78F52;
-    color:black;
-}
-#contact-form {
-    background-color: #FFF0BD;
-}
-/* page Qui sommes nous ? */
-.qsn-container {
-    padding: 25px !important;
-}
 
+#a {
 
 .color{
     color: #124367 
@@ -57,6 +36,7 @@ body{
 .card-text,color {
     color: #124367 ;
 }
+
 
 color: yellow;}
 
@@ -102,8 +82,8 @@ color: yellow;}
         margin-bottom: 30px;
         gap :40px;
         justify-content: space-between;
-
-
+        
+        
     }
 
     .info-guest-end{
@@ -113,7 +93,7 @@ color: yellow;}
         margin-bottom: 30px;
         gap :40px;
         justify-content: space-between;
-
+        
     }
 
     .color-card-guest{
@@ -197,7 +177,7 @@ color: yellow;}
         margin-bottom: 30px;
         gap :40px;
         justify-content: space-between;
-
+        
     }
 
     .color-card-host{
@@ -219,7 +199,7 @@ color: yellow;}
         margin-bottom: 30px;
         gap :40px;
         justify-content: space-between;
-
+        
     }
 
 
@@ -254,4 +234,33 @@ color: yellow;}
         color: #F78F52;
 
     }
+
+/* page Contact */
+#contact-title{
+    /* font-size: 23px; */
+    color:#124367;
+}
+.contact-container {
+    height: 100%;
+    margin: 50px 50px 50px 50px !important;
+}
+/* Contact submit button */
+#btncontact {
+    background-color: #124367;
+    color: black;
+    font-size: 20px;
+    color: #FFF0BD;
+    font-weight: bold;
+}
+#btncontact:hover {
+    background-color: #F78F52;
+    color:black;
+}
+#contact-form {
+    background-color: #FFF0BD;
+}
+/* page Qui sommes nous ? */
+.qsn-container {
+    padding: 25px !important;
+}
 

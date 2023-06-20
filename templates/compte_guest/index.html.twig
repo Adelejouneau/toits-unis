@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompteGuestController!{% endblock %}
+
+{% block body %}
+
+<div class="info-asso">
+    <div class="info-asso-style">
+        <div class="form-group">
+            <label for="inputInterets">Organisme qui effectue l’inscription</label>
+            <div class="custom-select-wrapper">
+                <select class="form-control custom-select" id="inputInterets" onchange="updateSelectedInterests()">
+                    <option value="sport">Sport</option>
+                    <option value="musique">Musique</option>
+                    <option value="lecture">Lecture</option>
+                    <option value="voyages">Voyages</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputInterets">Numéro d’immatriculation de l’organisme</label>
+            <div class="custom-select-wrapper">
+                <select class="form-control custom-select" id="inputInterets" onchange="updateSelectedInterests()">
+                    <option value="sport">Sport</option>
+                    <option value="musique">Musique</option>
+                    <option value="lecture">Lecture</option>
+                    <option value="voyages">Voyages</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<h1 class="text-center titre-profil-guest">Enregistrer un nouveau profil guest</h1>
+
+<form>
+        <div class="form-row size-imput">
+    <div class="form-group col-md-6">
+        <label for="inputNom">Nom</label>
+        <input type="text" class="form-control" id="inputNom" placeholder="Nom">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputPrenom">Prénom</label>
+        <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom">
+    </div>
+    </div>
+    <div class="form-row size-imput">
+    <div class="form-group col-md-6">
+      <label for="inputDateNaissance">Date de naissance</label>
+      <input type="date" class="form-control" id="inputDateNaissance" placeholder="Date de naissance">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email</label>
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-row size-imput">
+    <div class="form-group col-md-6">
+      <label for="inputTelephone">Numéro de téléphone</label>
+      <input type="tel" class="form-control" id="inputTelephone" placeholder="Numéro de téléphone">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputSituation">Situation professionnelle</label>
+      <input type="text" class="form-control" id="inputSituation" placeholder="Situation professionnelle">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Envoyer</button>
+</form>
+
+{% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+
+
+
+{% endblock %}
