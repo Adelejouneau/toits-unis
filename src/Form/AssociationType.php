@@ -34,7 +34,7 @@ class AssociationType extends AbstractType
             ->remove('slugAsso')
             ->add('address', EntityType::class, [
     'class' => 'App\Entity\Address',
-    'multiple' => true,
+    'multiple' => false,
     'expanded' => true,
     'choice_label' => function (Address $address) {
     }

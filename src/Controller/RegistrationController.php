@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
+use App\Form\RegistrationGuestFormType;
+use App\Form\RegistrationHostFormType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -25,22 +26,23 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    #[Route('/register', name: 'app_register')]
+    // Route pour le formulaire d'inscription d'un hôte
+    #[Route('/register_host', name: 'app_register_host')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+        $registerHostForm = $this->createForm(RegistrationHostFormType::class, $user);
+        $registerHostForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($registerHostForm->isSubmitted() && $registerHostForm->isValid()) {
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $registerHostForm->get('plainPassword')->getData()
                 )
             );
-            $user->setRoles(['ROLE_USER']);
+            $user->setRoles(['ROLE_HOST']);
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -49,16 +51,16 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('mailer@toitsUnis.com', 'toitsUnis'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->subject('Confirmation de votre e-mail')
+                    ->htmlTemplate('registration_host/confirmation_host_email.html.twig')
             );
             // do anything else you need here, like send an email
             $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_profil');
+            return $this->redirectToRoute('app_compte_host');
         }
         
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+        return $this->render('registration_host/register_host.html.twig', [
+            'registrationHostForm' => $registerHostForm->createView(),
         ]);
     }
 
@@ -73,12 +75,49 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_register_host');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+        $this->addFlash('success', 'Votre e-mail a bien été vérifié. Vous pouvez finaliser votre compte');
 
         return $this->redirectToRoute('app_login');
+    }
+
+    #[Route('/register_guest', name: 'app_register_guest')]
+    public function registerGuest(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    {
+        $user = new User();
+        $form = $this->createForm(RegistrationGuestFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+            $user->setRoles(['ROLE_GUEST']);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            // generate a signed url and email it to the user
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                (new TemplatedEmail())
+                    ->from(new Address('mailer@toitsUnis.com', 'toitsUnis'))
+                    ->to($user->getEmail())
+                    ->subject('Confirmation de votre e-mail')
+                    ->htmlTemplate('registration_guest/confirmation_guest_email.html.twig')
+            );
+            // do anything else you need here, like send an email
+            $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
+            return $this->redirectToRoute('app_compte_guest');
+        }
+        
+        return $this->render('registration_guest/register_guest.html.twig', [
+            'registrationGuestForm' => $form->createView(),
+        ]);
     }
 }
