@@ -2,18 +2,26 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
+{# % block stylesheets %}
+<head>
+    <meta charset="UTF-8">
+    <title>Page Admin</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+{% endblock %} #}
+
 {% block body %}
-<div id="banniere-home" class="mx-0" style="width:100vw;background-color: #fbf4ec; display: flex;
+<div id="banniere-home" class="mx-0" style="width:100vw; background-color: #fbf4ec; display: flex;
     flex-direction: column;
     align-items: center; "
-    <h1 class="text-center  mx-auto my-5 pt-4 " style="color:#124367">Réseau d’hébergements solidaires pour créer du lien et reconstruire des vies>
+    <h1 class="text-center style="color:#124367"  mx-auto my-5 pt-4 " >Réseau d’hébergements solidaires pour créer du lien et reconstruire des vies>
 </h1</div>
     <img src="{{ asset('/images/vecteur1pageacceuil.jpg') }}" class="img-fluid" alt="banniere-home" style="max-width:30%;">
 </div>
 
 {# <div class="container-lg py-4"></div> #}
 
-<h2 class="text-center" style="color: #F78F52">Nos dernieres Annonces</h2>
+<h2 class="text-center" style="color: #F78F52"> Nos dernieres Annonces</h2>
 
 
 <div id="banniere-home" class="mx-0">
@@ -90,10 +98,12 @@
     <div class="col">
         <div class="card"> 
         <h5 class="card-title style:#F78F52">Devenir hote</h5>
-                <button type="submit" class="btn btn-primary ">Accueillir</button>
-            <p class="card-text"; "text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia, </p>
-        <div class="card-body"; "text-> 
+            <p class="card-text"; "text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
+        <div class="card-body";
+        <button type="submit" class="btn btn-primary ">Accueillir</button>
+
         <img src="{{ asset('/images/accueil.jpg') }}" class="card-img-top" alt="accueil-porte">
+        
         </div>
         </div>
     </div>
@@ -102,25 +112,27 @@
     <div class="col">
         <div class="card">
         <h5 class="card-title">Rejoindre le réseau de guest</h5>
-            <p class="card-text"; "text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia, </p>
+            <p class="card-text"; "text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
             
         <button type="submit" class="btn btn-primary ">Rencontrer les associations partenaires</button>
                     </div>
         <div class="card-body">
-        <img src="{{ asset('/images/accueilli.jpg') }}" class="card-img-top" alt="accueil-entrée">
+        <img src="{{ asset('/images/accueilli.jpg') }}" class="card-img-top" alt=" ">
         </div>
         </div>
     </div>
-    
+    <div class="card-body">
+        <img src="{{ asset('images/ensemblededos.jpg') }}" class="card-img-top" alt=" ">
+        </div>  
+
+    <button type="submit" class="btn btn-primary ">Faire un don</button>
     <div class="row row-cols-1 row-cols-md-2 g-4">
 
     <div class="col">
         <div class="card"> 
     
-        <h5 class="card-title style="color:6360D6">Témoignage  d’un host</h5>
-                <button type="submit" class="btn btn-primary ">Accueillir</button>
-            <p class="card-text"; "text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia, </p>
-        
+        <h5 class="card-title" style="color:#6360D6">Témoignage  d’un host</h5>
+            <p class="card-text"; "text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
         </div>
         </div>
     </div>
@@ -128,14 +140,22 @@
 
     <div class="col">
         <div class="card">
-        <h5 class="card-title">Comment nous soutenir?</h5>
-            <p class="card-text"; "text-align-center col "> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia, </p>
-        <div class="card-body">
-        <img src="{{ asset('images/ensemblededos.jpg') }}" class="card-img-top" alt="accueil-entrée">
-        </div>   
-        <button type="submit" class="btn btn-primary ">Faire un don</button>
+        <h5 class="card-title"  style="color:#6360D6">Comment nous soutenir?</h5>
+            <p class="card-text text-align-right"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
+    
                     </div>
+
+        <div class="card title style="color:#F78F52">Les associations partenaires</div>
+        <div class="card-body">
+        <img src="{{ asset('images/asso/logo_utopia.png') }}" class=""card-img-top width="100*100" alt=" ">
+        <img src="{{ asset('images/asso/logo_aurore.png') }}" class="card-img-top" alt=" ">
+        <img src="{{ asset('images/asso/logo_samusocial.png') }}" class="card-img-top" alt=" ">
+        <img src="{{ asset('images/asso/abbépierre_logo.png') }}" class="card-img-top" alt=" ">
+        <img src="{{ asset('images/asso/logo_assologo_ftda.png') }}" class="card-img-top" alt=" ">
+
         
+        
+        </div>  
         </div>
     </div>
 

@@ -3,14 +3,14 @@ body{
     margin: 0;
     padding: 0;
 }
-<<<<<<< HEAD
+
 
 .color-logo{
     color:#FFF0BD
-=======
+
 #navbarNav{
     color:#FFF0BD !important;
->>>>>>> main
+
 }
 /* css footer */
 #footer-alignement{
@@ -26,9 +26,18 @@ body{
 #banniere-home{
     width: 100wv;
 }
-<<<<<<< HEAD
 
 #a {
+
+.color{
+    color: #124367 
+}
+
+.card-text,color {
+    color: #124367 ;
+}
+
+
 color: yellow;}
 
 /* lodging */
@@ -226,7 +235,6 @@ color: yellow;}
 
     }
 
-=======
 /* page Contact */
 #contact-title{
     /* font-size: 23px; */
@@ -255,4 +263,4 @@ color: yellow;}
 .qsn-container {
     padding: 25px !important;
 }
->>>>>>> main
+
