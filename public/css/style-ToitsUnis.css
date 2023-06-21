@@ -31,9 +31,35 @@ body{
     color:#124367;
 }
 
+.logo-small {
+    width: 100px;
+    margin: 25px;
+}
 
+#col-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
 
+a {
+   text-decoration: none;
+   color: #124367;
+   font-size: 14px;
+}
 
+footer {
+    background-color: #F78F52;
+    padding: 20px;
+}
+
+#adresse-asso {
+    font-size: 14px;
+}
+
+.reso {
+    width: 25px;
+}
 
 /* début home page */
 
