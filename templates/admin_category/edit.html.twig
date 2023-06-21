@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-backend.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
+{% block title %}Modifier la catégorie{% endblock %}
 
 {% block body %}
 <a href="{{ path('app_admin_category_index') }}" class="btn btn-dark mb-3">Retour</a>
@@ -8,6 +8,5 @@
     <h1>Modifier la catégorie</h1>
     {{ include('admin_category/_delete_form.html.twig') }}
     </div>
-    
     {{ include('admin_category/_form.html.twig', {'button_label': 'modifier'}) }}
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-backend.html.twig' %}
 
 {% block title %}Department index{% endblock %}
 
@@ -10,15 +10,19 @@
         </div>
         {% endfor %}
 {% endfor %}
-    <h1>Department index</h1>
+
+<div class="d-flex flex-wrap justify-content-between align-items-center">
+    <h1>Liste des Départements</h1>
+    <a href="{{ path('app_admin_department_new') }}"class="btn btn-success"><i class="align-middle" data-feather="plus"></i></a> 
+    </div>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>NameDepartment</th>
-                <th>CodeDepartment</th>
-                <th>actions</th>
+                <th>Département</th>
+                <th>Code Département</th>
+                <th class="text-end">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,18 +31,17 @@
                 <td>{{ department.id }}</td>
                 <td>{{ department.nameDepartment }}</td>
                 <td>{{ department.codeDepartment }}</td>
-                <td>
-                    <a href="{{ path('app_admin_department_show', {'id': department.id}) }}">show</a>
-                    <a href="{{ path('app_admin_department_edit', {'id': department.id}) }}">edit</a>
+                <td class="text-end">
+                    <a href="{{ path('app_admin_department_show', {'id': department.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_department_edit', {'id': department.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun département n'est renseigné</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_department_new') }}">Create new</a>
 {% endblock %}

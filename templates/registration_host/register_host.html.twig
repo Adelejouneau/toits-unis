@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello CommentCaMarcheController!{% endblock %}
+{% block stylesheets %}
+<head>
+    <meta charset="UTF-8">
+    <title>Page Admin</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+{% endblock %}
+{% block body %}
+<div class="banner-host">
+    <div class="banner-text">
+        <h1 class="titlehost">Devenir Hôte</h1>
+    </div>
+</div>
+<h3 class="title-infos">Informations personnelles</h3>
+<div>
+
+    {% for flash_error in app.flashes('verify_email_error') %}
+    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <section class="cadre">
+        {{ form_start(registrationHostForm) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(registrationHostForm.lastName) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(registrationHostForm.firstName) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(registrationHostForm.phoneUser) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(registrationHostForm.email) }}
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-6">
+                {{ form_row(registrationHostForm.plainPassword, {
+                    label: 'plainPassword'
+                }) }}
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(registrationHostForm.agreeTerms) }}
+            </div>
+        </div>
+    </section>
+
+    <button type="submit" class="btn btn-success">Valider</button>
+    {{ form_end(registrationHostForm) }}
+
+</div>
+{% endblock %}

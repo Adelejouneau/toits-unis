@@ -1,4 +1,4 @@
-# pour ajouter des options like word (italique,gras,taille)
+# config/packages/fos_ck_editor.yaml
 fos_ck_editor:
     configs:
         my_config:
