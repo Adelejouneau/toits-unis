@@ -1,6 +1,6 @@
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;500&display=swap');
- /* CSS rules to specify families 
- font-family: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;500&display=swap');
+/* CSS rules to specify families 
+font-family: 'Montserrat', sans-serif;
 font-family: 'Poppins', sans-serif; */
 
 /*----------------NAVBAR---------------*/
@@ -13,11 +13,11 @@ body{
 
 .color-logo{
     color:#FFF0BD
+}
 
 #navbarNav{
     color:#FFF0BD !important;
-
-}
+} */
 
 /*----------------FOOTER---------------*/
 
@@ -30,20 +30,25 @@ body{
     gap: 100px;
     color:#124367;
 }
-/* page home */
+
+
+
+
+
+/* début home page */
+
 #banniere-home{
     width: 100wv;
+
 }
 
 
-/*----------------PAGE CONTACT---------------*/
+.titrehebergement{
 
-#contact-title {
+    color:#124367 ;
+    margin-bottom: 100px;
+    margin-top: 100px;
 
-#a {
-
-.color{
-    color: #124367 
 }
 
 .card-text,color {
@@ -51,7 +56,52 @@ body{
 }
 
 
-color: yellow;}
+.tototitre {
+    margin: 2em 0;
+}
+
+/*----------------PAGE CONTACT---------------*/
+
+
+.imgtoto{
+    width: 17em;
+    height: 17em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.toto-title{
+    color:#124367;
+
+}
+
+/* .card-group:nth-child(3)>img {
+    object-fit: cover;
+    height: 500px;
+} */
+
+
+.quisommenous{
+    color: #124367 ;
+
+}
+.sponsor-logo{
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-around;
+    margin-left: 30px;
+    align-items: baseline;
+    width: 100px;
+}
+
+
+.titre-home{
+    color: #F78F52;
+}
+
+
+/* fin home page */
 
 /* lodging */
 
@@ -59,13 +109,11 @@ color: yellow;}
     position: relative;
     text-align:end;
     }
-
     .banner img {
     max-width: 100%;
     height: auto;
     margin-bottom: 30px;
     }
-
     .banner-text {
     position: absolute;
     top: 70%;
@@ -74,15 +122,91 @@ color: yellow;}
     color: black;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-
     .banner-text h1 {
     font-size: 50px;
     margin-bottom: 10px;
     }
-
     .banner-text p {
     font-size: 18px;
     }
+    /* page comment sa marche guest */
+    .info-guest-start{
+        display: flex;
+        align-items: flex-start;
+        justify-content:flex-start;
+        align-self: start;
+        margin-bottom: 30px;
+        gap :40px;
+        justify-content: space-between;
+        
+        
+    }
+    .info-guest-end{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+        gap :40px;
+        justify-content: space-between;
+        
+    }
+    .color-card-guest{
+        background-color: #F78F52;
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        gap:15px;
+        width: 450px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+    }
+    .img-fonction-right{
+        display: flex;
+        float: right;
+    }
+    .img-fonction-left{
+        display: flex;
+        float: left;
+    }
+    #text-CCM{
+        font-size: 30px;
+        margin-bottom: 75px;
+    }
+    .number-container{
+        background-color: red;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .find-lodging{
+        background-color: #124367;
+        color: #FFF0BD;
+        width: 250px;
+        margin-bottom: 80px;
+        padding: 15px;
+        text-align: center;
+    }
+    .images-CCM{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap :40px;
+        justify-content: space-around;
+    }
+    .images-CCM2{
+        DISPLAY: flex;
+        FLEX-DIRECTION: row-reverse;
+        gap :40px;
+        justify-content: space-around;
+    }
+    .background-banniere{
+        background-color: #FFF0BD;
+    }
+
 
     /* page comment sa marche guest */
 
@@ -180,8 +304,6 @@ color: yellow;}
 
 
      /* page comment sa marche host */
-
-
     .info-host-start{
         display: flex;
         align-items: flex-start;
@@ -192,7 +314,6 @@ color: yellow;}
         justify-content: space-between;
         
     }
-
     .color-card-host{
         background-color: #FFF0BD;
         border-radius: 15px;
@@ -204,7 +325,6 @@ color: yellow;}
         display: flex;
         align-items: center;
     }
-
     .info-host-end{
         display: flex;
         align-items: flex-start;
@@ -214,9 +334,7 @@ color: yellow;}
         justify-content: space-between;
         
     }
-
-
-    .find-lodging{
+    #find-lodging{
         background-color: #124367;
         color: #FFF0BD;
         width: 250px;
@@ -224,29 +342,101 @@ color: yellow;}
         padding: 15px;
         text-align: center;
         font-weight: bold;
-
     }
-
-    .find-lodging:hover{
+    #find-lodging:hover{
         background-color:#F78F52 ;
         color: #124367;
     }
 
-    /* page compte profil Guest */
-
-
+ /* page compte profil Guest */
     .size-imput{
             width: 600px;
             display: flex;
             gap: 40px ;
             margin-bottom: 20px;
     }
-
     .titre-profil-guest{
         font-weight: bold;
         color: #F78F52;
 
     }
+
+    .sousTitre-profil-guest{
+        font-weight: bold;
+
+    }
+
+    .info-asso-style{
+        display: flex;
+        width: 80%;
+        gap: 50px;
+        margin-top: 20px;
+
+    }
+
+    .titre-select-job {
+    font-weight: bolder;
+    }
+
+    .info-asso{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+        align-items: center;
+        border-radius: 20px;
+        background-color: #F78F52;
+        padding-bottom: 30px;
+
+    }
+
+    .select-job{
+        width: 300px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #FFF0BD;
+}
+
+
+    .form-style{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .form-width{
+        width: 100%;
+        width: 300px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: white;
+        border: 0.5px solid gray;
+    }
+
+    .titreConnexionGuest{
+        margin-top: 30px;
+    }
+
+    input::placeholder {
+        color: rgb(226, 223, 223);
+    }
+
+    #BtnSendGuest{
+        background-color: #124367;
+        margin: 0px 30px 0px 30px;
+        color: #F78F52;
+        margin-top: 50px;
+        margin-bottom: 40px;
+        border-radius:15px ;
+        width: 150px;
+    }
+
+    .sousTitre-profil-guest{
+        margin-bottom: 80px;
+        margin-top: 100px;
+    }
+
 
 /* page Contact */
 #contact-title{
@@ -339,4 +529,3 @@ color: yellow;}
 .qsn-wrap-equipe {
     padding-bottom: 50px;
 }
-

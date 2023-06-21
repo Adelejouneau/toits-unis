@@ -16,6 +16,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+
 
 class RegistrationController extends AbstractController
 {
@@ -52,7 +54,7 @@ class RegistrationController extends AbstractController
                     ->from(new Address('mailer@toitsUnis.com', 'toitsUnis'))
                     ->to($user->getEmail())
                     ->subject('Confirmation de votre e-mail')
-                    ->htmlTemplate('registration_host/confirmation_host_email.html.twig')
+                    ->htmlTemplate('registe_host/confirmation_host_email.html.twig')
             );
             // do anything else you need here, like send an email
             $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
@@ -60,7 +62,9 @@ class RegistrationController extends AbstractController
         }
         
         return $this->render('registration_host/register_host.html.twig', [
+
             'registrationHostForm' => $registrationHostForm->createView(),
+
         ]);
     }
 
@@ -93,7 +97,7 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
             $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_compte_guest');
+            return $this->redirectToRoute('app_login');
         }
         
         return $this->render('registration_guest/register_guest.html.twig', [
