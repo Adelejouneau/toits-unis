@@ -30,18 +30,18 @@ class RegistrationController extends AbstractController
 
     // Route pour le formulaire d'inscription d'un hôte
     #[Route('/register_host', name: 'app_register_host')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function registerHost(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $registerHostForm = $this->createForm(RegistrationHostFormType::class, $user);
-        $registerHostForm->handleRequest($request);
+        $registrationHostForm = $this->createForm(RegistrationHostFormType::class, $user);
+        $registrationHostForm->handleRequest($request);
 
-        if ($registerHostForm->isSubmitted() && $registerHostForm->isValid()) {
+        if ($registrationHostForm->isSubmitted() && $registrationHostForm->isValid()) {
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $registerHostForm->get('plainPassword')->getData()
+                    $registrationHostForm->get('plainPassword')->getData()
                 )
             );
             $user->setRoles(['ROLE_HOST']);
@@ -58,32 +58,14 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
             $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_compte_host');
+            return $this->redirectToRoute('app_register_host');
         }
         
         return $this->render('registration_host/register_host.html.twig', [
-            'registerHostForm' => $registerHostForm->createView(),
+
+            'registrationHostForm' => $registrationHostForm->createView(),
+
         ]);
-    }
-
-    #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
-    {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
-        // validate email confirmation link, sets User::isVerified=true and persists
-        try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
-        } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
-
-            return $this->redirectToRoute('app_register_host');
-        }
-
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Votre e-mail a bien été vérifié. Vous pouvez finaliser votre compte');
-
-        return $this->redirectToRoute('app_login');
     }
 
     #[Route('/register_guest', name: 'app_register_guest')]
@@ -121,5 +103,25 @@ class RegistrationController extends AbstractController
         return $this->render('registration_guest/register_guest.html.twig', [
             'registrationGuestForm' => $form->createView(),
         ]);
+    }
+
+    #[Route('/verify/email', name: 'app_verify_email')]
+    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        // validate email confirmation link, sets User::isVerified=true and persists
+        try {
+            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
+        } catch (VerifyEmailExceptionInterface $exception) {
+            $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+
+            return $this->redirectToRoute('app_login');
+        }
+
+        // @TODO Change the redirect on success and handle or remove the flash message in your templates
+        $this->addFlash('success', 'Votre e-mail a bien été vérifié. Vous pouvez finaliser votre compte');
+
+        return $this->redirectToRoute('app_login');
     }
 }

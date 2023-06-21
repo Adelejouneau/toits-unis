@@ -20,8 +20,10 @@
     {% endif %}
 
     {% if app.user %}
+
         <div class="mb-3 text-center">
             Tu es connecté.e avec l'adresse mail suivante :{{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+
         </div>
     {% endif %}
     {% endif %}
@@ -52,6 +54,7 @@
         </div>
     #}
 
+
 <div id="login-inscrire text-center">
         <p>Tu veux aider mais n'as pas encore de compte ? <a href= "{{path('app_register_guest')}}">Inscris-toi.</a></p>
         <p>Tu as besoin d'être hebergé mais n'as pas encore de compte ? <a href= "{{path('app_register_host')}}">Inscris-toi.</a></p>
@@ -63,5 +66,6 @@
 </div>
 
     
+
 </form>
 {% endblock %}
