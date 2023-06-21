@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello CommentCaMarcheController!{% endblock %}
+{% block title %}Devenir Hôte{% endblock %}
 {% block stylesheets %}
 <head>
     <meta charset="UTF-8">
@@ -21,42 +21,42 @@
     {% endfor %}
 
     <section class="cadre">
-        {{ form_start(registrationForm) }}
+        {{ form_start(registrationHostForm) }}
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationForm.lastName) }}
+                {{ form_row(registrationHostForm.lastName) }}
             </div>
             <div class="col-md-6">
-                {{ form_row(registrationForm.firstName) }}
+                {{ form_row(registrationHostForm.firstName) }}
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationForm.phoneUser) }}
+                {{ form_row(registrationHostForm.phoneUser) }}
             </div>
             <div class="col-md-6">
-                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationHostForm.email) }}
             </div>
         </div>
 
         <div class="row">
             
             <div class="col-md-6">
-                {{ form_row(registrationForm.plainPassword, {
+                {{ form_row(registrationHostForm.plainPassword, {
                     label: 'plainPassword'
                 }) }}
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                {{ form_row(registrationForm.agreeTerms) }}
+                {{ form_row(registrationHostForm.agreeTerms) }}
             </div>
         </div>
     </section>
 
     <button type="submit" class="btn btn-success">Valider</button>
-    {{ form_end(registrationForm) }}
+    {{ form_end(registrationHostForm) }}
 
 </div>
 {% endblock %}
