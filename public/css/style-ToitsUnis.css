@@ -402,6 +402,7 @@ footer {
 
     .titre-select-job {
     font-weight: bolder;
+    font-size: 18px;
     }
 
     .info-asso{
@@ -554,4 +555,35 @@ footer {
 
 .qsn-wrap-equipe {
     padding-bottom: 50px;
+}
+
+
+/* page login */
+
+#login-container, #profil-container, #register-container {
+    background-color:#FFF0BD;
+    gap:5px;
+    color:#124367;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    padding:10px 30px 10px 30px
+
+}
+
+#login-inscrire{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    margin-top:5px;
+}
+
+#btn-login{
+    background-color: #124367;
+        color: #F78F52; 
+        margin-top: 50px;
+        margin-bottom: 40px;
+        border-radius:15px ;
+        width: 250px;
+        text-align: center;
+
 }

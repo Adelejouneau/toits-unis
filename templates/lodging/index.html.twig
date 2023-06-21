@@ -17,7 +17,7 @@
 
                 <div class="position-relative">
                     {% if lodging.imageName is defined and lodging.imageName is not null %}
-                        <img src="{{ asset('/images/toits-unis/' ~ lodging.imageName) }}" class="card-img-top" alt="{{ lodging.title }}">
+                        <img src="{{ asset('/images/toits-unis/' ~ lodging.ImageNameLod) }}" class="card-img-top" alt="{{ lodging.title }}">
                     {% else %}
                         <img src="{{ asset('/images/lodging/placeholder.jpg') }}" class="img-fluid" alt="{{ lodging.title }}">
                     {% endif %}
@@ -25,15 +25,15 @@
                         <i data-feather="play"></i>
                     </a>
 
-                    {# {% if lodging not in app.user.lodgings %} #}
-                        {# <a href="{{ path('add_favori', { id: lodging.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                    {% if lodging not in app.user.lodgings %} 
+                        <a href="{{ path('add_favori', { id: lodging.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                             <i data-feather="star" class="text-danger"></i>
-                        </a> #}
-                    {# {% else %}
+                        </a> 
+                     {% else %}
                         <a href="{{ path('remove_lodging', { id: lodging.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                             <i data-feather="star" class="text-light"></i>
                         </a> #}
-                    {# {% endif %} #}
+                    {% endif %} 
 
                 </div>
 
