@@ -315,7 +315,7 @@ body{
         justify-content: space-between;
         
     }
-    .find-lodging{
+    #find-lodging{
         background-color: #124367;
         color: #FFF0BD;
         width: 250px;
@@ -324,7 +324,7 @@ body{
         text-align: center;
         font-weight: bold;
     }
-    .find-lodging:hover{
+    #find-lodging:hover{
         background-color:#F78F52 ;
         color: #124367;
     }
