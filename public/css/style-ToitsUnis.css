@@ -55,12 +55,31 @@ body{
     color: #124367 ;
 }
 
+
+.tototitre {
+    margin: 2em 0;
+}
+
 /*----------------PAGE CONTACT---------------*/
 
 
 .imgtoto{
-    width: 300px;
+    width: 17em;
+    height: 17em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
 }
+.toto-title{
+    color:#124367;
+
+}
+
+/* .card-group:nth-child(3)>img {
+    object-fit: cover;
+    height: 500px;
+} */
 
 
 .quisommenous{
