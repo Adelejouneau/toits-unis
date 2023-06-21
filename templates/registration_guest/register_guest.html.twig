@@ -10,7 +10,7 @@
 {% block body %}
 <div class="banner-host">
     <div class="banner-text">
-        <h1 class="titlehost">Devenir Hôte</h1>
+        <h1 class="titlehost">Devenir Guest</h1>
     </div>
 </div>
 <h3 class="title-infos">Informations personnelles</h3>
@@ -21,46 +21,46 @@
     {% endfor %}
 
     <section class="cadre">
-        {{ form_start(registrationForm) }}
+        {{ form_start(registrationGuestForm) }}
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationForm.lastName) }}
+                {{ form_row(registrationGuestForm.lastName) }}
             </div>
             <div class="col-md-6">
-                {{ form_row(registrationForm.firstName) }}
+                {{ form_row(registrationGuestForm.firstName) }}
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationForm.phoneUser) }}
+                {{ form_row(registrationGuestForm.phoneUser) }}
             </div>
             <div class="col-md-6">
-                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationGuestForm.email) }}
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationForm.plainPassword, {
+                {{ form_row(registrationGuestForm.plainPassword, {
                     label: 'Password'
                 }) }}
             </div>
-            <div class="col-md-6">
-                {{ form_row(registrationForm.plainPasswordConfirm, {
+            {# <div class="col-md-6">
+                {{ form_row(registrationGuestForm.plainPasswordConfirm, {
                     label: 'Confirm Password'
                 }) }}
-        </div>
+        </div> #}
 
         <div class="row">
             <div class="col-md-12">
-                {{ form_row(registrationForm.agreeTerms) }}
+                {{ form_row(registrationGuestForm.agreeTerms) }}
             </div>
         </div>
     </section>
 
     <button type="submit" class="btn btn-success">Valider</button>
-    {{ form_end(registrationForm) }}
+    {{ form_end(registrationGuestForm) }}
 
 </div>
 {% endblock %}

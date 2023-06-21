@@ -31,9 +31,35 @@ body{
     color:#124367;
 }
 
+.logo-small {
+    width: 100px;
+    margin: 25px;
+}
 
+#col-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
 
+a {
+   text-decoration: none;
+   color: #124367;
+   font-size: 14px;
+}
 
+footer {
+    background-color: #F78F52;
+    padding: 20px;
+}
+
+#adresse-asso {
+    font-size: 14px;
+}
+
+.reso {
+    width: 25px;
+}
 
 
 /* début home page */
@@ -398,7 +424,7 @@ body{
         justify-content: space-between;
         
     }
-    .find-lodging{
+    #find-lodging{
         background-color: #124367;
         color: #FFF0BD;
         width: 250px;
@@ -407,7 +433,7 @@ body{
         text-align: center;
         font-weight: bold;
     }
-    .find-lodging:hover{
+    #find-lodging:hover{
         background-color:#F78F52 ;
         color: #124367;
     }
@@ -440,6 +466,7 @@ body{
 
     .titre-select-job {
     font-weight: bolder;
+    font-size: 18px;
     }
 
     .info-asso{
@@ -592,4 +619,35 @@ body{
 
 .qsn-wrap-equipe {
     padding-bottom: 50px;
+}
+
+
+/* page login */
+
+#login-container, #profil-container, #register-container {
+    background-color:#FFF0BD;
+    gap:5px;
+    color:#124367;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    padding:10px 30px 10px 30px
+
+}
+
+#login-inscrire{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    margin-top:5px;
+}
+
+#btn-login{
+    background-color: #124367;
+        color: #F78F52; 
+        margin-top: 50px;
+        margin-bottom: 40px;
+        border-radius:15px ;
+        width: 250px;
+        text-align: center;
+
 }
