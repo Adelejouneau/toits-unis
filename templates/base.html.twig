@@ -17,7 +17,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Patrick+Hand+SC&family=Permanent+Marker&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="./css/style-ToitsUnis.css"> {% block stylesheets %}{% endblock %}
 		</head>
-
+    
 		<body>
 			{# debut de la navbar #}
 			<nav class="navbar navbar-expand-xl navbar-light text-center" style="background-color:  #124367;" "color:#FFF0BD;" id="nav-color">
@@ -64,6 +64,53 @@
 			<main>
 				{% block body %}{% endblock %}
 			</main>
+
+    <body>
+    {# debut de la navbar #}
+        <nav class="navbar navbar-expand-xl navbar-light text-center" style="background-color:  #124367;" "color:#FFF0BD;" id="nav-color">
+        <div class="container-fluid d-flex align-items-center">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav d-flex mx-auto align-items-center justify-content-around w-100">
+                <li class="nav-item mx-3">
+                <a class="nav-link d-flex flex-column align-items-center color-logo" aria-current="page" href="{{ path('app_home') }}">
+                <img src="/images/logo.png" alt="Logo" class="" width="100x100">
+                </a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link d-flex flex-column align-items-center" aria-current="page" href="{{path('app_contact') }}">contact</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link d-flex flex-column align-items-center" aria-current="page" href="{{path('app_contact') }}">Faire un don</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link d-flex flex-column align-items-center" aria-current="page" href="{{path('app_register_host') }}">Devenir Hôte</a>
+                </li>
+            {# <li class="nav-item mx-3">
+                <a class="nav-link d-flex flex-column align-items-center" href="{{path('app_category') }}">Catégories</a>
+            </li> #}
+            
+            <li class="nav-item mx-3">
+                <a class="nav-link d-flex flex-column align-items-center" href="{{ path('app_login') }}">Favoris</a>
+            </li>
+            <li class="nav-item mx-3">
+                {% if app.user is not null %}
+                <!-- à changer pour mettre le lien vers le profil -->
+                <a class="nav-link d-flex flex-column align-items-center" href="{{ path('app_login')}}"><i data-feather="user"></i></a>
+                {% else %}
+                <a class="nav-link d-flex flex-column align-items-center" href="{{ path('app_login')}}"><i data-feather="user"></i></a>
+                {% endif %}
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav> 
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
 
 			{# Footer #}
 			<footer class="footer">

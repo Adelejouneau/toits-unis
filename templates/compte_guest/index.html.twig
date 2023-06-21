@@ -4,12 +4,15 @@
 
 {% block body %}
 
-<div class="info-asso">
-    <div class="info-asso-style">
-        <div class="form-group">
-            <label for="inputInterets">Organisme qui effectue l’inscription</label>
+<div class="titreConnexionGuest">
+<h1 class="text-center titre-profil-guest">Enregistrer un nouveau guest</h1>
+</div>
+<div class="info-asso container col-6 my-">
+        <div class=" form-group info-asso-style">
+            <label for="inputInterets" class="titre-select-job">Organisme qui effectue l’inscription   </label>
             <div class="custom-select-wrapper">
-                <select class="form-control custom-select" id="inputInterets" onchange="updateSelectedInterests()">
+                <select class="form custom-select select-job" id="inputInterets" onchange="updateSelectedInterests()">
+                    <option placeholder="sport"></option>
                     <option value="sport">Sport</option>
                     <option value="musique">Musique</option>
                     <option value="lecture">Lecture</option>
@@ -17,57 +20,85 @@
                 </select>
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="inputInterets">Numéro d’immatriculation de l’organisme</label>
-            <div class="custom-select-wrapper">
-                <select class="form-control custom-select" id="inputInterets" onchange="updateSelectedInterests()">
+        <div class=" form-group info-asso-style">
+            <label for="inputInterets" class="titre-select-job">Numéro d’immatriculation de l’organisme</label>
+            <div class="custom-select-wrapper  ">
+                <select class="form custom-select select-job" id="inputInterets" onchange="updateSelectedInterests()">
+                    <option placeholder="sport"></option>
                     <option value="sport">Sport</option>
                     <option value="musique">Musique</option>
                     <option value="lecture">Lecture</option>
                     <option value="voyages">Voyages</option>
                 </select>
             </div>
-        </div>
-
     </div>
 </div>
 
 <h1 class="text-center titre-profil-guest">Enregistrer un nouveau profil guest</h1>
 
-<form>
+<form class="form-style">
         <div class="form-row size-imput">
     <div class="form-group col-md-6">
         <label for="inputNom">Nom</label>
-        <input type="text" class="form-control" id="inputNom" placeholder="Nom">
+        <input type="text" class="form-width" id="inputNom" placeholder="Nom">
     </div>
     <div class="form-group col-md-6">
         <label for="inputPrenom">Prénom</label>
-        <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom">
+        <input type="text" class="form-width" id="inputPrenom" placeholder="Prénom">
     </div>
     </div>
-    <div class="form-row size-imput">
+    <div class="form-row size-imput size-imput">
     <div class="form-group col-md-6">
       <label for="inputDateNaissance">Date de naissance</label>
-      <input type="date" class="form-control" id="inputDateNaissance" placeholder="Date de naissance">
+      <input type="date" class="form-width" id="inputDateNaissance" placeholder="Date de naissance">
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail">Email</label>
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+      <input type="email" class="form-width" id="inputEmail" placeholder="Email">
     </div>
   </div>
-  <div class="form-row size-imput">
+  <div class="form-row size-imput size-imput">
     <div class="form-group col-md-6">
       <label for="inputTelephone">Numéro de téléphone</label>
-      <input type="tel" class="form-control" id="inputTelephone" placeholder="Numéro de téléphone">
+      <input type="tel" class="form-width" id="inputTelephone" placeholder="Numéro de téléphone">
     </div>
     <div class="form-group col-md-6">
       <label for="inputSituation">Situation professionnelle</label>
-      <input type="text" class="form-control" id="inputSituation" placeholder="Situation professionnelle">
+      <input type="text" class="form-width" id="inputSituation" placeholder="Situation professionnelle">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Envoyer</button>
+  <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    J’ai lu et j’accepte les conditions générales d’utilisation *
+  </label>
+</div>
+  <button type="submit" class="btn" id="BtnSendGuest">Valider</button>
 </form>
+
+{# <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes infos</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Mes favoris</button>
+    </li>
+</ul>
+    <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <div class="col-12">
+    {# On affiche un formulaire #}
+    {# {{form_start(Form) }}
+    {{ form_row(Form.lastName) }}
+    {{ form_row(Form.firstName) }}
+    {{ form_row(Form.phoneUser) }}
+      {{ form_row(Form.email) }}
+
+
+    <button type="submit" class="btn btn-primary">Modifier</button>
+    {{form_end(Form) }}
+    </div>
+    </div> #} #}
 
 {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
