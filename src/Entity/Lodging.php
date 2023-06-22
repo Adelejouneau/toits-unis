@@ -54,6 +54,10 @@ class Lodging
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
     private ?Department $department = null;
 
+    #[ORM\ManyToOne(inversedBy: 'lodgings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->matcheds = new ArrayCollection();
@@ -237,6 +241,18 @@ class Lodging
     public function setDepartment(?Department $department): static
     {
         $this->department = $department;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

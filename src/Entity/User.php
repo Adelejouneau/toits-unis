@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 use App\Entity\Address;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 
 use ORM\MappedSuperclass;
@@ -52,7 +54,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     protected ?string $firstName = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     protected ?string $phoneUser = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -82,6 +84,16 @@ protected ?string $gender = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fonction = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Lodging::class)]
+    private Collection $lodgings;
+
+    public function __construct()
+    {
+        $this->lodgings = new ArrayCollection();
+    }
+
+    
 
     public function getId(): ?int
     {
@@ -332,6 +344,38 @@ protected ?string $gender = null;
     {
         $this->plainPassword = $plainPassword;
     }
+
+    /**
+     * @return Collection<int, Lodging>
+     */
+    public function getLodgings(): Collection
+    {
+        return $this->lodgings;
+    }
+
+    public function addLodging(Lodging $lodging): static
+    {
+        if (!$this->lodgings->contains($lodging)) {
+            $this->lodgings->add($lodging);
+            $lodging->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLodging(Lodging $lodging): static
+    {
+        if ($this->lodgings->removeElement($lodging)) {
+            // set the owning side to null (unless already changed)
+            if ($lodging->getUser() === $this) {
+                $lodging->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }
 
 
