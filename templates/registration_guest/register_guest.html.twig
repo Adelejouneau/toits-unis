@@ -1,22 +1,37 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello CommentCaMarcheController!{% endblock %}
-{% block stylesheets %}
-<head>
-    <meta charset="UTF-8">
-    <title>Page Admin</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-{% endblock %}
+{% block title %}Hello CompteGuestController!{% endblock %}
 {% block body %}
-<div class="banner-host">
-    <div class="banner-text">
-        <h1 class="titlehost">Devenir Guest</h1>
+<div class="titreConnexionGuest">
+<h1 class="text-center titre-profil-guest">Enregistrer un nouveau guest</h1>
+</div>
+<div class="info-asso container col-6 my-">
+        <div class=" form-group info-asso-style">
+            <label for="inputInterets" class="titre-select-job">Organisme qui effectue l’inscription</label>
+            <div class="custom-select-wrapper">
+                <select class="form custom-select select-job" id="inputInterets" onchange="updateSelectedInterests()">
+                    <option placeholder="sport"></option>
+                    <option value="sport">Sport</option>
+                    <option value="musique">Musique</option>
+                    <option value="lecture">Lecture</option>
+                    <option value="voyages">Voyages</option>
+                </select>
+            </div>
+        </div>
+        <div class=" form-group info-asso-style">
+            <label for="inputInterets" class="titre-select-job">Numéro d’immatriculation de l’organisme</label>
+            <div class="custom-select-wrapper  ">
+                <select class="form custom-select select-job" id="inputInterets" onchange="updateSelectedInterests()">
+                    <option placeholder="sport"></option>
+                    <option value="sport">Sport</option>
+                    <option value="musique">Musique</option>
+                    <option value="lecture">Lecture</option>
+                    <option value="voyages">Voyages</option>
+                </select>
+            </div>
     </div>
 </div>
-<h3 class="title-infos">Informations personnelles</h3>
-<div>
-
-    {% for flash_error in app.flashes('verify_email_error') %}
+<h3 class="text-center sousTitre-profil-guest">Informations personnelles</h3>
+{% for flash_error in app.flashes('verify_email_error') %}
     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
@@ -62,5 +77,11 @@
     <button type="submit" class="btn btn-success">Valider</button>
     {{ form_end(registrationGuestForm) }}
 
+</div>
+{% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+<div>
+    <img src="/images/welcomehome.png" class="rounded mx-auto d-block w-25 img-fluid" alt="...">
 </div>
 {% endblock %}
