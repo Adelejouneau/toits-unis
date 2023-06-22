@@ -33,7 +33,7 @@ class Association
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageNameAsso = null;
 
-    #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageNameAsso')]
+    #[Vich\UploadableField(mapping: 'associations', fileNameProperty: 'imageNameAsso')]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
