@@ -345,24 +345,22 @@ protected ?string $gender = null;
         $this->plainPassword = $plainPassword;
     }
 
+}
     /**
-     * @return Collection<int, Lodging>
+    * @return Collection<int, Lodging>
      */
     public function getLodgings(): Collection
     {
         return $this->lodgings;
     }
-
     public function addLodging(Lodging $lodging): static
     {
         if (!$this->lodgings->contains($lodging)) {
             $this->lodgings->add($lodging);
             $lodging->setUser($this);
         }
-
         return $this;
     }
-
     public function removeLodging(Lodging $lodging): static
     {
         if ($this->lodgings->removeElement($lodging)) {
@@ -371,15 +369,6 @@ protected ?string $gender = null;
                 $lodging->setUser(null);
             }
         }
-
         return $this;
     }
-
-    
 }
-
-
-
-
-
-
