@@ -70,7 +70,7 @@ class LodgingFixtures extends Fixture
 
         $lodging = new Lodging();
         $lodging->setDescriptionLod("Description du logement 6");
-        $lodging->setImageNameLod("image6.jpg");
+        $lodging->setImageNameLod("image2.jpg");
         $lodging->setLatitude("48.8566");
         $lodging->setLongitude("2.3522");
         $lodging->setTitleLod("chambre disponible");

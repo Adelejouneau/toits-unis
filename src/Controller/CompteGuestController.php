@@ -48,9 +48,9 @@ class CompteGuestController extends AbstractController
         //On récupère le logement dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
-        $lodging = $this->getLodging();
+        $user = $this->getUser();
         //On ajoute le logement à la liste des favoris de l'utilisateur
-        $lodging->addLodging($lodging);
+        $user->addLodging($lodging);
         //On met en place un msg flash
         $this->addFlash('success','Le logement a bien été ajouter à vos favoris');
         //On enregistre les modifs
@@ -63,16 +63,16 @@ class CompteGuestController extends AbstractController
     #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
     public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
-        //On r"cupère la donnee dans la bdd
+        //On récupère la donnee dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
-        $lodging = $this->getLodging();
+        $user = $this->getUser();
         //On ajoute le lodging à la liste des favoris de l'utilisateur
         $lodging->removeLodging($lodging);
         //On met en place un msg flash
         $this->addFlash('success','Le logement a bien été retirer à vos favoris');
         //On enregistre les modifs
-        $em->persist($lodging);
+        $em->persist($user);
         $em->flush();
         //On redirige vers la page des lodging
         return $this->redirectToRoute('app_lodging');

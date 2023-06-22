@@ -33,7 +33,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue Colbert");
         $address-> setZipCode("75001");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::AIN));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::AIN));
         $this->addReference(self::COLBERT_PARIS, $address);
         $manager->persist($address);
 
@@ -42,7 +42,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue de Romainville");
         $address-> setZipCode("75019");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::AISNE));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::AISNE));
         $this->addReference(self::ROMAINVILLE_PARIS, $address);
         $manager->persist($address);
 
@@ -51,7 +51,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue de la Réunion");
         $address-> setZipCode("75020");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::ALLIER));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::ALLIER));
         $this->addReference(self::LA_REUNION_PARIS, $address);
         $manager->persist($address);
 
@@ -60,7 +60,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue des couronnes");
         $address-> setZipCode("75020");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::ALPES_DE_HAUTE_PROVENCE));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::ALPES_DE_HAUTE_PROVENCE));
         $this->addReference(self::COURONNES_PARIS, $address);
         $manager->persist($address);
 
@@ -69,7 +69,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("avenue du Docteur Emile Roux");
         $address-> setZipCode("06200");
         $address-> setCity("Nice");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::ALPES_MARITIMES));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::ALPES_MARITIMES));
         $this->addReference(self::DOCTEUR_EMILE_ROUX_NICE, $address);
         $manager->persist($address);
 
@@ -78,7 +78,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue Duchefdelaville");
         $address-> setZipCode("75013");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::ARDECHE));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::ARDECHE));
         $this->addReference(self::DUCHEFDELAVILLE_PARIS, $address);
         $manager->persist($address);
 
@@ -87,7 +87,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue Jules Verne ");
         $address-> setZipCode("44700");
         $address-> setCity("Orvault");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::AUBE));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::AUBE));
         $this->addReference(self::JULES_VERNES_ORVAULT, $address);
         $manager->persist($address);
 
@@ -96,7 +96,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue Lune Gerbe");
         $address-> setZipCode("75019");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::ESSONNE));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::ESSONNE));
         $this->addReference(self::LUNE_GERBE_PARIS, $address);
         $manager->persist($address);
 
@@ -105,7 +105,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("avenue Courteline");
         $address-> setZipCode("75012");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::AUDE));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::AUDE));
         $this->addReference(self::COURTELINE_PARIS, $address);
         $manager->persist($address);
 
@@ -114,7 +114,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("boulevard Sébastopol");
         $address-> setZipCode("75004");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::DEUX_SEVRES));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::DEUX_SEVRES));
         $this->addReference(self::SEBASTOPOL_PARIS, $address);
         $manager->persist($address);
 
@@ -123,7 +123,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue Marc Seguin");
         $address-> setZipCode("75018");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::SEINE_ST_DENIS));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::SEINE_ST_DENIS));
         $this->addReference(self::MARC_SEGUIN_PARIS, $address);
         $manager->persist($address);
 
@@ -132,7 +132,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue de Charenton");
         $address-> setZipCode("75012");
         $address-> setCity("Paris");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::SEINE_MARITIME));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::SEINE_MARITIME));
         $this->addReference(self::CHARENTON_PARIS, $address);
         $manager->persist($address);
 
@@ -141,7 +141,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("boulevard Charles de Gaulle");
         $address-> setZipCode("44800");
         $address-> setCity("Saint-Herblain");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::GUADELOUPE));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::GUADELOUPE));
         $this->addReference(self::CHARLES_DE_GAULLE_SAINT_HERBLAIN, $address);
         $manager->persist($address);
 
@@ -151,7 +151,7 @@ class AddressFixtures extends Fixture
         $address-> setStreetName("rue Camille Desmoulins");
         $address-> setZipCode("92130");
         $address-> setCity("Issy les Moulineaux");
-        $address-> addAADepartment($this->getReference(AADepartmentFixtures::GUYANE));
+        $address-> addDepartment($this->getReference(AADepartmentFixtures::GUYANE));
         $this->addReference(self::CAMILLE_DESMOULINS_ISSY_LES_MOULINEAUX, $address);
         $manager->persist($address);
 

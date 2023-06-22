@@ -18,11 +18,11 @@ class LodgingController extends AbstractController
         ]);
     }
 
-    #[Route('/lodging/{slug}', name: 'app_lodging_show')]
-    public function showBook($slug, LodgingRepository $lodgingRepository):Response
+    #[Route('/lodging/{slugLod}', name: 'app_lodging_show')]
+    public function showLodg($slugLod, LodgingRepository $lodgingRepository):Response
     {
        //On récupère le lodging correspondant au slug
-        $lodging = $lodgingRepository->findOneBy(['slug' => $slug]);
+        $lodging = $lodgingRepository->findOneBy(['slugLod' => $slugLod]);
        //On rend la page en lui passant le lodging
         return $this->render('lodging/show.html.twig', [
         'lodging' => $lodging,
