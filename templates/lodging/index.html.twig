@@ -20,7 +20,7 @@
                     <img src="{{ asset('/images/lodgings/placeholer.png') }}" class="card-img-top" alt="...">
                     {% endif %}
                     
-                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         {% if app.user is not null %}
                         {% if lodging not in app.user.lodgings %}
                     <a href="{{ path ('add_favori', {id:lodging.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
@@ -32,7 +32,7 @@
                     </a>
                     {% endif %}
                     {% endif %} 
-                     #}
+                    #}
                     {# </div>
             </div>
         </div>
