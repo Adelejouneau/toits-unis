@@ -68,7 +68,7 @@ class CompteGuestController extends AbstractController
         //on récupère l'utilisateur
         $user = $this->getUser();
         //On ajoute le lodging à la liste des favoris de l'utilisateur
-        $lodging->removeLodging($lodging);
+        $user->removeLodging($lodging);
         //On met en place un msg flash
         $this->addFlash('success','Le logement a bien été retirer à vos favoris');
         //On enregistre les modifs
