@@ -187,4 +187,8 @@ public function removeDepartment(Department $department): self
     return $this;
 }
 
+public function __toString(): string
+{
+    return $this->getStreetName();
+}
 }
