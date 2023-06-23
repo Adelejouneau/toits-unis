@@ -37,6 +37,13 @@ class RegistrationController extends AbstractController
         $registrationHostForm->handleRequest($request);
 
         if ($registrationHostForm->isSubmitted() && $registrationHostForm->isValid()) {
+            // Check if a user with the same email already exists
+            $existingUser = $entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()]);
+            if ($existingUser) {
+                $this->addFlash('danger', 'Un utilisateur avec cette adresse e-mail existe déjà.');
+                return $this->redirectToRoute('app_register_host');
+            }
+
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -54,7 +61,7 @@ class RegistrationController extends AbstractController
                     ->from(new Address('mailer@toitsUnis.com', 'toitsUnis'))
                     ->to($user->getEmail())
                     ->subject('Confirmation de votre e-mail')
-                    ->htmlTemplate('registe_host/confirmation_host_email.html.twig')
+                    ->htmlTemplate('registration_host/confirmation_host_email.html.twig')
             );
             // do anything else you need here, like send an email
             $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
@@ -62,11 +69,11 @@ class RegistrationController extends AbstractController
         }
         
         return $this->render('registration_host/register_host.html.twig', [
-
             'registrationHostForm' => $registrationHostForm->createView(),
-
         ]);
     }
+
+
 
     #[Route('/register_guest', name: 'app_register_guest')]
     public function registerGuest(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
@@ -76,6 +83,17 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Vérifier si l'adresse e-mail existe déjà
+            $existingUser = $entityManager->getRepository(User::class)->findOneBy([
+                'email' => $user->getEmail(),
+            ]);
+
+            if ($existingUser) {
+                $this->addFlash('danger', 'Cette adresse e-mail est déjà utilisée.');
+
+                return $this->redirectToRoute('app_register_guest');
+            }
+
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -95,9 +113,9 @@ class RegistrationController extends AbstractController
                     ->subject('Confirmation de votre e-mail')
                     ->htmlTemplate('registration_guest/confirmation_guest_email.html.twig')
             );
-            // do anything else you need here, like send an email
-            $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_login');
+            
+            $this->addFlash('success','Inscription réussie, vous devez valider votre compte via le mail reçu.');
+            return $this->redirectToRoute('app_register_guest');
         }
         
         return $this->render('registration_guest/register_guest.html.twig', [
@@ -105,23 +123,25 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
-    {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+    
 
-        // validate email confirmation link, sets User::isVerified=true and persists
-        try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
-        } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
-
+        #[Route('/verify/email', name: 'app_verify_email')]
+        public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
+        {
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+    
+            // validate email confirmation link, sets User::isVerified=true and persists
+            try {
+                $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
+            } catch (VerifyEmailExceptionInterface $exception) {
+                $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+    
+                return $this->redirectToRoute('app_login');
+            }
+    
+            // @TODO Change the redirect on success and handle or remove the flash message in your templates
+            $this->addFlash('success', 'Votre e-mail a bien été vérifié. Vous pouvez finaliser votre compte');
+    
             return $this->redirectToRoute('app_login');
         }
-
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Votre e-mail a bien été vérifié. Vous pouvez finaliser votre compte');
-
-        return $this->redirectToRoute('app_login');
     }
-}

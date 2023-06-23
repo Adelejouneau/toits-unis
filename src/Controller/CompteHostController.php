@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserType;
+use App\Entity\Address;
 use App\Repository\UserRepository;
 use App\Repository\LodgingRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,11 +22,11 @@ class CompteHostController extends AbstractController
          // On recupere l'utilisateur
         $user = $this->getUser();
         // On crée un formulaire avec les données de l'utilisateur
-        $form = $this->createForm(UserType::class, $user);
+        $registrationHostForm = $this->createForm(UserType::class, $user);
         // 
-        $form->handleRequest($request);
+        $registrationHostForm->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if($registrationHostForm->isSubmitted() && $registrationHostForm->isValid()){
             // On verifie si l'utilisateur a changer de mot de passe
             if(!is_null($request->request->get('plainPassword'))){
             //On encode le nouveau password et on l'affecte au user
@@ -41,6 +42,7 @@ class CompteHostController extends AbstractController
 
         }
         return $this->render('compte_host/index.html.twig', [
+            'registrationHostForm' => $registrationHostForm->createView(),
             'controller_name' => 'CompteHostController',
         ]);
     }
