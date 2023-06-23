@@ -345,7 +345,6 @@ protected ?string $gender = null;
         $this->plainPassword = $plainPassword;
     }
 
-}
     /**
     * @return Collection<int, Lodging>
      */
