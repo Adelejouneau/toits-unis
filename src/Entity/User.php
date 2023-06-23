@@ -323,12 +323,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->plainPassword = $plainPassword;
     }
 
-}
+
     /**
     * @return Collection<int, Lodging>
-
      */
-main
     public function getLodgings(): Collection
     {
         return $this->lodgings;
