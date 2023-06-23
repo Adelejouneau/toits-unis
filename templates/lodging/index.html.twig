@@ -26,10 +26,15 @@
             </div>
                 <div class="card-body">
                 <h5 class="card-title">{{ lodging.titleLod }}</h5>
+
                 <a href="{{ path('app_lodging_show', { slugLod: lodging.slugLod }) }}" class="btn btn-primary ">voir plus </a>
                 </div>
         </div>
+
+</div>
+
     </div>
+
     {% endfor %}
 </div>
 </div>
