@@ -71,7 +71,7 @@ class AUserFixtures extends Fixture
         $user = new User();
         $user->setLastName('Smith');
         $user->setFirstName('Jane');
-        $user->setEmail('jane.smith@example.com');
+        $user->setEmail('   ');
         $user->setPhoneUser('06.11.22.33.42');
         $user->setImageNameUser('lorem ipsem');
         $user->setUpdatedAt(new \DateTimeImmutable());
