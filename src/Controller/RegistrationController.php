@@ -113,9 +113,9 @@ class RegistrationController extends AbstractController
                     ->subject('Confirmation de votre e-mail')
                     ->htmlTemplate('registration_guest/confirmation_guest_email.html.twig')
             );
-            // do anything else you need here, like send an email
-            $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_login');
+            
+            $this->addFlash('success','Inscription réussie, vous devez valider votre compte via le mail reçu.');
+            return $this->redirectToRoute('app_register_guest');
         }
         
         return $this->render('registration_guest/register_guest.html.twig', [

@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}show Lodging!{% endblock %}
+{% block title %}Details du logement{% endblock %}
 
 {% block body %}
 <div class="text-start">
 <h1>Grand appartement , avec une chambre disponible</h1>
 <p>Seine-Saint-Denis, Ile de France, Région parisienne</p>
 </div>
+<a href="{{ path('app_lodging_show', { 'slugLod': lodging.slugLod }) }}" class="btn btn-primary">Envoyer une demande</a>
 
 
 {% endblock %}
