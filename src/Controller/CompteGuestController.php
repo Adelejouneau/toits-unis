@@ -42,7 +42,7 @@ class CompteGuestController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/add-favori/{id}', name: 'add_favori')]
+    #[Route('/add-favori/{id}', name: 'app_favori')]
     public function addFavori($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
         //On récupère le logement dans la bdd
@@ -52,7 +52,7 @@ class CompteGuestController extends AbstractController
         //On ajoute le logement à la liste des favoris de l'utilisateur
         $user->addLodging($lodging);
         //On met en place un msg flash
-        $this->addFlash('success','Le logement a bien été ajouter à vos favoris');
+        $this->addFlash('success',"L'hébergement a bien été ajouté à vos favoris");
         //On enregistre les modifs
         $em->persist($lodging);
         $em->flush();

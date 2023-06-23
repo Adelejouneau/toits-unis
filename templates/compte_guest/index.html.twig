@@ -94,8 +94,28 @@
     </div>
     </div>
 
+{% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+</div>
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-    <h2>favoris</h2>
+    {% if app.user is not null and app.user.lodgings is not null and app.user.lodgings|length > 0 %}
+    <ul>
+    {% for livre in app.user.lodgings %}
+    <li>{{ lodging.titleLod }} <a href="{{ path('remove_favori', { id : lodging.id }) }}">Supprimer</a></li>
+    {% endfor %}
+    </ul>
+
+    {% else %}
+    <p>Vous n'avez pas de favoris pour le moment</p>
+    {% endif %}
+    </div>
+
+
+{% endblock %}
+
+
 
     {#Afficher les favoris  #}
     {# {% if app.user.lodging|length > 0 %}
@@ -109,14 +129,3 @@
     {% endif %}
     </div>
     </div> #}
-
-
-
-{% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-
-
-
-
-{% endblock %}
