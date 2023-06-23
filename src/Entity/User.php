@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Entity;
+
 use App\Entity\Address;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
-
 use ORM\MappedSuperclass;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
@@ -15,7 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 // #[ORM\MappedSuperclass]
-
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -39,15 +38,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The plain password confirmation
      */
     protected ?string $plainPassword = null;
+
     #[Assert\Length(
         min: 2,
         max: 50,
         minMessage: 'Your first name must be at least {{ limit }} characters long',
         maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
     )]
-
-
-
     #[ORM\Column(length: 255)]
     protected ?string $lastName = null;
 
@@ -63,8 +60,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     protected ?\DateTimeImmutable $updatedAt = null;
 
-#[ORM\Column(length: 255, nullable: true)]
-protected ?string $gender = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    protected ?string $gender = null;
 
     #[ORM\ManyToOne(inversedBy: 'user')]
     #[ORM\JoinColumn(nullable: true)]
@@ -93,8 +90,6 @@ protected ?string $gender = null;
         $this->lodgings = new ArrayCollection();
     }
 
-    
-
     public function getId(): ?int
     {
         return $this->id;
@@ -108,7 +103,6 @@ protected ?string $gender = null;
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -138,14 +132,12 @@ protected ?string $gender = null;
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
-
         return $this;
     }
 
@@ -160,7 +152,6 @@ protected ?string $gender = null;
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -192,7 +183,6 @@ protected ?string $gender = null;
     public function setLastName(string $lastName): static
     {
         $this->lastName = $lastName;
-
         return $this;
     }
 
@@ -204,7 +194,6 @@ protected ?string $gender = null;
     public function setFirstName(string $firstName): static
     {
         $this->firstName = $firstName;
-
         return $this;
     }
 
@@ -216,7 +205,6 @@ protected ?string $gender = null;
     public function setPhoneUser(string $phoneUser): static
     {
         $this->phoneUser = $phoneUser;
-
         return $this;
     }
 
@@ -228,7 +216,6 @@ protected ?string $gender = null;
     public function setImageNameUser(?string $imageNameUser): static
     {
         $this->imageNameUser = $imageNameUser;
-
         return $this;
     }
 
@@ -240,7 +227,6 @@ protected ?string $gender = null;
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
-
         return $this;
     }
 
@@ -252,7 +238,6 @@ protected ?string $gender = null;
     public function setGender(string $gender): static
     {
         $this->gender = $gender;
-
         return $this;
     }
 
@@ -264,7 +249,6 @@ protected ?string $gender = null;
     public function setAddress(?Address $address): static
     {
         $this->address = $address;
-
         return $this;
     }
 
@@ -276,7 +260,6 @@ protected ?string $gender = null;
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
-
         return $this;
     }
 
@@ -288,7 +271,6 @@ protected ?string $gender = null;
     public function setNombreLit(?int $nombreLit): static
     {
         $this->nombreLit = $nombreLit;
-
         return $this;
     }
 
@@ -300,7 +282,6 @@ protected ?string $gender = null;
     public function setDescription(?string $description): static
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -312,7 +293,6 @@ protected ?string $gender = null;
     public function setEntreprise(?string $entreprise): static
     {
         $this->entreprise = $entreprise;
-
         return $this;
     }
 
@@ -324,7 +304,6 @@ protected ?string $gender = null;
     public function setFonction(?string $fonction): static
     {
         $this->fonction = $fonction;
-
         return $this;
     }
 
@@ -332,7 +311,6 @@ protected ?string $gender = null;
      * @return string|null
      */
     public function getPlainPassword(): ?string
-
     {
         return $this->plainPassword;
     }
@@ -348,7 +326,9 @@ protected ?string $gender = null;
 }
     /**
     * @return Collection<int, Lodging>
+
      */
+main
     public function getLodgings(): Collection
     {
         return $this->lodgings;
@@ -371,4 +351,6 @@ protected ?string $gender = null;
         }
         return $this;
     }
+
 }
+
