@@ -4,11 +4,64 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
-  <div class="row row-cols-3">
-    <div class="col">Column</div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
-  </div>
-</div>
-	{% endblock %}
+	<div class="Show-Guest-container">
+		<div
+			class="row row-cols-3">
+			{# 1er colonne #}
+			<div
+				class="col">
+				{# Cadre avatar #}
+				<div
+					class="row" id="cadre-avatar-shg">
+					{# Container pour diviser le cadre en 2 col #}
+					<div class="shg-container">
+						<div class="row row-cols-2">
+							<div class="col"><img src="images/Show Guest/Igmar_100x100.png" id="photo-igmar" alt="photo profil guest Igmar"></div>
+							<div class="col" id="shg-avis">
+                            <p>1</p>
+                            <p>témoignage</p>
+                            {# <hr class="h-3" id="shg-hr"> #}
+                            </div>
+							<div class="col" id="prez-guest">
+                                <p>Igmar</p>
+                                <img src="images/Show Guest/Médaille_SuperHote_.png" id="icone-superguest" alt="icone médaille de superguest">
+                                <p>Superguest</p>
+                            </div>
+							<div class="col"></div>
+						</div>
+					</div>
+				</div>
+				{# cadre verification #}
+				<div class="row" id="cadre-verification">
+                        <div class="row" id="shg-verif">Vérifications effectuées par Igmar </div>
+                        <div class="row" id="shg-verif">Identité</div>
+                        <div class="row" id="shg-verif">Adresse e-mail</div>
+                        <div class="row" id="shg-verif">Téléphone</div>
+                </div>
+				<div class="row"></div>
+			</div>
+			{# 2e colonne #}
+			<div class="col" id="shg-col-2">
+				<div class="row" id="apropos-shg">A propos de moi</div>
+				<div class="row">
+                <img src="images/Show Guest/carte_france_small_nobg.png" id="icon-france" alt="icone France">Grenoble</div>
+				{# Grande ligne horizontale à rajouter html/css #}
+				<div class="row" id="avis-shg">Témoignages pour Igmar</div>
+                <div class="cadre-avis-1">
+                <p id="shg-avis1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum error praesentium doloremque. A, praesentium ducimus quo excepturi laudantium saepe reprehenderit sapiente porro hic fuga quaerat fugit! Pariatur sequi molestiae quos.
+                </p>
+                </div>
+				<input id="shg-btn-contact" class="btn btn-primary" type="submit" value="Proposer votre hébergement">
+			</div>
+			{# 3e colonne #}
+			<div class="col">
+            <div class="row"></div>
+            <div class="row">
+            <p id="shg-Langues"><img src="images/Show Guest/Icone Langues xs.png" id="iconlg" alt="icon-bulles-langues">Langues parlées :</p>
+            <p class="shg-lg">- russe</p>
+            <p class="shg-lg">- anglais</p>
+            </div>
+            </div>
+		</div>
+	</div>
+{% endblock %}
