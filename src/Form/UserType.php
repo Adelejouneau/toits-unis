@@ -8,7 +8,9 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Vich\UploaderBundle\Entity\File;
 
 class UserType extends AbstractType
 {
@@ -26,7 +28,11 @@ class UserType extends AbstractType
                 'class' => 'App\Entity\Address',
             ])
             ->add('phoneUser')
-            ->add('imageNameUser')
+            ->remove('imageNameUser')
+            ->add('imageFile', FileType::class, [
+                'required' => false,
+                'label' => "Image de l'association",
+            ])
             ->remove('updatedAt')
             ->add('gender')
             ->add('description', CKEditorType::class)

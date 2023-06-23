@@ -10,4 +10,13 @@
 <a href="{{ path('app_lodging_show', { 'slugLod': lodging.slugLod }) }}" class="btn btn-primary">Envoyer une demande</a>
 
 
+<div class="card-body">
+<a href="{{ path('app_lodging_show', {slugLod: lodging.slugLod}) }}" class="text-dark">{{ lodging.titleLod }}Mettre en favoris</a>
+        {% if app.user is not null %} 
+        {% if lodging not in app.user.lodgings %}
+        <a href="{{ path('app_favori', {id: lodging.id }) }}" class="mt-3 btn btn-dark">Ajouter aux favoris</a>
+        {% endif %}
+        {% endif %}
+    </div>
+
 {% endblock %}
