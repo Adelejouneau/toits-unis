@@ -345,7 +345,7 @@ protected ?string $gender = null;
         $this->plainPassword = $plainPassword;
     }
 
-}
+    
     /**
     * @return Collection<int, Lodging>
      */
@@ -353,6 +353,7 @@ protected ?string $gender = null;
     {
         return $this->lodgings;
     }
+    
     public function addLodging(Lodging $lodging): static
     {
         if (!$this->lodgings->contains($lodging)) {
