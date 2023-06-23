@@ -39,7 +39,7 @@ class CompteGuestController extends AbstractController
 
         }
         return $this->render('compte_guest/index.html.twig', [
-            'controller_name' => 'CompteGuestController',
+            'form' => $form->createView(),
         ]);
     }
     #[Route('/add-favori/{id}', name: 'add_favori')]

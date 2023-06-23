@@ -358,6 +358,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     * @return Collection<int, Lodging>
 
      */
+
     public function getLodgings(): Collection
     {
         return $this->lodgings;
