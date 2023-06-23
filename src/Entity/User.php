@@ -323,7 +323,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->plainPassword = $plainPassword;
     }
 
-}
+    
     /**
     * @return Collection<int, Lodging>
 
@@ -333,6 +333,7 @@ main
     {
         return $this->lodgings;
     }
+    
     public function addLodging(Lodging $lodging): static
     {
         if (!$this->lodgings->contains($lodging)) {
