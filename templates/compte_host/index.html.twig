@@ -4,18 +4,26 @@
 
 {% block body %}
 <h1>Mon compte</h1>
+<section>
 <ul class="nav nav-tabs m-5" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes infos</button>
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes informations</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes logements</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes demandes</button>
     </li>
     <li class="nav-item" role="presentation">
         <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Mes favoris</button>
     </li>
 </ul>
+
+    {# Section mes informations personnelles #}
     <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
     <div class="col-12">
-    {# On affiche un formulaire #}
     {{form_start(registrationHostForm) }}
     {{form_widget(registrationHostForm) }}
     <button type="submit" class="btn btn-primary">Modifier</button>
@@ -23,29 +31,53 @@
     </div>
     </div>
 
-
+    {# Section mes logements #}
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-    <h2>Favoris</h2>
+    <h2>Mes logements</h2>
+    <section class="">
+        {# {{ form_start(Form) }} #}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(formLodging.titleLod) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(formLodging.descriptionLod) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(formLodging.category) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(formLodging.department) }}
+            </div>
+        </div>
+        </section>
+
+
+
+
+    {# <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    {% if app.user.guests|length > 0 %}
+    <ul>
+    {% for user in app.user.guests %}
+    <li>{{ guest.titre }} <a href="{{ path('remove_favori', { id : guest.id }) }}">Supprimer</a></li>
+    {% endfor %}
+    </ul>
+
+    {% else %}
+    <p>Vous n'avez pas de favoris pour le moment</p>
+    {% endif %}
+    </div>
 
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <h2>Mes logements</h2>
 
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-    <h2>Mes demandes</h2>
+    <h2>Mes demandes</h2> #}
 
     
-
-    {#Afficher les favoris  #}
-    {# {% if app.user.lodging|length > 0 %}
-    <ul>
-    {% for lodging in app.user.lodging %}
-    <li>{{lodging.titleLod }} <a href="{{ path ('remove_lodging', {id: lodging.id}) }}" >supprimé les favoris</a></li>
-    {% endfor %}
-    </ul>
-    {% else %}
-    <p>Vous n'avez aucun favori por l'instant</p>
-    {% endif %}
-    </div>
-    </div> #}
+</section>
 {% endblock %}
 
