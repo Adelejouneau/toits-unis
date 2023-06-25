@@ -4,6 +4,10 @@
 
 <div class="container-lg py-4">
 <h1 class="my-5 text-center"><i data-feather="film"></i> Nos derniers logements <i data-feather="film"></i></h1>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+
 <div class="row d-flex justify-content-center">
     {% for lodging in lodgings %}
     <div class="col-12 col-md-4 mb-3">
@@ -14,7 +18,7 @@
                 {% else %}
                 <img src="{{ asset('/images/lodgings/placeholder.png') }}" class="img-fluid" alt="{{ lodging.titleLod }}">
                 {% endif %}
-                {# {% if lodging not in app.user.lodgings %}
+                 {# {% if lodging not in app.user.lodgings %}
                 <a href="{{ path('add_favori', {id:lodging.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                     <i data-feather="star" class="text-danger"></i>
                 </a>
@@ -26,16 +30,15 @@
             </div>
                 <div class="card-body">
                 <h5 class="card-title">{{ lodging.titleLod }}</h5>
-
+               
                 <a href="{{ path('app_lodging_show', { slugLod: lodging.slugLod }) }}" class="btn btn-primary ">voir plus </a>
                 </div>
+                
+            
         </div>
-
-</div>
-
-    </div>
-
+   </div>
     {% endfor %}
 </div>
 </div>
 {% endblock %}
+

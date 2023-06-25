@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Lodging;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -14,7 +15,9 @@ class FilterHostAdressType extends AbstractType
     {
         $builder
             ->add('department')
+            //->add("all", CheckboxType::class, ["mapped"=>false, "required"=>false])
             ->add('Find', SubmitType::class)
+            ->add('Reset', SubmitType::class)
         ;
     }
 
