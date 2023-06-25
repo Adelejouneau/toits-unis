@@ -3,24 +3,14 @@
 Pour Omar 
 
 Points bloquants : 
-- Faire apparaitre les cards bootstrap sur la page lodging
-- Carger les fixtures qui ont des propriétés qui dérivent de relation ou d'héritage entre entités
-- Changer la taille de la police dans le css ou index.html, 
-- Front Bootstrap avoir une page type de site internet pour intégrer une image, un backgound, un carrousel, du texte ...
-- Comment faire une map interractive avec Symfony 
-- Comment faire une fonction qui envoie automatiquement un email avec les coordonnées au Guest et à l'Host suite à un match
+- Système de filtre des annonces selon 2 priorités : Nombre de personnes et Département. 
+- Mettre à jour automatiquement les annonces si quelqu'un souhaite réserver/proposer un hébergement
+- Créer une boucle/fonction qui récupère automatiquement les 3 dernières annonces postées pour les mettre en avant sur la page d'accueil
+- Système de capcha page contact
+- Ajouter un système de calendrier (type Calendy) qui se met automatiquement à jour en cas de réservation
+- Renvoi de mail directement vers l'onglet "Mes demandes" dans "mon profil" 
 
-Page contact
-- Adapter l'image !!!
-- Les display flex/grid... si y a, si histoire de colonnes sur boostrap ok, ça se trouve.
-- padding/margin autour de mes col, sur boostrap ça doit être les gutters (gouttières), je vais regarder.
-
-Page Qui sommes-nous ?
-- peut-être l'image aussi à adapter
-- la mise page, disposition pour les avatars de la partie Équipe
-
-Page Profil Guest
-- Les cadres avec le drop shadow peut-être
+Merci pour ton aide !! 
 
 
 Adèle 

@@ -39,28 +39,37 @@ class LodgingRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Lodging[] Returns an array of Lodging objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('l')
-//            ->andWhere('l.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('l.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Lodging
-//    {
-//        return $this->createQueryBuilder('l')
-//            ->andWhere('l.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findByDepartementId($propertyValue)
+    {
+        return $this->createQueryBuilder('l')
+            ->join('l.department', 'd') // Joining with the second entity (assuming the property name is "secondEntity")
+            ->andWhere('d.id = :value') // Filter the join based on the "property" value of the second entity
+            ->setParameter('value', $propertyValue)
+            ->getQuery()
+            ->getResult();
+    }
+    /**
+     * @return Lodging[] Returns an array of Lodging objects
+     */
+    public function findByDepartementId2($value): array
+    {
+        return $this->createQueryBuilder('l')
+            ->join('l.department', 'd')
+            ->where('d.codeDepartment = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findOneBySomeField($value): ?Lodging
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

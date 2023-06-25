@@ -28,11 +28,22 @@ class LodgingController extends AbstractController
     }
 
     #[Route('/lodging', name: 'app_lodging')]
-    public function index(LodgingRepository $lodgingRepository): Response
+    public function index(LodgingRepository $lodgingRepository, Request $request): Response
     {
-        $lodgings = $lodgingRepository->findAll();
+        //dd($request->request->get('filter_host_adress'));
+        if($request->request->get('filter_host_adress')['department'] != ""){
+            $lodgings = $lodgingRepository->findByDepartementId($request->request->get('filter_host_adress')['department']);
+        }else{
+            $lodgings = $lodgingRepository->findAll();
+        }
+        //dd($lodgings);
+        $filtered= new Lodging();
+
+        $form = $this->createForm(FilterHostAdressType::class, $filtered);
+
         return $this->render('lodging/index.html.twig', [
             'lodgings' => $lodgings,
+            "form"=>$form->createView(),
         ]);
     }
 
@@ -83,11 +94,11 @@ class LodgingController extends AbstractController
         
     }
 
-    #[Route('/lodging/recherche_Adresse', name: 'app_lodging_filterShow')]
+    #[Route('/lodging/recherche-adresse', name: 'app_lodging_filterShow')]
     public function guestAdresseFilter(Request $request)
     {
         // $guestReq='';
-        $filtered= new Lodging;
+        $filtered= new Lodging();
 
         $form = $this->createForm(FilterHostAdressType::class, $filtered);
 
