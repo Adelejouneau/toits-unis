@@ -8,9 +8,7 @@ use App\Entity\Lodging;
 use App\Form\FilterHostAdressType;
 use App\Repository\LodgingRepository;
 use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Lodging;
 use Symfony\Component\Mime\Address;
-use App\Repository\LodgingRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -110,7 +108,6 @@ class LodgingController extends AbstractController
 
 
             return $this->render('lodging/filterLodging.html.twig', [
-                
                 ]);  
         }
         
