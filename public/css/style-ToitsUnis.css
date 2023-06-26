@@ -14,6 +14,12 @@ body{
 .color-logo{
     color:#FFF0BD
 }
+.nav_logo {
+    display: flex;
+    align-items: center;
+    color: #f78f52;
+}
+
 
 #navbarNav{
     color:#FFF0BD !important;
@@ -22,6 +28,13 @@ body{
 .navbarColor{
     color: #FFF0BD !important;
 }
+.navbarColor:hover {
+    background-color: #FFF0BD !important;
+    color: #124367 !important;
+    border-radius: 20px;
+    padding: 5px;
+}
+
 
 
 
@@ -631,7 +644,9 @@ footer {
 .qsn-wrap-equipe {
     padding-bottom: 50px;
 }
-
+.link_orange {
+    color: #F78F52!important;
+}
 
 /* page login */
 
