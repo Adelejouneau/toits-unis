@@ -6,11 +6,13 @@
 
 <div class="banniere-home mx-0 mb-5">
     <h2 class="text-center titrehebergement  mx-auto" >Réseau d’hébergements solidaires pour créer du lien et reconstruire des vies</h2>
-    <img src="{{ asset('/images/home/vecteur1pageacceuil.jpg') }}" class="img-fluid" alt="banniere-home" style="max-width:30%;">
+    <img src="{{ asset('/images/home/vecteur1pageacceuil.png') }}" class="img-fluid" alt="banniere-home" style="max-width:30%;">
 </div>
 
-<div class="class-margin">
+{# <div class="class-margin">
     <h2 class="text-center titre-orange mb-3" >Nos dernières annonces</h2>
+
+
 
     <div class="row m-0 p-0 justify-content-center">
 
@@ -45,82 +47,132 @@
         </div>
     </div>
 
-</div>
+</div> #}
 
+<div class="row d-flex justify-content-center">
+    {% for lodging in lodgings %}
 
-<div class="text-center w-80 quisommenous m-5">
-    <h2 class="titre-bleu">Qui sommes-nous ?</h2>
-    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.</p>
-    <a href="#" class="btn btn-bleu">En savoir plus</a>
-</div>
-
-<div class="m-auto text-center w-100">
-    <img src="{{ asset('/images/home/ccgroupe.jpg') }}" class="text-center w-75" alt="image accueil groupe">
-</div>
-
-
-<div class="row m-5 gap-5">
-
-    <div class="col-12">
-        <div class="d-flex flex-row col-12 gap-4 justify-content-center align-items-center"> 
-            <div class="text-center">
-                <h4 class="card-title titre-orange">Devenir hote</h4>
-                <p class="card-text text-start"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
-                <button type="submit" class="btn btn-orange ">Accueillir</button>
+        <div class="col-12 col-md-4 col-xl-3 m-3"> 
+            <div class="card shadow">
+                <img src="{{ asset('/images/lodgings/' ~ lodging.imageNameLod) }}" class="card-img-top" alt="{{lodging.titleLod}}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{lodging.titleLod}}</h5>
+                    <a href="{{ path('app_lodging_show', { slugLod: lodging.slugLod }) }}" class="btn btn-bleu">En savoir plus</a>
+                    
+                    
+                </div> 
             </div>
-            <img src="{{ asset('/images/home/accueil.jpg') }}" class="imageHome rounded" alt="accueil-porte">
-        </div>
-    </div>
+        </div> 
 
-    <div class="col-12">
-        <div class="d-flex flex-row col-12 gap-4 justify-content-center align-items-center">
-            <img src="{{ asset('/images/home/accueilli.jpg') }}" class="imageHome rounded" alt="accueil">
-            <div class="text-center">
-                <h4 class="card-title titre-bleu">Rejoindre le réseau de guest</h4>
-                <p class="card-text text-start"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>     
-                <button type="submit" class="btn btn-bleu ">Rencontrer les associations partenaires</button>
+    {% endfor %}
+
+    <div class="container m-4">
+        <div class="text-center w-80 quisommenous m-5">
+            <h2 class="titre-bleu">Qui sommes-nous ?</h2>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.</p>
+            <a href="{{path('app_qui_sommes_nous') }}" class="btn btn-bleu">En savoir plus</a>
+        </div>
+
+        <div class="m-auto text-center w-100">
+            <img src="{{ asset('/images/home/ccgroupe.jpg') }}" class="text-center w-75" alt="image accueil groupe">
+        </div>
+
+
+        <div class="row m-5 gap-5">
+
+            <div class="col-12">
+                <div class="d-flex flex-row col-12 gap-4 justify-content-center align-items-center"> 
+                    <div class="text-center">
+                        <h4 class="card-title titre-orange">Devenir hote</h4>
+                        <p class="card-text text-start"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
+                        <a class=" btn btn-bleu" aria-current="page" href="{{path('app_comment_ca_marche_host') }}">Accueillir</a>
+                    </div>
+                    <img src="{{ asset('/images/home/accueil.jpg') }}" class="imageHome rounded" alt="accueil-porte">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="d-flex flex-row col-12 gap-4 justify-content-center align-items-center">
+                    <img src="{{ asset('/images/home/accueilli.jpg') }}" class="imageHome rounded" alt="accueil">
+                    <div class="text-center">
+                        <h4 class="card-title titre-bleu">Rejoindre le réseau de guest</h4>
+                        <p class="card-text text-start"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>     
+                        <a class="btn btn-bleu" href="{{ path('app_comment_ca_marche') }}">Rencontrer les associations partenaires</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="col">
+            <div class="card-soutenir d-flex flex-column text-center p-5">
+                <h3 class="titre-jaune mb-3">Comment nous soutenir?</h3>
+                <p class="text-align-right" id="text-soutenir"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
+                <div><img src="{{ asset('images/home/ensemblededos.jpg') }}" class="img-soutenir w-50" alt="image personnes"></div>
+                <div><button class="btn btn-jaune mt-3"><a href="https://www.helloasso.com/associations/toits-unis?_ga=2.223283035.1982753044.1687356120-1594343388.1687356120&_gac=1.14757188.1687356120.CjwKCAjwv8qkBhAnEiwAkY-ahs9BVRoxQF7fgNYwaAJFFN36M48WKtwYGPrK8735bVVPst2OZc0F1xoCvG4QAvD_BwE&_gl=1%2a157nq1g%2a_ga%2aMTU5NDM0MzM4OC4xNjg3MzU2MTIw%2a_ga_TKC826G3G2%2aMTY4NzQyMjQ4Ni41LjEuMTY4NzQyMjUxNS4zMS4wLjA.">Faire un don</button></div>
+            </div>  
+        </div>
+
+
+        <div class="row my-5 mx-2">
+            <div class="col-12">
+                <div class="card bg-light me-5 mb-5 p-2"> 
+                    <h4 class="card-title titre-bleu-clair">Témoignage  d’un host</h4>
+                    <p class="card-text text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
+                </div>
+
+                <div class="card bg-light ms-5 p-2"> 
+                    <h4 class="card-title avis2-bleu-clair">Témoignage  d’un invité</h4>
+                    <p class="card-text text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
+                </div>
             </div>
         </div>
-    </div>
-
-</div>
 
 
+        {# <h2 class="titre-orange mb-3 text-center" >Les associations partenaires</h2>
+        <div class="sponsors-logo mb-5" >
+            <img src="{{ asset('/images/asso/logo-utopia.png') }}" class="sponsor-logo"  alt=" ">
+            <img src="{{ asset('images/asso/logo_aurore.png') }}" class="sponsor-logo" alt=" ">
+            <img src="{{ asset('/images/asso/logo-samusocial.jpg') }}" class="sponsor-logo"alt=" ">
+            <img src="{{ asset('/images/asso/abbépierre-logo.png') }}" class="sponsor-logo" alt=" ">
+            <img src="{{ asset('/images/asso/logo-ftda.png') }}"  class="sponsor-logo"alt=" ">
+        </div>   #}
 
-<div class="col">
-    <div class="card-soutenir d-flex flex-column text-center p-5">
-        <h3 class="titre-jaune mb-3">Comment nous soutenir?</h3>
-        <p class="text-align-right" id="text-soutenir"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
-        <div><img src="{{ asset('images/home/ensemblededos.jpg') }}" class="img-soutenir w-75" alt="image personnes"></div>
-        <div><button class="btn btn-jaune mt-3"><a href="https://www.helloasso.com/associations/toits-unis?_ga=2.223283035.1982753044.1687356120-1594343388.1687356120&_gac=1.14757188.1687356120.CjwKCAjwv8qkBhAnEiwAkY-ahs9BVRoxQF7fgNYwaAJFFN36M48WKtwYGPrK8735bVVPst2OZc0F1xoCvG4QAvD_BwE&_gl=1%2a157nq1g%2a_ga%2aMTU5NDM0MzM4OC4xNjg3MzU2MTIw%2a_ga_TKC826G3G2%2aMTY4NzQyMjQ4Ni41LjEuMTY4NzQyMjUxNS4zMS4wLjA.">Faire un don</button></div>
-    </div>  
-</div>
-
-
-<div class="row my-5 mx-2">
-    <div class="col-12">
-        <div class="card bg-light me-5 mb-5 p-2"> 
-            <h4 class="card-title titre-bleu-clair">Témoignage  d’un host</h4>
-            <p class="card-text text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                     {% for association in associations %}
+                    <div class="lc-block">
+                        <div id="carouselLogos" class="carousel stide pt-5 pb-4" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-items-active">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-2 align-self-center">
+                                            <img class="d-block w-100 px-3 mb-3" src="{{ asset('/images/asso/' ~ association.imageNameAsso) }} " alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            {% endfor %} 
         </div>
 
-        <div class="card bg-light ms-5 p-2"> 
-            <h4 class="card-title titre-bleu-clair">Témoignage  d’un invité</h4>
-            <p class="card-text text-align-left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
-        </div>
-    </div>
-</div>
 
+        {# <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for association in associations %}
+            <div class="col">
+                <div class="card w-25">
+                    <img src="{{ asset('/images/asso/' ~ association.imageNameAsso) }} " class="card-img-top" alt="logo association">
 
-<h2 class="titre-orange mb-3 text-center" >Les associations partenaires</h2>
-<div class="sponsors-logo mb-5" >
-    <img src="{{ asset('/images/asso/logo-utopia.png') }}" class="sponsor-logo"  alt=" ">
-    <img src="{{ asset('images/asso/logo_aurore.png') }}" class="sponsor-logo" alt=" ">
-    <img src="{{ asset('/images/asso/logo-samusocial.jpg') }}" class="sponsor-logo"alt=" ">
-    <img src="{{ asset('/images/asso/abbépierre-logo.png') }}" class="sponsor-logo" alt=" ">
-    <img src="{{ asset('/images/asso/logo-ftda.png') }}"  class="sponsor-logo"alt=" ">
-</div>  
-
-
-</div>
+                </div>
+            </div>
+    {% endfor %}      
+        </div>        
+</div> #}
 {% endblock %}

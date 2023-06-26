@@ -23,6 +23,10 @@ body{
     color: #FFF0BD !important;
 }
 
+#nav-color{
+    color: #FFF0BD !important;
+}
+
 
 
 
@@ -49,10 +53,10 @@ body{
     justify-content: space-between !important;
 }
 
-a {
-   text-decoration: none;
-   color: #FFF0BD;
-   font-size: 14px;
+.footer-color {
+    text-decoration: none;
+    color: #FFF0BD;
+    font-size: 14px;
 }
 
 footer {
@@ -70,6 +74,10 @@ footer {
 
 .reso {
     width: 25px;
+}
+
+a{
+    text-decoration: none;  
 }
 
 
@@ -94,8 +102,8 @@ footer {
 .titrehebergement{
 
     color:#124367 ;
-    margin-bottom: 100px;
-    margin-top: 100px;
+    margin-bottom: 50px;
+    margin-top: 50px;
 
 }
 
@@ -136,7 +144,7 @@ footer {
     color: white !important;
 }
 
-.btn-bleu, .btn-orange:hover {
+.btn-bleu, .btn-orange {
     background-color:#124367;
     color:#FFF0BD;
     font-weight: bold;
@@ -150,7 +158,7 @@ footer {
 
 .btn-jaune {
     background-color:#FFF0BD;
-    color:#124367;
+    color:#124367 ;
     font-weight: bold;
 }
 
@@ -172,7 +180,15 @@ footer {
 .titre-bleu-clair {
     color: #6360D6;
     font-weight: bold;
+
 }
+
+.avis2-bleu-clair {
+    color: #6360D6;
+    font-weight: bold;
+    text-align: end;
+}
+
 
 .quisommenous{
     color: #124367 ;
@@ -780,4 +796,26 @@ footer {
     padding-left: 200px;
 }
 
+/* page lodging */
 
+#filtre-departement{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#filter_host_adress{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.box{
+    transition: 1s;
+}
+
+.box:hover{
+    transform: scale(1.1);
+    z-index:2;
+}
