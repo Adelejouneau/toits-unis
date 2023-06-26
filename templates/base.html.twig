@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 		<title>
 			{% block title %}Welcome!
 			{% endblock %}
@@ -18,19 +19,25 @@
     
   {# debut de la navbar #}
         <nav class="navbar navbar-expand-xl navbar-light text-center" style="background-color:  #124367;" "color:#FFF0BD;" >
+
         <div class="container-fluid d-flex align-items-center">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav d-flex mx-auto align-items-center justify-content-around w-100" id="nav-color">
-                <li class="nav-item mx-3">
+
+            <ul class="navbar-nav d-flex mx-auto align-items-center justify-content-around w-100">
+                <li class="nav-item mx-3 nav_logo">
+
                 <a class="nav-link d-flex flex-column align-items-center color-logo" aria-current="page" href="{{ path('app_home') }}">
                 <img src="/images/logo.png" alt="Logo" class="" width="100x100">
                 </a>
+                <h3>ToitsUnis</h3>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link d-flex flex-column align-items-center " aria-current="page" href="{{path('app_contact') }}">Contact</a>
+
+                    <a class="nav-link d-flex flex-column align-items-center navbarColor " aria-current="page" href="{{path('app_contact') }}">Contact</a>
+
                 </li>
                 <li class="nav-item mx-3">
                     <a class="nav-link d-flex flex-column align-items-center navbarColor" aria-current="page" href="{{path('app_qui_sommes_nous') }}">Qui sommes-nous ?</a>
@@ -78,8 +85,7 @@
 {# Footer #}
         <footer class="footer">
             <div class="container">
-                <div
-                    class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                     {# Colonne 1 - Logo #}
                     <div class="col">
                         <a href="{{ path('app_home') }}"><img src="images/logo.png" class="logo-small" alt="icone logo Toits Unis"></a>
