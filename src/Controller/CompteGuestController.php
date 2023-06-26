@@ -31,6 +31,7 @@ class CompteGuestController extends AbstractController
             $password = $encoder->hashPassword($user, $request->request->get('plainPassword'));
             $user->setPassword($password);
             }
+            
             //on me en place un msg flash
             $this->addFlash('success','Votre profil a bien été modifié');
             //on enregistre les modif

@@ -52,16 +52,7 @@ class LodgingRepository extends ServiceEntityRepository
     /**
      * @return Lodging[] Returns an array of Lodging objects
      */
-    public function findByDepartementId2($value): array
-    {
-        return $this->createQueryBuilder('l')
-            ->join('l.department', 'd')
-            ->where('d.codeDepartment = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    
 
     public function findOneBySomeField($value): ?Lodging
     {

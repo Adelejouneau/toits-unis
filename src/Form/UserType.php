@@ -7,10 +7,11 @@ use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Vich\UploaderBundle\Entity\File;
+
 
 class UserType extends AbstractType
 {
@@ -36,7 +37,16 @@ class UserType extends AbstractType
             ->remove('updatedAt')
             ->add('gender')
             ->add('description', CKEditorType::class)
-            // ->add('roles')
+            ->add('roles', ChoiceType::class, [
+                'choices' =>[
+                'utilisateur' => 'user',
+                'Guest' => 'guest',
+                'Host' => 'host'
+            ],
+                    'label' => 'Rôles',
+                    'required' => true,
+                    'mapped' => false,
+                   ] )
             // ->add('password')
             // ->add('isVerified')
         ;

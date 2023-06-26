@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GuestPageController extends AbstractController
 {
@@ -17,7 +19,7 @@ class GuestPageController extends AbstractController
     }
 
     #[Route('/guest/page/{slug}', name: 'app_guest_page_show')]
-    public function showGuest($slug, userRepository $userRepository):Response
+    public function showGuest($slug, UserRepository $userRepository):Response
     {
        //On récupère le lodging correspondant au slug
         $user = $userRepository->findOneBy(['slug' => $slug]);

@@ -31,11 +31,13 @@ class LodgingController extends AbstractController
     public function index(LodgingRepository $lodgingRepository, Request $request): Response
     {
         //dd($request->request->get('filter_host_adress'));
-        if($request->request->get('filter_host_adress')['department'] != ""){
-            $lodgings = $lodgingRepository->findByDepartementId($request->request->get('filter_host_adress')['department']);
-        }else{
+        $filteredAdress = $request->request->get('filter_host_adress');
+        if ($filteredAdress && isset($filteredAdress['department']) && $filteredAdress['department'] != "") {
+            $lodgings = $lodgingRepository->findByDepartementId($filteredAdress['department']);
+        } else {
             $lodgings = $lodgingRepository->findAll();
         }
+
         //dd($lodgings);
         $filtered= new Lodging();
 
@@ -81,9 +83,9 @@ class LodgingController extends AbstractController
                 'user' => $user,
                 'lodging' => $lodging,
                 'expiresAtMessageData' => [
-        'expiresAt' => '+2 hours',],
-        'hostProfileUrl' => $this->generateUrl('app_compte_host', [], UrlGeneratorInterface::ABSOLUTE_URL),
-            ]);
+                'expiresAt' => '+2 hours',],
+                'hostProfileUrl' => $this->generateUrl('app_compte_host', [], UrlGeneratorInterface::ABSOLUTE_URL),
+                    ]);
 
             
             
