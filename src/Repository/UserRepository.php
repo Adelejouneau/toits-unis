@@ -56,6 +56,21 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->save($user, true);
     }
 
+    public function index(UserRepository $userRepository): reponse
+{
+    $this->denyAccessUnlessGranted('ROLE_HOST');
+    
+    $users = $userRepository->createQueryBuilder('u')
+        ->andWhere(':role MEMBER OF u.roles')
+        ->setParameter('role', 'ROLE_HOST')
+        ->getQuery()
+        ->getResult();
+
+    return $this->render('guest_page/index.html.twig', [
+        'users' => $users,
+    ]);
+}
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

@@ -11,16 +11,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class GuestPageController extends AbstractController
 {
     #[Route('/guest/page', name: 'app_guest_page')]
-    public function index(): Response
+    public function index(UserRepository $userRepository): Response
     {
-        return $this->render('guest_page/index.html.twig', [
-            'controller_name' => 'GuestPageController',
-        ]);
-    }
+        // denyAccessUnlessGranted c'est pour choisir le role qui peut voir la page 
+        $this->denyAccessUnlessGranted('ROLE_HOST');
+        $users = $userRepository->findBy(['roles' => 'ROLE_HOST']);
+
+    return $this->render('guest_page/index.html.twig', [
+        'users' => $users,
+    ]);
+
+}
 
     #[Route('/guest/page/{slug}', name: 'app_guest_page_show')]
     public function showGuest($slug, UserRepository $userRepository):Response
     {
+        $this->denyAccessUnlessGranted('ROLE_HOST');
        //On récupère le lodging correspondant au slug
         $user = $userRepository->findOneBy(['slug' => $slug]);
        //On rend la page en lui passant le lodging
@@ -32,6 +38,7 @@ class GuestPageController extends AbstractController
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_HOST');
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
