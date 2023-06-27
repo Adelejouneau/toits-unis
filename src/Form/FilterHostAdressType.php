@@ -16,7 +16,7 @@ class FilterHostAdressType extends AbstractType
         $builder
             ->add('department')
             //->add("all", CheckboxType::class, ["mapped"=>false, "required"=>false])
-            ->add('Find', SubmitType::class)
+            ->add('Chercher', SubmitType::class)
             ->add('Reset', SubmitType::class)
         ;
     }

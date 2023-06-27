@@ -91,9 +91,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Lodging::class)]
     private Collection $lodgings;
 
+    #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'users')]
+    private Collection $guests;
+
+    #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'guests')]
+    private Collection $users;
+
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();
+        $this->guests = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -379,6 +387,57 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $lodging->setUser(null);
             }
         }
+        return $this;   
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getGuests(): Collection
+    {
+        return $this->guests;
+    }
+
+    public function addGuest(self $guest): static
+    {
+        if (!$this->guests->contains($guest)) {
+            $this->guests->add($guest);
+        }
+
+        return $this;
+    }
+
+    public function removeGuest(self $guest): static
+    {
+        $this->guests->removeElement($guest);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(self $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addGuest($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(self $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeGuest($this);
+        }
+
         return $this;
     }
 

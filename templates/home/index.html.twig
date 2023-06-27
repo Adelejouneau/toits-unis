@@ -140,39 +140,40 @@
             <img src="{{ asset('/images/asso/logo-ftda.png') }}"  class="sponsor-logo"alt=" ">
         </div>   #}
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                     {% for association in associations %}
-                    <div class="lc-block">
-                        <div id="carouselLogos" class="carousel stide pt-5 pb-4" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-items-active">
-                                    <div class="row">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="lc-block">
+                <div id="carouselLogos" class="carousel slide pt-5 pb-4 text-align" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% set batchSize = 5 %}
+                        {% set associationsBatched = associations|batch(batchSize) %}
+                        {% for i, batch in associationsBatched %}
+                            <div class="carousel-item{% if loop.first %} active{% endif %}">
+                                <div class="row">
+                                    {% for association in batch %}
                                         <div class="col-6 col-lg-2 align-self-center">
-                                            <img class="d-block w-100 px-3 mb-3" src="{{ asset('/images/asso/' ~ association.imageNameAsso) }} " alt="">
+                                            <img class="d-block w-100 px-3 mb-3" src="{{ asset('/images/asso/' ~ association.imageNameAsso) }}" alt="">
                                         </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                    
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselLogos" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselLogos" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
-            {% endfor %} 
         </div>
+    </div>
+</div>
 
 
-        {# <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for association in associations %}
-            <div class="col">
-                <div class="card w-25">
-                    <img src="{{ asset('/images/asso/' ~ association.imageNameAsso) }} " class="card-img-top" alt="logo association">
 
-                </div>
-            </div>
-    {% endfor %}      
-        </div>        
-</div> #}
 {% endblock %}
