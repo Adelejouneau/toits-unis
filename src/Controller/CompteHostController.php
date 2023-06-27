@@ -19,6 +19,7 @@ class CompteHostController extends AbstractController
     public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $encoder): Response
     {
 
+        $this->denyAccessUnlessGranted('ROLE_HOST');
          // On recupere l'utilisateur
         $user = $this->getUser();
         // On crée un formulaire avec les données de l'utilisateur
@@ -50,6 +51,7 @@ class CompteHostController extends AbstractController
     #[Route('/add-favori/{id}', name: 'add_favori')]
     public function addFavori($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
+        $this->denyAccessUnlessGranted('ROLE_HOST');
         //On r"cupère le logement dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
@@ -57,7 +59,7 @@ class CompteHostController extends AbstractController
         //On ajoute le logement à la liste des favoris de l'utilisateur
         $user->addLodging($lodging);
         //On met en place un msg flash
-        $this->addFlash('success','Le profil a bien été ajouter à vos favoris');
+        $this->addFlash('success','Le guest a bien été ajouter à vos favoris');
         //On enregistre les modifs
         $em->persist($user);
         $em->flush();
@@ -65,9 +67,10 @@ class CompteHostController extends AbstractController
         return $this->redirectToRoute('app_lodging');
     }
 
-    #[Route('/remove-user/{id}', name: 'remove_user')]
-    public function removeUser($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
+    #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
+    public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
+        $this->denyAccessUnlessGranted('ROLE_HOST');
         //On r"cupère la donnee dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
@@ -75,7 +78,7 @@ class CompteHostController extends AbstractController
         //On ajoute le lodging à la liste des favoris de l'utilisateur
         $user->removeLodging($lodging);
         //On met en place un msg flash
-        $this->addFlash('success','Le profil a bien été retirer à vos favoris');
+        $this->addFlash('success','Le guest a bien été retirer à vos favoris');
         //On enregistre les modifs
         $em->persist($user);
         $em->flush();

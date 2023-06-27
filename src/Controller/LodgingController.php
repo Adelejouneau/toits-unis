@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class LodgingController extends AbstractController
 {
@@ -30,6 +30,7 @@ class LodgingController extends AbstractController
     #[Route('/lodging', name: 'app_lodging')]
     public function index(LodgingRepository $lodgingRepository, Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_GUEST');
         //dd($request->request->get('filter_host_adress'));
         $filteredAdress = $request->request->get('filter_host_adress');
         if ($filteredAdress && isset($filteredAdress['department']) && $filteredAdress['department'] != "") {
@@ -54,7 +55,7 @@ class LodgingController extends AbstractController
     public function showLodg($slugLod, LodgingRepository $lodgingRepository):Response
 
     {
-        
+        $this->denyAccessUnlessGranted('ROLE_GUEST');
         // On récupère le lodging correspondant au slug
         $lodging = $lodgingRepository->findOneBy(['slugLod' => $slugLod]);
 
@@ -86,7 +87,6 @@ class LodgingController extends AbstractController
                 'expiresAt' => '+2 hours',],
                 'hostProfileUrl' => $this->generateUrl('app_compte_host', [], UrlGeneratorInterface::ABSOLUTE_URL),
                     ]);
-
             
             
             $this->mailer->send($email);
@@ -96,20 +96,20 @@ class LodgingController extends AbstractController
         
     }
 
-    #[Route('/lodging/recherche-adresse', name: 'app_lodging_filterShow')]
-    public function guestAdresseFilter(Request $request)
-    {
-        // $guestReq='';
-        $filtered= new Lodging();
+    // #[Route('/lodging/recherche-adresse', name: 'app_lodging_filterShow')]
+    // public function guestAdresseFilter(Request $request)
+    // {
+    //     // $guestReq='';
+    //     $filtered= new Lodging();
 
-        $form = $this->createForm(FilterHostAdressType::class, $filtered);
+    //     $form = $this->createForm(FilterHostAdressType::class, $filtered);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+    //     $form->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid()) {
         
 
-            $filtered = $form->getData();
-            dump($filtered->getDepartment());
+    //         $filtered = $form->getData();
+    //         dump($filtered->getDepartment());
             // die();
             //faire une requete qui permettra de recuperer tout les logements d'un departement
             //a partir de l'id du departement recuperé via le formulaire
@@ -120,14 +120,14 @@ class LodgingController extends AbstractController
             
 
 
-            return $this->render('lodging/filterLodging.html.twig', [
-                ]);  
-        }
+        //     return $this->render('lodging/filterLodging.html.twig', [
+        //         ]);  
+        // }
         
-        return $this->renderForm('lodging/filterLodging.html.twig',[
-            'form'=> $form,
-        ]);
+        // return $this->renderForm('lodging/filterLodging.html.twig',[
+        //     'form'=> $form,
+        // ]);
 
-    }
+    
 
 }

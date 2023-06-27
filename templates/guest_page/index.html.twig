@@ -8,8 +8,8 @@
 <div class="container-lg py-4">
 <h1 class="my-5 text-center"> Nos derniers arrivants </h1>
 <div class="row d-flex justify-content-center">
-    {% for user in users %}
-
+    {% for role in users.roles %}
+    {% if role == "ROLE_GUEST" %}
     <div class="col-12 col-md-4 mb-3">
         <div class="card shadow text-center">
 
@@ -29,18 +29,17 @@
                 </a>
                 {% endif %} #}
             </div>
-
-
-                <div class="card-body">
+            <div class="card-body">
                 <h5 class="card-title">{{ user.firstName }}</h5>
 
                 <a href="{{ path('app_user_show', { slugUser: user.slugUser }) }}" class="btn btn-primary ">voir plus </a>
-                </div>
+            </div>
                 
-            
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
+    
 </div>
 </div>
 {% endblock %}
