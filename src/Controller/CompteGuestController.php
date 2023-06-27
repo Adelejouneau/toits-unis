@@ -31,6 +31,7 @@ class CompteGuestController extends AbstractController
             $password = $encoder->hashPassword($user, $request->request->get('plainPassword'));
             $user->setPassword($password);
             }
+            
             //on me en place un msg flash
             $this->addFlash('success','Votre profil a bien été modifié');
             //on enregistre les modif
@@ -46,6 +47,7 @@ class CompteGuestController extends AbstractController
     public function addFavori($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
         //On récupère le logement dans la bdd
+        $this->denyAccessUnlessGranted('ROLE_GUEST');
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
         $user = $this->getUser();
@@ -61,8 +63,10 @@ class CompteGuestController extends AbstractController
     }
 
     #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
+    
     public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
+        $this->denyAccessUnlessGranted('ROLE_GUEST');
         //On récupère la donnee dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
