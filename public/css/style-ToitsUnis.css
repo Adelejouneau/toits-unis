@@ -592,6 +592,10 @@ a{
 .googlemaps {
     margin-top: 100px;
 }
+
+.adresse-toitsunis {
+    margin-top: 50px;
+}
     
 /* Bouton envoyer */
 #btncontact {
@@ -620,7 +624,7 @@ a{
     padding-top: 50px;
 }
 
-.astérix {
+.obélix {
     color: rgb(222, 28, 28);
     font-size: 25px;
     font-weight: bold;
@@ -628,6 +632,13 @@ a{
 
 .blueas {
     color: #6360D6;
+}
+
+/* Contact - Sur tous types d'écrans orientés verticalement */
+@media all and (max-width: 767px){
+
+
+
 }
 
 /*------------PAGE QUI SOMMES NOUS ?-----------*/
