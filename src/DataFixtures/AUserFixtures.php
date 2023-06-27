@@ -18,7 +18,7 @@ class AUserFixtures extends Fixture
 
 
     public const SIDIBE_BINTOU = 'sidibe-bintou';
-    public const SI_BACHIR_NASSIMA = 'si-bachir-nasisma';
+    public const SI_BACHIR_NASSIMA = 'si-bachir-nassima';
     public const DOE_JOHN = 'doe-john';
     public const SMITH_JANE = 'Smith-jane';
     public function load(ObjectManager $manager): void
