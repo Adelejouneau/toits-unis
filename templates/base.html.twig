@@ -17,7 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="./css/style-ToitsUnis.css"> {% block stylesheets %}{% endblock %}
 	</head>
     
-  {# debut de la navbar #}
+    {# debut de la navbar #}
         <nav class="navbar navbar-expand-xl navbar-light text-center" style="background-color:  #124367;" "color:#FFF0BD;" >
 
         <div class="container-fluid d-flex align-items-center">
@@ -45,13 +45,13 @@
                 <li class="nav-item mx-3">
                     <a class="nav-link d-flex flex-column align-items-center navbarColor" aria-current="page" href="{{path('app_comment_ca_marche_host') }}">Devenir Hôte</a>
                 </li>
-            {# <li class="nav-item mx-3">
-                <a class="nav-link d-flex flex-column align-items-center" href="{{path('app_category') }}">Catégories</a>
-            </li> #}
-            
-            {# <li class="nav-item mx-3">
-                <a class="nav-link d-flex flex-column align-items-center" href="{{ path('app_home') }}">Favoris</a>
-            </li> #}
+                {# <li class="nav-item mx-3">
+                    <a class="nav-link d-flex flex-column align-items-center" href="{{path('app_category') }}">Catégories</a>
+                </li> #}
+                
+                {# <li class="nav-item mx-3">
+                    <a class="nav-link d-flex flex-column align-items-center" href="{{ path('app_home') }}">Favoris</a>
+                </li> #}
             <li class="nav-item mx-3 d-lg-flex">
                 {%if app.user is not null%}
                 

@@ -74,12 +74,12 @@ class CompteHostController extends AbstractController
     {
         //On récupère le logement dans la bdd
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $user = $userRepository->find($id);
+        $guest = $userRepository->find($id);
         //on récupère l'utilisateur
         $user = $this->getUser();
         //On ajoute le logement à la liste des favoris de l'utilisateur
 
-        $user->addUser($user);
+        $user->addGuest($guest);
         //On met en place un msg flash
         $this->addFlash('success',"L'hébergement a bien été ajouté à vos favoris");
         //On enregistre les modifs
@@ -96,12 +96,12 @@ class CompteHostController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         //On récupère la donnee dans la bdd
-        $user = $userRepository->find($id);
+        $guest = $userRepository->find($id);
         //on récupère l'utilisateur
         $user = $this->getUser();
         //On ajoute le lodging à la liste des favoris de l'utilisateur
 
-        $user->removeUser($user);
+        $user->removeGuest($guest);
         //On met en place un msg flash
         $this->addFlash('success','Le logement a bien été retirer à vos favoris');
         //On enregistre les modifs
