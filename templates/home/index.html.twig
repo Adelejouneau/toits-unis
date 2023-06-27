@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %} 
+{% block title %}Home!{% endblock %} 
 
 {% block body %}
 
 <div class="banniere-home mx-0 mb-5">
     <h2 class="text-center titrehebergement  mx-auto" >Réseau d’hébergements solidaires pour créer du lien et reconstruire des vies</h2>
-    <img src="{{ asset('/images/home/vecteur1pageacceuil.png') }}" class="img-fluid" alt="banniere-home" style="max-width:30%;">
+    <img src="{{ asset('/images/home/vecteur1pageacceuil.png') }}" class="img-fluid banniereSize" alt="banniere-home">
 </div>
 
 {# <div class="class-margin">
@@ -58,8 +58,6 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">{{lodging.titleLod}}</h5>
                     <a href="{{ path('app_lodging_show', { slugLod: lodging.slugLod }) }}" class="btn btn-bleu">En savoir plus</a>
-                    
-                    
                 </div> 
             </div>
         </div> 
@@ -67,7 +65,7 @@
     {% endfor %}
 
     <div class="container m-4">
-        <div class="text-center w-80 quisommenous m-5">
+        <div class="text-center quisommenous m-5">
             <h2 class="titre-bleu">Qui sommes-nous ?</h2>
             <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia.</p>
             <a href="{{path('app_qui_sommes_nous') }}" class="btn btn-bleu">En savoir plus</a>
@@ -111,7 +109,7 @@
                 <h3 class="titre-jaune mb-3">Comment nous soutenir?</h3>
                 <p class="text-align-right" id="text-soutenir"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent risus justo, sodales a fringilla eget, cursus sit amet elit. Sed egestas tellus nisi, a suscipit arcu feugiat non. Mauris at dui a libero maximus dignissim. Aenean sed sem leo. Praesent non ante lacinia. </p>
                 <div><img src="{{ asset('images/home/ensemblededos.jpg') }}" class="img-soutenir w-50" alt="image personnes"></div>
-                <div><button class="btn btn-jaune mt-3"><a href="https://www.helloasso.com/associations/toits-unis?_ga=2.223283035.1982753044.1687356120-1594343388.1687356120&_gac=1.14757188.1687356120.CjwKCAjwv8qkBhAnEiwAkY-ahs9BVRoxQF7fgNYwaAJFFN36M48WKtwYGPrK8735bVVPst2OZc0F1xoCvG4QAvD_BwE&_gl=1%2a157nq1g%2a_ga%2aMTU5NDM0MzM4OC4xNjg3MzU2MTIw%2a_ga_TKC826G3G2%2aMTY4NzQyMjQ4Ni41LjEuMTY4NzQyMjUxNS4zMS4wLjA.">Faire un don</button></div>
+                <div><button class="btn btn-jaune mt-3"><a href="https://www.helloasso.com/associations/toits-unis?_ga=2.223283035.1982753044.1687356120-1594343388.1687356120&_gac=1.14757188.1687356120.CjwKCAjwv8qkBhAnEiwAkY-ahs9BVRoxQF7fgNYwaAJFFN36M48WKtwYGPrK8735bVVPst2OZc0F1xoCvG4QAvD_BwE&_gl=1%2a157nq1g%2a_ga%2aMTU5NDM0MzM4OC4xNjg3MzU2MTIw%2a_ga_TKC826G3G2%2aMTY4NzQyMjQ4Ni41LjEuMTY4NzQyMjUxNS4zMS4wLjA."target="_blank" >Faire un don</button></div>
             </div>  
         </div>
 
