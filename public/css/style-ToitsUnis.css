@@ -278,6 +278,7 @@ a{
         margin-bottom: 30px;
         gap :40px;
         justify-content: space-between;
+    
         
     }
     .color-card-guest{
@@ -290,6 +291,7 @@ a{
         height: 150px;
         display: flex;
         align-items: center;
+        justify-content:space-around;
     }
     .img-fonction-right{
         display: flex;
@@ -454,6 +456,7 @@ a{
         height: 150px;
         display: flex;
         align-items: center;
+        justify-content: space-around;
     }
     .info-host-end{
         display: flex;
@@ -479,7 +482,7 @@ a{
     }
 
  /* page compte profil Guest */
-    .size-imput{
+    /* .size-imput{
             width: 600px;
             display: flex;
             gap: 40px ;
@@ -566,7 +569,7 @@ a{
     .sousTitre-profil-guest{
         margin-bottom: 80px;
         margin-top: 100px;
-    }
+    } */
 
 
 /* page Contact */
@@ -605,6 +608,12 @@ a{
 }
 
 /*------------PAGE QUI SOMMES NOUS ?-----------*/
+
+.qsn-banner{
+    display: block;
+    text-align: center;
+}
+
 
 .qsn-container {
     padding-bottom: 25px !important;
@@ -692,6 +701,10 @@ a{
         width: 250px;
         text-align: center;
 
+}
+
+.titre-login{
+    padding-top: 30px;
 }
 
 /*-----------------SHOW GUEST----------------*/
@@ -834,3 +847,4 @@ a{
     transform: scale(1.1);
     z-index:2;
 }
+

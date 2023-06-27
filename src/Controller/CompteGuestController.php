@@ -47,7 +47,7 @@ class CompteGuestController extends AbstractController
     public function addFavori($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
         //On récupère le logement dans la bdd
-        $this->denyAccessUnlessGranted('ROLE_GUEST');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur
         $user = $this->getUser();
@@ -66,7 +66,7 @@ class CompteGuestController extends AbstractController
     
     public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
-        $this->denyAccessUnlessGranted('ROLE_GUEST');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         //On récupère la donnee dans la bdd
         $lodging = $lodgingRepository->find($id);
         //on récupère l'utilisateur

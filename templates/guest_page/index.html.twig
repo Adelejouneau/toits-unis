@@ -7,9 +7,52 @@
 
 <div class="container-lg py-4">
 <h1 class="my-5 text-center"> Nos derniers arrivants </h1>
+
 <div class="row d-flex justify-content-center">
-    {% for role in users.roles %}
-    {% if role == "ROLE_GUEST" %}
+    {% for user in users %}
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card shadow text-center box">
+            <div class="position-relative">
+                {% if user.imageNameUser is defined and user.imageNameUser is not null %}                
+                <img src="{{ asset('/images/guests/' ~ user.imageNameUser) }}" class="card-img-top" alt="{{ user.firstName }}">
+                {% else %}
+                <img src="{{ asset('/images/guests/placeholder.png') }}" class="img-fluid" alt="{{ user.firstName }}">
+                {% endif %}
+                {% if user not in app.user %}
+                <a href="{{ path('app_favori_guest', {id:user.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                    <i data-feather="star" class="text-danger"></i>
+                </a>
+                {% else %}
+                <a href="{{ path('remove_guest', {id:user.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                    <i data-feather="star" class="text-light"></i>
+                </a>
+                {% endif %}
+            </div>
+                <div class="card-body">
+                <h5 class="card-title">{{ user.firstName }}</h5>
+
+                <a href="{{ path('app_user_show', { id: user.id }) }}" class="btn btn-primary ">voir plus </a>
+                </div>
+                
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{# <div class="row d-flex justify-content-center">
+    {% for user in users %}
+
     <div class="col-12 col-md-4 mb-3">
         <div class="card shadow text-center">
 
@@ -19,7 +62,8 @@
                 {% else %}
                 <img src="{{ asset('/images/guests/placeholder.png') }}" class="img-fluid" alt="{{ user.firstName }}">
                 {% endif %}
-                {# {% if user not in app.user %}
+
+                {% if user not in app.user %}
                 <a href="{{ path('add_favori', {id:user.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                     <i data-feather="star" class="text-danger"></i>
                 </a>
@@ -27,20 +71,20 @@
                 <a href="{{ path('remove_user', {id:user.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                     <i data-feather="star" class="text-light"></i>
                 </a>
-                {% endif %} #}
+                {% endif %}
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ user.firstName }}</h5>
 
-                <a href="{{ path('app_user_show', { slugUser: user.slugUser }) }}" class="btn btn-primary ">voir plus </a>
+                <a href="{{ path('app_user_show', { id: user.id }) }}" class="btn btn-primary ">voir plus </a>
             </div>
-                
-            {% endif %}
+            {% else %}
+            <div>pas de guest</div>
             {% endfor %}
         </div>
     </div>
     
 </div>
-</div>
+</div> #}
 {% endblock %}
 
