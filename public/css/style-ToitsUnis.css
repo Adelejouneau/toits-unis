@@ -118,6 +118,10 @@ a{
     align-items: center; 
 }
 
+.banniereSize {
+    max-width:30%;
+}
+
 .titrehebergement{
 
     color:#124367 ;
@@ -179,6 +183,10 @@ a{
     background-color:#FFF0BD;
     color:#124367 ;
     font-weight: bold;
+}
+
+.btn-jaune a {
+    color:inherit;
 }
 
 .titre-bleu {
