@@ -66,6 +66,12 @@ body{
     justify-content: space-between !important;
 }
 
+.a-footer {
+   text-decoration: none;
+   color: #FFF0BD;
+   font-size: 14px;
+}
+
 .footer-color {
     text-decoration: none;
     color: #FFF0BD;
@@ -571,8 +577,7 @@ a{
         margin-top: 100px;
     } */
 
-
-/* page Contact */
+/*--------------------CONTACT-----------------*/
 #contact-title{
     /* font-size: 23px; */
 
@@ -584,6 +589,10 @@ a{
     margin: 50px 50px 50px 50px !important;
 }
 
+.googlemaps {
+    margin-top: 100px;
+}
+    
 /* Bouton envoyer */
 #btncontact {
     background-color: #124367;
@@ -605,6 +614,20 @@ a{
 
 .captcha {
     padding-top: 25px;
+}
+
+#contact-adresse {
+    padding-top: 50px;
+}
+
+.astérix {
+    color: rgb(222, 28, 28);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.blueas {
+    color: #6360D6;
 }
 
 /*------------PAGE QUI SOMMES NOUS ?-----------*/
@@ -669,6 +692,16 @@ a{
 .qsn-wrap-equipe {
     padding-bottom: 50px;
 }
+
+.qsn-banner {
+    display: flex;
+    justify-content: center;
+}
+
+.qsn-img {
+    width: 100vw;
+}
+    
 .link_orange {
     color: #F78F52!important;
 }

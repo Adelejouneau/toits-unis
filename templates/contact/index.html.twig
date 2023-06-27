@@ -4,34 +4,50 @@
 {% block body %}
 	<div class="contact-container">
 		<div class="row">
-			<div class="col-sm-5 col-md-6 " style="text-align:center">
-				<p>Nous sommes joignables
-					<br>par téléphone au 01.77.32.56.61
-					<br>ainsi que par email à
-					<a href="mailto:contact@toitsunis.org">contact@toitsunis.org</a>
-				</p>
-				<p>Toits unis
-					<br>15 rue Henri Chevreau
-															75020 Paris</p>
 				{# Google maps intégré #}
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.411929779011!2d2.386572075258653!3d48.869423299931654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66dec95f16a43%3A0x9dce95c1a3524b8e!2s15%20Rue%20Henri%20Chevreau%2C%2075020%20Paris!5e0!3m2!1sfr!2sfr!4v1686927668321!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.411929779011!2d2.386572075258653!3d48.869423299931654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66dec95f16a43%3A0x9dce95c1a3524b8e!2s15%20Rue%20Henri%20Chevreau%2C%2075020%20Paris!5e0!3m2!1sfr!2sfr!4v1686927668321!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="googlemaps"></iframe>
 			</div>
 			{# Formulaire contact #}
 			<div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
 				<div id="contact-title" style="text-align:center">
+{# Coordonnées #}
+				{# <div id="contact-adresse">
+								<p>Nous sommes joignables
+									<br>par téléphone au 01.77.32.56.61
+									<br>ainsi que par email à
+									<a href="mailto:contact@toitsunis.org">contact@toitsunis.org</a>
+								</p>
+								<p>Toits unis
+									<br>15 rue Henri Chevreau
+								</div>										75020 Paris</p> #}
+				<div id="contact-adresse">
+					<p>Nous sommes joignables
+						<br>par téléphone
+						<br>au 01.77.32.56.61
+						<br>ainsi que par email à
+						<br><a href="mailto:contact@toitsunis.org">contact@toitsunis.org</a>
+					</p>
+					<p>Toits unis
+						<br>15 rue Henri Chevreau 
+						<br>75020 Paris</p>
+				</div>
+		</div>
 					<h2>Formulaire de contact</h2>
-					<p>
-						L'astérisque « * » indique les champs nécessaires.</p>
+					
 				</div><br>
 				<p>
 					<label for="exampleFormControlInput1" class="form-label">
-						<strong>NOM Prénom *</strong>
+						<strong>NOM Prénom
+						<span class="astérix">*</span>
+					</strong>
 					</label>
 				</p>
 				<input type="email" class="form-control" id="contact-form" placeholder="NOM Prénom" required><br>
 				<p>
 					<label for="emailpgcontact" class="form-label">
-						<strong>Email *</strong>
+						<strong>Email<span class="astérix">
+							*</span>
+					</strong>
 					</label>
 				</p>
 				<input type="email" class="form-control" id="contact-form" placeholder="myemail@goodlife.com" required><br>
@@ -47,7 +63,9 @@
 				<textarea class="form-control" id="contact-form" rows="3" placeholder="Votre message..."></textarea><br>
 				<div class="form-check">
 					<p>
-						<strong>RGPD *</strong>
+						<strong>RGPD
+						<span class="astérix">*</span>
+					</strong>
 					</p>
 					{# checkbox #}
 					<input class="contact-form-check-input" type="checkbox" id="flexCheckDefault">
@@ -67,4 +85,4 @@
 			</div>
 		</div>
 	</div>
-</div>{% endblock %}
+</div></div>{% endblock %}

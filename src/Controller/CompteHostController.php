@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Form\UserType;
 use App\Entity\Address;
+use App\Entity\Lodging;
+use App\Form\LodgingType;
 use App\Repository\UserRepository;
 use App\Repository\LodgingRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,11 +44,29 @@ class CompteHostController extends AbstractController
 
 
         }
+
+    $lodging = new Lodging();
+    $formLodging = $this->createForm(LodgingType::class, $lodging);
+    $formLodging->handleRequest($request);
+
+    if ($formLodging->isSubmitted() && $formLodging->isValid()) {
+        // Traitement du formulaire de logement
+        $em->persist($lodging);
+        $em->flush();
+
+        // On met en place un message flash
+        $this->addFlash('success', 'Le logement a été ajouté avec succès');
+
+        // Redirection vers une autre page ou action
+        // ...
+    }
         return $this->render('compte_host/index.html.twig', [
             'registrationHostForm' => $registrationHostForm->createView(),
+            'formLodging' => $formLodging->createView(),
             'controller_name' => 'CompteHostController',
         ]);
     }
+
 
 
     #[Route('/add-favori/guest/{id}', name: 'app_favori_guest')]
@@ -58,12 +78,14 @@ class CompteHostController extends AbstractController
         //on récupère l'utilisateur
         $user = $this->getUser();
         //On ajoute le logement à la liste des favoris de l'utilisateur
+
         $user->addUser($user);
         //On met en place un msg flash
         $this->addFlash('success',"L'hébergement a bien été ajouté à vos favoris");
         //On enregistre les modifs
         $em->persist($user);
         $em->flush();
+
         //On redirige vers la page des logements
         return $this->redirectToRoute('app_compte_host');
     }
@@ -78,16 +100,17 @@ class CompteHostController extends AbstractController
         //on récupère l'utilisateur
         $user = $this->getUser();
         //On ajoute le lodging à la liste des favoris de l'utilisateur
+
         $user->removeUser($user);
         //On met en place un msg flash
         $this->addFlash('success','Le logement a bien été retirer à vos favoris');
         //On enregistre les modifs
         $em->persist($user);
         $em->flush();
-        //On redirige vers la page des lodging
-        return $this->redirectToRoute('app_compte_host');
-    }
 
+        //On redirige vers la page des guest
+        return $this->redirectToRoute('app_guest_page');
+    }
 
 
 }

@@ -1,0 +1,24 @@
+{# templates/compte_host/add_lodging.html.twig #}
+
+<h1>Ajouter un logement</h1>
+
+{{ form_start(formLodging) }}
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(formLodging.titleLod) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(formLodging.department) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(formLodging.category) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(formLodging.descriptionLod) }}
+        </div>
+    </div>
+
+    <button type="submit">Ajouter</button>

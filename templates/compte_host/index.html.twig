@@ -1,62 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Mon Compte Hôte{% endblock %}
 
 {% block body %}
 <h1>Mon compte</h1>
-<section>
-<ul class="nav nav-tabs m-5" id="myTab" role="tablist">
+<section class="cadre">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes informations</button>
+        <button class="nav-link active" id="profil-tab" data-bs-toggle="tab" data-bs-target="#profil-tab-pane" type="button" role="tab" aria-controls="profil-tab-pane" aria-selected="true">Mes informations</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes logements</button>
+        <button class="nav-link" id="lodging-tab" data-bs-toggle="tab" data-bs-target="#lodging-tab-pane" type="button" role="tab" aria-controls="lodging-tab-pane" aria-selected="false">Mes logements</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Mes demandes</button>
+        <button class="nav-link" id="ask-tab" data-bs-toggle="tab" data-bs-target="#ask-tab-pane" type="button" role="tab" aria-controls="ask-tab-pane" aria-selected="true">Mes demandes</button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Mes favoris</button>
+        <button class="nav-link" id="favori-tab" data-bs-toggle="tab" data-bs-target="#favori-tab-pane" type="button" role="tab" aria-controls="favori-tab-pane" aria-selected="false">Mes favoris</button>
     </li>
 </ul>
 
     {# Section mes informations personnelles #}
-    <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="profil-tab-pane" role="tabpanel" aria-labelledby="profil-tab" tabindex="0">
     <div class="col-12">
-    {{form_start(registrationHostForm) }}
-    {{form_widget(registrationHostForm) }}
-    <button type="submit" class="btn btn-primary">Modifier</button>
-    {{form_end(registrationHostForm) }}
+        {{form_start(registrationHostForm) }}
+        {{form_widget(registrationHostForm) }}
+        <button type="submit" class="btn btn-primary">Modifier</button>
+        {{form_end(registrationHostForm) }}
     </div>
     </div>
 
     {# Section mes logements #}
-    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-    <h2>Mes logements</h2>
-    <section class="">
-        {# {{ form_start(Form) }} #}
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_row(formLodging.titleLod) }}
-            </div>
-            <div class="col-md-6">
-                {{ form_row(formLodging.descriptionLod) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_row(formLodging.category) }}
-            </div>
-            <div class="col-md-6">
-                {{ form_row(formLodging.department) }}
-            </div>
-        </div>
-        </section>
+    <div class="tab-pane fade" id="lodging-tab-pane" role="tabpanel" aria-labelledby="lodging-tab" tabindex="0">
+    {# <a href="{{ path('app_mylodging') }}">Ajouter un logement</a> #}
 
 
+        {# <a href="{{ path('app_compte_host_mylodging') }}></a> #}
+        {{ include('compte_host/_mylodging.html.twig') }}
+    </div>
 
+</div>
+</section>
+
+{% endblock %}
 
     {# <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     {% if app.user.guests|length > 0 %}
@@ -76,8 +63,4 @@
 
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <h2>Mes demandes</h2> #}
-
-    
-</section>
-{% endblock %}
 
