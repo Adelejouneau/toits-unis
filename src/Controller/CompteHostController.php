@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Form\UserType;
 use App\Entity\Address;
+use App\Entity\Lodging;
+use App\Form\LodgingType;
 use App\Repository\UserRepository;
 use App\Repository\LodgingRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,48 +44,72 @@ class CompteHostController extends AbstractController
 
 
         }
+
+    $lodging = new Lodging();
+    $formLodging = $this->createForm(LodgingType::class, $lodging);
+    $formLodging->handleRequest($request);
+
+    if ($formLodging->isSubmitted() && $formLodging->isValid()) {
+        // Traitement du formulaire de logement
+        $em->persist($lodging);
+        $em->flush();
+
+        // On met en place un message flash
+        $this->addFlash('success', 'Le logement a été ajouté avec succès');
+
+        // Redirection vers une autre page ou action
+        // ...
+    }
         return $this->render('compte_host/index.html.twig', [
             'registrationHostForm' => $registrationHostForm->createView(),
+            'formLodging' => $formLodging->createView(),
             'controller_name' => 'CompteHostController',
         ]);
     }
 
-    #[Route('/add-favori/{id}', name: 'add_favori')]
-    public function addFavori($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
+
+
+    #[Route('/add-favori/guest/{id}', name: 'app_favori_guest')]
+    public function addFavGuest($id, UserRepository $userRepository, EntityManagerInterface $em ):Response
     {
-        $this->denyAccessUnlessGranted('ROLE_HOST');
-        //On r"cupère le logement dans la bdd
-        $lodging = $lodgingRepository->find($id);
+        //On récupère le logement dans la bdd
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $userRepository->find($id);
         //on récupère l'utilisateur
         $user = $this->getUser();
         //On ajoute le logement à la liste des favoris de l'utilisateur
-        $user->addLodging($lodging);
+
+        $user->addUser($user);
         //On met en place un msg flash
-        $this->addFlash('success','Le guest a bien été ajouter à vos favoris');
+        $this->addFlash('success',"L'hébergement a bien été ajouté à vos favoris");
         //On enregistre les modifs
         $em->persist($user);
         $em->flush();
-        //On redirige vers la page des livres
-        return $this->redirectToRoute('app_lodging');
+
+        //On redirige vers la page des logements
+        return $this->redirectToRoute('app_compte_host');
     }
 
-    #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
-    public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
+    #[Route('/remove-guest/{id}', name: 'remove_guest')]
+    
+    public function removeGuest($id, UserRepository $userRepository, EntityManagerInterface $em ):Response
     {
-        $this->denyAccessUnlessGranted('ROLE_HOST');
-        //On r"cupère la donnee dans la bdd
-        $lodging = $lodgingRepository->find($id);
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        //On récupère la donnee dans la bdd
+        $user = $userRepository->find($id);
         //on récupère l'utilisateur
         $user = $this->getUser();
         //On ajoute le lodging à la liste des favoris de l'utilisateur
-        $user->removeLodging($lodging);
+
+        $user->removeUser($user);
         //On met en place un msg flash
-        $this->addFlash('success','Le guest a bien été retirer à vos favoris');
+        $this->addFlash('success','Le logement a bien été retirer à vos favoris');
         //On enregistre les modifs
         $em->persist($user);
         $em->flush();
-        //On redirige vers la page des lodging
-        return $this->redirectToRoute('app_lodging');
+
+        //On redirige vers la page des guest
+        return $this->redirectToRoute('app_guest_page');
     }
 
 

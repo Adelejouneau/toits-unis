@@ -66,6 +66,12 @@ body{
     justify-content: space-between !important;
 }
 
+.a-footer {
+   text-decoration: none;
+   color: #FFF0BD;
+   font-size: 14px;
+}
+
 .footer-color {
     text-decoration: none;
     color: #FFF0BD;
@@ -286,6 +292,7 @@ a{
         margin-bottom: 30px;
         gap :40px;
         justify-content: space-between;
+    
         
     }
     .color-card-guest{
@@ -298,6 +305,7 @@ a{
         height: 150px;
         display: flex;
         align-items: center;
+        justify-content:space-around;
     }
     .img-fonction-right{
         display: flex;
@@ -462,6 +470,7 @@ a{
         height: 150px;
         display: flex;
         align-items: center;
+        justify-content: space-around;
     }
     .info-host-end{
         display: flex;
@@ -487,7 +496,7 @@ a{
     }
 
  /* page compte profil Guest */
-    .size-imput{
+    /* .size-imput{
             width: 600px;
             display: flex;
             gap: 40px ;
@@ -574,10 +583,9 @@ a{
     .sousTitre-profil-guest{
         margin-bottom: 80px;
         margin-top: 100px;
-    }
+    } */
 
-
-/* page Contact */
+/*--------------------CONTACT-----------------*/
 #contact-title{
     /* font-size: 23px; */
 
@@ -589,6 +597,14 @@ a{
     margin: 50px 50px 50px 50px !important;
 }
 
+.googlemaps {
+    margin-top: 100px;
+}
+
+.adresse-toitsunis {
+    margin-top: 50px;
+}
+    
 /* Bouton envoyer */
 #btncontact {
     background-color: #124367;
@@ -612,7 +628,34 @@ a{
     padding-top: 25px;
 }
 
+#contact-adresse {
+    padding-top: 50px;
+}
+
+.obélix {
+    color: rgb(222, 28, 28);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.blueas {
+    color: #6360D6;
+}
+
+/* Contact - Sur tous types d'écrans orientés verticalement */
+@media all and (max-width: 767px){
+
+
+
+}
+
 /*------------PAGE QUI SOMMES NOUS ?-----------*/
+
+.qsn-banner{
+    display: block;
+    text-align: center;
+}
+
 
 .qsn-container {
     padding-bottom: 25px !important;
@@ -668,6 +711,16 @@ a{
 .qsn-wrap-equipe {
     padding-bottom: 50px;
 }
+
+.qsn-banner {
+    display: flex;
+    justify-content: center;
+}
+
+.qsn-img {
+    width: 100vw;
+}
+    
 .link_orange {
     color: #F78F52!important;
 }
@@ -700,6 +753,10 @@ a{
         width: 250px;
         text-align: center;
 
+}
+
+.titre-login{
+    padding-top: 30px;
 }
 
 /*-----------------SHOW GUEST----------------*/
@@ -842,3 +899,4 @@ a{
     transform: scale(1.1);
     z-index:2;
 }
+
