@@ -34,9 +34,11 @@ class LodgingController extends AbstractController
         //dd($request->request->get('filter_host_adress'));
         $filteredAdress = $request->request->get('filter_host_adress');
         if ($filteredAdress && isset($filteredAdress['department']) && $filteredAdress['department'] != "") {
-            $lodgings = $lodgingRepository->findByDepartementId($filteredAdress['department']);
+
+        $lodgings = $lodgingRepository->findByDepartementId($filteredAdress['department']);
         } else {
-            $lodgings = $lodgingRepository->findAll();
+        $lodgings = $lodgingRepository->findAll();
+
         }
 
         //dd($lodgings);
