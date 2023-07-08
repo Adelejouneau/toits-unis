@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\UserType;
 use App\Entity\Address;
 use App\Entity\Lodging;
+use App\Entity\User;
 use App\Form\LodgingType;
 use App\Repository\UserRepository;
 use App\Repository\LodgingRepository;
@@ -20,16 +21,15 @@ class CompteHostController extends AbstractController
     #[Route('/compte/host', name: 'app_compte_host')]
     public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $encoder): Response
     {
-
         $this->denyAccessUnlessGranted('ROLE_HOST');
-         // On recupere l'utilisateur
+        // On récupère l'utilisateur connecté
         $user = $this->getUser();
         // On crée un formulaire avec les données de l'utilisateur
-        $registrationHostForm = $this->createForm(UserType::class, $user);
-        // 
-        $registrationHostForm->handleRequest($request);
+        $hostForm = $this->createForm(UserType::class, $user);
+        
+        $hostForm->handleRequest($request);
 
-        if($registrationHostForm->isSubmitted() && $registrationHostForm->isValid()){
+        if($hostForm->isSubmitted() && $hostForm->isValid()){
             // On verifie si l'utilisateur a changer de mot de passe
             if(!is_null($request->request->get('plainPassword'))){
             //On encode le nouveau password et on l'affecte au user
@@ -41,36 +41,18 @@ class CompteHostController extends AbstractController
             //on enregistre les modif
             $em->persist($user);
             $em->flush();
-
-
         }
 
-    $lodging = new Lodging();
-    $formLodging = $this->createForm(LodgingType::class, $lodging);
-    $formLodging->handleRequest($request);
 
-    if ($formLodging->isSubmitted() && $formLodging->isValid()) {
-        // Traitement du formulaire de logement
-        $em->persist($lodging);
-        $em->flush();
-
-        // On met en place un message flash
-        $this->addFlash('success', 'Le logement a été ajouté avec succès');
-
-        // Redirection vers une autre page ou action
-        // ...
-    }
         return $this->render('compte_host/index.html.twig', [
-            'registrationHostForm' => $registrationHostForm->createView(),
-            'formLodging' => $formLodging->createView(),
+            'hostForm' => $hostForm->createView(),
             'controller_name' => 'CompteHostController',
         ]);
     }
 
+    #[Route('/add-favori/{id}', name: 'add_favori')]
+    public function addFavori($id, UserRepository $userRepository, EntityManagerInterface $em ):Response
 
-
-    #[Route('/add-favori/guest/{id}', name: 'app_favori_guest')]
-    public function addFavGuest($id, UserRepository $userRepository, EntityManagerInterface $em ):Response
     {
         //On récupère le logement dans la bdd
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -86,31 +68,29 @@ class CompteHostController extends AbstractController
         $em->persist($user);
         $em->flush();
 
-        //On redirige vers la page des logements
-        return $this->redirectToRoute('app_compte_host');
-    }
-
-    #[Route('/remove-guest/{id}', name: 'remove_guest')]
+ #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
+    public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em, UserRepository $userRepository): Response
+{
+    $this->denyAccessUnlessGranted('ROLE_HOST');
     
-    public function removeGuest($id, UserRepository $userRepository, EntityManagerInterface $em ):Response
-    {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        //On récupère la donnee dans la bdd
-        $guest = $userRepository->find($id);
-        //on récupère l'utilisateur
-        $user = $this->getUser();
-        //On ajoute le lodging à la liste des favoris de l'utilisateur
-
-        $user->removeGuest($guest);
-        //On met en place un msg flash
-        $this->addFlash('success','Le logement a bien été retirer à vos favoris');
-        //On enregistre les modifs
-        $em->persist($user);
-        $em->flush();
-
-        //On redirige vers la page des guest
-        return $this->redirectToRoute('app_guest_page');
-    }
-
+    // On récupère l'utilisateur connecté
+    $hostUser = $this->getUser();
+    
+    // On récupère le guest à retirer des favoris
+    $guest = $userRepository->find($id);
+    
+    // On retire le guest de la liste des favoris de l'utilisateur connecté
+    $hostUser->removeUser($guest);
+    
+    // On enregistre les modifications
+    $em->persist($hostUser);
+    $em->flush();
+    
+    // On met en place un message flash
+    $this->addFlash('success', 'Le guest a bien été retiré de vos favoris');
+    
+    // On redirige vers la page des guests
+    return $this->redirectToRoute('app_guest_page');
+}
 
 }

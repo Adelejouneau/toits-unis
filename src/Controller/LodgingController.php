@@ -3,19 +3,20 @@
 namespace App\Controller;
 
 
-use App\Entity\Department;
 use App\Entity\Lodging;
+use App\Entity\Department;
 use App\Form\FilterHostAdressType;
-use App\Repository\LodgingRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mime\Address;
+use App\Repository\LodgingRepository;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LodgingController extends AbstractController
 {
@@ -31,7 +32,7 @@ class LodgingController extends AbstractController
     public function index(LodgingRepository $lodgingRepository, Request $request): Response
     {
         $this->denyAccessUnlessGranted('ROLE_GUEST');
-        //dd($request->request->get('filter_host_adress'));
+        //dd($request->request->get('filter_host_adress'));        
         $filteredAdress = $request->request->get('filter_host_adress');
         if ($filteredAdress && isset($filteredAdress['department']) && $filteredAdress['department'] != "") {
 
@@ -41,7 +42,6 @@ class LodgingController extends AbstractController
 
         }
 
-        //dd($lodgings);
         $filtered= new Lodging();
 
         $form = $this->createForm(FilterHostAdressType::class, $filtered);
@@ -98,6 +98,8 @@ class LodgingController extends AbstractController
         
     }
 
+}
+
     // #[Route('/lodging/recherche-adresse', name: 'app_lodging_filterShow')]
     // public function guestAdresseFilter(Request $request)
     // {
@@ -129,7 +131,3 @@ class LodgingController extends AbstractController
         // return $this->renderForm('lodging/filterLodging.html.twig',[
         //     'form'=> $form,
         // ]);
-
-    
-
-}

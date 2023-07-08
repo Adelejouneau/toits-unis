@@ -21,8 +21,9 @@ class LodgingType extends AbstractType
                 'required' => false,
                 'label' => "Télécharger des photos",
             ])
-            ->add('longitude')
-            ->add('latitude')
+            ->remove('user_id')
+            ->remove('longitude')
+            ->remove('latitude')
             ->remove('slugLod')
             ->add('titleLod')
             ->add('category', EntityType::class, [

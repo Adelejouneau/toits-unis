@@ -67,9 +67,9 @@ body{
 }
 
 .a-footer {
-   text-decoration: none;
-   color: #FFF0BD;
-   font-size: 14px;
+    text-decoration: none;
+    color: #FFF0BD;
+    font-size: 14px;
 }
 
 .footer-color {
@@ -99,9 +99,7 @@ a{
     text-decoration: none;  
 }
 
-
 /* début home page */
-
 
 /* .class-margin{
     margin-right: 30px;

@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use DateTimeImmutable;
 use App\Entity\Address;
-use ORM\MappedSuperclass;
+use App\Entity\Lodging;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
@@ -88,7 +88,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fonction = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Lodging::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Lodging::class, cascade: ["persist"])]
     private Collection $lodgings;
 
     #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'users')]
@@ -367,79 +367,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     * @return Collection<int, Lodging>
      */
     public function getLodgings(): Collection
-    {
-        return $this->lodgings;
-    }
-    
-    public function addLodging(Lodging $lodging): static
-    {
-        if (!$this->lodgings->contains($lodging)) {
-            $this->lodgings->add($lodging);
-            $lodging->setUser($this);
-        }
-        return $this;
-    }
-    public function removeLodging(Lodging $lodging): static
-    {
-        if ($this->lodgings->removeElement($lodging)) {
-            // set the owning side to null (unless already changed)
-            if ($lodging->getUser() === $this) {
-                $lodging->setUser(null);
-            }
-        }
-        return $this;   
-    }
-
-    /**
-     * @return Collection<int, self>
-     */
-    public function getGuests(): Collection
-    {
-        return $this->guests;
-    }
-
-    public function addGuest(self $guest): static
-    {
-        if (!$this->guests->contains($guest)) {
-            $this->guests->add($guest);
-        }
-
-        return $this;
-    }
-
-    public function removeGuest(self $guest): static
-    {
-        $this->guests->removeElement($guest);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, self>
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(self $user): static
-    {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->addGuest($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(self $user): static
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeGuest($this);
-        }
-
-        return $this;
-    }
-
+{
+    return $this->lodgings;
 }
 
+public function addLodging(Lodging $lodging): self
+{
+    if (!$this->lodgings->contains($lodging)) {
+        $this->lodgings[] = $lodging;
+        $lodging->setUser($this);
+    }
+    return $this;
+}
+
+public function removeLodging(Lodging $lodging): self
+{
+    if ($this->lodgings->removeElement($lodging)) {
+        // set the owning side to null (unless already changed)
+        if ($lodging->getUser() === $this) {
+            $lodging->setUser(null);
+        }
+    }
+
+    return $this;
+}
+
+}

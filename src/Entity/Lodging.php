@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\LodgingRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\LodgingRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: LodgingRepository::class)]
@@ -256,4 +257,12 @@ class Lodging
 
         return $this;
     }
+
+    public function createLodging(Request $request)
+{
+    $user = $this->getUser();
+    $lodging = new Lodging();
+    $lodging->setUser($user);
+
+}
 }

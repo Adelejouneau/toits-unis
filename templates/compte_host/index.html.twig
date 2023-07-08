@@ -3,84 +3,62 @@
 {% block title %}Mon Compte Hôte{% endblock %}
 
 {% block body %}
-    <h1>Mon compte</h1>
-    <section class="cadre">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="profil-tab" data-bs-toggle="tab" data-bs-target="#profil-tab-pane" type="button" role="tab" aria-controls="profil-tab-pane" aria-selected="true">Mes informations</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="lodging-tab" data-bs-toggle="tab" data-bs-target="#lodging-tab-pane" type="button" role="tab" aria-controls="lodging-tab-pane" aria-selected="false">Mes logements</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="ask-tab" data-bs-toggle="tab" data-bs-target="#ask-tab-pane" type="button" role="tab" aria-controls="ask-tab-pane" aria-selected="true">Mes demandes</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="favori-tab" data-bs-toggle="tab" data-bs-target="#favori-tab-pane" type="button" role="tab" aria-controls="favori-tab-pane" aria-selected="false">Mes favoris</button>
-            </li>
-        </ul>
+<h1>Mon compte</h1>
+<section class="cadre">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="profil-tab" data-bs-toggle="tab" data-bs-target="#profil-tab-pane" type="button" role="tab" aria-controls="profil-tab-pane" aria-selected="true">Mes informations</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="lodging-tab" data-bs-toggle="tab" data-bs-target="#lodging-tab-pane" type="button" role="tab" aria-controls="lodging-tab-pane" aria-selected="false">Mes logements</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="ask-tab" data-bs-toggle="tab" data-bs-target="#ask-tab-pane" type="button" role="tab" aria-controls="ask-tab-pane" aria-selected="true">Mes demandes</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="favori-tab" data-bs-toggle="tab" data-bs-target="#favori-tab-pane" type="button" role="tab" aria-controls="favori-tab-pane" aria-selected="false">Mes favoris</button>
+    </li>
+</ul>
+{{form_start(hostForm) }}
+    {# Section mes informations personnelles #}
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="profil-tab-pane" role="tabpanel" aria-labelledby="profil-tab" tabindex="0">
 
-        {# Section mes informations personnelles #}
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="profil-tab-pane" role="tabpanel" aria-labelledby="profil-tab" tabindex="0">
-                <div class="col-12">
-                    {{ form_start(registrationHostForm) }}
-                    {{ form_widget(registrationHostForm) }}
-                    <button type="submit" class="btn btn-primary">Modifier</button>
-                    {{ form_end(registrationHostForm) }}
-                </div>
-            </div>
+        <div class="col-12">
+        
+        {{form_row(hostForm.email) }}
+        {{form_row(hostForm.plainPassword) }}
+        {{form_row(hostForm.lastName) }}
+        {{form_row(hostForm.firstName) }}
+        {{form_row(hostForm.address) }}
+        {{form_row(hostForm.phoneUser) }}
+        {{form_row(hostForm.imageFile) }}
+        {{form_row(hostForm.gender) }}
+        {# {{form_row(hostForm.description) }} #}
+    </div>
+    </div>
 
-            {# Section mes logements #}
-            <div class="tab-pane fade" id="lodging-tab-pane" role="tabpanel" aria-labelledby="lodging-tab" tabindex="0">
-                {# <a href="{{ path('app_mylodging') }}">Ajouter un logement</a> #}
-
-                {# <a href="{{ path('app_compte_host_mylodging') }}"></a> #}
-                {{ include('compte_host/_mylodging.html.twig') }}
-            </div>
-
-            <div class="tab-pane fade" id="favori-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                <div class="container-lg py-4 m-auto">
-                    <h2 class="mb-3 text-center"> Mes favoris </h2>
-
-                    {% if app.user.guests|length > 0 %}
-                        <div class="row d-flex justify-content-center">
-                            {% for user in app.user.guests %}
-                                <div class="col-12 col-md-4 mb-3">
-                                    <div class="card shadow text-center box">
-                                        <div class="position-relative">
-                                            {% if user.imageNameUser is defined and user.imageNameUser is not null %}
-                                                <img src="{{ asset('/images/guests/' ~ user.imageNameUser) }}" class="card-img-top" alt="{{ user.firstName }}">
-                                            {% else %}
-                                                <img src="{{ asset('/images/guests/placeholder.png') }}" class="img-fluid" alt="{{ user.firstName }}">
-                                            {% endif %}
-                                            {% if user not in app.user.guests %}
-                                                <a href="{{ path('app_favori_guest', {id:user.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
-                                                    <i data-feather="star" class="text-danger"></i>
-                                                </a>
-                                            {% else %}
-                                                <a href="{{ path('remove_guest', {id:user.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
-                                                    <i data-feather="star" class="text-light"></i>
-                                                </a>
-                                            {% endif %}
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ user.firstName }}</h5>
-                                            <a href="{{ path('app_user_show', { id: user.id }) }}" class="btn btn-primary">voir plus</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        <p class="text-center">Vous n'avez aucun favori pour l'instant.</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </section>
-{% endblock %}
+    {# Section mes logements #}
+    <div class="tab-pane fade" id="lodging-tab-pane" role="tabpanel" aria-labelledby="lodging-tab" tabindex="0">
+    {# <a href="{{ path('app_mylodging') }}">Ajouter un logement</a> #}
+    {# {{form_row(hostForm.description) }} #}
+    <ul class="lodgings"
+        data-index="{{ hostForm.lodgings|length > 0 ? hostForm.lodgings|last.vars.name + 1 : 0 }}"
+        data-prototype="{{ form_widget(hostForm.lodgings.vars.prototype)|e('html_attr') }}">
+    </ul>
+    <button type="button" class="add_item_link btn btn-primary" data-collection-holder-class="lodgings">Ajouter un logement</button>
+        {# <a href="{{ path('app_compte_host_mylodging') }}></a> #}
+        {# {{ include('compte_host/_mylodging.html.twig') }} #}
+    </div>
+    <button type="submit" class="btn btn-primary">Modifier</button>
     
+
+</div>
+{{form_end(hostForm) }}
+</section>
+
+{% endblock %}
+
     {# <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     {% if app.user.guests|length > 0 %}
     <ul>
@@ -99,4 +77,30 @@
 
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <h2>Mes demandes</h2> #}
+{% block javascripts %}
+<script>
+const addFormToCollection = (e) => {
+  const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
 
+  const item = document.createElement('li');
+
+  item.innerHTML = collectionHolder
+    .dataset
+    .prototype
+    .replace(
+      /__name__/g,
+      collectionHolder.dataset.index
+    );
+
+  collectionHolder.appendChild(item);
+
+  collectionHolder.dataset.index++;
+};
+
+document
+  .querySelectorAll('.add_item_link')
+  .forEach(btn => {
+      btn.addEventListener("click", addFormToCollection)
+  });
+</script>
+{% endblock %}
