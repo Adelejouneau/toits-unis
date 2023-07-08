@@ -35,45 +35,7 @@
 
 <h1 class="text-center titre-profil-guest">Enregistrer un nouveau profil guest</h1>
 
-{# <form class="form-style">
-        <div class="form-row size-imput">
-    <div class="form-group col-md-6">
-        <label for="inputNom">Nom</label>
-        <input type="text" class="form-width" id="inputNom" placeholder="Nom">
-    </div>
-    <div class="form-group col-md-6">
-        <label for="inputPrenom">Prénom</label>
-        <input type="text" class="form-width" id="inputPrenom" placeholder="Prénom">
-    </div>
-    </div>
-    <div class="form-row size-imput size-imput">
-    <div class="form-group col-md-6">
-      <label for="inputDateNaissance">Date de naissance</label>
-      <input type="date" class="form-width" id="inputDateNaissance" placeholder="Date de naissance">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputEmail">Email</label>
-      <input type="email" class="form-width" id="inputEmail" placeholder="Email">
-    </div>
-  </div>
-  <div class="form-row size-imput size-imput">
-    <div class="form-group col-md-6">
-      <label for="inputTelephone">Numéro de téléphone</label>
-      <input type="tel" class="form-width" id="inputTelephone" placeholder="Numéro de téléphone">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputSituation">Situation professionnelle</label>
-      <input type="text" class="form-width" id="inputSituation" placeholder="Situation professionnelle">
-    </div>
-  </div>
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    J’ai lu et j’accepte les conditions générales d’utilisation *
-  </label>
-</div>
-  <button type="submit" class="btn" id="BtnSendGuest">Valider</button>
-</form> #}
+
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
@@ -87,10 +49,10 @@
     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
     <div class="container col-12 mx-5 w-5 rounded" id="profil-container">
     {#On affiche un formulaire #}
-      {{form_start(form) }}
-      {{ form_widget(form) }}
+        {{form_start(form) }}
+        {{ form_widget(form) }}
     <button type="submit" class="btn btn-primary">Modifier</button>
-    {{form_end(form) }}
+        {{form_end(form) }}
     </div>
     </div>
 
@@ -100,32 +62,51 @@
 
 </div>
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-    {% if app.user is not null and app.user.lodgings is not null and app.user.lodgings|length > 0 %}
-    <ul>
-    {% for livre in app.user.lodgings %}
-    <li>{{ lodging.titleLod }} <a href="{{ path('remove_favori', { id : lodging.id }) }}">Supprimer</a></li>
-    {% endfor %}
-    </ul>
 
-    {% else %}
-    <p>Vous n'avez pas de favoris pour le moment</p>
-    {% endif %}
-    </div>
+<div class="container-lg py-4 m-auto">
+        <h2 class="mb-3 text-center"> Mes favoris </h2>
 
+        {% if app.user.lodgings|length > 0 %}
+            <div class="row d-flex justify-content-center">
+
+            {% for lodging in app.user.lodgings %}
+                <div class="col-12 col-md-4 col-xl-3 mb-3"> 
+                    <div class="card shadow">
+
+                        <div class="position-relative">
+                            {% if  lodging.imageNameLod is defined and lodging.imageNameLod is not null  %}
+                            <img src="{{ asset('/images/lodgings/' ~ lodging.imageNameLod) }}" class="card-img-top" alt="{{lodging.titleLod}}">
+                            {% else %}
+                            <img src="{{ asset('/images/lodgings/placeholder.png') }}" class="img-fluid" alt="{{lodging.titleLod}}">
+                            {% endif %}
+                            
+                            <a href="{{ path ('remove_lodging', {id:lodging.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
+                            <i data-feather="star" class="text-light"></i>
+                            </a>
+                        </div>
+                        <div class="card-body text-center">
+                            <a href="{{ path ('app_lodging_show', { slugLod: lodging.slugLod }) }}" class="btn btn-primary">{{lodging.titleLod}}</a>
+                            <p class="card-text">{{lodging.descriptionLod}}</p>
+                        </div>
+
+                    </div> 
+                    {# fin de la card #}
+                </div>
+                {# fin de la div col-12 #}
+            {% endfor %}
+
+            </div>
+            {# fin de la div row  #}
+
+        {% else %}
+        <p class="text-center">Vous n'avez aucun favori pour l'instant.</p>
+
+        {% endif %}
+
+</div>
+
+    
 
 {% endblock %}
 
 
-
-    {#Afficher les favoris  #}
-    {# {% if app.user.lodging|length > 0 %}
-    <ul>
-    {% for lodging in app.user.lodging %}
-    <li>{{lodging.titleLod }} <a href="{{ path ('remove_lodging', {id: lodging.id}) }}" >supprimé les favoris</a></li>
-    {% endfor %}
-    </ul>
-    {% else %}
-    <p>Vous n'avez aucun favori por l'instant</p>
-    {% endif %}
-    </div>
-    </div> #}

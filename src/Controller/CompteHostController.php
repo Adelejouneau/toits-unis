@@ -52,24 +52,23 @@ class CompteHostController extends AbstractController
 
     #[Route('/add-favori/{id}', name: 'add_favori')]
     public function addFavori($id, UserRepository $userRepository, EntityManagerInterface $em ):Response
+
     {
-        $this->denyAccessUnlessGranted('ROLE_HOST');
-        //On r"cupère le logement dans la bdd
-        $user = $userRepository->find($id);
+        //On récupère le logement dans la bdd
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $guest = $userRepository->find($id);
         //on récupère l'utilisateur
         $user = $this->getUser();
-        //On ajoute le guest à la liste des favoris de l'utilisateur
-        $user->addUser($user);
+        //On ajoute le logement à la liste des favoris de l'utilisateur
+
+        $user->addGuest($guest);
         //On met en place un msg flash
-        $this->addFlash('success','Le guest a bien été ajouter à vos favoris');
+        $this->addFlash('success',"L'hébergement a bien été ajouté à vos favoris");
         //On enregistre les modifs
         $em->persist($user);
         $em->flush();
-        //On redirige vers la page des livres
-        return $this->redirectToRoute('app_guest');
-    }
 
-    #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
+ #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
     public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em, UserRepository $userRepository): Response
 {
     $this->denyAccessUnlessGranted('ROLE_HOST');

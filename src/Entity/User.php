@@ -91,10 +91,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Lodging::class, cascade: ["persist"])]
     private Collection $lodgings;
 
+    #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'users')]
+    private Collection $guests;
+
+    #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'guests')]
+    private Collection $users;
+
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();
-
+        $this->guests = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int

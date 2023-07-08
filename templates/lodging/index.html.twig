@@ -12,7 +12,7 @@
 {{ form_end(form) }}
 </div> #}
 
-<div class="row " id="filtre-departement">
+{# <div class="row " id="filtre-departement"> #}
     <div class="col">
         {{ form_start(form) }}
         {{ form_row(form.department) }}
@@ -22,7 +22,7 @@
         <!-- Ajoutez les autres champs du formulaire de la même manière -->
         {{ form_end(form) }}
     </div>
-</div>
+
 
 
         
@@ -37,7 +37,7 @@
                 {% else %}
                 <img src="{{ asset('/images/lodgings/placeholder.png') }}" class="img-fluid" alt="{{ lodging.titleLod }}">
                 {% endif %}
-                 {% if lodging not in app.user.lodgings %}
+                {% if lodging not in app.user.lodgings %}
                 <a href="{{ path('add_favori', {id:lodging.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                     <i data-feather="star" class="text-danger"></i>
                 </a>
@@ -49,13 +49,13 @@
             </div>
                 <div class="card-body">
                 <h5 class="card-title">{{ lodging.titleLod }}</h5>
-               
-                <a href="{{ path('app_lodging_show', { slugLod: lodging.slugLod }) }}" class="btn btn-primary ">voir plus </a>
+
+                <a href="{{ path('app_lodging_show', {   slugLod: lodging.slugLod }) }}" class="btn btn-primary ">voir plus </a>
                 </div>
                 
             
         </div>
-   </div>
+    </div>
     {% endfor %}
 </div>
 </div>
