@@ -2,6 +2,28 @@
 
 <h1>Ajouter un logement</h1>
 
+
+    {# <ul class="lodgings"
+        data-index="{{ formLodging.lodgings|length > 0 ? formLodging.lodgings|last.vars.name + 1 : 0 }}"
+        data-prototype="{{ form_widget(formLodging.lodgings.vars.prototype)|e('html_attr') }}">
+    </ul>
+
+    {{ form_start(formLodging) }}
+        {{ form_row(formLodging.descriptionLod) }}
+
+        <h3>Logements</h3>
+        <ul class="lodgings">
+            {% for lodging in formLodging.lodgings %}
+                <li>{{ form_row(lodging.name) }}</li>
+            {% endfor %}
+        </ul>
+
+    {{ form_row(formLodging.submit) }}
+    {{ form_end(formLodging) }} #}
+
+
+
+{# 
 {{ form_start(formLodging) }}
     <div class="row">
         <div class="col-md-6">
@@ -21,4 +43,4 @@
         </div>
     </div>
 
-    <button type="submit">Ajouter</button>
+    <button type="submit">Ajouter</button> #}

@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {% if app.user is not null %}
+    {# {% if app.user is not null %}
 
     <h3 class="mb-3 text-center"> Tu es déjà connecté.e avec l'adresse mail : {{ app.user.userIdentifier }}.
     <br>Tu peux déjà consulté les nouveauté!
@@ -25,8 +25,8 @@
             Tu es connecté.e avec l'adresse mail suivante :{{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
 
         </div>
-    {% endif %}
-    {% endif %}
+    {% endif %} #}
+    {# {% endif %} #}
 
         <h3 class="text-center mb-3">Pour profiter pleinement de nos nouveautés, veuillez-vous connecter.</h3>
 
