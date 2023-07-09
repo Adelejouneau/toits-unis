@@ -3,7 +3,6 @@
 namespace App\Entity;
 use DateTimeImmutable;
 
-use App\Entity\Address;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AssociationRepository;
@@ -48,8 +47,6 @@ class Association
     #[ORM\Column(length: 255)]
     private ?string $slugAsso = null;
 
-    #[ORM\ManyToOne(inversedBy: 'associations')]
-    private ?Address $address = null;
 
     public function getId(): ?int
     {
@@ -187,16 +184,4 @@ class Association
         return $this;
     }
 
-
-    public function getAddress(): ?Address
-    {
-        return $this->address;
-    }
-
-    public function setAddress(?Address $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
 }

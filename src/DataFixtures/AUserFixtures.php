@@ -30,11 +30,9 @@ class AUserFixtures extends Fixture
         $user->setPhoneUser('06.11.22.33.41');
         $user->setImageNameUser('/public/images/guests/profil1.jpg');
         $user->setUpdatedAt(new \DateTimeImmutable());
-        $user->setGender('feminin');
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
         $user->setIsVerified(true);
-        // $user->setAddress($this->getReference(AddressFixtures::CHARLES_DE_GAULLE_SAINT_HERBLAIN));
         $this->addReference(self::SIDIBE_BINTOU, $user);
 
         $manager->persist($user);
@@ -46,11 +44,9 @@ class AUserFixtures extends Fixture
         $user->setPhoneUser('06.11.22.33.43');
         $user->setImageNameUser('/public/images/guests/profil2.jpg');
         $user->setUpdatedAt(new \DateTimeImmutable());
-        $user->setGender('feminin');
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setRoles(['ROLE_USER']);
         $user->setIsVerified(true);
-        // $user->setAddress($this->getReference(AddressFixtures::DOCTEUR_EMILE_ROUX_NICE));
         $this->addReference(self::SI_BACHIR_NASSIMA, $user);
         $manager->persist($user);
 
@@ -62,7 +58,6 @@ class AUserFixtures extends Fixture
         $user->setPhoneUser('06.11.22.33.44');
         $user->setImageNameUser('/public/images/guests/profil3.jpg');
         $user->setUpdatedAt(new \DateTimeImmutable());
-        $user->setGender('feminin');
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setRoles(['ROLE_USER']);
         $this->addReference(self::DOE_JOHN, $user);
@@ -75,7 +70,6 @@ class AUserFixtures extends Fixture
         $user->setPhoneUser('06.11.22.33.42');
         $user->setImageNameUser('/public/images/guests/profil4.jpg');
         $user->setUpdatedAt(new \DateTimeImmutable());
-        $user->setGender('feminin');
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setRoles(['ROLE_USER']);
         $this->addReference(self::SMITH_JANE, $user);

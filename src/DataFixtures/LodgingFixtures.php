@@ -45,7 +45,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
         $lodging->setUser($user);
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(écrire l'adresse)));
         $manager->persist($lodging);
 
         $lodging = new Lodging();
@@ -57,7 +56,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE_PARTAGEE));
         $lodging->setUser($user);
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(écrire l'adresse)));
         $manager->persist($lodging);
 
         $lodging = new Lodging();
@@ -69,7 +67,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::COIN_CANAPE));
         $lodging->setUser($user);
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(écrire l'adresse)));
         $manager->persist($lodging);
 
         $lodging = new Lodging();
@@ -82,7 +79,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::ENTREPRISE));
         $lodging->setUser($user);
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(écrire l'adresse)));
         $manager->persist($lodging);
 
         $lodging = new Lodging();
@@ -104,7 +100,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
         $lodging->setUser($user);
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(écrire l'adresse)));
         $manager->persist($lodging);
 
         $lodging = new Lodging();
@@ -116,7 +111,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE_PARTAGEE));
         $lodging->setUser($user);
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(écrire l'adresse)));
         $manager->persist($lodging);
 
         $lodging = new Lodging();
@@ -128,7 +122,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::COIN_CANAPE));
         $lodging->setUser($user);
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(écrire l'adresse)));
         $manager->persist($lodging);
 
         $lodging = new Lodging();
@@ -141,7 +134,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::ENTREPRISE));
         $lodging->setUser($user);
         // $lodging->addDate($this->getReference(DateFixtures::20/10/23));
-        // $lodging->->setAddress($this->getReference(AddressFixtures::(écrire l'adresse)));
         $manager->persist($lodging);
 
         $manager->flush();

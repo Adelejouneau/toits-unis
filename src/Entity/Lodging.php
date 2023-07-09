@@ -44,8 +44,6 @@ class Lodging
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    #[ORM\ManyToMany(targetEntity: Date::class, inversedBy: 'lodgings')]
-    private Collection $date;
 
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
     private ?Department $department = null;
@@ -57,7 +55,6 @@ class Lodging
     public function __construct()
     {
         $this->matcheds = new ArrayCollection();
-        $this->date = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -180,29 +177,6 @@ class Lodging
         return $this;
     }
 
-    /**
-     * @return Collection<int, Date>
-     */
-    public function getDate(): Collection
-    {
-        return $this->date;
-    }
-
-    public function addDate(Date $date): static
-    {
-        if (!$this->date->contains($date)) {
-            $this->date->add($date);
-        }
-
-        return $this;
-    }
-
-    public function removeDate(Date $date): static
-    {
-        $this->date->removeElement($date);
-
-        return $this;
-    }
 
 
     public function getDepartment(): ?Department

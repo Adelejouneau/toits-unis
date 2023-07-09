@@ -32,10 +32,6 @@ class UserType extends AbstractType
             ->add('firstName', null, [
                 'label' => 'Prénom',
                 ])
-            ->add('address', EntityType::class, [
-                'class' => 'App\Entity\Address',
-                'label' => 'Addresse',
-            ])
             ->add('phoneUser', null, [
                 'label' => 'Numéro de téléphone',
                 ])
