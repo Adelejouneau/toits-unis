@@ -15,25 +15,30 @@ class LodgingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('descriptionLod', CKEditorType::class)
             ->remove('imageNameLod')
             ->add('imageFile', FileType::class, [
                 'required' => false,
                 'label' => "Télécharger des photos",
             ])
-            ->remove('user_id')
-            ->remove('longitude')
-            ->remove('latitude')
+            ->add('user_id')
             ->remove('slugLod')
-            ->add('titleLod')
+            ->add('titleLod',null,[
+                'label' => 'Titre de l\'annonce',
+                ])
+
             ->add('category', EntityType::class, [
                 'class' => 'App\Entity\Category',
                 'choice_label' => 'nameCat',
+                'label' => 'Catégorie d\'hébergement',
             ])
             ->add('department', EntityType::class, [
                 'class' => 'App\Entity\Department',
                 'choice_label' => 'nameDepartment',
+                'label' => 'Département',
             ])
+            ->add('descriptionLod', CKEditorType::class, [
+                'label' => 'Description de l\'hébergement',
+                ])
         ;
     }
 

@@ -30,11 +30,6 @@ class Lodging
     #[Vich\UploadableField(mapping: 'lodgings', fileNameProperty: 'imageNameLod')]
     private ?File $imageFile = null;
 
-    #[ORM\Column]
-    private ?float $longitude = null;
-
-    #[ORM\Column]
-    private ?float $latitude = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slugLod = null;
@@ -117,30 +112,6 @@ class Lodging
     public function getImageFile(): ?File
     {
         return $this->imageFile;
-    }
-
-    public function getLongitude(): ?float
-    {
-        return $this->longitude;
-    }
-
-    public function setLongitude(float $longitude): static
-    {
-        $this->longitude = $longitude;
-
-        return $this;
-    }
-
-    public function getLatitude(): ?float
-    {
-        return $this->latitude;
-    }
-
-    public function setLatitude(float $latitude): static
-    {
-        $this->latitude = $latitude;
-
-        return $this;
     }
 
     public function getSlugLod(): ?string

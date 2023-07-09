@@ -26,19 +26,25 @@ class UserType extends AbstractType
                 'mapped' => false,
                 'required'=>false,
                 ])
-            ->add('lastName')
-            ->add('firstName')
+            ->add('lastName', null, [
+                'label' => 'Nom',
+                ])
+            ->add('firstName', null, [
+                'label' => 'Prénom',
+                ])
             ->add('address', EntityType::class, [
                 'class' => 'App\Entity\Address',
+                'label' => 'Addresse',
             ])
-            ->add('phoneUser')
+            ->add('phoneUser', null, [
+                'label' => 'Numéro de téléphone',
+                ])
             ->remove('imageNameUser')
-            ->add('imageFile', FileType::class, [
+            ->remove('imageFile', FileType::class, [
                 'required' => false,
-                'label' => "Image de l'association",
+                'label' => "Photo de profil",
             ])
             ->remove('updatedAt')
-            ->add('gender')
             ->remove('description', CKEditorType::class)
             ->remove('roles', ChoiceType::class, [
                 'choices' =>[
@@ -54,7 +60,13 @@ class UserType extends AbstractType
             'entry_type' => LodgingType::class,
             'allow_add' => true,
             'label'=>false,
-        ]);
+        ])
+            ->add('entreprise', null, [
+                'label' => 'Entreprise (facultatif)',
+                ])
+            ->add('fonction', null, [
+                'label' => "Fonction dans l'entreprise (facultatif)",
+                ])
             // ->add('password')
             // ->add('isVerified')
         ;
