@@ -25,17 +25,27 @@
     <div class="tab-pane fade show active" id="profil-tab-pane" role="tabpanel" aria-labelledby="profil-tab" tabindex="0">
 
         <div class="col-12">
-        
-        {{form_row(hostForm.email) }}
-        {{form_row(hostForm.plainPassword) }}
-        {{form_row(hostForm.lastName) }}
-        {{form_row(hostForm.firstName) }}
-        {{form_row(hostForm.address) }}
-        {{form_row(hostForm.phoneUser) }}
-        {{form_row(hostForm.imageFile) }}
-        {{form_row(hostForm.gender) }}
-        {# {{form_row(hostForm.description) }} #}
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(hostForm.email) }}
+            {{ form_row(hostForm.lastName) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(hostForm.plainPassword) }}
+            {{ form_row(hostForm.firstName) }}
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(hostForm.address) }}
+            {{ form_row(hostForm.entreprise) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(hostForm.phoneUser) }}
+            {{ form_row(hostForm.fonction) }}
+        </div>
+    </div>
+</div>
     </div>
 
     {# Section mes logements #}
@@ -50,7 +60,7 @@
         {# <a href="{{ path('app_compte_host_mylodging') }}></a> #}
         {# {{ include('compte_host/_mylodging.html.twig') }} #}
     </div>
-    <button type="submit" class="btn btn-primary">Modifier</button>
+    <button type="submit" class="btn btn-primary">Valider</button>
     
 
 </div>
@@ -80,27 +90,27 @@
 {% block javascripts %}
 <script>
 const addFormToCollection = (e) => {
-  const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
 
-  const item = document.createElement('li');
+const item = document.createElement('li');
 
-  item.innerHTML = collectionHolder
+item.innerHTML = collectionHolder
     .dataset
     .prototype
     .replace(
-      /__name__/g,
-      collectionHolder.dataset.index
+    /__name__/g,
+    collectionHolder.dataset.index
     );
 
-  collectionHolder.appendChild(item);
+collectionHolder.appendChild(item);
 
-  collectionHolder.dataset.index++;
+collectionHolder.dataset.index++;
 };
 
 document
-  .querySelectorAll('.add_item_link')
-  .forEach(btn => {
-      btn.addEventListener("click", addFormToCollection)
-  });
+    .querySelectorAll('.add_item_link')
+    .forEach(btn => {
+    btn.addEventListener("click", addFormToCollection)
+});
 </script>
 {% endblock %}

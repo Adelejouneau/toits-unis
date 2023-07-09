@@ -67,9 +67,10 @@ class CompteHostController extends AbstractController
         //On enregistre les modifs
         $em->persist($user);
         $em->flush();
+    }
 
- #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
-    public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em, UserRepository $userRepository): Response
+#[Route('/remove-lodging/{id}', name: 'remove_lodging')]
+    private function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em, UserRepository $userRepository): Response
 {
     $this->denyAccessUnlessGranted('ROLE_HOST');
     
@@ -93,4 +94,4 @@ class CompteHostController extends AbstractController
     return $this->redirectToRoute('app_guest_page');
 }
 
-}
+    }
