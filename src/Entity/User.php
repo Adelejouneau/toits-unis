@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
-use App\Entity\Address;
 use App\Entity\Lodging;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -67,8 +66,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     protected ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'user')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Address $address = null;
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
@@ -266,16 +263,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAddress(): ?Address
-    {
-        return $this->address;
-    }
-
-    public function setAddress(?Address $address): static
-    {
-        $this->address = $address;
-        return $this;
-    }
+    
 
     public function isVerified(): bool
     {

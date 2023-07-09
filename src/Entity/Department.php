@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Address;
 use App\DataFixtures\AADepartmentFixtures;
 use App\Repository\DepartmentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -26,13 +25,10 @@ class Department
     #[ORM\OneToMany(mappedBy: 'department', targetEntity: Lodging::class)]
     private Collection $lodgings;
 
-    #[ORM\OneToMany(mappedBy: 'department', targetEntity: Address::class)]
-    private Collection $addresses;
 
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();
-        $this->addresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,35 +90,6 @@ class Department
         return $this;
     }
 
-/**
-     * @return Collection<int, Address>
-     */
-    public function getAddresses(): Collection
-    {
-        return $this->addresses;
-    }
-
-    public function addAddress(Address $address): self
-    {
-        if (!$this->addresses->contains($address)) {
-            $this->addresses->add($address);
-            $address->setDepartment($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAddress(Address $address): self
-    {
-        if ($this->addresses->removeElement($address)) {
-            // set the owning side to null (unless already changed)
-            if ($address->getDepartment() === $this) {
-                $address->setDepartment(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function __toString()
     {

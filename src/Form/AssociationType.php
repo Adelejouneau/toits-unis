@@ -32,13 +32,7 @@ class AssociationType extends AbstractType
             ->add('phoneNumberAsso')
             ->add('emailAsso')
             ->remove('slugAsso')
-            ->add('address', EntityType::class, [
-    'class' => 'App\Entity\Address',
-    'multiple' => false,
-    'expanded' => true,
-    'choice_label' => function (Address $address) {
-    }
-    ]);
+            ;
     }
     public function configureOptions(OptionsResolver $resolver): void
     {
