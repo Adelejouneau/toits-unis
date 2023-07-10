@@ -21,23 +21,89 @@ class AADepartmentFixtures extends Fixture
     public const AUBE='Aube';
     public const AUDE='Aude';
     public const AVEYRON='Aveyron';
+    public const BOUCHES_DU_RHONE='Bouches-du-Rhône';
+    public const CALVADOS='Calvados';
+    public const CANTAL='Cantal';
+    public const CHARENTE='Charente';
+    public const CHARENTE_MARITIME='Charente-Maritime';
+    public const CHER='Cher';
+    public const CORREZE='Corrèze';
+    public const COTE_DOR='Côte-dOr';
+    public const COTES_DARMOR='Côtes-dArmor';
+    public const CREUSE='Creuse';
+    public const DORDOGNE='Dordogne';
+    public const DOUBS='Doubs';
+    public const DROME='Drôme';
+    public const EURE='Eure';
+    public const EURE_ET_LOIR='Eure-et-Loir';
+    public const FINISTERE='Finistère';
+    public const GARD='Gard';
+    public const HAUTE_GARONNE='Haute-Garonne';
+    public const GERS='Gers';
+    public const GIRONDE='Gironde';
+    public const HERAULT='Hérault';
+    public const ILLE_ET_VILAINE='Ille-et-Vilaine';
+    public const INDRE='Indre';
+    public const INDRE_ET_LOIRE='Indre-et-Loire';
+    public const ISERE='Isère';
+    public const JURA='Jura';
+    public const LANDES='Landes';
+    public const LOIR_ET_CHER='Loir-et-Cher';
+    public const LOIRE='Loire';
+    public const HAUTE_LOIRE='Haute-Loire';
+    public const LOIRE_ATLANTIQUE='Loire-Atlantique';
+    public const LOIRET='Loiret';
+    public const LOT='Lot';
+    public const LOT_ET_GARONNE='Lot-et-Garonne';
+    public const LOZERE='Lozère';
+    public const MAINE_ET_LOIRE='Maine-et-Loire';
+    public const MANCHE='Manche';
+    public const MARNE='Marne';
+    public const HAUTE_MARNE='Haute-Marne';
+    public const MAYENNE='Mayenne';
+    public const MEURTHE_ET_MOSELLE='Meurthe-et-Moselle';
+    public const MEUSE='Meuse';
+    public const MORBIHAN='Morbihan';
+    public const MOSELLE='Moselle';
+    public const NIEVRE='Nièvre';
+    public const NORD='Nord';
+    public const OISE='Oise';
+    public const ORNE='Orne';
+    public const PAS_DE_CALAIS='Pas-de-Calais';
+    public const PUY_DE_DOME='Puy-de-Dôme';
+    public const PYRENEES_ATLANTIQUES='Pyrénées-Atlantiques';
+    public const HAUTES_PYRENEES='Hautes-Pyrénées';
+    public const PYRENEES_ORIENTALES='Pyrénées-Orientales';
+    public const BAS_RHIN='Bas-Rhin';
+    public const HAUT_RHIN='Haut-Rhin';
+    public const RHONE='Rhône';
+    public const HAUTE_SAONE='Haute-Saône';
+    public const SAONE_ET_LOIRE='Saône-et-Loire';
+    public const SARTHE='Sarthe';
+    public const SAVOIE='Savoie';
+    public const HAUTE_SAVOIE='Haute-Savoie';
     public const PARIS='Paris';
     public const SEINE_MARITIME='Seine-Maritime';
     public const SEINE_ET_MARNE='Seine-et-Marne';
     public const YVELINES='Yvelines';
     public const DEUX_SEVRES='Deux-Sèvres';
     public const SOMME='Somme';
+    public const TARN='Tarn';
+    public const TARN_ET_GARONNE='Tarn-et-Garonne';
+    public const VAR='Var';
+    public const VAUCLUSE='Vaucluse';
+    public const VENDEE='Vendée';
+    public const VIENNE='Vienne';
+    public const HAUTE_VIENNE='Haute-Vienne';
+    public const VOSGES='Vosges';
+    public const YONNE='Yonne';
+    public const TERRITOIRE_DE_BELFORT='Territoire de Belfort';
     public const ESSONNE='Essonne';
     public const HAUTS_DE_SEINE='Hauts-de-Seine';
     public const SEINE_ST_DENIS='Seine-St-Denis';
     public const VAL_DE_MARNE='Val-de-Marne';
     public const VAL_DOISE='Val-Doise';
-    public const GUADELOUPE='Guadeloupe';
-    public const MARTINIQUE='Martinique';
-    public const GUYANE='Guyane';
-    public const MAYOTTE='Mayotte';
-    public const LA_REUNION='La Réunion';
-    public const LOIRE_ATLANTIQUE='loire-atlantique';
+
 
     public function load(ObjectManager $manager): void
     {
@@ -115,9 +181,369 @@ class AADepartmentFixtures extends Fixture
         $manager->persist($department);
 
         $department = new Department();
-        $department->setNameDepartment("Loire Atlantique");
+        $department->setNameDepartment("Bouches-du-Rhône");
+        $department->setCodeDepartment("13");
+        $this->addReference(self:: BOUCHES_DU_RHONE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Calvados");
+        $department->setCodeDepartment("14");
+        $this->addReference(self:: CALVADOS, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Cantal");
+        $department->setCodeDepartment("15");
+        $this->addReference(self:: CANTAL, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Charente");
+        $department->setCodeDepartment("16");
+        $this->addReference(self:: CHARENTE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Charente-Maritime");
+        $department->setCodeDepartment("17");
+        $this->addReference(self:: CHARENTE_MARITIME, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Cher");
+        $department->setCodeDepartment("18");
+        $this->addReference(self:: CHER, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Corrèze");
+        $department->setCodeDepartment("19");
+        $this->addReference(self:: CORREZE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Côte-d'Or");
+        $department->setCodeDepartment("21");
+        $this->addReference(self:: COTE_DOR, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Côtes-d'Armor");
+        $department->setCodeDepartment("22");
+        $this->addReference(self:: COTES_DARMOR, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Creuse");
+        $department->setCodeDepartment("23");
+        $this->addReference(self:: CREUSE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Dordogne");
+        $department->setCodeDepartment("24");
+        $this->addReference(self:: DORDOGNE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Doubs");
+        $department->setCodeDepartment("25");
+        $this->addReference(self:: DOUBS, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Drôme");
+        $department->setCodeDepartment("26");
+        $this->addReference(self:: DROME, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Eure");
+        $department->setCodeDepartment("27");
+        $this->addReference(self:: EURE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Eure-et-Loir");
+        $department->setCodeDepartment("28");
+        $this->addReference(self:: EURE_ET_LOIR, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Finistère");
+        $department->setCodeDepartment("29");
+        $this->addReference(self:: FINISTERE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Gard");
+        $department->setCodeDepartment("30");
+        $this->addReference(self:: GARD, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Haute-Garonne");
+        $department->setCodeDepartment("31");
+        $this->addReference(self:: HAUTE_GARONNE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Gers");
+        $department->setCodeDepartment("32");
+        $this->addReference(self:: GERS, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Gironde");
+        $department->setCodeDepartment("33");
+        $this->addReference(self:: GIRONDE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Hérault");
+        $department->setCodeDepartment("34");
+        $this->addReference(self:: HERAULT, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Ille-et-Vilaine");
+        $department->setCodeDepartment("35");
+        $this->addReference(self:: ILLE_ET_VILAINE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Indre");
+        $department->setCodeDepartment("36");
+        $this->addReference(self:: INDRE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Indre-et-Loire");
+        $department->setCodeDepartment("37");
+        $this->addReference(self:: INDRE_ET_LOIRE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Isère");
+        $department->setCodeDepartment("38");
+        $this->addReference(self:: ISERE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Jura");
+        $department->setCodeDepartment("39");
+        $this->addReference(self:: JURA, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Landes");
+        $department->setCodeDepartment("40");
+        $this->addReference(self:: LANDES, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Loir-et-Cher");
+        $department->setCodeDepartment("41");
+        $this->addReference(self:: LOIR_ET_CHER, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Loire");
+        $department->setCodeDepartment("42");
+        $this->addReference(self:: LOIRE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Haute-Loire");
+        $department->setCodeDepartment("43");
+        $this->addReference(self:: HAUTE_LOIRE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Loire-Atlantique");
         $department->setCodeDepartment("44");
         $this->addReference(self:: LOIRE_ATLANTIQUE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Loiret");
+        $department->setCodeDepartment("45");
+        $this->addReference(self:: LOIRET, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Lot");
+        $department->setCodeDepartment("46");
+        $this->addReference(self:: LOT, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Lot-et-Garonne");
+        $department->setCodeDepartment("47");
+        $this->addReference(self:: LOT_ET_GARONNE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Lozère");
+        $department->setCodeDepartment("48");
+        $this->addReference(self:: LOZERE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Maine-et-Loire");
+        $department->setCodeDepartment("49");
+        $this->addReference(self:: MAINE_ET_LOIRE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Manche");
+        $department->setCodeDepartment("50");
+        $this->addReference(self:: MANCHE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Marne");
+        $department->setCodeDepartment("51");
+        $this->addReference(self:: MARNE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Haute-Marne");
+        $department->setCodeDepartment("52");
+        $this->addReference(self:: HAUTE_MARNE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Mayenne");
+        $department->setCodeDepartment("53");
+        $this->addReference(self:: MAYENNE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Meurthe-et-Moselle");
+        $department->setCodeDepartment("54");
+        $this->addReference(self:: MEURTHE_ET_MOSELLE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Meuse");
+        $department->setCodeDepartment("55");
+        $this->addReference(self:: MEUSE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Morbihan");
+        $department->setCodeDepartment("56");
+        $this->addReference(self:: MORBIHAN, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Moselle");
+        $department->setCodeDepartment("57");
+        $this->addReference(self:: MOSELLE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Nièvre");
+        $department->setCodeDepartment("58");
+        $this->addReference(self:: NIEVRE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Nord");
+        $department->setCodeDepartment("59");
+        $this->addReference(self:: NORD, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Oise");
+        $department->setCodeDepartment("60");
+        $this->addReference(self:: OISE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Orne");
+        $department->setCodeDepartment("61");
+        $this->addReference(self:: ORNE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Pas-de-Calais");
+        $department->setCodeDepartment("62");
+        $this->addReference(self:: PAS_DE_CALAIS, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Puy-de-Dôme");
+        $department->setCodeDepartment("63");
+        $this->addReference(self:: PUY_DE_DOME, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Pyrénées-Atlantiques");
+        $department->setCodeDepartment("64");
+        $this->addReference(self:: PYRENEES_ATLANTIQUES, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Hautes-Pyrénées");
+        $department->setCodeDepartment("65");
+        $this->addReference(self:: HAUTES_PYRENEES, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Pyrénées-Orientales");
+        $department->setCodeDepartment("66");
+        $this->addReference(self:: PYRENEES_ORIENTALES, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Bas-Rhin");
+        $department->setCodeDepartment("67");
+        $this->addReference(self:: BAS_RHIN, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Haut-Rhin");
+        $department->setCodeDepartment("68");
+        $this->addReference(self:: HAUT_RHIN, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Rhône");
+        $department->setCodeDepartment("69");
+        $this->addReference(self:: RHONE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Haute-Saône");
+        $department->setCodeDepartment("70");
+        $this->addReference(self:: HAUTE_SAONE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Saône-et-Loire");
+        $department->setCodeDepartment("71");
+        $this->addReference(self:: SAONE_ET_LOIRE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Sarthe");
+        $department->setCodeDepartment("72");
+        $this->addReference(self:: SARTHE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Savoie");
+        $department->setCodeDepartment("73");
+        $this->addReference(self:: SAVOIE, $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Haute-Savoie");
+        $department->setCodeDepartment("74");
+        $this->addReference(self:: HAUTE_SAVOIE, $department);
         $manager->persist($department);
 
         $department = new Department();
@@ -157,6 +583,67 @@ class AADepartmentFixtures extends Fixture
         $manager->persist($department);
 
         $department = new Department();
+        $department->setNameDepartment("Tarn");
+        $department->setCodeDepartment("81");
+        $this->addReference(self::TARN , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Tarn-et-Garonne");
+        $department->setCodeDepartment("82");
+        $this->addReference(self::TARN_ET_GARONNE , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Var");
+        $department->setCodeDepartment("83");
+        $this->addReference(self::VAR , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Vaucluse");
+        $department->setCodeDepartment("84");
+        $this->addReference(self::VAUCLUSE , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Vendée");
+        $department->setCodeDepartment("85");
+        $this->addReference(self::VENDEE , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Vienne");
+        $department->setCodeDepartment("86");
+        $this->addReference(self::VIENNE , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Haute-Vienne");
+        $department->setCodeDepartment("87");
+        $this->addReference(self::HAUTE_VIENNE , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Vosges");
+        $department->setCodeDepartment("88");
+        $this->addReference(self::VOSGES , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Yonne");
+        $department->setCodeDepartment("89");
+        $this->addReference(self::YONNE , $department);
+        $manager->persist($department);
+
+        $department = new Department();
+        $department->setNameDepartment("Territoire de Belfort");
+        $department->setCodeDepartment("90");
+        $this->addReference(self::TERRITOIRE_DE_BELFORT , $department);
+        $manager->persist($department);
+
+
+        $department = new Department();
         $department->setNameDepartment("Essonne");
         $department->setCodeDepartment("91");
         $this->addReference(self::ESSONNE , $department);
@@ -186,36 +673,6 @@ class AADepartmentFixtures extends Fixture
         $this->addReference(self::VAL_DOISE, $department);
         $manager->persist($department);
 
-        $department = new Department();
-        $department->setNameDepartment("Guadeloupe");
-        $department->setCodeDepartment("971");
-        $this->addReference(self::GUADELOUPE, $department);
-        $manager->persist($department);
-        
-        $department = new Department();
-        $department->setNameDepartment("Martinique ");
-        $department->setCodeDepartment("972");
-        $this->addReference(self::MARTINIQUE, $department);
-        $manager->persist($department);
-
-        $department = new Department();
-        $department->setNameDepartment("Guyane");
-        $department->setCodeDepartment("973");
-        $this->addReference(self::GUYANE, $department);
-        $manager->persist($department);
-
-        $department = new Department();
-        $department->setNameDepartment("La Réunion");
-        $department->setCodeDepartment("974");
-        $this->addReference(self::LA_REUNION, $department);
-        $manager->persist($department);
-
-        $department = new Department();
-
-        $department->setNameDepartment("Mayotte");
-        $department->setCodeDepartment("976");
-        $this->addReference(self::MAYOTTE, $department);
-        $manager->persist($department);
 
         $manager->flush();
     }

@@ -48,9 +48,17 @@ class Lodging
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
     private ?Department $department = null;
 
-    #[ORM\ManyToOne(inversedBy: 'lodgings')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    #[ORM\ManyToOne(inversedBy: 'lodging')]
+    private ?Host $host = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $addressLod = null;
+
+    #[ORM\Column]
+    private ?int $zipcodeLod = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $cityLod = null;
 
     public function __construct()
     {
@@ -191,23 +199,51 @@ class Lodging
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getHost(): ?Host
     {
-        return $this->user;
+        return $this->host;
     }
 
-    public function setUser(?User $user): static
+    public function setHost(?Host $host): static
     {
-        $this->user = $user;
+        $this->host = $host;
 
         return $this;
     }
 
-    public function createLodging(Request $request)
-{
-    $user = $this->getUser();
-    $lodging = new Lodging();
-    $lodging->setUser($user);
+    public function getAddressLod(): ?string
+    {
+        return $this->addressLod;
+    }
 
-}
+    public function setAddressLod(string $addressLod): static
+    {
+        $this->addressLod = $addressLod;
+
+        return $this;
+    }
+
+    public function getZipcodeLod(): ?int
+    {
+        return $this->zipcodeLod;
+    }
+
+    public function setZipcodeLod(int $zipcodeLod): static
+    {
+        $this->zipcodeLod = $zipcodeLod;
+
+        return $this;
+    }
+
+    public function getCityLod(): ?string
+    {
+        return $this->cityLod;
+    }
+
+    public function setCityLod(string $cityLod): static
+    {
+        $this->cityLod = $cityLod;
+
+        return $this;
+    }
 }

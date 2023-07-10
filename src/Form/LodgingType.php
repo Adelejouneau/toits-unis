@@ -15,30 +15,52 @@ class LodgingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->remove('imageNameLod')
-            ->add('imageFile', FileType::class, [
-                'required' => false,
-                'label' => "Télécharger des photos",
-            ])
-            ->add('user_id')
-            ->remove('slugLod')
+
             ->add('titleLod',null,[
                 'label' => 'Titre de l\'annonce',
                 ])
+
+            ->add('addressLod',null,[
+                'label' => 'Adresse',
+                ])
+            
+            ->add('zipCodeLod',null,[
+                'label' => 'Code postal',
+                ])
+
+            ->add('cityLod',null,[
+                'label' => 'Ville',
+                ])
+
+            ->add('department', EntityType::class, [
+                'class' => 'App\Entity\Department',
+                'choice_label' => 'nameDepartment',
+                'label' => 'Département',
+            ])
 
             ->add('category', EntityType::class, [
                 'class' => 'App\Entity\Category',
                 'choice_label' => 'nameCat',
                 'label' => 'Catégorie d\'hébergement',
             ])
-            ->add('department', EntityType::class, [
-                'class' => 'App\Entity\Department',
-                'choice_label' => 'nameDepartment',
-                'label' => 'Département',
-            ])
+
             ->add('descriptionLod', CKEditorType::class, [
                 'label' => 'Description de l\'hébergement',
                 ])
+            
+            ->add('host', EntityType::class, [
+                'class' => 'App\Entity\Host',
+                'choice_label' => 'lastName',
+                'label' => 'Hôte',
+            ])
+
+            ->remove('imageNameLod')
+            ->add('imageFile', FileType::class, [
+                'required' => false,
+                'label' => "Télécharger des photos",
+            ])
+            ->remove('slugLod')
+    
         ;
     }
 
