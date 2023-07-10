@@ -23,8 +23,6 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>ImageName</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
                 <th>Slug</th>
                 <th class="text-end">Actions</th>
             </tr>
@@ -36,8 +34,6 @@
                 <td>{{ lodging.titleLod }}</td>
                 <td>{{ lodging.descriptionLod }}</td>
                 <td>{{ lodging.imageNameLod }}</td>
-                <td>{{ lodging.longitude }}</td>
-                <td>{{ lodging.latitude }}</td>
                 <td>{{ lodging.slugLod }}</td>
                 <td class="text-end">
                     <a href="{{ path('app_admin_lodging_show', {'id': lodging.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
