@@ -19,26 +19,49 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
+                <th>Titre du logement</th>
+                <th>Adresse</th>
+                <th>Code postal</th>
+                <th>Ville</th>
+                <th>Département</th>
+                <th>Catégorie</th>
                 <th>Description</th>
-                <th>ImageName</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
-                <th>Slug</th>
+                <th>Hôte</th>
+                <th>Photos</th>
                 <th class="text-end">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for lodging in lodgings %}
             <tr>
-                <td>{{ lodging.id }}</td>
                 <td>{{ lodging.titleLod }}</td>
+                <td>{{ lodging.addressLod }}</td>
+                <td>{{ lodging.zipcodeLod }}</td>
+                <td>{{ lodging.cityLod }}</td>
+                <td>
+                    <ul>
+                    {% for department in lodging.department %}
+                        <li>{{ department }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                    {% for category in lodging.category %}
+                        <li>{{ category }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
                 <td>{{ lodging.descriptionLod }}</td>
-                <td>{{ lodging.imageNameLod }}</td>
-                <td>{{ lodging.longitude }}</td>
-                <td>{{ lodging.latitude }}</td>
-                <td>{{ lodging.slugLod }}</td>
+                <td>
+                    <ul>
+                    {% for host in lodging.host %}
+                        <li>{{ host }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ lodging.imageFile }}</td>
+
                 <td class="text-end">
                     <a href="{{ path('app_admin_lodging_show', {'id': lodging.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
                     <a href="{{ path('app_admin_lodging_edit', {'id': lodging.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>

@@ -18,7 +18,7 @@ class AdminLodgingController extends AbstractController
     public function index(LodgingRepository $lodgingRepository): Response
     {
         return $this->render('admin_lodging/index.html.twig', [
-            'lodgings' => $lodgings,
+            'lodgings' => $lodgingRepository->findAll(),
         ]);
     }
 

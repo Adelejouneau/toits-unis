@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
-use App\Entity\Lodging;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
@@ -82,21 +81,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $fonction = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Lodging::class, cascade: ["persist"])]
-    private Collection $lodgings;
-
     #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'users')]
     private Collection $guests;
 
     #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'guests')]
     private Collection $users;
 
-    public function __construct()
-    {
-        $this->lodgings = new ArrayCollection();
-        $this->guests = new ArrayCollection();
-        $this->users = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -336,34 +326,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->plainPassword = $plainPassword;
     }
 
-
-    /**
-    * @return Collection<int, Lodging>
-     */
-    public function getLodgings(): Collection
-{
-    return $this->lodgings;
-}
-
-public function addLodging(Lodging $lodging): self
-{
-    if (!$this->lodgings->contains($lodging)) {
-        $this->lodgings[] = $lodging;
-        $lodging->setUser($this);
-    }
-    return $this;
-}
-
-public function removeLodging(Lodging $lodging): self
-{
-    if ($this->lodgings->removeElement($lodging)) {
-        // set the owning side to null (unless already changed)
-        if ($lodging->getUser() === $this) {
-            $lodging->setUser(null);
-        }
-    }
-
-    return $this;
-}
 
 }

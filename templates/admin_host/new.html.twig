@@ -1,0 +1,10 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Nouvel Hôte{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_host_index') }}"class="btn btn-dark mb-3">Retour</a>
+    <h1>Ajouter un nouvel hôte</h1>
+    {{ include('admin_host/_form.html.twig') }}
+
+{% endblock %}
