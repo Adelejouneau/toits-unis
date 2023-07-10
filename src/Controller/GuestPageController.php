@@ -14,7 +14,7 @@ class GuestPageController extends AbstractController
     public function index(UserRepository $userRepository): Response
     {
         // denyAccessUnlessGranted c'est pour choisir le role qui peut voir la page 
-        $this->denyAccessUnlessGranted('ROLE_HOST');
+        // $this->denyAccessUnlessGranted('ROLE_HOST');
         $users = $userRepository->findByRole("ROLE_GUEST");
 
     return $this->render('guest_page/index.html.twig', [
@@ -26,7 +26,7 @@ class GuestPageController extends AbstractController
     #[Route('/guest/page/{slug}', name: 'app_guest_page_show')]
     public function showGuest($slug, UserRepository $userRepository):Response
     {
-        $this->denyAccessUnlessGranted('ROLE_HOST');
+        // $this->denyAccessUnlessGranted('ROLE_HOST');
        //On récupère le lodging correspondant au slug
         $user = $userRepository->findOneBy(['slug' => $slug]);
        //On rend la page en lui passant le lodging
@@ -38,7 +38,7 @@ class GuestPageController extends AbstractController
     #[Route('/guest/page/show/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(int $id, UserRepository $userRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_HOST');
+        // $this->denyAccessUnlessGranted('ROLE_HOST');
         return $this->render('user/show.html.twig', [
             'user' => $userRepository->find($id),
         ]);

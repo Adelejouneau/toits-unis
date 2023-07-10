@@ -27,6 +27,7 @@ class LodgingFixtures extends Fixture
         // }
 
         $lodging = new Lodging();
+
         $lodging->setTitleLod("Studio meublé");
         $lodging->setAddressLod("1 rue de la paix");
         $lodging->setZipCodeLod("33000");
@@ -161,6 +162,7 @@ class LodgingFixtures extends Fixture
         $lodging->setAddressLod("124 boulevard de la liberté");
         $lodging->setZipCodeLod("75020");
         $lodging->setCityLod("Paris");
+
         $lodging->setDepartment($this->getReference(AADepartmentFixtures::PARIS));
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE));
         $lodging->setDescriptionLod("Chambre privée pour 2 personnes, 12m2 dans notre appartement. Salon, cuisine et salle d'eau à partager. Proche du métro.");
@@ -189,6 +191,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCityLod("Toulouse");
         $lodging->setDepartment($this->getReference(AADepartmentFixtures::HAUTE_GARONNE));
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE_PARTAGEE));
+
         $lodging->setDescriptionLod("Chambre partagée pour 6 personnes maximum, 20m2, proche du métro. Situé au 1er étage de l'agence, cuisine et salle d'eau");
         $lodging->setHost($this->getReference(HostFixtures::AMAH_TRAORE));
         $lodging->setImageNameLod("logement-13.jpg");
