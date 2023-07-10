@@ -34,27 +34,40 @@
                     <li class="nav-item mx-3">
                         <a class="nav-link d-flex flex-column align-items-center navbarColor" aria-current="page" href="{{path('app_qui_sommes_nous') }}">Qui sommes-nous ?</a>
                     </li>
-                    <li class="nav-item mx-3">
+                    {# <li class="nav-item mx-3">
                         <a class="nav-link d-flex flex-column align-items-center navbarColor" aria-current="page" href="{{path('app_comment_ca_marche_host') }}">Devenir Hôte</a>
-                    </li>
+                    </li> #}
                     {# <li class="nav-item mx-3">
                         <a class="nav-link d-flex flex-column align-items-center" href="{{path('app_category') }}">Catégories</a>
                     </li> #}
                     {# <li class="nav-item mx-3">
                         <a class="nav-link d-flex flex-column align-items-center" href="{{ path('app_home') }}">Favoris</a>
                     </li> #}
-                    <li class="nav-item mx-3 d-lg-flex">
+                    <li>
                         {% if app.user %}
                             {% if 'ROLE_GUEST' in app.user.roles %}
                                 <a class="nav-link navbarColor" href="{{ path('app_compte_guest') }}">Mon compte</a>
+                            </li>
+                             <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_comment_ca_marche') }}">Trouver un toit</a>
+                            </li>
+                             <li>
+                                <a class="nav-link navbarColor" href="{{ path('app_lodging') }}">Logements</a>
+                            </li>    
                             {% elseif 'ROLE_HOST' in app.user.roles %}
+                            <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_compte_host') }}">Mon compte</a>
+                            </li>
                             {% elseif 'ROLE_ADMIN' in app.user.roles %}
+                            <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_admin') }}">Aller sur Admin</a>
+                            </li>    
                             {% endif %}
-                            <a class="nav-link navbarColor" href="{{ path('app_logout') }}">Déconnexion</a>
+                            <li>
+                                <a class="nav-link navbarColor" href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
                         {% else %}
+                        <li>
                             <a class="nav-link navbarColor" href="{{ path('app_login') }}">Connexion</a>
                         {% endif %}
                     </li>

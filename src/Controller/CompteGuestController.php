@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use id;
 use App\Form\UserType;
 use App\Repository\LodgingRepository;
 use Doctrine\ORM\EntityManagerInterface;
