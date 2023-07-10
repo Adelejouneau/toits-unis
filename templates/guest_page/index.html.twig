@@ -18,7 +18,7 @@
                     {% else %}
                     <img src="{{ asset('/images/guests/placeholder.png') }}" class="img-fluid" alt="{{ user.firstName }}">
                     {% endif %}
-                    {% if user not in app.user.guests %}
+                    {% if user not in app.user.guest %}
                     <a href="{{ path('app_favori_guest', {id:user.id }) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                         <i data-feather="star" class="text-danger"></i>
                     </a>
