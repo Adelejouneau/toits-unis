@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hôte{% endblock %}
+
+{% block body %}
+    
+    <a href="{{ path('app_admin_host_index') }}"class="btn btn-dark">back to list</a>
+    <h1>Hôte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ host.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ host.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ host.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ host.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ host.email }}</td>
+            </tr>
+            <tr>
+                <th>Addresse</th>
+                <td>{{ host.address }}</td>
+            </tr>
+            <tr>
+                <th>Code Postal</th>
+                <td>{{ host.zipCode }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ host.city }}</td>
+            </tr>
+            <tr>
+                <th>Entreprise</th>
+                <td>{{ host.entreprise }}</td>
+            </tr>
+            <tr>
+                <th>Fonction</th>
+                <td>{{ host.fonction }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_host_edit', {'id': host.id}) }}" class="btn btn-success">Modifier</a>
+
+    {{ include('admin_host/_delete_form.html.twig') }}
+{% endblock %}

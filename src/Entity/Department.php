@@ -25,7 +25,6 @@ class Department
     #[ORM\OneToMany(mappedBy: 'department', targetEntity: Lodging::class)]
     private Collection $lodgings;
 
-
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();

@@ -1,0 +1,62 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Hôtes index{% endblock %}
+
+{% block body %}
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+    <h1>Liste des hôtes</h1>
+    <a href="{{ path('app_admin_host_new') }}">Create new</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Addresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Entreprise</th>
+                <th>Fonction</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for host in hosts %}
+            <tr>
+                <td>{{ host.id }}</td>
+                <td>{{ host.lastName }}</td>
+                <td>{{ host.firstName }}</td>
+                <td>{{ host.phoneNumber }}</td>
+                <td>{{ host.email }}</td>
+                <td>{{ host.address }}</td>
+                <td>{{ host.zipCode }}</td>
+                <td>{{ host.city }}</td>
+                <td>{{ host.entreprise }}</td>
+                <td>{{ host.fonction }}</td>
+                <td class="text-end">
+                    <a href="{{ path('app_admin_host_show', {'id': host.id}) }}" class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_host_edit', {'id': host.id}) }}" class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Aucun hôte n'est enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
