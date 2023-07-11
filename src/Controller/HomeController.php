@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'app_home')]
     public function index(LodgingRepository $lodgingRepository, AssociationRepository $associationRepository, Request $request): Response
     {
         //On récupère juste 3 photos pour l'accueil

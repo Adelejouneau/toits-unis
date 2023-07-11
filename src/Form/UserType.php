@@ -45,7 +45,7 @@ class UserType extends AbstractType
             ->remove('roles', ChoiceType::class, [
                 'choices' =>[
                 'utilisateur' => 'user',
-                'Guest' => 'guest',
+                'Asso' => 'asso',
                 'Host' => 'host'
             ],
                     'label' => 'Rôles',
