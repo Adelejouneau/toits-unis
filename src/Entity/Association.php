@@ -47,6 +47,17 @@ class Association
     #[ORM\Column(length: 255)]
     private ?string $slugAsso = null;
 
+    #[ORM\Column]
+    private ?int $immatriculationAsso = null;
+
+    #[ORM\ManyToMany(targetEntity: Department::class, inversedBy: 'associations')]
+    private Collection $department;
+
+    public function __construct()
+    {
+        $this->department = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -180,6 +191,42 @@ class Association
     public function setSlugAsso(string $slugAsso): self
     {
         $this->slugAsso = $slugAsso;
+
+        return $this;
+    }
+
+    public function getImmatriculationAsso(): ?int
+    {
+        return $this->immatriculationAsso;
+    }
+
+    public function setImmatriculationAsso(int $immatriculationAsso): static
+    {
+        $this->immatriculationAsso = $immatriculationAsso;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Department>
+     */
+    public function getDepartment(): Collection
+    {
+        return $this->department;
+    }
+
+    public function addDepartment(Department $department): static
+    {
+        if (!$this->department->contains($department)) {
+            $this->department->add($department);
+        }
+
+        return $this;
+    }
+
+    public function removeDepartment(Department $department): static
+    {
+        $this->department->removeElement($department);
 
         return $this;
     }

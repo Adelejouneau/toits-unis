@@ -87,11 +87,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'assos')]
     private Collection $assos;
 
-    #[ORM\ManyToMany(targetEntity: Lodging::class)]
-    private Collection $favoris;
-    
     #[ORM\ManyToMany(targetEntity: Lodging::class, inversedBy: 'users')]
     private Collection $lodgings;
+    private Collection $favoris;
 
     public function __construct()
     {
