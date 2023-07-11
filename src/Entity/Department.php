@@ -25,9 +25,13 @@ class Department
     #[ORM\OneToMany(mappedBy: 'department', targetEntity: Lodging::class)]
     private Collection $lodgings;
 
+    #[ORM\ManyToMany(targetEntity: Association::class, mappedBy: 'department')]
+    private Collection $associations;
+
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();
+        $this->associations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -93,5 +97,32 @@ class Department
     public function __toString()
     {
         return $this->getNameDepartment();
+    }
+
+    /**
+     * @return Collection<int, Association>
+     */
+    public function getAssociations(): Collection
+    {
+        return $this->associations;
+    }
+
+    public function addAssociation(Association $association): static
+    {
+        if (!$this->associations->contains($association)) {
+            $this->associations->add($association);
+            $association->addDepartment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssociation(Association $association): static
+    {
+        if ($this->associations->removeElement($association)) {
+            $association->removeDepartment($this);
+        }
+
+        return $this;
     }
 }
