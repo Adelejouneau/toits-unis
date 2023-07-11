@@ -36,7 +36,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
         $lodging->setDescriptionLod("Studio meublé, 20m2, proche de la gare, du tram et des commerces. Situé au 1er étage, il comprend une pièce principale avec kitchenette équipée, une salle d'eau avec WC");
         $lodging->setHost($this->getReference(HostFixtures::BRIGITTE_LALLOIS));
-        $lodging->setImageNameLod("logement-1.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-1");
         $manager->persist($lodging);
 
@@ -49,7 +49,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE));
         $lodging->setDescriptionLod("Chambre privée pour 2 personnes, 10m2, proche du tram  Place Albert 1er. Situé au 1er étage, la cuisine, la salle de bain et le salon sont à partager avec famille");
         $lodging->setHost($this->getReference(HostFixtures::ADELE_JOUNEAU));
-        $lodging->setImageNameLod("logement-2.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-2");
         $manager->persist($lodging);
 
@@ -62,7 +62,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::ENTREPRISE));
         $lodging->setDescriptionLod("Espace nuit dans une entreprise, 20m2, proche du metro Colonel Fabien. Situé au 1er étage de l'agence, le coin nuit proposé est dans l'ancienne réserve de l'entreprise, réorganisée en espace nuit. Kitchenette équipée, une salle d'eau avec WC.");
         $lodging->setHost($this->getReference(HostFixtures::JEAN_ROBA));
-        $lodging->setImageNameLod("logement-3.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-3");
         $manager->persist($lodging);
 
@@ -75,7 +75,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::HOTEL));
         $lodging->setDescriptionLod("Chambre d'hôtel, 12m2, pour 2 personnes avec 2 lits séparés et une salle d'eau privée avec WC. Proche des ramparts et des commerces. Possibilité d'utiliser cuisine partagée");
         $lodging->setHost($this->getReference(HostFixtures::JEAN_MARIE));
-        $lodging->setImageNameLod("logement-4.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-4");
         $manager->persist($lodging);
 
@@ -88,7 +88,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::ENTREPRISE));
         $lodging->setDescriptionLod("Chambre privée dans une entreprise digitale, 15m2, proche du RER A. Située au rdc de l'agence, la chambre proposée est dans la salle de réunion de l'entreprise que l'on utilise ocassionnellement. Kitchenette équipée, une salle d'eau avec WC.");
         $lodging->setHost($this->getReference(HostFixtures::BINTOU_SIDIBE));
-        $lodging->setImageNameLod("logement-5.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-5");
         $manager->persist($lodging);
 
@@ -101,7 +101,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::ENTREPRISE));
         $lodging->setDescriptionLod("Coin nuit dans une entreprise, 20m2, proche du tram et des commerces. Situé au 1er étage de l'agence, le coin nuit proposé est dans l'ancienne réserve de l'entreprise, réorganisée en espace nuit. Kitchenette équipée, une salle d'eau avec WC.");
         $lodging->setHost($this->getReference(HostFixtures::NASSIMA_SIBACHIR));
-        $lodging->setImageNameLod("logement-6.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-6");
         $manager->persist($lodging);
 
@@ -114,7 +114,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::ENTREPRISE));
         $lodging->setDescriptionLod("Chambre privée pour 3 personnes, 15m2, proche du métro Anatole France. Situé au 1er étage de l'agence, cuisine et salle d'eau");
         $lodging->setHost($this->getReference(HostFixtures::DANIELLE_TANG));
-        $lodging->setImageNameLod("logement-7.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-7");
         $manager->persist($lodging);
 
@@ -127,7 +127,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::APPARTEMENT));
         $lodging->setDescriptionLod("Studio pour 4 personnes, 25m2, proche du centre ville. Situé au 3ème étage, cuisine et salle d'eau");
         $lodging->setHost($this->getReference(HostFixtures::RACHIDA_BELANOUF));
-        $lodging->setImageNameLod("logement-8.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-8");
         $manager->persist($lodging);
 
@@ -140,7 +140,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE));
         $lodging->setDescriptionLod("Chambre privée pour 3 personnes, 15m2 dans notre maison de village. Salon, cuisine et salle d'eau à partager. Proche de l'arrêt de bus qui dessert Marseille.");
         $lodging->setHost($this->getReference(HostFixtures::RENE_CHERQUAOUI));
-        $lodging->setImageNameLod("logement-9.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-9");
         $manager->persist($lodging);
 
@@ -153,7 +153,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE));
         $lodging->setDescriptionLod("Chambre privée pour 1 personne, 9m2 dans notre maison de village. Salon, cuisine et salle d'eau à partager. Proche de l'arrêt de bus qui dessert Marseille.");
         $lodging->setHost($this->getReference(HostFixtures::RENE_CHERQUAOUI));
-        $lodging->setImageNameLod("logement-10.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-10");
         $manager->persist($lodging);
 
@@ -167,7 +167,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE));
         $lodging->setDescriptionLod("Chambre privée pour 2 personnes, 12m2 dans notre appartement. Salon, cuisine et salle d'eau à partager. Proche du métro.");
         $lodging->setHost($this->getReference(HostFixtures::JEAN_MESSAN));
-        $lodging->setImageNameLod("logement-11.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-11");
         $manager->persist($lodging);
 
@@ -180,7 +180,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::ENTREPRISE));
         $lodging->setDescriptionLod("Coin nuit dans une entreprise, 20m2, proche du tram et des commerces. Situé au 1er étage de l'agence, le coin nuit proposé est dans l'ancienne réserve de l'entreprise, réorganisée en espace nuit. Kitchenette équipée, une salle d'eau avec WC.");
         $lodging->setHost($this->getReference(HostFixtures::AMAH_TRAORE));
-        $lodging->setImageNameLod("logement-12.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-12");
         $manager->persist($lodging);
 
@@ -194,7 +194,7 @@ class LodgingFixtures extends Fixture
 
         $lodging->setDescriptionLod("Chambre partagée pour 6 personnes maximum, 20m2, proche du métro. Situé au 1er étage de l'agence, cuisine et salle d'eau");
         $lodging->setHost($this->getReference(HostFixtures::AMAH_TRAORE));
-        $lodging->setImageNameLod("logement-13.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-13");
         $manager->persist($lodging);
 
@@ -207,7 +207,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE_PARTAGEE));
         $lodging->setDescriptionLod("Chambre partagée pour 6 personnes maximum, 20m2, proche du métro. Situé au 1er étage de l'agence, cuisine et salle d'eau");
         $lodging->setHost($this->getReference(HostFixtures::AMAH_TRAORE));
-        $lodging->setImageNameLod("logement-14.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-14");
         $manager->persist($lodging);
 
@@ -220,7 +220,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE_PARTAGEE));
         $lodging->setDescriptionLod("Chambre partagée pour 6 personnes maximum, 20m2, proche du métro. Situé au 1er étage de l'agence, cuisine et salle d'eau");
         $lodging->setHost($this->getReference(HostFixtures::AMAH_TRAORE));
-        $lodging->setImageNameLod("logement-15.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-15");
         $manager->persist($lodging);
 
@@ -233,7 +233,7 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE));
         $lodging->setDescriptionLod("Chambre privée pour 2 personnes, 9m2 dans notre maison de village. Salon, cuisine et salle d'eau à partager. Proche de l'arrêt de bus qui dessert Marseille.");
         $lodging->setHost($this->getReference(HostFixtures::BRIGITTE_LALLOIS));
-        $lodging->setImageNameLod("logement-16.jpg");
+        $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-16");
         $manager->persist($lodging);
 
