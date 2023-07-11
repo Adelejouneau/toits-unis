@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
-// use App\Form\RegistrationGuestFormType;
+// use App\Form\RegistrationAssoFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -20,7 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 
 
-class RegistrationGuestFormType extends AbstractType
+class RegistrationAssoFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
