@@ -43,7 +43,7 @@ class Host
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
-    #[ORM\OneToMany(mappedBy: 'host', targetEntity: Lodging::class)]
+    #[ORM\OneToMany(mappedBy: 'hosts', targetEntity: Lodging::class)]
     private Collection $lodging;
 
     public function __construct()

@@ -41,22 +41,22 @@
                 <td>
                     <ul>
                     {% for department in lodging.department %}
-                        <li>{{ department }}</li>
+                        <li>{{ lodging.department.nameDepartment }}</li>
                     {% endfor %}
                     </ul>
                 </td>
                 <td>
                     <ul>
                     {% for category in lodging.category %}
-                        <li>{{ category }}</li>
+                        <li>{{ lodging.category.nameCat }}</li>
                     {% endfor %}
                     </ul>
                 </td>
                 <td>{{ lodging.descriptionLod }}</td>
                 <td>
                     <ul>
-                    {% for host in lodging.host %}
-                        <li>{{ host }}</li>
+                    {% for host in lodging.gethost %}
+                        <li>{{ lodging.host.lastName }}</li>
                     {% endfor %}
                     </ul>
                 </td>

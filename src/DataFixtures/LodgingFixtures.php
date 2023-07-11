@@ -191,7 +191,6 @@ class LodgingFixtures extends Fixture
         $lodging->setCityLod("Toulouse");
         $lodging->setDepartment($this->getReference(AADepartmentFixtures::HAUTE_GARONNE));
         $lodging->setCategory($this->getReference(CategoryFixtures::CHAMBRE_PARTAGEE));
-
         $lodging->setDescriptionLod("Chambre partagée pour 6 personnes maximum, 20m2, proche du métro. Situé au 1er étage de l'agence, cuisine et salle d'eau");
         $lodging->setHost($this->getReference(HostFixtures::AMAH_TRAORE));
         $lodging->setImageNameLod("logement-13.jpg");
