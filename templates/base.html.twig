@@ -40,10 +40,10 @@
                             {% if 'ROLE_GUEST' in app.user.roles %}
                                 <a class="nav-link navbarColor" href="{{ path('app_compte_guest') }}">Mon compte</a>
                             </li>
-                             <li>
+                            <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_comment_ca_marche') }}">Trouver un toit</a>
                             </li>
-                             <li>
+                            <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_lodging') }}">Logements</a>
                             </li>    
                             {% elseif 'ROLE_HOST' in app.user.roles %}

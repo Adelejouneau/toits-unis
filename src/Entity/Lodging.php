@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
+use App\Entity\Host;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LodgingRepository;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints\Collection;
 
 #[ORM\Entity(repositoryClass: LodgingRepository::class)]
 #[Vich\Uploadable]
@@ -37,8 +38,6 @@ class Lodging
     #[ORM\Column(length: 255)]
     private ?string $titleLod = null;
 
-    #[ORM\OneToMany(mappedBy: 'lodging', targetEntity: Matched::class)]
-    private Collection $matcheds;
 
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
     #[ORM\JoinColumn(nullable: false)]
@@ -48,8 +47,10 @@ class Lodging
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
     private ?Department $department = null;
 
-    #[ORM\ManyToOne(inversedBy: 'lodging')]
-    private ?Host $host = null;
+    #[ORM\ManyToOne(targetEntity: Host::class, inversedBy: 'lodgings')]
+    private ?Host $hosts = null;
+
+
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $addressLod = null;
@@ -59,15 +60,7 @@ class Lodging
 
     #[ORM\Column(length: 255)]
     private ?string $cityLod = null;
-
-    #[ORM\ManyToMany(targetEntity: Equipement::class, mappedBy: 'lodging')]
-    private Collection $equipements;
-
-    public function __construct()
-    {
-        $this->matcheds = new ArrayCollection();
-        $this->equipements = new ArrayCollection();
-    }
+  
 
     public function getId(): ?int
     {
@@ -147,35 +140,6 @@ class Lodging
         return $this;
     }
 
-    /**
-     * @return Collection<int, Matched>
-     */
-    public function getMatcheds(): Collection
-    {
-        return $this->matcheds;
-    }
-
-    public function addMatched(Matched $matched): static
-    {
-        if (!$this->matcheds->contains($matched)) {
-            $this->matcheds->add($matched);
-            $matched->setLodging($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMatched(Matched $matched): static
-    {
-        if ($this->matcheds->removeElement($matched)) {
-            // set the owning side to null (unless already changed)
-            if ($matched->getLodging() === $this) {
-                $matched->setLodging(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getCategory(): ?Category
     {
@@ -204,16 +168,16 @@ class Lodging
     }
 
     public function getHost(): ?Host
-    {
-        return $this->host;
-    }
+{
+    return $this->hosts;
+}
 
-    public function setHost(?Host $host): static
-    {
-        $this->host = $host;
+public function setHost(?Host $host): self
+{
+    $this->hosts = $host;
 
-        return $this;
-    }
+    return $this;
+}
 
     public function getAddressLod(): ?string
     {
