@@ -69,29 +69,6 @@ class CompteHostController extends AbstractController
         $em->flush();
     }
 
-#[Route('/remove-lodging/{id}', name: 'remove_lodging')]
-    private function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em, UserRepository $userRepository): Response
-{
-    $this->denyAccessUnlessGranted('ROLE_HOST');
-    
-    // On récupère l'utilisateur connecté
-    $hostUser = $this->getUser();
-    
-    // On récupère le guest à retirer des favoris
-    $guest = $userRepository->find($id);
-    
-    // On retire le guest de la liste des favoris de l'utilisateur connecté
-    $hostUser->removeUser($guest);
-    
-    // On enregistre les modifications
-    $em->persist($hostUser);
-    $em->flush();
-    
-    // On met en place un message flash
-    $this->addFlash('success', 'Le guest a bien été retiré de vos favoris');
-    
-    // On redirige vers la page des guests
-    return $this->redirectToRoute('app_guest_page');
-}
+
 
     }

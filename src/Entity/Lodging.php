@@ -60,7 +60,8 @@ class Lodging
 
     #[ORM\Column(length: 255)]
     private ?string $cityLod = null;
-  
+
+
 
     public function getId(): ?int
     {
@@ -241,4 +242,5 @@ public function setHost(?Host $host): self
 
         return $this;
     }
+
 }

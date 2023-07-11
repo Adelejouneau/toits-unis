@@ -50,10 +50,10 @@ class CompteGuestController extends AbstractController
         //On récupère le logement dans la bdd
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $lodging = $lodgingRepository->find($id);
-        //on récupère l'utilisateur
+        /** @var User $user */
         $user = $this->getUser();
         //On ajoute le logement à la liste des favoris de l'utilisateur
-        $user->addLodging($lodging);
+        $user->addFavori($lodging);
         //On met en place un msg flash
         $this->addFlash('success',"L'hébergement a bien été ajouté à vos favoris");
         //On enregistre les modifs
@@ -63,17 +63,16 @@ class CompteGuestController extends AbstractController
         return $this->redirectToRoute('app_lodging');
     }
 
-    #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
-    
+    #[Route('/remove-favori/{id}', name: 'remove_favori')]
     public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         //On récupère la donnee dans la bdd
         $lodging = $lodgingRepository->find($id);
-        //on récupère l'utilisateur
+        /** @var User $user */
         $user = $this->getUser();
         //On ajoute le lodging à la liste des favoris de l'utilisateur
-        $user->removeLodging($lodging);
+        $user->removeFavori($lodging);
         //On met en place un msg flash
         $this->addFlash('success','Le logement a bien été retirer à vos favoris');
         //On enregistre les modifs

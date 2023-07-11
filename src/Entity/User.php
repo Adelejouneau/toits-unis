@@ -87,6 +87,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'guests')]
     private Collection $users;
 
+    #[ORM\ManyToMany(targetEntity: Lodging::class)]
+    private Collection $favoris;
+
 
     public function getId(): ?int
     {
@@ -325,6 +328,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->plainPassword = $plainPassword;
     }
+
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Lodging $lodging):static
+    {
+        if (!$this->favoris->contains($lodging)) {
+            $this->favoris->add($lodging);
+        }
+        return $this;  
+    }
+
+    public function removeFavori(Lodging $lodging):static
+    {
+        
+            $this->favoris->removeElement($lodging);
+
+        return $this;  
+    }
+
 
 
 }
