@@ -58,7 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     protected ?string $imageNameUser = null;
 
-    #[Vich\UploadableField(mapping: 'guests', fileNameProperty: 'imageNameUser')]
+    #[Vich\UploadableField(mapping: 'assos', fileNameProperty: 'imageNameUser')]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
@@ -82,10 +82,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $fonction = null;
 
     #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'users')]
-    private Collection $guests;
-
-    #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'guests')]
     private Collection $users;
+
+    #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'assos')]
+    private Collection $assos;
+
+    #[ORM\ManyToMany(targetEntity: Lodging::class, inversedBy: 'users')]
+    private Collection $lodgings;
+
+    public function __construct()
+    {
+        $this->lodgings = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -324,6 +332,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPlainPassword(?string $plainPassword): void
     {
         $this->plainPassword = $plainPassword;
+    }
+
+    /**
+     * @return Collection<int, Lodging>
+     */
+    public function getLodgings(): Collection
+    {
+        return $this->lodgings;
+    }
+
+    public function addLodging(Lodging $lodging): self
+    {
+        if ($this->lodgings->contains($lodging)) {
+            $this->lodgings->add($lodging);
+        }
+
+        return $this;
+    }
+
+    public function removeLodging(Lodging $lodging): self
+    {
+        $this->lodgings->removeElement($lodging);
+
+        return $this;
     }
 
 

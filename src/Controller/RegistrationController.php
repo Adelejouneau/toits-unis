@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegistrationGuestFormType;
+use App\Form\RegistrationAssoFormType;
 use App\Form\RegistrationHostFormType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
@@ -75,11 +75,11 @@ class RegistrationController extends AbstractController
 
 
 
-    #[Route('/register_guest', name: 'app_register_guest')]
-    public function registerGuest(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    #[Route('/register_asso', name: 'app_register_asso')]
+    public function registerAsso(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationGuestFormType::class, $user);
+        $form = $this->createForm(RegistrationAssoFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -91,7 +91,7 @@ class RegistrationController extends AbstractController
             if ($existingUser) {
                 $this->addFlash('danger', 'Cette adresse e-mail est déjà utilisée.');
 
-                return $this->redirectToRoute('app_register_guest');
+                return $this->redirectToRoute('app_register_asso');
             }
 
             // encode the plain password
@@ -101,7 +101,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->setRoles(['ROLE_GUEST']);
+            $user->setRoles(['ROLE_ASSO']);
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -111,15 +111,15 @@ class RegistrationController extends AbstractController
                     ->from(new Address('mailer@toitsUnis.com', 'toitsUnis'))
                     ->to($user->getEmail())
                     ->subject('Confirmation de votre e-mail')
-                    ->htmlTemplate('registration_guest/confirmation_guest_email.html.twig')
+                    ->htmlTemplate('registration_asso/confirmation_asso_email.html.twig')
             );
             
             $this->addFlash('success','Inscription réussie, vous devez valider votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_register_guest');
+            return $this->redirectToRoute('app_register_asso');
         }
         
-        return $this->render('registration_guest/register_guest.html.twig', [
-            'registrationGuestForm' => $form->createView(),
+        return $this->render('registration_asso/register_asso.html.twig', [
+            'registrationAssoForm' => $form->createView(),
         ]);
     }
 

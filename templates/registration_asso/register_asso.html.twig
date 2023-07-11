@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello CompteGuestController!{% endblock %}
+{% block title %}S'enregistrer{% endblock %}
 {% block body %}
-<div class="titreConnexionGuest">
-<h1 class="text-center titre-profil-guest">Enregistrer un nouveau guest</h1>
+<div class="titreConnexionAsso">
+<h1 class="text-center titre-profil-asso">Enregistrer une nouvelle association</h1>
 </div>
 <div class="info-asso container col-6 my-">
         <div class=" form-group info-asso-style">
@@ -30,52 +30,52 @@
             </div>
     </div>
 </div>
-<h3 class="text-center sousTitre-profil-guest">Informations personnelles</h3>
+<h3 class="text-center sousTitre-profil-asso">Informations personnelles</h3>
 {% for flash_error in app.flashes('verify_email_error') %}
     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
     <section class="cadre">
-        {{ form_start(registrationGuestForm) }}
+        {{ form_start(registrationAssoForm) }}
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationGuestForm.lastName) }}
+                {{ form_row(registrationAssoForm.lastName) }}
             </div>
             <div class="col-md-6">
-                {{ form_row(registrationGuestForm.firstName) }}
+                {{ form_row(registrationAssoForm.firstName) }}
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationGuestForm.phoneUser) }}
+                {{ form_row(registrationAssoForm.phoneUser) }}
             </div>
             <div class="col-md-6">
-                {{ form_row(registrationGuestForm.email) }}
+                {{ form_row(registrationAssoForm.email) }}
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationGuestForm.plainPassword, {
+                {{ form_row(registrationAssoForm.plainPassword, {
                     label: 'Password'
                 }) }}
             </div>
             {# <div class="col-md-6">
-                {{ form_row(registrationGuestForm.plainPasswordConfirm, {
+                {{ form_row(registrationAssoForm.plainPasswordConfirm, {
                     label: 'Confirm Password'
                 }) }}
         </div> #}
 
         <div class="row">
             <div class="col-md-12">
-                {{ form_row(registrationGuestForm.agreeTerms) }}
+                {{ form_row(registrationAssoForm.agreeTerms) }}
             </div>
         </div>
     </section>
 
     <button type="submit" class="btn btn-success">Valider</button>
-    {{ form_end(registrationGuestForm) }}
+    {{ form_end(registrationAssoForm) }}
 
 </div>
 {% for flash_error in app.flashes('verify_email_error') %}

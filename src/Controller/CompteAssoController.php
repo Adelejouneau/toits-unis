@@ -12,9 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class CompteGuestController extends AbstractController
+class CompteAssoController extends AbstractController
 {
-    #[Route('/compte/guest', name: 'app_compte_guest')]
+    #[Route('/compte/asso', name: 'app_compte_asso')]
     public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $encoder): Response
     {
 
@@ -40,7 +40,7 @@ class CompteGuestController extends AbstractController
             $em->flush();
 
         }
-        return $this->render('compte_guest/index.html.twig', [
+        return $this->render('compte_asso/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }
