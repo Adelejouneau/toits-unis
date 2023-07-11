@@ -43,8 +43,8 @@ security:
 
     role_hierarchy:
             ROLE_HOST: ROLE_USER
-            ROLE_GUEST: ROLE_USER
-            ROLE_ADMIN: [ROLE_HOST, ROLE_GUEST]
+            ROLE_ASSO: ROLE_USER
+            ROLE_ADMIN: [ROLE_HOST, ROLE_ASSO]
 
 when@test:
     security:

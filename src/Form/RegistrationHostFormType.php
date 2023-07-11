@@ -23,7 +23,9 @@ class RegistrationHostFormType extends AbstractType
 
             ->add('lastName')
             ->add('firstName')
-            ->add('phoneUser')
+            ->add('phoneUser', null,[
+                'label'=>"Téléphone",
+            ])
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'label'=>"J'accepte les conditions d'utilisation",
@@ -34,7 +36,7 @@ class RegistrationHostFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', RepeatedType::class, [
+            ->remove('plainPassword', RepeatedType::class, [
     'type' => PasswordType::class,
     'options' => ['attr' => ['class' => 'password-field']],
     'required' => true,

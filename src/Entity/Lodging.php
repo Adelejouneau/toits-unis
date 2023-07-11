@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Host;
+use App\Entity\User;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LodgingRepository;
@@ -10,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\Validator\Constraints\Collection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: LodgingRepository::class)]
 #[Vich\Uploadable]
@@ -31,26 +32,21 @@ class Lodging
     #[Vich\UploadableField(mapping: 'lodgings', fileNameProperty: 'imageNameLod')]
     private ?File $imageFile = null;
 
-
     #[ORM\Column(length: 255)]
     private ?string $slugLod = null;
 
     #[ORM\Column(length: 255)]
     private ?string $titleLod = null;
 
-
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
-
 
     #[ORM\ManyToOne(inversedBy: 'lodgings')]
     private ?Department $department = null;
 
     #[ORM\ManyToOne(targetEntity: Host::class, inversedBy: 'lodgings')]
     private ?Host $hosts = null;
-
-
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $addressLod = null;
@@ -60,7 +56,14 @@ class Lodging
 
     #[ORM\Column(length: 255)]
     private ?string $cityLod = null;
-  
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'lodgings')]
+    private Collection $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -140,7 +143,6 @@ class Lodging
         return $this;
     }
 
-
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -152,8 +154,6 @@ class Lodging
 
         return $this;
     }
-
-
 
     public function getDepartment(): ?Department
     {
@@ -168,16 +168,16 @@ class Lodging
     }
 
     public function getHost(): ?Host
-{
-    return $this->hosts;
-}
+    {
+        return $this->hosts;
+    }
 
-public function setHost(?Host $host): self
-{
-    $this->hosts = $host;
+    public function setHost(?Host $host): self
+    {
+        $this->hosts = $host;
 
-    return $this;
-}
+        return $this;
+    }
 
     public function getAddressLod(): ?string
     {
@@ -241,4 +241,32 @@ public function setHost(?Host $host): self
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addLodging($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeLodging($this);
+        }
+
+        return $this;
+    }
 }
+

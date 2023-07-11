@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommentCaMarcheHostController!{% endblock %}
+{% block title %}Comment ça marche - Hôte{% endblock %}
 
 {% block body %}
 
@@ -18,8 +18,8 @@
                         <div class="card-body color-card-host">
                             <div class="number-container text-center fs-2">1</div>
                             <div class="text-align">
-                                <h5>Informer nous sur votre logement</h5>
-                                <p>Type couchage, nombre de personne, date etc...</p>
+                                <h5>Renseigner vos informations</h5>
+                                <p>Nom, prénom et contacts (email, n° de tél)</p>
                             </div>    
                         </div>
                     </div>
@@ -33,77 +33,11 @@
                         <img src="/images/fleche1.png" class=" w-25" alt="..."> 
                     </div> 
                 </div> 
-
-                <p class="text-center" id="text-CCM">Valider votre inscription puis finaliser votre profil.</p>
-
-                <div class="col-md-12 info-host-end">
-                        <div class="mb-3">
-                            <div class="card-body color-card-host">
-                                <div class="number-container fs-2">2</div>
-                                <div>
-                                    <h5>Informer nous sur votre logement</h5>
-                                    <p>Type couchage, nombre de personne, date etc...</p>
-                                </div>
-                            </div>
-                        </div>
-                </div>    
-        </div>
-
-        <div class="col-md-12 info-host-start">
-                <div class="mb-3 images-CCM">
-                    <img src="/images/fleche1.png" class=" w-25" alt="...">
-                    <img src="/images/CommentCaMarcheHost2.png" class=" w-25" alt="...">
-                </div>    
-        </div>
-
-    <div class="container-lg py-5">
-        <div class="row">
-            <div class="col-md-12 info-host-start">
-                <div class="mb-3 ">
-                    <div class="card-body color-card-host">
-                    <div class="number-container text-center fs-2">3</div>
-                    <div>
-                        <h5>Disponibilité et adresse du lieux</h5>
-                        <p>Heure arrivée/départ et coordonnées ...</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 info-host-start">
-                <div class="mb-3 images-CCM">
-                    <img src="/images/fleche1.png" class=" w-25" alt="...">
-                    <img src="/images/CommentCaMarcheHost5.png" class=" w-25" alt="...">
-                    <img src="/images/CommentCaMarcheHost4.png" class=" w-25" alt="...">
-                </div>    
-        </div>
-
-
-    <div class="container-lg py-5">
-        <div class="row">
-            <div class="col-md-12 info-host-start">
-                <div class="mb-3 ">
-                    <div class="card-body color-card-host">
-                    <div class="number-container text-center fs-2">4</div>
-                    <div>
-                        <h5>Description et équipement du lieu</h5>
-                        <p>sanitaire, type d’équipement, etc...</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 info-host-start">
-                <div class="mb-3 images-CCM">
-                    <img src="/images/fleche1.png" class=" w-25" alt="...">
-                    <img src="/images/CommentCaMarcheHost.png" class="img-fonction-right w-25" alt="...">
-                </div>    
-            </div>
-
+   
             <div class="col-md-12 info-host-end">
                 <div class="mb-3">
                     <div class="card-body color-card-host">
-                        <div class="number-container text-center fs-2">5</div>
+                        <div class="number-container text-center fs-2">2</div>
                             <div>
                                 <h5>Accepter les conditions et valider</h5>
                                 <p>Conditions générales d’utilisation</p>
@@ -114,13 +48,15 @@
             </div>   
         </div>
 
-        <div class="col-md-12 info-host-start">
+        {# <div class="col-md-12 info-host-start">
             <div class="mb-3 images-CCM">
                 <img src="/images/fleche1.png" class=" w-25" alt="...">
-                <img src="/images/CommentCaMarcheGuest3.png" class=" w-25" alt="...">
+                <img src="/images/CCMH_Valider.png" class=" w-25" alt="image case à valider">
             </div>    
         </div>
-    </div>    
+    </div>     #}
+
+        <p class="text-center" id="text-CCM">Soumettez votre demande, nous reviendrons vers vous pour la suite.</p>
 
     <div class="row">
         <div class="col-md-12 text-center">
@@ -128,4 +64,6 @@
         </div>
     </div>
 
-{% endblock %}
+    {# Ajout du formulaire : Comment devenir hote ? #}
+    {# <div>{% include 'registration_host/register_host.html.twig' %}</div> #}
+    {% endblock %}

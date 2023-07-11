@@ -12,9 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class CompteGuestController extends AbstractController
+class CompteAssoController extends AbstractController
 {
-    #[Route('/compte/guest', name: 'app_compte_guest')]
+    #[Route('/compte/asso', name: 'app_compte_asso')]
     public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $encoder): Response
     {
 
@@ -40,7 +40,7 @@ class CompteGuestController extends AbstractController
             $em->flush();
 
         }
-        return $this->render('compte_guest/index.html.twig', [
+        return $this->render('compte_asso/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -50,10 +50,10 @@ class CompteGuestController extends AbstractController
         //On récupère le logement dans la bdd
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $lodging = $lodgingRepository->find($id);
-        //on récupère l'utilisateur
+        /** @var User $user */
         $user = $this->getUser();
         //On ajoute le logement à la liste des favoris de l'utilisateur
-        $user->addLodging($lodging);
+        $user->addFavori($lodging);
         //On met en place un msg flash
         $this->addFlash('success',"L'hébergement a bien été ajouté à vos favoris");
         //On enregistre les modifs
@@ -63,17 +63,16 @@ class CompteGuestController extends AbstractController
         return $this->redirectToRoute('app_lodging');
     }
 
-    #[Route('/remove-lodging/{id}', name: 'remove_lodging')]
-    
+     #[Route('/remove-favori/{id}', name: 'remove_favori')]
     public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         //On récupère la donnee dans la bdd
         $lodging = $lodgingRepository->find($id);
-        //on récupère l'utilisateur
+        /** @var User $user */
         $user = $this->getUser();
         //On ajoute le lodging à la liste des favoris de l'utilisateur
-        $user->removeLodging($lodging);
+        $user->removeFavori($lodging);
         //On met en place un msg flash
         $this->addFlash('success','Le logement a bien été retirer à vos favoris');
         //On enregistre les modifs

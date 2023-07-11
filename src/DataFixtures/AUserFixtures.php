@@ -28,7 +28,7 @@ class AUserFixtures extends Fixture
         $user->setFirstName('bintou');
         $user->setEmail('sidib.bintou@gmail.com');
         $user->setPhoneUser('06.11.22.33.41');
-        $user->setImageNameUser('/public/images/guests/profil1.jpg');
+        $user->setImageNameUser('/public/images/user/profil1.jpg');
         $user->setUpdatedAt(new \DateTimeImmutable());
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
@@ -42,7 +42,7 @@ class AUserFixtures extends Fixture
         $user->setFirstName('Nassima');
         $user->setEmail('bibi@bibi.com');
         $user->setPhoneUser('06.11.22.33.43');
-        $user->setImageNameUser('/public/images/guests/profil2.jpg');
+        $user->setImageNameUser('/public/images/user/profil2.jpg');
         $user->setUpdatedAt(new \DateTimeImmutable());
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setRoles(['ROLE_USER']);
@@ -56,7 +56,7 @@ class AUserFixtures extends Fixture
         $user->setFirstName('John');
         $user->setEmail('john.doe@example.com');
         $user->setPhoneUser('06.11.22.33.44');
-        $user->setImageNameUser('/public/images/guests/profil3.jpg');
+        $user->setImageNameUser('/public/images/user/profil3.jpg');
         $user->setUpdatedAt(new \DateTimeImmutable());
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setRoles(['ROLE_USER']);
@@ -68,7 +68,7 @@ class AUserFixtures extends Fixture
         $user->setFirstName('Jane');
         $user->setEmail('   ');
         $user->setPhoneUser('06.11.22.33.42');
-        $user->setImageNameUser('/public/images/guests/profil4.jpg');
+        $user->setImageNameUser('/public/images/user/profil4.jpg');
         $user->setUpdatedAt(new \DateTimeImmutable());
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setRoles(['ROLE_USER']);
