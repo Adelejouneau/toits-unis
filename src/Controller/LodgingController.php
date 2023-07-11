@@ -31,7 +31,7 @@ class LodgingController extends AbstractController
     #[Route('/lodging', name: 'app_lodging')]
     public function index(LodgingRepository $lodgingRepository, Request $request): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_GUEST');
+        // $this->denyAccessUnlessGranted('ROLE_GUEST');
         //dd($request->request->get('filter_host_adress'));        
         $filteredAdress = $request->request->get('filter_host_adress');
         if ($filteredAdress && isset($filteredAdress['department']) && $filteredAdress['department'] != "") {
@@ -57,7 +57,7 @@ class LodgingController extends AbstractController
     public function showLodg($slugLod, LodgingRepository $lodgingRepository):Response
 
     {
-        $this->denyAccessUnlessGranted('ROLE_GUEST');
+        // $this->denyAccessUnlessGranted('ROLE_GUEST');
         // On récupère le lodging correspondant au slug
         $lodging = $lodgingRepository->findOneBy(['slugLod' => $slugLod]);
 
