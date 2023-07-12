@@ -334,16 +334,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function addFavori(Lodging $lodging):static
     {
-        if (!$this->favoris->contains($lodging)) {
-            $this->favoris->add($lodging);
-        }
+            $this->lodgings->add($lodging);
+
         return $this;  
     }
 
     public function removeFavori(Lodging $lodging):static
     {
 
-            $this->favoris->removeElement($lodging);
+            $this->lodgings->removeElement($lodging);
 
         return $this;  
     }
@@ -364,21 +363,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->lodgings;
     }
 
-    public function addLodging(Lodging $lodging): self
-    {
-        if ($this->lodgings->contains($lodging)) {
-            $this->lodgings->add($lodging);
-        }
+//     public function addLodging(Lodging $lodging): self
+// {
+//     $this->lodgings->add($lodging);
 
-        return $this;
-    }
+//     return $this;
+// }
 
-    public function removeLodging(Lodging $lodging): self
-    {
-        $this->lodgings->removeElement($lodging);
+// public function removeLodging(Lodging $lodging): self
+// {
+//     $this->lodgings->removeElement($lodging);
 
-        return $this;
-    }
+//     return $this;
+// }
+    
 
 
 }
