@@ -60,6 +60,14 @@ class LodgingType extends AbstractType
                 'label' => "Télécharger des photos",
             ])
             ->remove('slugLod')
+
+            ->add('equipement', EntityType::class, [
+                'class' => 'App\Entity\equipement',
+                'multiple' => true,
+                'attr'=>[
+                    "class" =>"select2"  
+                    ]
+                ])
     
         ;
     }
