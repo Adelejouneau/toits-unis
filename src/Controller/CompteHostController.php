@@ -3,12 +3,6 @@
 namespace App\Controller;
 
 use App\Form\UserType;
-use App\Entity\Address;
-use App\Entity\Lodging;
-use App\Entity\User;
-use App\Form\LodgingType;
-use App\Repository\UserRepository;
-use App\Repository\LodgingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,12 +24,7 @@ class CompteHostController extends AbstractController
         $hostForm->handleRequest($request);
 
         if($hostForm->isSubmitted() && $hostForm->isValid()){
-            // On verifie si l'utilisateur a changer de mot de passe
-            if(!is_null($request->request->get('plainPassword'))){
-            //On encode le nouveau password et on l'affecte au user
-            $password = $encoder->hashPassword($user, $request->request->get('plainPassword'));
-            $user->setPassword($password);
-            }
+            
             //on me en place un msg flash
             $this->addFlash('success','Votre profil a bien été modifié');
             //on enregistre les modif

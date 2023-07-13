@@ -6,8 +6,9 @@ use App\Entity\Host;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormView;
 
-class HostType extends AbstractType
+class HostFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

@@ -3,19 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Lodging;
-use App\Entity\Department;
 use App\Form\FilterHostAdressType;
 use Symfony\Component\Mime\Address;
 use App\Repository\LodgingRepository;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LodgingController extends AbstractController
@@ -90,5 +87,26 @@ class LodgingController extends AbstractController
 
         $this->addFlash('success', "Votre demande a bien été envoyée par e-mail à l'hôte qui devra vous répondre dans les 2 heures.");
         return $this->redirectToRoute('app_lodging_show', ['slugLod' => $lodging->getSlugLod()]);
+    }
+
+    #[Route('/register_lodging', name: 'app_register_lodging')]
+    public function registerLodging(Request $request, EntityManagerInterface $entityManager): Response
+    
+    {
+        $lodging = new Lodging();
+        $lodging = $this->createForm(LodgingType::class, $lodging);
+        $lodging->handleRequest($request);
+
+        if ($lodging->isSubmitted() && $lodging->isValid()) {
+            
+            $entityManager->persist($lodging);
+            $entityManager->flush();
+
+        }
+
+        return $this->render('registration_host/register_lodging.html.twig', [
+            'lodging' => $lodging->createView(),
+        ]);
+
     }
 }

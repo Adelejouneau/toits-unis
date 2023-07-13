@@ -42,9 +42,8 @@ security:
     #ROLE_HIERARCHY permet de hierarchiser les roles
 
     role_hierarchy:
-            ROLE_HOST: ROLE_USER
             ROLE_ASSO: ROLE_USER
-            ROLE_ADMIN: [ROLE_HOST, ROLE_ASSO]
+            ROLE_ADMIN: [ROLE_USER, ROLE_ASSO]
 
 when@test:
     security:

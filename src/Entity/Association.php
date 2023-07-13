@@ -215,6 +215,13 @@ class Association
         return $this->department;
     }
 
+    public function setDepartment(string $department): self
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
     public function addDepartment(Department $department): static
     {
         if (!$this->department->contains($department)) {
