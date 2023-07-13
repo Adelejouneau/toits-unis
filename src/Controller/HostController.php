@@ -24,13 +24,12 @@ class HostController extends AbstractController
 
     private EmailVerifier $emailHost;
     private Mailer $mailer;
-    private RouterInterface $router;
 
     public function __construct(EmailVerifier $emailVerifier, Mailer $mailer, RouterInterface $router)
     {
         $this->emailHost = $emailVerifier;
         $this->mailer = $mailer;
-        $this->router = $router;
+
     }
 
     #[Route('/register_host', name: 'app_register_host')]
@@ -44,22 +43,14 @@ class HostController extends AbstractController
         if ($HostForm->isSubmitted() && $HostForm->isValid()) {
             
             
-            // Check if an host with the same email already exists
-            // $existingHost = $entityManager->getRepository(Host::class)->findOneBy(['email' => $host->getEmail()]);
-            // if ($existingHost) {
-            //     $this->addFlash('danger', 'Un utilisateur avec cette adresse e-mail existe déjà.');
-            //     return $this->redirectToRoute('app_register_host');
-            // }
-            
             $entityManager->persist($host);
             $entityManager->flush();
 
-            // generate a signed url and email it to the host
 
             $email = (new TemplatedEmail())
                 ->from(new Address('mailer@toitsUnis.com', 'toitsUnis'))
                 ->to($host->getEmail())
-                    ->subject('Confirmation de votre e-mail')
+                    ->subject('Bienvenue dans le réseau ToitsUnis !')
                     ->htmlTemplate('registration_host/confirmation_host_email.html.twig');
                     
             $this->mailer->send($email);
