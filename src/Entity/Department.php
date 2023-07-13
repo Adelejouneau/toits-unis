@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\DataFixtures\AADepartmentFixtures;
 use App\Repository\DepartmentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

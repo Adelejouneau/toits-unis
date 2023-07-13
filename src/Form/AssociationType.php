@@ -18,6 +18,7 @@ class AssociationType extends AbstractType
     {
         $builder
             ->add('nameAsso')
+            ->add('immatriculationAsso')
             ->add('descriptionAsso', CKEditorType::class)
             ->add('websiteUrl')
             ->remove('imageNameAsso')
@@ -31,6 +32,13 @@ class AssociationType extends AbstractType
             ])
             ->add('phoneNumberAsso')
             ->add('emailAsso')
+            ->add('department', EntityType::class, [
+                'class' => Address::class,
+                'choice_label' => 'department',
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'Département',
+            ])
             ->remove('slugAsso')
             ;
     }
