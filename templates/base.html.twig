@@ -51,7 +51,7 @@
                     </li>
                             <li>
                         {% if app.user %}
-                            {% if 'ROLE_GUEST' in app.user.roles %}
+                            {% if 'ROLE_USER' in app.user.roles %}
                                 <a class="nav-link navbarColor" href="{{ path('app_compte_guest') }}">Mon compte</a>
                             </li>
                             <li>
