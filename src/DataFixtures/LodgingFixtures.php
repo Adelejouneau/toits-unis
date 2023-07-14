@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 use App\Entity\Lodging;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\Security\Core\Security;
 
 class LodgingFixtures extends Fixture
 {

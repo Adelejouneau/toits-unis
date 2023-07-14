@@ -6,7 +6,6 @@ use App\Entity\Category;
 use DateTimeImmutable;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class CategoryFixtures extends Fixture
 {

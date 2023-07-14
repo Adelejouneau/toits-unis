@@ -19,13 +19,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
+                <th>Immatriculation</th>
                 <th>Description</th>
                 <th>Site Web</th>
                 <th>Téléphone</th>
                 <th>Email</th>
-                <th>Slug</th>
+                <th>Département</th>
                 <th>Logo</th>
                 <th class="text-end">Actions</th>
             
@@ -34,13 +34,18 @@
         <tbody>
         {% for association in associations %}
             <tr>
-                <td>{{ association.id }}</td>
                 <td>{{ association.nameAsso }}</td>
+                <td>{{ association.immatriculationAsso }}</td>
                 <td>{{ association.descriptionAsso }}</td>
                 <td>{{ association.websiteUrl }}</td>
                 <td>{{ association.phoneNumberAsso }}</td>
                 <td>{{ association.emailAsso }}</td>
-                <td>{{ association.slugAsso }}</td>
+                <td><ul>
+                    {% for department in association.department %}
+                        <li>{{ association.department }}</li>
+                    {% endfor %}
+                    </ul>
+                    </td>
                 <td>{{ association.imageFile }}</td>
                 <td>
                     <a href="{{ path('app_admin_association_show', {'id': association.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>

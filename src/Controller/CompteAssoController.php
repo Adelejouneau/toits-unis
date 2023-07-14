@@ -63,7 +63,7 @@ class CompteAssoController extends AbstractController
         return $this->redirectToRoute('app_lodging');
     }
 
-     #[Route('/remove-favori/{id}', name: 'remove_favori')]
+    #[Route('/remove-favori/{id}', name: 'remove_favori')]
     public function removeLodging($id, LodgingRepository $lodgingRepository, EntityManagerInterface $em ):Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
