@@ -51,8 +51,8 @@
                     </li>
                             <li>
                         {% if app.user %}
-                            {% if 'ROLE_GUEST' in app.user.roles %}
-                                <a class="nav-link navbarColor" href="{{ path('app_compte_guest') }}">Mon compte</a>
+                            {% if 'ROLE_USER' in app.user.roles %}
+                                <a class="nav-link navbarColor" href="{{ path('app_compte_asso') }}">Mon compte</a>
                             </li>
                             <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_comment_ca_marche') }}">Trouver un toit</a>
@@ -60,10 +60,6 @@
                             <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_lodging') }}">Logements</a>
                             </li>    
-                            {% elseif 'ROLE_HOST' in app.user.roles %}
-                            <li>
-                                <a class="nav-link navbarColor" href="{{ path('app_compte_host') }}">Mon compte</a>
-                            </li>
                             {% elseif 'ROLE_ADMIN' in app.user.roles %}
                             <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_admin') }}">Aller sur Admin</a>
