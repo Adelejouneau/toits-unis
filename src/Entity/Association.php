@@ -137,16 +137,6 @@ class Association
         return $this->imageFile;
     }
 
-    public function setImageName(?string $imageName): void
-    {
-        $this->imageNameAsso = $imageName;
-    }
-
-    public function getImageName(): ?string
-    {
-        return $this->imageNameAsso;
-    }
-
         public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
