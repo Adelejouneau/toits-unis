@@ -72,8 +72,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $slugAsso = null;
 
-    #[ORM\Column]
-    private ?int $immatriculationAsso = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $immatriculationAsso = null;
+
 
     #[ORM\ManyToMany(targetEntity: Department::class, inversedBy: 'associations')]
     private Collection $department;
@@ -332,6 +333,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->lodgings;
     }
 
+    public function getSlugAsso(): ?string
+    {
+        return $this->slugAsso;
+    }
 
     public function setSlugAsso(string $slugAsso): self
     {
@@ -340,12 +345,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getImmatriculationAsso(): ?int
+
+    public function getImmatriculationAsso(): ?string
     {
         return $this->immatriculationAsso;
     }
 
-    public function setImmatriculationAsso(int $immatriculationAsso): static
+    public function setImmatriculationAsso(string $immatriculationAsso): static
     {
         $this->immatriculationAsso = $immatriculationAsso;
 
@@ -382,6 +388,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
+    
 
 }
 

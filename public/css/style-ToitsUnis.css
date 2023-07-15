@@ -945,7 +945,25 @@ a{
     
 }
 
+
+/* registraton association */
+
+#register-container{
+    background-color:#FFF0BD;
+    gap:5px;
+    color:#124367;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    padding:10px 30px 10px 30px
+
+
+}
+
+
+
+
 .loc{
 font-size: 1.5rem;
 }
+
 

@@ -2,12 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\Department;
 use App\Entity\User;
+use App\Entity\Department;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -37,7 +39,7 @@ class RegistrationAssoFormType extends AbstractType
         ->add('websiteUrl', null, [
             'label' => 'site web',
             ])
-        ->remove('imageNameUser')
+        ->remove('imageNameAsso')
         ->add('imageFile', FileType::class, [
             'required' => false,
             'label' => "Image de l'association",
@@ -82,6 +84,17 @@ class RegistrationAssoFormType extends AbstractType
             'first_options'  => ['label' => 'Mot de passe'],
             'second_options' => ['label' => 'Confirmer le mot de passe'],
             'invalid_message' => 'Les mots de passe ne correspondent pas',
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Entrez un mot de passe',
+                ]),
+                new Length([
+                    'min' => 6,
+                    'minMessage' => 'Votre message devrait comporter au moins {{ limit }} caractères.',
+                    // max length allowed by Symfony for security reasons
+                    'max' => 4096,
+                ]),
+            ],
         ]);
     }
 
