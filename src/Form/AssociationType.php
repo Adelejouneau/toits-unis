@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Address;
 use App\Entity\Association;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -32,13 +31,13 @@ class AssociationType extends AbstractType
             ])
             ->add('phoneNumberAsso')
             ->add('emailAsso')
-            ->add('department', EntityType::class, [
-                'class' => Address::class,
-                'choice_label' => 'department',
-                'multiple' => true,
-                'expanded' => true,
-                'label' => 'Département',
-            ])
+            // ->add('department', EntityType::class, [
+            //     'class' => Address::class,
+            //     'choice_label' => 'department',
+            //     'multiple' => true,
+            //     'expanded' => true,
+            //     'label' => 'Département',
+            // ])
             ->remove('slugAsso')
             ;
     }

@@ -47,18 +47,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
     )]
     #[ORM\Column(length: 255)]
-    protected ?string $lastName = null;
+    private ?string $nameAsso = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $websiteUrl = null;
 
     #[ORM\Column(length: 255)]
-    protected ?string $firstName = null;
+    private ?string $phoneNumberAsso = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    protected ?string $phoneUser = null;
+    private ?string $imageNameAsso = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    protected ?string $imageNameUser = null;
-
-    #[Vich\UploadableField(mapping: 'assos', fileNameProperty: 'imageNameUser')]
+    #[Vich\UploadableField(mapping: 'associations', fileNameProperty: 'imageNameAsso')]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
@@ -69,17 +69,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $nombreLit = null;
+    #[ORM\Column(length: 255)]
+    private ?string $slugAsso = null;
+
+    #[ORM\Column]
+    private ?int $immatriculationAsso = null;
+
+    #[ORM\ManyToMany(targetEntity: Department::class, inversedBy: 'associations')]
+    private Collection $department;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $entreprise = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $fonction = null;
+    private ?string $descriptionAsso = null;
 
     #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'users')]
     private Collection $users;
@@ -182,47 +182,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getLastName(): ?string
+    public function getNameAsso(): ?string
     {
-        return $this->lastName;
+        return $this->nameAsso;
     }
 
-    public function setLastName(string $lastName): static
+    public function setNameAsso(string $nameAsso): self
     {
-        $this->lastName = $lastName;
+        $this->nameAsso = $nameAsso;
+
         return $this;
     }
 
-    public function getFirstName(): ?string
+    public function getDescriptionAsso(): ?string
     {
-        return $this->firstName;
+        return $this->descriptionAsso;
     }
 
-    public function setFirstName(string $firstName): static
+    public function setDescriptionAsso(?string $descriptionAsso): self
     {
-        $this->firstName = $firstName;
+        $this->descriptionAsso = $descriptionAsso;
+
         return $this;
     }
 
-    public function getPhoneUser(): ?string
+    public function getWebsiteUrl(): ?string
     {
-        return $this->phoneUser;
+        return $this->websiteUrl;
     }
 
-    public function setPhoneUser(string $phoneUser): static
+    public function setWebsiteUrl(?string $websiteUrl): self
     {
-        $this->phoneUser = $phoneUser;
+        $this->websiteUrl = $websiteUrl;
+
         return $this;
     }
-
-    public function getImageNameUser(): ?string
+    public function getImageNameAsso(): ?string
     {
-        return $this->imageNameUser;
+        return $this->imageNameAsso;
     }
 
-    public function setImageNameUser(?string $imageNameUser): static
+    public function setImageNameAsso(?string $imageNameAsso): self
     {
-        $this->imageNameUser = $imageNameUser;
+        $this->imageNameAsso = $imageNameAsso;
+
         return $this;
     }
 
@@ -262,7 +265,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    
+    public function getPhoneNumberAsso(): ?string
+    {
+        return $this->phoneNumberAsso;
+    }
+
+    public function setPhoneNumberAsso(string $phoneNumberAsso): self
+    {
+        $this->phoneNumberAsso = $phoneNumberAsso;
+
+        return $this;
+    }
 
     public function isVerified(): bool
     {
@@ -274,51 +287,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
         return $this;
     }
-
-    public function getNombreLit(): ?int
-    {
-        return $this->nombreLit;
-    }
-
-    public function setNombreLit(?int $nombreLit): static
-    {
-        $this->nombreLit = $nombreLit;
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): static
-    {
-        $this->description = $description;
-        return $this;
-    }
-
-    public function getEntreprise(): ?string
-    {
-        return $this->entreprise;
-    }
-
-    public function setEntreprise(?string $entreprise): static
-    {
-        $this->entreprise = $entreprise;
-        return $this;
-    }
-
-    public function getFonction(): ?string
-    {
-        return $this->fonction;
-    }
-
-    public function setFonction(?string $fonction): static
-    {
-        $this->fonction = $fonction;
-        return $this;
-    }
-
+    
     /**
      * @return string|null
      */
@@ -363,6 +332,59 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->lodgings;
     }
 
+
+    public function setSlugAsso(string $slugAsso): self
+    {
+        $this->slugAsso = $slugAsso;
+
+        return $this;
+    }
+
+    public function getImmatriculationAsso(): ?int
+    {
+        return $this->immatriculationAsso;
+    }
+
+    public function setImmatriculationAsso(int $immatriculationAsso): static
+    {
+        $this->immatriculationAsso = $immatriculationAsso;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Department>
+     */
+    public function getDepartment(): Collection
+    {
+        return $this->department;
+    }
+
+    public function setDepartment(string $department): self
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    public function addDepartment(Department $department): static
+    {
+        if (!$this->department->contains($department)) {
+            $this->department->add($department);
+        }
+
+        return $this;
+    }
+
+    public function removeDepartment(Department $department): static
+    {
+        $this->department->removeElement($department);
+
+        return $this;
+    }
+
+}
+
 //     public function addLodging(Lodging $lodging): self
 // {
 //     $this->lodgings->add($lodging);
@@ -379,4 +401,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
 
 
-}
+
