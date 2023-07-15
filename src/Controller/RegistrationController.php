@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationAssoFormType;
-use App\Form\RegistrationHostFormType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -31,31 +30,22 @@ class RegistrationController extends AbstractController
     public function registerAsso(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+        
         $form = $this->createForm(RegistrationAssoFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Vérifier si l'adresse e-mail existe déjà
-            $existingUser = $entityManager->getRepository(User::class)->findOneBy([
-                'email' => $user->getEmail(),
-            ]);
-
-            if ($existingUser) {
-                $this->addFlash('danger', 'Cette adresse e-mail est déjà utilisée.');
-
-                return $this->redirectToRoute('app_register_asso');
-            }
-
-            // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->setRoles(['ROLE_ASSO']);
+
             $entityManager->persist($user);
             $entityManager->flush();
+            
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -67,7 +57,7 @@ class RegistrationController extends AbstractController
             );
             
             $this->addFlash('success','Inscription réussie, vous devez valider votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_register_asso');
+            return $this->redirectToRoute('app_lodging');
         }
         
         return $this->render('registration_asso/register_asso.html.twig', [
@@ -88,7 +78,7 @@ class RegistrationController extends AbstractController
             } catch (VerifyEmailExceptionInterface $exception) {
                 $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
     
-                return $this->redirectToRoute('app_login');
+                return $this->redirectToRoute('app_register_asso');
             }
     
             // @TODO Change the redirect on success and handle or remove the flash message in your templates
