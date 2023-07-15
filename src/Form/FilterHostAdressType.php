@@ -13,10 +13,13 @@ class FilterHostAdressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('department')
-            //->add("all", CheckboxType::class, ["mapped"=>false, "required"=>false])
+            ->add('department', null, [
+                'label' => 'Département',
+                ])
             ->add('Chercher', SubmitType::class)
-            ->add('Reset', SubmitType::class)
+            ->add('Reset', SubmitType::class,[
+            'label' => 'Annuler le filtre'])
+
         ;
     }
 

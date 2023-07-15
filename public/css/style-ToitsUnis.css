@@ -493,6 +493,17 @@ a{
         color: #124367;
     }
 
+    @media (max-width: 768px){ 
+        .banner-text h1{
+            font-size: 33px;
+            text-align: start;
+            margin-left: 25px;
+            
+    }
+        .card-body{
+        width: 100%;
+    }
+    }
  /* page compte profil Guest */
     /* .size-imput{
             width: 600px;
@@ -934,6 +945,7 @@ a{
     
 }
 
+
 /* registraton association */
 
 #register-container{
@@ -948,5 +960,10 @@ a{
 }
 
 
+
+
+.loc{
+font-size: 1.5rem;
+}
 
 

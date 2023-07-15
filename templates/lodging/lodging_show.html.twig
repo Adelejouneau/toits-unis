@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Details du logement{% endblock %}
+{% block title %}Détails du logement{% endblock %}
 
 {% block body %}
+
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+{% endfor %}
+
 <div class="titrePageShow">
 <h1>{{ lodging.titleLod }}</h1>
-<p>Seine-Saint-Denis, Ile de France, Région parisienne</p>
+<p class="loc">Ville : {{lodging.cityLod}}</p> 
+<p class="loc">Département : {{lodging.department}}</p>
 </div>
 
 <div class="row m-auto" id="picturesAlign">
@@ -20,7 +30,7 @@
             <img src="{{ asset('/images/lodgings/' ~ lodging.imageNameLod) }}" class="img-fluid w-50 rounded-end" alt="...">
         </div>
     </div>
-    <h3 class="titrePageShow">Chez Corinne, </h3>
+    <h3 class="titrePageShow">Chez {{lodging.host.firstName}}</h3>
 </div>
 
 <hr class="my-3 mx-5">
@@ -28,6 +38,19 @@
 <div class="my-3 mx-5">
     <p>{{ lodging.descriptionLod }}</p>
 </div>
+
+<div class="row">
+    <div class="col-md-6">
+        {% for equipement in lodging.equipements %}
+            <p>{{ equipement.DescriptionEquip}}</p>
+        {% endfor %}
+    </div>
+    <div class="col-md-6">
+        {# {{ form_row(HostForm.email) }} #}
+    </div>
+</div>
+
+{# 
 
 <hr class="my-5 mx-5">
 <div class="row col-12 col-md-6 alignOption" >
@@ -50,10 +73,11 @@
         <i class="fa-regular fa-hat-chef"></i>
         <p>kitchennette</p>
     </div>
-</div>
+</div> #}
 
-
-
+<form method="post">
+    <button type="submit" class="btn btn-success" style="text-align: center">Envoyer une demande</button>
+</form>
 
 
 {# <div>
