@@ -19,28 +19,31 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('emailAsso')
             ->add('plainPassword' , PasswordType::class, [
                 'label'=>"Nouveau mot de passe",
                 'mapped' => false,
                 'required'=>false,
                 ])
-            ->add('lastName', null, [
+            ->add('nameAsso', null, [
                 'label' => 'Nom',
                 ])
-            ->add('firstName', null, [
-                'label' => 'Prénom',
+            ->add('immatriculationAsso', null, [
+                'label' => 'immatriculation',
                 ])
-            ->add('phoneUser', null, [
+            ->add('websiteUrl', null, [
                 'label' => 'Numéro de téléphone',
                 ])
             ->remove('imageNameUser')
-            ->remove('imageFile', FileType::class, [
+            ->add('imageFile', FileType::class, [
                 'required' => false,
-                'label' => "Photo de profil",
+                'label' => "Image de l'association",
             ])
-            ->remove('updatedAt')
-            ->remove('description', CKEditorType::class)
+            ->remove('updatedAt', DateTimeType::class, [
+                'widget' => 'single_text',
+                'data' => new \DateTimeImmutable(),
+            ])
+            ->add('descriptionAsso', CKEditorType::class)
             ->remove('roles', ChoiceType::class, [
                 'choices' =>[
                 'utilisateur' => 'user',
@@ -50,17 +53,25 @@ class UserType extends AbstractType
                     'required' => true,
                     'mapped' => false,
                     ])
-            ->add('lodgings', CollectionType::class, [
-            'entry_type' => LodgingType::class,
-            'allow_add' => true,
-            'label'=>false,
-        ])
-            ->add('entreprise', null, [
-                'label' => 'Entreprise (facultatif)',
-                ])
-            ->add('fonction', null, [
-                'label' => "Fonction dans l'entreprise (facultatif)",
-                ])
+            ->add('phoneNumberAsso')
+            ->add('department', EntityType::class, [
+                'class' => Address::class,
+                'choice_label' => 'department',
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'Département',
+            ])
+        //     ->add('lodgings', CollectionType::class, [
+        //     'entry_type' => LodgingType::class,
+        //     'allow_add' => true,
+        //     'label'=>false,
+        // ])
+            // ->add('entreprise', null, [
+            //     'label' => 'Entreprise (facultatif)',
+            //     ])
+            // ->add('fonction', null, [
+            //     'label' => "Fonction dans l'entreprise (facultatif)",
+            //     ])
         ;
     }
 

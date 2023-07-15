@@ -1,81 +1,52 @@
 {% extends 'base.html.twig' %}
 {% block title %}S'enregistrer{% endblock %}
 {% block body %}
-<div class="titreConnexionAsso">
-<h1 class="text-center titre-profil-asso">Enregistrer une nouvelle association</h1>
+
 </div>
-<div class="info-asso container col-6 my-">
-        <div class=" form-group info-asso-style">
-            <label for="inputInterets" class="titre-select-job">Organisme qui effectue l’inscription</label>
-            <div class="custom-select-wrapper">
-                <select class="form custom-select select-job" id="inputInterets" onchange="updateSelectedInterests()">
-                    <option placeholder="sport"></option>
-                    <option value="sport">Sport</option>
-                    <option value="musique">Musique</option>
-                    <option value="lecture">Lecture</option>
-                    <option value="voyages">Voyages</option>
-                </select>
-            </div>
-        </div>
-        <div class=" form-group info-asso-style">
-            <label for="inputInterets" class="titre-select-job">Numéro d’immatriculation de l’organisme</label>
-            <div class="custom-select-wrapper  ">
-                <select class="form custom-select select-job" id="inputInterets" onchange="updateSelectedInterests()">
-                    <option placeholder="sport"></option>
-                    <option value="sport">Sport</option>
-                    <option value="musique">Musique</option>
-                    <option value="lecture">Lecture</option>
-                    <option value="voyages">Voyages</option>
-                </select>
-            </div>
-    </div>
-</div>
-<h3 class="text-center sousTitre-profil-asso">Informations personnelles</h3>
+<h3 class="text-center my-5 sousTitre-profil-asso">Informations personnelles</h3>
 {% for flash_error in app.flashes('verify_email_error') %}
     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <section class="cadre">
+    <section class="cadre m-5">
         {{ form_start(registrationAssoForm) }}
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationAssoForm.lastName) }}
+                {{ form_row(registrationAssoForm.nameAsso) }}
+                 {{ form_row(registrationAssoForm.phoneNumberAsso) }}
+                 {{ form_row(registrationAssoForm.imageFile) }}
+                {{ form_row(registrationAssoForm.descriptionAsso) }}
+                 
             </div>
             <div class="col-md-6">
-                {{ form_row(registrationAssoForm.firstName) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_row(registrationAssoForm.phoneUser) }}
-            </div>
-            <div class="col-md-6">
-                {{ form_row(registrationAssoForm.email) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_row(registrationAssoForm.plainPassword, {
+                {{ form_row(registrationAssoForm.immatriculationAsso) }}
+                  {{ form_row(registrationAssoForm.websiteUrl) }}
+                 {{ form_row(registrationAssoForm.email) }}
+                 {{ form_row(registrationAssoForm.plainPassword, {
                     label: 'Password'
                 }) }}
+                {{ form_row(registrationAssoForm.agreeTerms) }}
+                 <button type="submit" class="btn btn-success">Valider</button>
             </div>
+        </div>
+    </section>
+ {{ form_end(registrationAssoForm) }}
+            {# <div class="col-md-6">
+                {{ form_row(registrationAssoForm.department) }}
+            </div> #}
+      
+
+        
+            
             {# <div class="col-md-6">
                 {{ form_row(registrationAssoForm.plainPasswordConfirm, {
                     label: 'Confirm Password'
                 }) }}
-        </div> #}
+        </div> #}    
+    
 
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_row(registrationAssoForm.agreeTerms) }}
-            </div>
-        </div>
-    </section>
-
-    <button type="submit" class="btn btn-success">Valider</button>
-    {{ form_end(registrationAssoForm) }}
+    
+   
 
 </div>
 {% for flash_error in app.flashes('verify_email_error') %}

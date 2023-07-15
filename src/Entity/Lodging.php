@@ -4,13 +4,17 @@ namespace App\Entity;
 
 use App\Entity\Host;
 use App\Entity\User;
+use App\Entity\Equipement;
+use App\Entity\Category;
+use App\Entity\Department;
+use App\Form\EquipementType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LodgingRepository;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: LodgingRepository::class)]
 #[Vich\Uploadable]
@@ -27,7 +31,7 @@ class Lodging
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageNameLod = null;
 
-    // NOTE: This is not a mapped field of entity metadata, just a simple property.
+
     #[Vich\UploadableField(mapping: 'lodgings', fileNameProperty: 'imageNameLod')]
     private ?File $imageFile = null;
 
@@ -59,9 +63,13 @@ class Lodging
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'lodgings')]
     private Collection $users;
 
+    #[ORM\ManyToMany(targetEntity: Equipement::class, inversedBy: 'lodgings')]
+    private Collection $equipements;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->equipements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,21 +230,18 @@ class Lodging
         return $this->equipements;
     }
 
-    public function addEquipement(Equipement $equipement): static
+    public function addEquipements(Equipement $equipement): self
     {
         if (!$this->equipements->contains($equipement)) {
             $this->equipements->add($equipement);
-            $equipement->addLodging($this);
         }
 
         return $this;
     }
 
-    public function removeEquipement(Equipement $equipement): static
+    public function removeEquipements(Equipement $equipement): self
     {
-        if ($this->equipements->removeElement($equipement)) {
-            $equipement->removeLodging($this);
-        }
+        $this->equipements->removeElement($equipement);
 
         return $this;
     }

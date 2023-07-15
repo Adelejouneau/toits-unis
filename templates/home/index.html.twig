@@ -179,7 +179,7 @@ Votre engagement envers cette cause humanitaire fera une réelle différence et 
         </div>   #}
 
     <div class="container">
-    <div class="row">
+    <div class="row ">
         <div class="col-md-12">
             <div class="lc-block">
                 <div id="carouselLogos" class="carousel slide pt-5 pb-4 text-align" data-bs-ride="carousel">
@@ -188,7 +188,7 @@ Votre engagement envers cette cause humanitaire fera une réelle différence et 
                         {% set associationsBatched = associations|batch(batchSize) %}
                         {% for i, batch in associationsBatched %}
                             <div class="carousel-item{% if loop.first %} active{% endif %}">
-                                <div class="row">
+                                <div class="row justify-content-center">
                                     {% for association in batch %}
                                         <div class="col-6 col-lg-2 align-self-center">
                                             <img class="d-block w-100 px-3 mb-3" src="{{ asset('/images/asso/' ~ association.imageNameAsso) }}" alt="">
@@ -199,12 +199,12 @@ Votre engagement envers cette cause humanitaire fera une réelle différence et 
                         {% endfor %}
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselLogos" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        {# <span class="carousel-control-prev-icon" aria-hidden="true"></span> #}
+                        <span class="visually-visible text-dark text-start"><i data-feather="chevron-left"></i></span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselLogos" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                    <button class="carousel-control-next " type="button" data-bs-target="#carouselLogos" data-bs-slide="next">
+                        {# <span class="carousel-control-next-icon" aria-hidden="true"></span> #}
+                        <span class="visually-visible text-dark text-end"><i data-feather="chevron-right"></i> </span>
                     </button>
                 </div>
             </div>
