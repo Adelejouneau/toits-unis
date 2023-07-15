@@ -12,7 +12,9 @@ class DepartmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nameDepartment')
+            ->add('nameDepartment', null, [
+                'label' => 'Département',
+                ])
             ->add('codeDepartment')
         ;
     }

@@ -179,6 +179,13 @@ class LodgingFixtures extends Fixture
         $lodging->setCategory($this->getReference(CategoryFixtures::ENTREPRISE));
         $lodging->setDescriptionLod("Coin nuit dans une entreprise, 20m2, proche du tram et des commerces. Situé au 1er étage de l'agence, le coin nuit proposé est dans l'ancienne réserve de l'entreprise, réorganisée en espace nuit. Kitchenette équipée, une salle d'eau avec WC.");
         $lodging->setHost($this->getReference(HostFixtures::AMAH_TRAORE));
+        $lodging->addEquipements($this->getReference(EquipementFixtures::CUISINE_COUVERTS));
+        $lodging->addEquipements($this->getReference(EquipementFixtures::CUISINE_MICRO_ONDE));
+        $lodging->addEquipements($this->getReference(EquipementFixtures::SANITAIRES_TOILETTE));
+        $lodging->addEquipements($this->getReference(EquipementFixtures::SANITAIRES_LAVABO));
+        $lodging->addEquipements($this->getReference(EquipementFixtures::SANITAIRES_DOUCHE));
+        $lodging->addEquipements($this->getReference(EquipementFixtures::COUCHAGE_CANAPE));
+        $lodging->addEquipements($this->getReference(EquipementFixtures::NBR_DE_LIT_UN));
         $lodging->setImageNameLod("image1.jpg");
         $lodging->setSlugLod("logement-12");
         $manager->persist($lodging);
