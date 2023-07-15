@@ -4,7 +4,7 @@
 
 <div class=" container-lg py-4 ">
 
-    <h1 class="my-5 text-center"><i data-feather="film"></i> Nos derniers logements <i data-feather="film"></i></h1>
+    <h1 class="my-5 text-center"> Nos derniers logements <i data-feather="home"></i></h1>
 
     {% for label, messages in app.flashes() %}
     {% for message in messages %}
@@ -14,26 +14,19 @@
     {% endfor %}
 {% endfor %}
 
-    {# <div class="row col-6" id="filtre-departement">
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
-    </div> #}
 
-    {# <div class="row " id="filtre-departement"> #}
+
+    {# Filtre departement #}
         <div class="col">
             {{ form_start(form) }}
             {{ form_row(form.department) }}
         </div>
         <div class="col">
             {{ form_row(form) }}
-            <!-- Ajoutez les autres champs du formulaire de la même manière -->
+
             {{ form_end(form) }}
         </div>
-
-
-
-        
+    
 
         <div class="row d-flex justify-content-center">
             {% for lodging in lodgings %}
@@ -45,7 +38,7 @@
                         {% else %}
                         <img src="{{ asset('/images/lodgings/placeholder.png') }}" class="img-fluid" alt="{{ lodging.titleLod }}">
                         {% endif %}
-                        {% if lodging not in app.user.lodgings %}
+                        {# {% if lodging not in app.user.lodgings %}
                             <a href="{{ path('app_favori', {id:lodging.id}) }}" class="btn btn-light rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                                 <i data-feather="star" class="text-danger"></i>
                             </a>
@@ -53,10 +46,11 @@
                             <a href="{{ path('remove_favori', {id:lodging.id}) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
                                 <i data-feather="star" class="text-light"></i>
                             </a>
-                        {% endif %}
+                        {% endif %} #}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ lodging.titleLod }}</h5>
+                        <h6>{{lodging.department}}</h6>
 
                         <a href="{{ path('app_lodging_show', {slugLod:lodging.slugLod }) }}" class="btn btn-primary ">voir plus </a>
                     </div>

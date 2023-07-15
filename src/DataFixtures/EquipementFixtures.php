@@ -21,12 +21,12 @@ class EquipementFixtures extends Fixture
     public const COUCHAGE_CANAPE = 'Couchage - Canapé lit';
     public const COUCHAGE_AUTRE = 'Couchage - Autre couchage';
 
-    public const NBR_DE_LIT_1 = 'Couchage - 1 personne';
-    public const NBR_DE_LIT_2 = 'Couchage - 2 personnes';
-    public const NBR_DE_LIT_3 = 'Couchage - 3 personnes';
-    public const NBR_DE_LIT_4 = 'Couchage - 4 personnes';
-    public const NBR_DE_LIT_5 = 'Couchage - 5 personnes';
-    public const NBR_DE_LIT_6 = 'Couchage - 6 personnes';
+    public const NBR_DE_LIT_UN = 'Couchage - 1 personne';
+    public const NBR_DE_LIT_DEUX = 'Couchage - 2 personnes';
+    public const NBR_DE_LIT_TROIS = 'Couchage - 3 personnes';
+    public const NBR_DE_LIT_QUATRE = 'Couchage - 4 personnes';
+    public const NBR_DE_LIT_CINQ = 'Couchage - 5 personnes';
+    public const NBR_DE_LIT_SIX = 'Couchage - 6 personnes';
 
     public function load(ObjectManager $manager): void
     {
@@ -88,37 +88,37 @@ class EquipementFixtures extends Fixture
         $equipement = new Equipement();
         $equipement->setTypeEquip('couchage 1 personne');
         $equipement->setDescriptionEquip('Couchage - 1 personne');
-        $this->addReference(self::NBR_DE_LIT_1, $equipement);
+        $this->addReference(self::NBR_DE_LIT_UN, $equipement);
         $manager->persist($equipement);
 
         $equipement = new Equipement();
         $equipement->setTypeEquip('couchage 2 personnes');
         $equipement->setDescriptionEquip('Couchage - 2 personnes');
-        $this->addReference(self::NBR_DE_LIT_2, $equipement);
+        $this->addReference(self::NBR_DE_LIT_DEUX, $equipement);
         $manager->persist($equipement);
 
         $equipement = new Equipement();
         $equipement->setTypeEquip('couchage 3 personnes');
         $equipement->setDescriptionEquip('Couchage - 3 personnes');
-        $this->addReference(self::NBR_DE_LIT_3, $equipement);
+        $this->addReference(self::NBR_DE_LIT_TROIS, $equipement);
         $manager->persist($equipement);
 
         $equipement = new Equipement();
         $equipement->setTypeEquip('couchage 4 personnes');
         $equipement->setDescriptionEquip('Couchage - 4 personnes');
-        $this->addReference(self::NBR_DE_LIT_4, $equipement);
+        $this->addReference(self::NBR_DE_LIT_QUATRE, $equipement);
         $manager->persist($equipement);
 
         $equipement = new Equipement();
         $equipement->setTypeEquip('couchage 5 personnes');
         $equipement->setDescriptionEquip('Couchage - 5 personnes');
-        $this->addReference(self::NBR_DE_LIT_5, $equipement);
+        $this->addReference(self::NBR_DE_LIT_CINQ, $equipement);
         $manager->persist($equipement);
 
         $equipement = new Equipement();
         $equipement->setTypeEquip('couchage 6 personnes');
         $equipement->setDescriptionEquip('Couchage - 6 personnes');
-        $this->addReference(self::NBR_DE_LIT_6, $equipement);
+        $this->addReference(self::NBR_DE_LIT_SIX, $equipement);
         $manager->persist($equipement);
 
         $manager->flush();
