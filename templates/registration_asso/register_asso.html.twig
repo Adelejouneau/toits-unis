@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}S'enregistrer{% endblock %}
+{% block title %}Inscription association{% endblock %}
 {% block body %}
 
 </div>
@@ -8,33 +8,35 @@
     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <section class="cadre m-5">
+    <section  class="container m-auto w-75 mt-3 rounded py-2" id="register-container">
         {{ form_start(registrationAssoForm) }}
         <div class="row">
             <div class="col-md-6">
                 {{ form_row(registrationAssoForm.nameAsso) }}
-                 {{ form_row(registrationAssoForm.phoneNumberAsso) }}
-                 {{ form_row(registrationAssoForm.imageFile) }}
+                {{ form_row(registrationAssoForm.phoneNumberAsso) }}
+                {{ form_row(registrationAssoForm.imageFile) }}
                 {{ form_row(registrationAssoForm.descriptionAsso) }}
-                 
+                
             </div>
             <div class="col-md-6">
                 {{ form_row(registrationAssoForm.immatriculationAsso) }}
-                  {{ form_row(registrationAssoForm.websiteUrl) }}
-                 {{ form_row(registrationAssoForm.email) }}
-                 {{ form_row(registrationAssoForm.plainPassword, {
+                {{ form_row(registrationAssoForm.websiteUrl) }}
+
+                {{ form_row(registrationAssoForm.email) }}
+                {{ form_row(registrationAssoForm.plainPassword, {
                     label: 'Password'
                 }) }}
                 {{ form_row(registrationAssoForm.agreeTerms) }}
-                 <button type="submit" class="btn btn-success">Valider</button>
+                <button type="submit" class="btn btn-success" id="btn-login">Valider</button>
+                
             </div>
         </div>
     </section>
- {{ form_end(registrationAssoForm) }}
+{{ form_end(registrationAssoForm) }}
             {# <div class="col-md-6">
                 {{ form_row(registrationAssoForm.department) }}
             </div> #}
-      
+    
 
         
             
@@ -46,7 +48,7 @@
     
 
     
-   
+    
 
 </div>
 {% for flash_error in app.flashes('verify_email_error') %}

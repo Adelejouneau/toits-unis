@@ -61,11 +61,12 @@ class LodgingType extends AbstractType
             ])
             ->remove('slugLod')
 
-            ->add('equipement', EntityType::class, [
+            ->add('equipements', EntityType::class, [
                 'class' => 'App\Entity\equipement',
                 'multiple' => true,
                 'attr'=>[
-                    "class" =>"select2"  
+                    "class" =>"select2",
+                    'id' => 'select2-auteurs' 
                     ]
                 ])
     

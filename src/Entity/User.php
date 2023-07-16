@@ -18,6 +18,11 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 #[Vich\Uploadable]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+    // ====================================================== //
+    // ===================== PROPERTIES ===================== //
+    // ====================================================== //
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -55,7 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $phoneNumberAsso = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $imageNameAsso = null;
 
     #[Vich\UploadableField(mapping: 'associations', fileNameProperty: 'imageNameAsso')]
@@ -69,11 +74,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $slugAsso = null;
 
-    #[ORM\Column]
-    private ?int $immatriculationAsso = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $immatriculationAsso = null;
+
 
     #[ORM\ManyToMany(targetEntity: Department::class, inversedBy: 'associations')]
     private Collection $department;
@@ -91,11 +97,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $lodgings;
     private Collection $favoris;
 
+    // ====================================================== //
+    // =============== CONSTRUCT FUNCTION =================== //
+    // ====================================================== //
+
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();
     }
 
+    // ====================================================== //
+    // =================== GETTER / SETTER ================== //
+    // ====================================================== //
 
     public function getId(): ?int
     {
@@ -332,6 +345,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->lodgings;
     }
 
+    public function getSlugAsso(): ?string
+    {
+        return $this->slugAsso;
+    }
 
     public function setSlugAsso(string $slugAsso): self
     {
@@ -340,12 +357,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getImmatriculationAsso(): ?int
+
+    public function getImmatriculationAsso(): ?string
     {
         return $this->immatriculationAsso;
     }
 
-    public function setImmatriculationAsso(int $immatriculationAsso): static
+    public function setImmatriculationAsso(string $immatriculationAsso): static
     {
         $this->immatriculationAsso = $immatriculationAsso;
 
@@ -382,6 +400,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
+    
 
 }
 

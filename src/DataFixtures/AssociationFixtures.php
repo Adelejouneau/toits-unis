@@ -25,7 +25,7 @@ class AssociationFixtures extends Fixture
     { 
         $association = new Association();
         $association-> setNameAsso("Utopia 56 Paris");
-        $association-> setImmatriculationAsso('81804231900025');
+        $association-> setImmatriculationAsso('81804');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("utopia56.org");
         $association-> setImageNameAsso("logo-utopia.png");
@@ -38,7 +38,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("Fondation Abbé Pierre");
-        $association-> setImmatriculationAsso('35345282016');
+        $association-> setImmatriculationAsso('82016');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("fondation-abbe-pierre.fr");
         $association-> setImageNameAsso("abbépierre-logo.png");
@@ -52,7 +52,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("Croix-rouge française");
-        $association-> setImmatriculationAsso('20775672272');
+        $association-> setImmatriculationAsso('72272');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("croix-rouge.fr");
         $association-> setImageNameAsso("logo_croixrouge.jpg");
@@ -66,7 +66,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("ALC");
-        $association-> setImmatriculationAsso('50860559900010');
+        $association-> setImmatriculationAsso('55990');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("association-alc.org");
         $association-> setImageNameAsso("alc-logo.png");
@@ -79,7 +79,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("BAAM");
-        $association-> setImmatriculationAsso('81804231900025');
+        $association-> setImmatriculationAsso('81804');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("baamasso.org");
         $association-> setImageNameAsso("baam-logo.jpg");
@@ -92,7 +92,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("Bureaux du coeur");
-        $association-> setImmatriculationAsso('89201345900011');
+        $association-> setImmatriculationAsso('13459');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("baamasso.org");
         $association-> setImageNameAsso("bureauxcoeur-logo.png");
@@ -105,7 +105,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("Info migrants");
-        $association-> setImmatriculationAsso('46835327313');
+        $association-> setImmatriculationAsso('46835');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("infomigrants.net/fr/");
         $association-> setImageNameAsso("info-migrants_logo.jpg");
@@ -118,7 +118,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("Samu social");
-        $association-> setImmatriculationAsso('91035841500016');
+        $association-> setImmatriculationAsso('91035');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("www.samusocial.paris");
         $association-> setImageNameAsso("logo-samusocial.jpg");
@@ -131,7 +131,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("Aurore");
-        $association-> setImmatriculationAsso('77568497003594');
+        $association-> setImmatriculationAsso('77568');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("aurore.asso.fr");
         $association-> setImageNameAsso("logo_aurore.png");
@@ -144,7 +144,7 @@ class AssociationFixtures extends Fixture
 
         $association = new Association();
         $association-> setNameAsso("France Terre d'Asile");
-        $association-> setImmatriculationAsso('78454750700433');
+        $association-> setImmatriculationAsso('78454');
         $association-> setDescriptionAsso("Lorem ipsum");
         $association-> setWebsiteUrl("france-terre-asile.org");
         $association-> setImageNameAsso("logo-ftda.png");

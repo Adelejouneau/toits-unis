@@ -27,8 +27,7 @@ class LodgingController extends AbstractController
     #[Route('/lodging', name: 'app_lodging')]
     public function index(LodgingRepository $lodgingRepository, Request $request): Response
     {
-        // $this->denyAccessUnlessGranted('ROLE_ASSO');
-        //dd($request->request->get('filter_host_adress'));        
+
         $filteredAdress = $request->request->get('filter_host_adress');
         if ($filteredAdress && isset($filteredAdress['department']) && $filteredAdress['department'] != "") {
             $lodgings = $lodgingRepository->findByDepartementId($filteredAdress['department']);

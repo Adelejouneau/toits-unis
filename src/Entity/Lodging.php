@@ -20,6 +20,11 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[Vich\Uploadable]
 class Lodging
 {
+
+    // ====================================================== //
+    // ===================== PROPERTIES ===================== //
+    // ====================================================== //
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -66,11 +71,19 @@ class Lodging
     #[ORM\ManyToMany(targetEntity: Equipement::class, inversedBy: 'lodgings')]
     private Collection $equipements;
 
+    // ====================================================== //
+    // =============== CONSTRUCT FUNCTION =================== //
+    // ====================================================== //
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->equipements = new ArrayCollection();
     }
+
+    // ====================================================== //
+    // =================== GETTER / SETTER ================== //
+    // ====================================================== //
 
     public function getId(): ?int
     {

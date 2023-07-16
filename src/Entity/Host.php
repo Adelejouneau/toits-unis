@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: HostRepository::class)]
 class Host
 {
+
+    // ====================================================== //
+    // ===================== PROPERTIES ===================== //
+    // ====================================================== //
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -46,11 +51,27 @@ class Host
     #[ORM\OneToMany(mappedBy: 'hosts', targetEntity: Lodging::class)]
     private Collection $lodging;
 
+    // ====================================================== //
+    // =============== CONSTRUCT FUNCTION =================== //
+    // ====================================================== //
+
     public function __construct()
     {
         $this->lodging = new ArrayCollection();
     }
 
+    // ====================================================== //
+    // =================== MAGIC FUNCTION =================== //
+    // ====================================================== //
+
+    public function __toString(): string
+    {
+        return $this->lastName;
+    }
+
+// ====================================================== //
+// =================== GETTER / SETTER ================== //
+// ====================================================== //
 
 
     public function getId(): ?int

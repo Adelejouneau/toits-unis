@@ -11,10 +11,16 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+
 #[ORM\Entity(repositoryClass: AssociationRepository::class)]
 #[Vich\Uploadable]
 class Association
 {
+
+    // ====================================================== //
+    // ===================== PROPERTIES ===================== //
+    // ====================================================== //
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -47,17 +53,24 @@ class Association
     #[ORM\Column(length: 255)]
     private ?string $slugAsso = null;
 
-    #[ORM\Column]
-    private ?int $immatriculationAsso = null;
+    #[ORM\Column(length: 5, nullable: true)]
+    private ?string $immatriculationAsso = null;
 
     #[ORM\ManyToMany(targetEntity: Department::class, inversedBy: 'associations')]
     private Collection $department;
+
+    // ====================================================== //
+    // =============== CONSTRUCT FUNCTION =================== //
+    // ====================================================== //
 
     public function __construct()
     {
         $this->department = new ArrayCollection();
     }
 
+    // ====================================================== //
+    // =================== GETTER / SETTER ================== //
+    // ====================================================== //
 
     public function getId(): ?int
     {
@@ -185,17 +198,17 @@ class Association
         return $this;
     }
 
-    public function getImmatriculationAsso(): ?int
-    {
-        return $this->immatriculationAsso;
-    }
+    // public function getImmatriculationAsso(): ?int
+    // {
+    //     return $this->immatriculationAsso;
+    // }
 
-    public function setImmatriculationAsso(int $immatriculationAsso): static
-    {
-        $this->immatriculationAsso = $immatriculationAsso;
+    // public function setImmatriculationAsso(int $immatriculationAsso): static
+    // {
+    //     $this->immatriculationAsso = $immatriculationAsso;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Department>
@@ -211,6 +224,19 @@ class Association
 
         return $this;
     }
+
+    public function getImmatriculationAsso(): ?string
+    {
+        return $this->immatriculationAsso;
+    }
+
+    public function setImmatriculationAsso(string $immatriculationAsso): static
+    {
+        $this->immatriculationAsso = $immatriculationAsso;
+
+        return $this;
+    }
+
 
     public function addDepartment(Department $department): static
     {
