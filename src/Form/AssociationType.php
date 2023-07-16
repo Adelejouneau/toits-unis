@@ -5,12 +5,10 @@ namespace App\Form;
 use App\Entity\Association;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Vich\UploaderBundle\Entity\File;
 
 class AssociationType extends AbstractType
 {
@@ -22,7 +20,7 @@ class AssociationType extends AbstractType
             ->add('descriptionAsso', CKEditorType::class)
             ->add('websiteUrl')
             ->remove('imageNameAsso')
-            ->add('imageFile', FileType::class, [
+            ->add('imageFile', VichFileType::class, [
                 'required' => false,
                 'label' => "Logo de l'association",
             ])

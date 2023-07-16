@@ -6,10 +6,13 @@ use App\Entity\User;
 use App\Form\LodgingType;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 // use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -20,7 +23,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('emailAsso')
+            ->add('email')
             ->add('plainPassword' , PasswordType::class, [
                 'label'=>"Nouveau mot de passe",
                 'mapped' => false,
@@ -36,7 +39,7 @@ class UserType extends AbstractType
                 'label' => 'Numéro de téléphone',
                 ])
             ->remove('imageNameUser')
-            ->add('imageFile', FileType::class, [
+            ->add('imageFile', VichFileType::class, [
                 'required' => false,
                 'label' => "Image de l'association",
             ])
@@ -55,13 +58,13 @@ class UserType extends AbstractType
                     'mapped' => false,
                     ])
             ->add('phoneNumberAsso')
-            ->add('department', EntityType::class, [
-                'class' => Address::class,
-                'choice_label' => 'department',
-                'multiple' => true,
-                'expanded' => true,
-                'label' => 'Département',
-            ])
+            // ->add('department', EntityType::class, [
+            //     'class' => Address::class,
+            //     'choice_label' => 'department',
+            //     'multiple' => true,
+            //     'expanded' => true,
+            //     'label' => 'Département',
+            // ])
         //     ->add('lodgings', CollectionType::class, [
         //     'entry_type' => LodgingType::class,
         //     'allow_add' => true,
