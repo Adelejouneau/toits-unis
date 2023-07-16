@@ -4,46 +4,67 @@
 
 {% block body %}
 <a href="{{ path('app_admin_lodging_index') }}" class="btn btn-dark">Retour</a>
-    <h1>Logement</h1>
+<br>
+<br>
+<h3>{{ lodging.titleLod }} - {{ lodging.cityLod }}</h3>
 
     <table class="table">
         <tbody>
+
             <tr>
-                <th>Titre de l'hébergement</th>
+                <th>Titre de l'annonce</th>
                 <td>{{ lodging.titleLod }}</td>
             </tr>
+
             <tr>
                 <th>Adresse</th>
                 <td>{{ lodging.addressLod }}</td>
             </tr>
+
             <tr>
                 <th>Code Postal</th>
                 <td>{{ lodging.zipCodeLod }}</td>
             </tr>
+
             <tr>
                 <th>Ville</th>
                 <td>{{ lodging.cityLod }}</td>
             </tr>
+
             <tr>
                 <th>Departement</th>
                 <td>{{ lodging.department }}</td>
             </tr>
+
             <tr>
                 <th>Catégorie</th>
-                <td>{{ lodging.category.nameCat }}</td>
-
+                <td>{{ lodging.category }}</td>
             </tr>
-            <tr>
-                <th>Hôte</th>
-                <td>{{ lodging.host.lastName}}</td>
+
             <tr>
                 <th>Description</th>
                 <td>{{ lodging.descriptionLod }}</td>
             </tr>
+
+            <tr>
+            <th>Hôte</th>
+            <td>{{ lodging.host}}</td>
+            </tr>
+
+            <section class="equipements">
+            <tr>
+                <th>Equipements</th>
+                {% for equipement in lodging.equipements %}
+                <li>{{ equipement }}</li>
+                {% endfor %}
+            </tr>
+            </section>
+
             <tr>
                 <th>Nom de l'image</th>
                 <td>{{ lodging.imageNameLod }}</td>
             </tr>
+
         </tbody>
     </table>
 

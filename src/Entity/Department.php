@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: DepartmentRepository::class)]
 class Department
 {
+
+    // ====================================================== //
+    // ===================== PROPERTIES ===================== //
+    // ====================================================== //
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -27,11 +32,19 @@ class Department
     #[ORM\ManyToMany(targetEntity: Association::class, mappedBy: 'department')]
     private Collection $associations;
 
+    // ====================================================== //
+    // =============== CONSTRUCT FUNCTION =================== //
+    // ====================================================== //
+
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();
         $this->associations = new ArrayCollection();
     }
+
+    // ====================================================== //
+    // =================== GETTER / SETTER ================== //
+    // ====================================================== //
 
     public function getId(): ?int
     {

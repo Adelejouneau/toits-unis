@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
+
+    // ====================================================== //
+    // ===================== PROPERTIES ===================== //
+    // ====================================================== //
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -27,10 +32,27 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Lodging::class)]
     private Collection $lodgings;
 
+    // ====================================================== //
+    // =============== CONSTRUCT FUNCTION =================== //
+    // ====================================================== //
+
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();
     }
+
+    // ====================================================== //
+    // =================== MAGIC FUNCTION =================== //
+    // ====================================================== //
+
+    public function __toString(): string
+    {
+        return $this->nameCat;
+    }
+
+    // ====================================================== //
+    // =================== GETTER / SETTER ================== //
+    // ====================================================== //
 
     public function getId(): ?int
     {

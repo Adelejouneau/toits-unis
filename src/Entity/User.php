@@ -18,6 +18,11 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 #[Vich\Uploadable]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+    // ====================================================== //
+    // ===================== PROPERTIES ===================== //
+    // ====================================================== //
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -92,11 +97,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $lodgings;
     private Collection $favoris;
 
+    // ====================================================== //
+    // =============== CONSTRUCT FUNCTION =================== //
+    // ====================================================== //
+
     public function __construct()
     {
         $this->lodgings = new ArrayCollection();
     }
 
+    // ====================================================== //
+    // =================== GETTER / SETTER ================== //
+    // ====================================================== //
 
     public function getId(): ?int
     {
