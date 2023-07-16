@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Vich\UploaderBundle\Entity\File;
 
 class AssociationType extends AbstractType
 {
@@ -23,7 +24,7 @@ class AssociationType extends AbstractType
             ->remove('imageNameAsso')
             ->add('imageFile', FileType::class, [
                 'required' => false,
-                'label' => "Image de l'association",
+                'label' => "Logo de l'association",
             ])
             ->remove('updatedAt', DateTimeType::class, [
                 'widget' => 'single_text',

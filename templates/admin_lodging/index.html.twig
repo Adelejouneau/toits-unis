@@ -3,6 +3,13 @@
 {% block title %}Liste des Logements{% endblock %}
 
 {% block body %}
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+{% endfor %}
 
 
     <div class="d-flex flex-wrap justify-content-between align-items-center">
@@ -13,7 +20,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Titre du logement</th>
+                <th>Titre de l'annonce</th>
                 <th>Adresse</th>
                 <th>Code postal</th>
                 <th>Ville</th>
@@ -48,27 +55,18 @@
                     </ul>
                 </td>
                 <td>{{ lodging.descriptionLod }}</td>
-                {# <td>
+                <td>
                     <ul>
                     {% if lodging.host is not null %}
                         <li>{{ lodging.host.lastName }} {{ lodging.host.firstName }}</li>
                     {% endif %}
                     </ul>
-                </td> #}
-
+                </td>
                 <td>
                     <ul>
                     {% for equipement in lodging.equipements %}
-                        <li>{{ equipements }}</li>
+                    <p>{{ equipement }}</p>
                     {% endfor %}
-                    </ul>
-                </td>
-
-                <td>
-                    <ul>
-                    {% if lodging.equipements is not null %}
-                        <li>{{ lodging.equipements.descriptionEquip }}</li>
-                    {% endif %}
                     </ul>
                 </td>
                 {# <td>{{ lodging.imageFile }}</td> #}
