@@ -271,6 +271,7 @@ a{
     .banner-text p {
     font-size: 18px;
     }
+
     /* page comment sa marche guest */
     .info-guest-start{
         display: flex;
@@ -596,7 +597,6 @@ a{
 
 /*--------------------CONTACT-----------------*/
 #contact-title{
-    /* font-size: 23px; */
 
     color:#124367;
 }
@@ -966,10 +966,25 @@ a{
 font-size: 1.5rem;
 }
 
+
+/* -----------CMMT CA MARCHE ASSO----------- */
+
+.color-card-asso {
+    background-color: #FFF0BD;
+    border-radius: 15px;
+    gap: 15px;
+    width: 450px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 /* equipements */
 
 .equipements{
     list-style: none;
 }
+
 
 
