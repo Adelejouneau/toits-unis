@@ -13,30 +13,30 @@
         <div class="row">
             <div class="col-md-6">
                 {{ form_row(registrationAssoForm.nameAsso) }}
-                 {{ form_row(registrationAssoForm.phoneNumberAsso) }}
-                 {{ form_row(registrationAssoForm.imageFile) }}
+                {{ form_row(registrationAssoForm.phoneNumberAsso) }}
+                {{ form_row(registrationAssoForm.imageFile) }}
                 {{ form_row(registrationAssoForm.descriptionAsso) }}
                 
             </div>
             <div class="col-md-6">
                 {{ form_row(registrationAssoForm.immatriculationAsso) }}
-                  {{ form_row(registrationAssoForm.websiteUrl) }}
+                {{ form_row(registrationAssoForm.websiteUrl) }}
 
-                 {{ form_row(registrationAssoForm.email) }}
-                 {{ form_row(registrationAssoForm.plainPassword, {
+                {{ form_row(registrationAssoForm.email) }}
+                {{ form_row(registrationAssoForm.plainPassword, {
                     label: 'Password'
                 }) }}
-                 {{ form_row(registrationAssoForm.agreeTerms) }}
-                 <button type="submit" class="btn btn-success" id="btn-login">Valider</button>
+                {{ form_row(registrationAssoForm.agreeTerms) }}
+                <button type="submit" class="btn btn-success" id="btn-login">Valider</button>
                 
             </div>
         </div>
     </section>
- {{ form_end(registrationAssoForm) }}
+{{ form_end(registrationAssoForm) }}
             {# <div class="col-md-6">
                 {{ form_row(registrationAssoForm.department) }}
             </div> #}
-      
+    
 
         
             
@@ -48,7 +48,7 @@
     
 
     
-   
+    
 
 </div>
 {% for flash_error in app.flashes('verify_email_error') %}
