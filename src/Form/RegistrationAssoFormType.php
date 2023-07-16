@@ -31,24 +31,26 @@ class RegistrationAssoFormType extends AbstractType
             'required'=>false,
             ])
         ->add('nameAsso', null, [
-            'label' => 'Nom',
+            'label' => 'Nom de l\'association',
             ])
         ->add('immatriculationAsso', null, [
-            'label' => 'immatriculation',
+            'label' => 'Numéro d\'immatriculation',
             ])
         ->add('websiteUrl', null, [
-            'label' => 'site web',
+            'label' => 'Site web',
             ])
         ->remove('imageNameAsso')
         ->add('imageFile', FileType::class, [
             'required' => false,
-            'label' => "Image de l'association",
+            'label' => "Logo de votre association",
         ])
         ->remove('updatedAt', DateTimeType::class, [
             'widget' => 'single_text',
             'data' => new \DateTimeImmutable(),
         ])
-        ->add('descriptionAsso', CKEditorType::class)
+        ->add('descriptionAsso', CKEditorType::class, [
+            'label' => "Description de votre association",
+        ])
         ->remove('roles', ChoiceType::class, [
             'choices' =>[
             'utilisateur' => 'user',
@@ -59,7 +61,7 @@ class RegistrationAssoFormType extends AbstractType
                 'mapped' => false,
                 ])
         ->add('phoneNumberAsso', null, [
-            'label' => 'numero de telephone',
+            'label' => 'Numéro de téléphone',
             ])
         // ->add('department', EntityType::class, [
         //     'class' => Department::class,
