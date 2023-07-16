@@ -51,14 +51,16 @@
             <td>{{ lodging.host}}</td>
             </tr>
 
-            <section class="equipements">
+            <ul>
             <tr>
                 <th>Equipements</th>
                 {% for equipement in lodging.equipements %}
-                <li>{{ equipement }}</li>
+                <td class="equipements">
+                <li >{{ equipement }}</li>
+                </td>
                 {% endfor %}
             </tr>
-            </section>
+            </ul>
 
             <tr>
                 <th>Nom de l'image</th>
