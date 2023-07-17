@@ -40,12 +40,17 @@
                 <td>{{ association.websiteUrl }}</td>
                 <td>{{ association.phoneNumberAsso }}</td>
                 <td>{{ association.emailAsso }}</td>
-                <td><ul>
-                    {% for department in association.department %}
-                        <li>{{ association.department }}</li>
-                    {% endfor %}
-                    </ul>
-                    </td>
+                <td>
+                    {% if association.department is not null %}
+                    <li>
+                        <ul>
+                        {% for department in association.department %}
+                        <li>{{ department }}</li>
+                        {% endfor %}
+                        </ul>
+                    </li>
+                    {% endif %}
+                </td>
                 <td>{{ association.imageFile }}</td>
                 <td class="text-end">
                     <a href="{{ path('app_admin_association_show', {'id': association.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
