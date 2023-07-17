@@ -21,7 +21,7 @@ class AssociationType extends AbstractType
             ->add('descriptionAsso', CKEditorType::class)
             ->add('websiteUrl')
             ->remove('imageNameAsso')
-            ->add('imageFile', VichFileType::class, [
+            ->remove('imageFile', VichFileType::class, [
                 'required' => false,
                 'label' => "Logo de l'association",
             ])
