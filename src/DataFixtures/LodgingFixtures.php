@@ -17,13 +17,7 @@ class LodgingFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // // Récupérer l'utilisateur actuellement authentifié
-        // $user = $this->security->getUser();
 
-        // // Vérifier si l'utilisateur est connecté
-        // if ($user === null) {
-        //     throw new \RuntimeException("Aucun utilisateur connecté.");
-        // }
 
         $lodging = new Lodging();
 

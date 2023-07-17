@@ -522,7 +522,12 @@ a{
         .card-body{
         width: 100%;
     }
-    }
+
+.custom-card-img {
+    height: 200px; 
+    object-fit: cover; 
+}
+
  /* page compte profil Guest */
     /* .size-imput{
             width: 600px;
@@ -1000,6 +1005,7 @@ font-size: 1.5rem;
     color:white
 }
 
+    }
 
 /* .card-body{
     height: 150px;
