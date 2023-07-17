@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\RegistrationAssoFormType;
 use id;
 use App\Form\UserType;
 use App\Repository\LodgingRepository;
@@ -21,7 +22,7 @@ class CompteAssoController extends AbstractController
          // On recupere l'utilisateur
         $user = $this->getUser();
         // On crée un formulaire avec les données de l'utilisateur
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(RegistrationAssoFormType::class, $user);
         // 
         $form->handleRequest($request);
 
@@ -41,7 +42,7 @@ class CompteAssoController extends AbstractController
 
         }
         return $this->render('compte_asso/index.html.twig', [
-            'form' => $form->createView(),
+            'registrationAssoForm' => $form->createView(),
         ]);
     }
     #[Route('/add-favori/{id}', name: 'app_favori')]

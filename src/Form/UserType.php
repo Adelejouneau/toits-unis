@@ -8,14 +8,10 @@ use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Vich\UploaderBundle\Entity\File;
 use Symfony\Component\Form\FormBuilderInterface;
-// use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 
 class UserType extends AbstractType
@@ -58,24 +54,7 @@ class UserType extends AbstractType
                     'mapped' => false,
                     ])
             ->add('phoneNumberAsso')
-            // ->add('department', EntityType::class, [
-            //     'class' => Address::class,
-            //     'choice_label' => 'department',
-            //     'multiple' => true,
-            //     'expanded' => true,
-            //     'label' => 'Département',
-            // ])
-        //     ->add('lodgings', CollectionType::class, [
-        //     'entry_type' => LodgingType::class,
-        //     'allow_add' => true,
-        //     'label'=>false,
-        // ])
-            // ->add('entreprise', null, [
-            //     'label' => 'Entreprise (facultatif)',
-            //     ])
-            // ->add('fonction', null, [
-            //     'label' => "Fonction dans l'entreprise (facultatif)",
-            //     ])
+
         ;
     }
 
