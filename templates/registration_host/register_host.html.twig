@@ -10,17 +10,21 @@
 {% block body %}
 <div class="banner-host">
     <div class="banner-text">
-        <h1 class="titlehost">Devenir Hôte</h1>
-    </div>
-</div>
-<h3 class="title-infos">Informations personnelles</h3>
-<div>
-
     {% for flash_error in app.flashes('verify_email_error') %}
     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+    </div>
+</div>
 
-    <section class="cadre">
+
+<div class="text-center my-4">
+ <h1 class="titlehost">Devenir Hôte</h1>
+ <h3 class="title-infos">Informations personnelles</h3>
+</div>
+
+    
+
+    <section class="container m-auto w-75 mt-3 rounded py-2 my-4" id="register-container" >
         {{ form_start(HostForm) }}
         <div class="row">
             <div class="col-md-6">
@@ -29,9 +33,7 @@
             <div class="col-md-6">
                 {{ form_row(HostForm.firstName) }}
             </div>
-        </div>
 
-        <div class="row">
             <div class="col-md-6">
                 {{ form_row(HostForm.phoneNumber) }}
             </div>
@@ -39,18 +41,11 @@
                 {{ form_row(HostForm.email) }}
             </div>
         </div>
-
-        <div class="row">
-            
-        <div class="row">
-            <div class="col-md-12">
-                {# {{ form_row(HostForm.agreeTerms) }} #}
-            </div>
-        </div>
+        <button type="submit" class="btn btn-success " style="text-align: center">Valider</button>
     </section>
 
-    <button type="submit" class="btn btn-success" style="text-align: center">Valider</button>
+   
     {{ form_end(HostForm) }}
 
-</div>
+
 {% endblock %}

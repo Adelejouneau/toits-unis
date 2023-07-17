@@ -25,19 +25,19 @@ class HostFormType extends AbstractType
             ->add('email', null, [
                 'label' => 'Email',
                 ])
-            ->add('address', null, [
+            ->remove('address', null, [
                 'label' => 'Adresse',
                 ])
-            ->add('zipCode', null, [
+            ->remove('zipCode', null, [
                 'label' => 'Code postal',
                 ])
-            ->add('city', null, [
+            ->remove('city', null, [
                 'label' => 'Ville',
                 ])
-            ->add('entreprise', null, [
+            ->remove('entreprise', null, [
                 'label' => 'Entreprise',
                 ])
-            ->add('fonction', null, [
+            ->remove('fonction', null, [
                 'label' => 'Fonction',
                 ])
         ;
