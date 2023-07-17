@@ -6,17 +6,16 @@ use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use Vich\UploaderBundle\Entity\File;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[Vich\Uploadable]
-
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
@@ -402,25 +401,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
-    
-
 }
-
-//     public function addLodging(Lodging $lodging): self
-// {
-//     $this->lodgings->add($lodging);
-
-//     return $this;
-// }
-
-// public function removeLodging(Lodging $lodging): self
-// {
-//     $this->lodgings->removeElement($lodging);
-
-//     return $this;
-// }
-    
-
-
-

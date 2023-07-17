@@ -28,7 +28,7 @@
         <div class="row d-flex justify-content-center align-items-stretch">
             {% for lodging in lodgings %}
             <div class="col-12 col-md-4 mb-3">
-                <div class="card shadow text-center  box">
+                <div class="card shadow text-center box">
                     <div class="position-relative">
                         {% if lodging.imageNameLod is defined and lodging.imageNameLod is not null %}
                         <img src="{{ asset('/images/lodgings/' ~ lodging.imageNameLod) }}" class="card-img-top" alt="{{ lodging.titleLod }}">
