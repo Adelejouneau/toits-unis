@@ -43,6 +43,15 @@ class Department
     }
 
     // ====================================================== //
+    // =================== MAGIC FUNCTION =================== //
+    // ====================================================== //
+
+    public function __toString()
+    {
+        return $this->getNameDepartment();
+    }
+
+    // ====================================================== //
     // =================== GETTER / SETTER ================== //
     // ====================================================== //
 
@@ -105,11 +114,6 @@ class Department
         return $this;
     }
 
-
-    public function __toString()
-    {
-        return $this->getNameDepartment();
-    }
 
     /**
      * @return Collection<int, Association>

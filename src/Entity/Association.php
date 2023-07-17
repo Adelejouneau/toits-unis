@@ -198,27 +198,12 @@ class Association
         return $this;
     }
 
-    // public function getImmatriculationAsso(): ?int
-    // {
-    //     return $this->immatriculationAsso;
-    // }
-
-    // public function setImmatriculationAsso(int $immatriculationAsso): static
-    // {
-    //     $this->immatriculationAsso = $immatriculationAsso;
-
-    //     return $this;
-    // }
-
-    /**
-     * @return Collection<int, Department>
-     */
     public function getDepartment(): Collection
     {
         return $this->department;
     }
 
-    public function setDepartment(string $department): self
+    public function setDepartment(?Department $department): static
     {
         $this->department = $department;
 
@@ -233,23 +218,6 @@ class Association
     public function setImmatriculationAsso(string $immatriculationAsso): static
     {
         $this->immatriculationAsso = $immatriculationAsso;
-
-        return $this;
-    }
-
-
-    public function addDepartment(Department $department): static
-    {
-        if (!$this->department->contains($department)) {
-            $this->department->add($department);
-        }
-
-        return $this;
-    }
-
-    public function removeDepartment(Department $department): static
-    {
-        $this->department->removeElement($department);
 
         return $this;
     }
