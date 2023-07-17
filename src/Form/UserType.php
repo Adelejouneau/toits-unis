@@ -6,7 +6,7 @@ use App\Entity\User;
 use App\Form\LodgingType;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
-use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Entity\File;
 use Symfony\Component\Form\FormBuilderInterface;
 // use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -39,7 +39,7 @@ class UserType extends AbstractType
                 'label' => 'Numéro de téléphone',
                 ])
             ->remove('imageNameUser')
-            ->add('imageFile', VichFileType::class, [
+            ->add('imageFile', FileType::class, [
                 'required' => false,
                 'label' => "Image de l'association",
             ])

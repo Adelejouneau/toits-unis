@@ -995,6 +995,11 @@ font-size: 1.5rem;
     list-style: none;
 }
 
+.col-form-label{
+
+    color:white
+}
+
 
 /* .card-body{
     height: 150px;
