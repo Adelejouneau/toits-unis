@@ -14,9 +14,6 @@ Danielle
  MAILER_DSN=smtp://71330ed2a24d0a:12e1384c737979@sandbox.smtp.mailtrap.io:2525?encryption=tls&auth_mode=login
 
 
-
-Bien sûr ! Voici un exemple de contenu pour un fichier README avec le nom de projet "Toits Unis" :
-
 # Toits Unis
 
 
