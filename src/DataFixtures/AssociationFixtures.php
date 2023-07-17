@@ -32,7 +32,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("0123456789");
         $association-> setEmailAsso("contact@utopia56.org");
         $association-> setSlugAsso("utopia-56-paris");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::PARIS));
         $this->addReference(self::UTOPIA_56_PARIS, $association);
         $manager->persist($association);
 
@@ -45,7 +44,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("01.55.56.37.00");
         $association-> setEmailAsso("service.donateurs@fondation-abbe-pierre.fr");
         $association-> setSlugAsso("fondation-abbe-pierre");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::VAL_DE_MARNE));
         $this->addReference(self::FONDATION_ABBE_PIERRE, $association);
         $manager->persist($association);
 
@@ -59,7 +57,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("01.46.36.30.31");
         $association-> setEmailAsso("contactparis20@croixrouge.org");
         $association-> setSlugAsso("croix-rouge-française");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::SEINE_ST_DENIS));
         $this->addReference(self::CROIX_ROUGE_FRANCAISE, $association);
         $manager->persist($association);
 
@@ -73,7 +70,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("0493524252");
         $association-> setEmailAsso("siege@association-alc.org");
         $association-> setSlugAsso("alc");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::ALPES_MARITIMES));
         $this->addReference(self::ALC, $association);
         $manager->persist($association);
 
@@ -86,7 +82,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("0123456789");
         $association-> setEmailAsso("baam.asso@gmail.com");
         $association-> setSlugAsso("baam");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::PARIS));
         $this->addReference(self::BAAM, $association);
         $manager->persist($association);
 
@@ -99,7 +94,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("0102030405");
         $association-> setEmailAsso("contact@bureauxducoeur.org");
         $association-> setSlugAsso("bureau-du-coeur");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::LOIRE_ATLANTIQUE));
         $this->addReference(self::BUREAUX_DU_COEUR, $association);
         $manager->persist($association);
 
@@ -112,7 +106,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("0120568489");
         $association-> setEmailAsso("contact@infomigrants.org");
         $association-> setSlugAsso("info-migrants");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::SEINE_ET_MARNE));
         $this->addReference(self::INFO_MIGRANTS, $association);
         $manager->persist($association);
 
@@ -125,7 +118,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("0141748484");
         $association-> setEmailAsso("contact@samusocial-75.fr");
         $association-> setSlugAsso("samu-social");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::HERAULT));
         $this->addReference(self::SAMU_SOCIAL, $association);
         $manager->persist($association);
 
@@ -138,7 +130,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("0173000230");
         $association-> setEmailAsso("contact@aurore.fr");
         $association-> setSlugAsso("aurore");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::GARD));
         $this->addReference(self::AURORE, $association);
         $manager->persist($association);
 
@@ -151,7 +142,6 @@ class AssociationFixtures extends Fixture
         $association-> setPhoneNumberAsso("0124252627");
         $association-> setEmailAsso("contact@franceterredasile.fr");
         $association-> setSlugAsso("france-terre-d-asile");
-        $association-> getDepartment($this->getReference(AADepartmentFixtures::ALLIER));
         $this->addReference(self::FRANCE_TERRE_D_ASILE, $association);
         $manager->persist($association);
 

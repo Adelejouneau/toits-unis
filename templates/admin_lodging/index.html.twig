@@ -28,8 +28,6 @@
                 <th>Catégorie</th>
                 <th>Description</th>
                 <th>Hôte</th>
-                <th>Equipements</th>
-                <th>Photos</th>
                 <th class="text-end">Actions</th>
             </tr>
         </thead>
@@ -43,34 +41,25 @@
                 <td>
                     <ul>
                     {% if lodging.department is not null %}
-                        <li>{{ lodging.department.nameDepartment }}</li>
+                    {{ lodging.department.nameDepartment }}</li>
                     {% endif %}
                     </ul>
                 </td>
                 <td>
                     <ul>
                     {% if lodging.category is not null %}
-                        <li>{{ lodging.category.nameCat }}</li>
+                    {{ lodging.category.nameCat }}
                     {% endif %}
                     </ul>
                 </td>
-                <td>{{ lodging.descriptionLod }}</td>
+                <td>{{ lodging.descriptionLod |raw }}</td>
                 <td>
                     <ul>
                     {% if lodging.host is not null %}
-                        <li>{{ lodging.host.lastName }} {{ lodging.host.firstName }}</li>
+                    {{ lodging.host.lastName }} {{ lodging.host.firstName }}
                     {% endif %}
                     </ul>
                 </td>
-                <td>
-                    <ul>
-                    {% for equipement in lodging.equipements %}
-                    <p>{{ equipement }}</p>
-                    {% endfor %}
-                    </ul>
-                </td>
-                {# <td>{{ lodging.imageFile }}</td> #}
-                <td>
 
                 <td class="text-end">
                     <a href="{{ path('app_admin_lodging_show', {'id': lodging.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>
