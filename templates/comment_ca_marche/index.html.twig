@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Comment ça marche ? Controller!{% endblock %}
+{% block title %}Comment ça marche ?{% endblock %}
 
 {% block body %}
     <div class="banner background-banniere">
         <img src="/images/banniere3.png" alt="BannièrePageLodging">
         <div class="banner-text">
-            <h1>Comment trouver un hébérgement?</h1>
+            <h1>Comment trouver un hébergement?</h1>
         </div>
     </div>
 
@@ -18,7 +18,7 @@
                             <div class="number-container text-center fs-2   ">1</div>
                             <div class="text-align">
                                 <h5>Renseigner les informations</h5>
-                                <p>Identité, coordonnées et contact...</p>
+                                <p>Nom de l'association, immatriculation<br> et moyens de contact (télphone, email) </p>
                             </div>    
                         </div>
                     </div>
@@ -26,32 +26,18 @@
 
                 </div>
 
-                <div class="col-md-12 info-asso-end">
-                    <div class="mb-3 images-CCM2">
-                        <img src="/images/CommentCaMarcheAsso.png" class="img-fonction-right w-25" alt="...">
-                        <img src="/images/fleche1.png" class=" w-25" alt="..."> 
+                <div class="col-md-12 info-asso-start">
+                    <div class="mb-3 images-CCM">
+                        <img src="/images/fleche1.png" class=" w-25" alt="...">
+                        <img src="{{ asset('/images/Cmmt ça marche Asso/asso_name_.png')}}" class="img-fonction-right" alt="...">
+
                     </div> 
                 </div> 
-
-                <p class="text-center" id="text-CCM">Valider l'inscription puis finaliser le profil.</p>
-
-                {# <div class="col-md-12 info-asso-end">
-                        <div class="mb-3">
-                            <div class="card-body color-card-asso">
-                                <div class="number-container fs-2">2</div>
-                                <div>
-                                    <h5>Dites nous l'association qui vous suit</h5>
-                                    <p>Nom de l'association et son immatriculation...</p>
-                                </div>
-                            </div>
-                        </div>
-                </div>    
-        </div> #}
 
         <div class="col-md-12 info-asso-start">
                 <div class="mb-3 images-CCM">
                     <img src="/images/fleche1.png" class=" w-25" alt="...">
-                    <img src="/images/CommentCaMarcheAsso1.png" class=" w-25" alt="...">
+                    <img src="{{ asset('/images/Cmmt ça marche Asso/asso_immatricule_.png')}}" class="img-fonction-right" alt="...">
                 </div>    
         </div>
 
@@ -62,20 +48,26 @@
                     <div class="card-body color-card-asso">
                     <div class="number-container text-center fs-2">2</div>
                     <div>
-                        <h5>Inscrivez ce que vous recherchez</h5>
-                        <p>Nombre de personne, lieu...</p>
+                        <h5>Votre association</h5>
+                        <p>Site web, logo et description </p>
                     </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-12 info-asso-start">
-                <div class="mb-3 images-CCM">
-                    <img src="/images/fleche1.png" class=" w-25" alt="...">
-                    <img src="/images/CommentCaMarcheAsso2.png" class="img-fonction-right w-25" alt="...">
-                    
-                </div>    
-            </div>
+                    <div class="mb-3 images-CCM">
+                        <img src="/images/fleche1.png" class=" w-25" alt="...">
+                        <img src="{{ asset('/images/Cmmt ça marche Asso/asso_site_web_.png')}}" class="img-fonction-right" alt="...">
+                    </div> 
+            </div> 
+
+            <div class="col-md-12 info-asso-start">
+                    <div class="mb-3 images-CCM">
+                        <img src="/images/fleche1.png" class=" w-25" alt="...">
+                        <img src="{{ asset('/images/Cmmt ça marche Asso/asso_logo_desrip_.png')}}" class="img-fonction-right" alt="...">
+                    </div> 
+            </div> 
 
             <div class="col-md-12 info-asso-end">
                         <div class="mb-3">
@@ -95,11 +87,14 @@
         <div class="col-md-12 info-asso-start">
                 <div class="mb-3 images-CCM">
                     <img src="/images/fleche1.png" class=" w-25" alt="...">
-                    <img src="/images/CommentCaMarcheAsso3.png" class=" w-25" alt="...">
+                    <img src="/images/Cmmt ça marche Asso/condition_valider_.png" class=" w-25" alt="...">
 
                 </div>    
         </div>
     </div>    
+
+    <p class="text-center" id="text-CCM">Vous êtes prêt, rejoignez-nous !</p>
+
 
     <div class="row">
         <div class="col-md-12 text-center">

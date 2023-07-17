@@ -25,7 +25,6 @@
                 <th>Site Web</th>
                 <th>Téléphone</th>
                 <th>Email</th>
-                <th>Département</th>
                 <th>Logo</th>
                 <th class="text-end">Actions</th>
             
@@ -36,16 +35,10 @@
             <tr>
                 <td>{{ association.nameAsso }}</td>
                 <td>{{ association.immatriculationAsso }}</td>
-                <td>{{ association.descriptionAsso }}</td>
+                <td>{{ association.descriptionAsso |raw }}</td>
                 <td>{{ association.websiteUrl }}</td>
                 <td>{{ association.phoneNumberAsso }}</td>
                 <td>{{ association.emailAsso }}</td>
-                <td><ul>
-                    {% for department in association.department %}
-                        <li>{{ association.department }}</li>
-                    {% endfor %}
-                    </ul>
-                    </td>
                 <td>{{ association.imageFile }}</td>
                 <td class="text-end">
                     <a href="{{ path('app_admin_association_show', {'id': association.id}) }}"class="btn btn-warning"><i class="align-middle" data-feather="eye"></i></a>

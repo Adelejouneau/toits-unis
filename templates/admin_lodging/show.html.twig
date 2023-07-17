@@ -48,19 +48,16 @@
 
             <tr>
             <th>Hôte</th>
-            <td>{{ lodging.host}}</td>
+            <td>{{ lodging.host.lastName}}</td>
             </tr>
-
-            <ul>
             <tr>
                 <th>Equipements</th>
                 {% for equipement in lodging.equipements %}
                 <td class="equipements">
-                <li >{{ equipement }}</li>
+                <li>{{ equipement }}</li>
                 </td>
                 {% endfor %}
             </tr>
-            </ul>
 
             <tr>
                 <th>Nom de l'image</th>
@@ -69,8 +66,8 @@
 
         </tbody>
     </table>
-
+ 
     <a href="{{ path('app_admin_lodging_edit', {'id': lodging.id}) }}" class="btn btn-success">Modifier</a>
-
     {{ include('admin_lodging/_delete_form.html.twig') }}
+ 
 {% endblock %}
