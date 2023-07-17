@@ -28,6 +28,11 @@ class AssociationType extends AbstractType
                 'widget' => 'single_text',
                 'data' => new \DateTimeImmutable(),
             ])
+            ->add('department', EntityType::class, [
+                'class' => 'App\Entity\Department',
+                'choice_label' => 'nameDepartment',
+                'label' => 'Département',
+            ])
             ->add('phoneNumberAsso')
             ->add('emailAsso')
             // ->add('department', EntityType::class, [
