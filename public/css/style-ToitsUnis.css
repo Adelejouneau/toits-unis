@@ -956,10 +956,7 @@ a{
     margin-top: 100px;
     padding:10px 30px 10px 30px
 
-
 }
-
-
 
 
 .loc{
@@ -972,4 +969,6 @@ font-size: 1.5rem;
     list-style: none;
 }
 
-
+/* .card-body{
+    height: 150px;
+} */

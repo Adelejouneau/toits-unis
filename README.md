@@ -9,6 +9,10 @@ Bintou
  Danielle
  DATABASE_URL="mysql://root@127.0.0.1:3306/toits-unis?serverVersion=5.7&charset=utf8mb4"
 
+ MAILER_DSN
+ MAILER_DSN=smtp://71330ed2a24d0a:12e1384c737979@sandbox.smtp.mailtrap.io:2525?encryption=tls&auth_mode=login
+
+
 
 Bien sûr ! Voici un exemple de contenu pour un fichier README avec le nom de projet "Toits Unis" :
 
