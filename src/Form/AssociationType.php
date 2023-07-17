@@ -9,6 +9,7 @@ use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AssociationType extends AbstractType
 {
@@ -28,20 +29,9 @@ class AssociationType extends AbstractType
                 'widget' => 'single_text',
                 'data' => new \DateTimeImmutable(),
             ])
-            ->add('department', EntityType::class, [
-                'class' => 'App\Entity\Department',
-                'choice_label' => 'nameDepartment',
-                'label' => 'Département',
-            ])
+            
             ->add('phoneNumberAsso')
             ->add('emailAsso')
-            // ->add('department', EntityType::class, [
-            //     'class' => Address::class,
-            //     'choice_label' => 'department',
-            //     'multiple' => true,
-            //     'expanded' => true,
-            //     'label' => 'Département',
-            // ])
             ->remove('slugAsso')
             ;
     }

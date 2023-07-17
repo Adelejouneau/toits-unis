@@ -56,17 +56,11 @@ class Association
     #[ORM\Column(length: 5, nullable: true)]
     private ?string $immatriculationAsso = null;
 
-    #[ORM\ManyToMany(targetEntity: Department::class, inversedBy: 'associations')]
-    private Collection $department;
-
     // ====================================================== //
     // =============== CONSTRUCT FUNCTION =================== //
     // ====================================================== //
 
-    public function __construct()
-    {
-        $this->department = new ArrayCollection();
-    }
+
 
     // ====================================================== //
     // =================== GETTER / SETTER ================== //
@@ -194,18 +188,6 @@ class Association
     public function setSlugAsso(string $slugAsso): self
     {
         $this->slugAsso = $slugAsso;
-
-        return $this;
-    }
-
-    public function getDepartment(): Collection
-    {
-        return $this->department;
-    }
-
-    public function setDepartment(?Department $department): static
-    {
-        $this->department = $department;
 
         return $this;
     }
