@@ -2,10 +2,6 @@
 /* CSS rules to specify families 
 font-family: 'Montserrat', sans-serif;
 font-family: 'Poppins', sans-serif; */
-*{
-    margin: 0;
-    padding: 0;
-}
 
 /*----------------NAVBAR---------------*/
 
@@ -245,20 +241,6 @@ a{
 
 .img-soutenir {
     border-radius: 100%;
-}
-
-@media (max-width: 768px){ 
-    #aida {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .imageHome {
-        width: 100%;
-    }
-    #aida-welcome {
-        display: flex;
-        flex-wrap: wrap;
-    }
 }
 
 /* fin home page */
@@ -522,12 +504,7 @@ a{
         .card-body{
         width: 100%;
     }
-
-.custom-card-img {
-    height: 200px; 
-    object-fit: cover; 
-}
-
+    }
  /* page compte profil Guest */
     /* .size-imput{
             width: 600px;
@@ -674,6 +651,12 @@ a{
     color: #6360D6;
 }
 
+/* Contact - Sur tous types d'écrans orientés verticalement */
+@media all and (max-width: 767px){
+
+
+
+}
 
 /*------------PAGE QUI SOMMES NOUS ?-----------*/
 
@@ -973,7 +956,10 @@ a{
     margin-top: 100px;
     padding:10px 30px 10px 30px
 
+
 }
+
+
 
 
 .loc{
@@ -1001,12 +987,5 @@ font-size: 1.5rem;
 }
 
 .col-form-label{
-
     color:white
 }
-
-    }
-
-/* .card-body{
-    height: 150px;
-} */

@@ -6,12 +6,16 @@ use App\Entity\User;
 use App\Form\LodgingType;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
-use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
+// use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 
 class UserType extends AbstractType
@@ -35,7 +39,7 @@ class UserType extends AbstractType
                 'label' => 'Numéro de téléphone',
                 ])
             ->remove('imageNameUser')
-            ->add('imageFile', FileType::class, [
+            ->add('imageFile', VichFileType::class, [
                 'required' => false,
                 'label' => "Image de l'association",
             ])
@@ -54,7 +58,6 @@ class UserType extends AbstractType
                     'mapped' => false,
                     ])
             ->add('phoneNumberAsso')
-
         ;
     }
 
