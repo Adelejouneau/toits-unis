@@ -85,7 +85,7 @@ class LodgingController extends AbstractController
             'expiresAtMessageData' => [
                 'expiresAt' => '+2 hours',
             ],
-            'hostProfileUrl' => $this->generateUrl('app_compte_host', [], UrlGeneratorInterface::ABSOLUTE_URL),
+            'hostProfileUrl' => $this->generateUrl('app_compte_asso', [], UrlGeneratorInterface::ABSOLUTE_URL),
         ]);
 
     $mailer->send($email);
