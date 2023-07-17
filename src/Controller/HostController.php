@@ -56,7 +56,7 @@ class HostController extends AbstractController
 
             // do anything else you need here, like send an email
             $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_register_host');
         }
         
         return $this->render('registration_host/register_host.html.twig', [

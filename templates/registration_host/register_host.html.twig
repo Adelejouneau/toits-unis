@@ -8,6 +8,15 @@
 </head>
 {% endblock %}
 {% block body %}
+
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
 <div class="banner-host">
     <div class="banner-text">
     {% for flash_error in app.flashes('verify_email_error') %}

@@ -21,13 +21,13 @@ class Host
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(nullable: true, type: Types::TEXT)]
     private ?string $address = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(nullable: true, length: 255)]
     private ?string $zipCode = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(nullable: true, length: 255)]
     private ?string $city = null;
 
     #[ORM\Column]
@@ -36,10 +36,10 @@ class Host
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\Column(nullable: false, length: 255)]
+    #[ORM\Column(nullable: true, length: 255)]
     private ?string $entreprise = null;
 
-    #[ORM\Column(nullable: false, length: 255)]
+    #[ORM\Column(nullable: true, length: 255)]
     private ?string $fonction = null;
 
     #[ORM\Column(length: 255)]

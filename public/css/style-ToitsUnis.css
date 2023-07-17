@@ -989,3 +989,17 @@ font-size: 1.5rem;
 .col-form-label{
     color:white
 }
+
+@media (max-width: 768px){ 
+    #aida {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .imageHome {
+        width: 100%;
+    }
+    #aida-welcome {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
