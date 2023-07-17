@@ -40,11 +40,12 @@
                     <li class="nav-item mx-3">
                         <a class="nav-link d-flex flex-column align-items-center navbarColor" aria-current="page" href="{{path('app_qui_sommes_nous') }}">Qui sommes-nous ?</a>
                     </li>
-                    
+
                             <li>
                         {% if app.user %}
                             {% if 'ROLE_USER' in app.user.roles %}
-
+                                <a class="nav-link navbarColor" href="{{ path('app_compte_asso') }}">Mon compte</a>
+                            </li>
                             <li>
                                 <a class="nav-link navbarColor" href="{{ path('app_lodging') }}">Logements</a>
                             </li> 
