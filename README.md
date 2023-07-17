@@ -29,68 +29,46 @@ Le projet vise à créer une communauté solidaire et à favoriser l'intégratio
 
 ## Fonctionnalités
 
-- Inscription des hébergeurs et des personnes cherchant un logement via les associations
+- Inscription des hébergeurs vis l'associations Toits Unis.  - - -Les personnes cherchant un logement s'inscrivent directement via les associations qui géront le profil du guest sur la plateform
 - Recherche et filtrage des hébergements disponibles
 - Mettre des hébergements en favoris
-- Système de commentaires pour évaluer les expériences d'hébergement
 
-## Captures d'écran
-
-## Prérequis
-
-- Node.js version X.X.X
-- MongoDB version X.X.X
-- ...
 
 ## Installation
 
-1. Clonez le repository :
+2. Clonez le repository :
+· Faire un repository Git
 
-```bash
-git clone https://github.com/votre-utilisateur/toits-unis.git
+· Git clone https://github.com/votre-utilisateur/toits-unis.git
 
+·Placer votre dossier dans le dossier wamp de vos fichiers
 
-2.Installez les dépendances :
-
-bash
-cd toits-unis
-npm install
-
-
-3.Configurez les variables d'environnement :
-
-bash
-cp .env.example .env
-
-
-4.Modifiez le fichier `.env` avec vos propres configurations.
-
-5.Démarrez le serveur :
-bash
-npm start
-
-## Instalations:
+·Creation du projet:
+symfony new my_project_directory --version="6.3.*" --appweb
 
 Pré requis pour le projet :
 
-· télécharger Composer (packages PHP) et l'exécuter
-· Faire un repository Git
+· télécharger Composer install (packages PHP) et l'exécuter
+
 · s’assurer que la commande PHP est bien disponible dans le terminal : php -v
 
-·Installer la CLI de Symfony : https://symfony.com/download
-scoop install symfony-cli
-·Lancer la commande symfony check:requirements pour s’assurer que tout est ok
-·Relancer tous les terminaux et lancer la commande symfony -v
 
-Création du projet Symfony:
-
-Une fois que tous les pré-requis sont réunis, on lance la commande pour créer l’arborescence de notre projet Symfony :
-symfony new projet-final —webapp -–version=5.4
-·Si les dossiers var Et vendor ne se sont pas installés, lancer la commande composer install
 ·Dans le fichier .env : commenter la dernière ligne DATABASE_URL et décommenter celle du dessus en changeant les informations (root, etc….)
-·Création de la base de données et l’initialiser dans php myadmin  : Récupérer la template bootstrap sur le site adminkit.io, télécharger le fichier de la template que l’on souhaite intégrer à notre projet. Récupérer l’intégralité du dossier “dist” et le coller dans le dossier Public de notre projet.
+·Création de la base de données et l’initialiser dans php myadmin
+php bin/console doctrine:database:create
+
+  : Récupérer la template bootstrap sur le site adminkit.io, 
+  https://adminkit.io/
+  
+  télécharger le fichier de la template que l’on souhaite intégrer à notre projet. Récupérer l’intégralité du dossier “dist” et le coller dans le dossier Public de notre projet.
+
+  faire un symphony server/start :
 
 Accédez à l'application via votre navigateur à l'adresse `http://127.0.0.1:8000/`.
+ pour stopper le proccessus faire un:
+
+ faire un symphony server/stop
+
 
 ## Contribuer
 
