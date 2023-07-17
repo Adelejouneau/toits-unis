@@ -14,9 +14,6 @@ Danielle
  MAILER_DSN=smtp://71330ed2a24d0a:12e1384c737979@sandbox.smtp.mailtrap.io:2525?encryption=tls&auth_mode=login
 
 
-
-Bien sûr ! Voici un exemple de contenu pour un fichier README avec le nom de projet "Toits Unis" :
-
 # Toits Unis
 
 
@@ -34,13 +31,7 @@ Le projet vise à créer une communauté solidaire et à favoriser l'intégratio
 - Mettre des hébergements en favoris
 - Système de commentaires pour évaluer les expériences d'hébergement
 
-## Captures d'écran
-
 ## Prérequis
-
-- Node.js version X.X.X
-- MongoDB version X.X.X
-- ...
 
 ## Installation
 
