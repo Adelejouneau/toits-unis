@@ -247,6 +247,20 @@ a{
     border-radius: 100%;
 }
 
+@media (max-width: 768px){ 
+    #aida {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .imageHome {
+        width: 100%;
+    }
+    #aida-welcome {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
 /* fin home page */
 
 /* lodging */
@@ -655,12 +669,6 @@ a{
     color: #6360D6;
 }
 
-/* Contact - Sur tous types d'écrans orientés verticalement */
-@media all and (max-width: 767px){
-
-
-
-}
 
 /*------------PAGE QUI SOMMES NOUS ?-----------*/
 
