@@ -12,7 +12,12 @@
         {{ form_start(registrationAssoForm) }}
         <div class="row">
             <div class="col-md-6">
-                {{ form_row(registrationAssoForm.nameAsso) }}
+                {{ form_row(registrationAssoForm.nameAsso, {
+                'attr': {
+                    'pattern': '[a-zA-Z\s]+', 
+                    'title': 'Seuls les lettres et les espaces sont autorisés'
+                }
+            }) }}
                 {{ form_row(registrationAssoForm.phoneNumberAsso) }}
                 {{ form_row(registrationAssoForm.imageFile) }}
                 {{ form_row(registrationAssoForm.descriptionAsso) }}
@@ -26,7 +31,9 @@
                 {{ form_row(registrationAssoForm.plainPassword, {
                     label: 'Password'
                 }) }}
-                {{ form_row(registrationAssoForm.agreeTerms) }}
+                <label class="form-check-label">
+                J'accepte les <a href="{{ path('app_conditions_utilisation') }}">conditions d'utilisation</a>.
+            </label>
                 <button type="submit" class="btn btn-success" id="btn-login">Valider</button>
                 
             </div>
