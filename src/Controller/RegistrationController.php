@@ -37,23 +37,19 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $errors = $validator->validate($user);
 
-            if (count($errors) > 0) {  
-                foreach ($errors as $error) {
-                    dd ($validator);
-                    
-                    $this->addFlash('verify_email_error', $error->getMessage());
-                }            
-                return $this->redirectToRoute('app_register_asso');
-            }
+            $formData = $form->getData();
             // Vérifier si l'adresse e-mail existe déjà
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
+                    
                     $user,
                     $form->get('plainPassword')->getData()
                 )
+                
             );
+            $nameAsso = htmlspecialchars($formData['name']);
+            $email = htmlspecialchars($formData['email']);
 
             $entityManager->persist($user);
             $entityManager->flush();
