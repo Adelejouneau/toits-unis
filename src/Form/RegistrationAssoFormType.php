@@ -73,7 +73,7 @@ class RegistrationAssoFormType extends AbstractType
         //     'expanded' => true,
         //     'label' => 'Département',
         // ])
-        ->add('agreeTerms', CheckboxType::class, [
+        ->remove('agreeTerms', CheckboxType::class, [
             'label'=>"J'accepte les conditions d'utilisation",
             'mapped' => false,
             'constraints' => [

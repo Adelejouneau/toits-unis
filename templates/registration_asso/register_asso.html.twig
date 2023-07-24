@@ -33,9 +33,9 @@
                 {{ form_row(registrationAssoForm.plainPassword, {
                     label: 'Password'
                 }) }}
-                <label class="form-check-label">
-                J'accepte les <a href="{{ path('app_conditions_utilisation') }}">conditions d'utilisation</a>.
-            </label>
+                <input type="checkbox" class="form-check-label">
+                J'accepte les <a href="{{ path('app_mentions_legales') }}">conditions d'utilisation</a>.
+            </input>
                 <button type="submit" class="btn btn-success" id="btn-login">Valider</button>
                 
             </div>
