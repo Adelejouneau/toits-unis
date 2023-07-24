@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -23,7 +24,10 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', EmailType ::class,[ 
+            'label' => 'Adresse e-mail',
+            'required'=> true])
+            
             ->add('plainPassword' , PasswordType::class, [
                 'label'=>"Nouveau mot de passe",
                 'mapped' => false,
@@ -38,7 +42,7 @@ class UserType extends AbstractType
             ->add('websiteUrl', null, [
                 'label' => 'Numéro de téléphone',
                 ])
-            ->remove('imageNameUser')
+            ->remove('imageNameAsso')
             ->add('imageFile', VichFileType::class, [
                 'required' => false,
                 'label' => "Image de l'association",

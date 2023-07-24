@@ -27,7 +27,9 @@
                 {{ form_row(registrationAssoForm.immatriculationAsso) }}
                 {{ form_row(registrationAssoForm.websiteUrl) }}
 
-                {{ form_row(registrationAssoForm.email) }}
+                {{ form_row(registrationAssoForm.email,
+                {'attr': {'pattern': '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', "title":"erreur"}})
+                }}
                 {{ form_row(registrationAssoForm.plainPassword, {
                     label: 'Password'
                 }) }}
@@ -40,22 +42,6 @@
         </div>
     </section>
 {{ form_end(registrationAssoForm) }}
-            {# <div class="col-md-6">
-                {{ form_row(registrationAssoForm.department) }}
-            </div> #}
-    
-
-        
-            
-            {# <div class="col-md-6">
-                {{ form_row(registrationAssoForm.plainPasswordConfirm, {
-                    label: 'Confirm Password'
-                }) }}
-        </div> #}    
-    
-
-    
-    
 
 </div>
 {% for flash_error in app.flashes('verify_email_error') %}
