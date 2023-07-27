@@ -43,7 +43,7 @@ security:
 
     role_hierarchy:
             ROLE_ASSO: ROLE_USER
-            ROLE_ADMIN: [ROLE_USER, ROLE_ASSO]
+            ROLE_ADMIN: [ROLE_USER, ROLE_ADMIN]
 
 when@test:
     security:

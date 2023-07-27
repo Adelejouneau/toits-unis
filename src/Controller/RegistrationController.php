@@ -15,11 +15,13 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
+    private ValidatorInterface $validator;
 
     public function __construct(EmailVerifier $emailVerifier)
     {
@@ -27,7 +29,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register_asso', name: 'app_register_asso')]
-    public function registerAsso(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function registerAsso(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, ValidatorInterface $validator): Response
     {
         $user = new User();
         
@@ -35,7 +37,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             // Vérifier si l'adresse e-mail existe déjà
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -61,15 +63,13 @@ class RegistrationController extends AbstractController
             );
             
             $this->addFlash('success','Inscription réussie, vous devez valider votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_lodging');
+            return $this->redirectToRoute('app_home');
         }
         
         return $this->render('registration_asso/register_asso.html.twig', [
             'registrationAssoForm' => $form->createView(),
         ]);
     }
-
-    
 
         #[Route('/verify/email', name: 'app_verify_email')]
         public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
