@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $formData = $form->getData();
+            
             // Vérifier si l'adresse e-mail existe déjà
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -45,8 +45,7 @@ class RegistrationController extends AbstractController
                 )
                 
             );
-            $nameAsso = htmlspecialchars($formData['name']);
-            $email = htmlspecialchars($formData['email']);
+            
 
             $entityManager->persist($user);
             $entityManager->flush();
