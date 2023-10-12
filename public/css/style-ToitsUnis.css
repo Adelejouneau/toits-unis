@@ -1006,4 +1006,15 @@ font-size: 1.5rem;
         display: flex;
         flex-wrap: wrap;
     }
+
+    .box {
+        transition: none; /* Désactive la transition */
+    }
+
+    .box:hover {
+        transform: none; /* Désactive la transformation au survol */
+        z-index: 2;
+    }
+
 }
+
