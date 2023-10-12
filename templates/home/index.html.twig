@@ -53,17 +53,21 @@
 
 <div class="row d-flex justify-content-center m-2">
     {% for lodging in lodgings %}
-
+    {% if app.user %}
+    {% if 'ROLE_USER' in app.user.roles %}
         <div class="col-12 col-md-4 col-xl-3 m-3"> 
             <div class="card shadow">
                 <img src="{{ asset('/images/lodgings/' ~ lodging.imageNameLod) }}" class="card-img-top" alt="{{lodging.titleLod}}">
                 <div class="card-body text-center ">
                     <h5 class="card-title">{{lodging.titleLod}}</h5>
+                    
                     <a href="{{ path('app_lodging_show', { slugLod: lodging.slugLod }) }}" class="btn btn-bleu">En savoir plus</a>
-                </div> 
+                    {% endif %} 
+                    
+                </div>
             </div>
         </div> 
-
+    {% endif %} 
     {% endfor %}
 
     <div class="container m-4">
