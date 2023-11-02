@@ -21,10 +21,10 @@ class AssociationType extends AbstractType
             ->add('descriptionAsso', CKEditorType::class)
             ->add('websiteUrl')
             ->remove('imageNameAsso')
-            ->add('imageFile', VichFileType::class, [
-                'required' => false,
-                'label' => "Logo de l'association",
-            ])
+            #->add('imageFile', VichFileType::class, [
+                #'required' => false,
+               # 'label' => "Logo de l'association",
+            #])#
             ->remove('updatedAt', DateTimeType::class, [
                 'widget' => 'single_text',
                 'data' => new \DateTimeImmutable(),
