@@ -900,6 +900,11 @@ a{
     justify-content: space-evenly;
 }
 
+#noimg{
+    width: 450px;
+    /* height: 270px; */
+}
+
 .box{
     transition: 1s;
 }
