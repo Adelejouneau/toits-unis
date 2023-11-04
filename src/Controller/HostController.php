@@ -55,7 +55,7 @@ class HostController extends AbstractController
             $this->mailer->send($email);
 
             // do anything else you need here, like send an email
-            $this->addFlash('success','Inscription réussie, validez votre compte via le mail reçu.');
+            $this->addFlash('success','Merci ! Un e-mail vient de vous être envoyé');
             return $this->redirectToRoute('app_register_host');
         }
         

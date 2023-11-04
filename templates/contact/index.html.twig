@@ -2,7 +2,16 @@
 {% block title %}Contact
 {% endblock %}
 {% block body %}
-	{# h-100 class css bootstrap pour height 100% #}
+
+{# pop up confirmation envoie email #}
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
 	<div class="h-100 m-2 m-md-5">
 		<div class="row">
 			<div class="col-sm-5 col-md-6 " style="text-align:center">
@@ -16,7 +25,7 @@
 				</p>
 				<p>Toits unis
 					<br>15 rue Henri Chevreau
-															75020 Paris</p>
+					<br>75020 Paris</p>
 				</div>
 			</div>
 			{# Formulaire contact #}
@@ -24,43 +33,48 @@
 				<div id="contact-title" style="text-align:center">
 					<h2>Formulaire de contact</h2>
 				</div><br>
-				<p>
-					<label for="exampleFormControlInput1" class="form-label">
-						<strong>NOM Prénom <span class="obélix">*</span></strong>
-					</label>
-				</p>
-				<input type="email" class="form-control" id="contact-form" placeholder="NOM Prénom" required><br>
-				<p>
-					<label for="emailpgcontact" class="form-label">
-						<strong>Email <span class="obélix">*</span></strong>
-					</label>
-				</p>
-				<input type="email" class="form-control" id="contact-form" placeholder="myemail@goodlife.com" required><br>
-				<p>
-					<label for="exampleFormControlInput1" class="form-label">
-						<strong>Téléphone</strong>
-					</label>
-				</p>
-				<input type="email" class="form-control" id="contact-form" placeholder="0102030405"><br>
-				<label for="exampleFormControlTextarea1" class="form-label">
-					<strong>A quel sujet vous nous contactez ?</strong>
-				</label>
-				<textarea class="form-control" id="contact-form" rows="3" placeholder="Votre message..."></textarea><br>
-				<div class="form-check">
-					<p>
-						<strong>RGPD <span class="obélix">*</span></strong>
-					</p>
+				<form method="post" action="{{ path('app_contact') }}">
+    <p>
+        <label for="nom_prenom" class="form-label">
+            <strong>NOM Prénom <span class="obélix">*</span></strong>
+        </label>
+    </p>
+    <input type="text" name="nom_prenom" class="form-control" required><br>
+    <p>
+        <label for="email" class="form-label">
+            <strong>Email <span class="obélix">*</span></strong>
+        </label>
+    </p>
+    <input type="email" name="email" class="form-control" required><br>
+    <p>
+        <label for="telephone" class="form-label">
+            <strong>Téléphone</strong>
+        </label>
+    </p>
+    <input type="text" name="telephone" class="form-control"><br>
+    <label for="message" class="form-label">
+        <strong>A quel sujet vous nous contactez ?</strong>
+    </label>
+    <textarea name="message" class="form-control" rows="3" placeholder="Votre message..."></textarea><br>
+    <!-- Autres champs du formulaire -->
+    <div class="form-check">
+        <p>
+            <strong>RGPD <span class="obélix">*</span></strong>
+        </p>
+</form>
+        <!-- Checkbox RGPD -->
+
 					{# checkbox #}
 					<input class="contact-form-check-input" type="checkbox" id="flexCheckDefault">
 					<label class="form-check-label" for="flexCheckDefault">
 						J'ai lu et j'accepte la <a href="{{ path('app_mentions_legales') }}">politique de confidentialité</a>.
 					</label>
 					<div class="astérix">
-					<br>
 					<p><span class="obélix">*</span> L'astérisque indique les champs nécessaires.</p>
 					</div>
-					<div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0" style="text-align:center"><br>
-							<input id="btncontact" class="btn btn-primary" type="submit" value="Envoyer">
+		<div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0" style="text-align:center"><br>
+        <input id="btncontact" class="btn btn-primary" type="submit" value="Envoyer">
+    	</div>
 					</div>
 				</div>
 			</div>
