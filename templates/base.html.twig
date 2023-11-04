@@ -43,33 +43,29 @@
                     <li class="nav-item mx-3">
                         <a class="nav-link d-flex flex-column align-items-center navbarColor" aria-current="page" href="{{path('app_qui_sommes_nous') }}">Qui sommes-nous ?</a>
                     </li>
-                        {% if app.user %}
-                            {% if 'ROLE_USER' in app.user.roles %}
-                            <li>
-                                <a class="nav-link navbarColor" href="{{ path('app_lodging') }}">Logements</a>
-                            </li> 
-                            <li>   
-                                <a class="nav-link navbarColor" href="{{ path('app_compte_asso') }}">Mon compte</a>
-                            </li>
-                            {% elseif 'ROLE_ADMIN' in app.user.roles %}
-                            <li>
-                                <a class="nav-link navbarColor" href="{{ path('app_admin') }}">Admin</a>
-                            </li>    
-                            {% endif %}
-                            <li>
-                                <a class="nav-link navbarColor" href="{{ path('app_logout') }}">Déconnexion</a>
-                            </li>
-                        {% else %}
-                        <li>
-                            <a class="nav-link navbarColor" href="{{ path('app_login') }}">Connexion</a>
-                        
-                        </li>
-                            {% endif %}
-                            {% if 'ROLE_ADMIN' in app.user.roles %}
-                            <li>
-                                <a class="nav-link navbarColor" href="{{ path('app_admin') }}">Admin</a>
-                            </li> 
-                        {% endif %}
+                        {% if app.user is not null %}
+    {% if 'ROLE_USER' in app.user.roles %}
+        <li>
+            <a class="nav-link navbarColor" href="{{ path('app_lodging') }}">Logements</a>
+        </li>
+        <li>   
+            <a class="nav-link navbarColor" href="{{ path('app_compte_asso') }}">Mon compte</a>
+        </li>
+    {% endif %}
+    {% if 'ROLE_ADMIN' in app.user.roles %}
+        <li>
+            <a class="nav-link navbarColor" href="{{ path('app_admin') }}">Admin</a>
+        </li>    
+    {% endif %}
+    <li>
+        <a class="nav-link navbarColor" href="{{ path('app_logout') }}">Déconnexion</a>
+    </li>
+{% else %}
+    <li>
+        <a class="nav-link navbarColor" href="{{ path('app_login') }}">Connexion</a>
+    </li>
+{% endif %}
+
                 </ul>
             </div>
         </div>
