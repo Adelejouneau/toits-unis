@@ -25,14 +25,9 @@ class RegistrationAssoFormType extends AbstractType
 
         ->add('email', EmailType::class, [
             'label' => 'Adresse e-mail',
-            'mapped' => false,
-            'required'=>false,
+            'required'=>true,
         ])
-        ->add('plainPassword' , PasswordType::class, [
-            'label'=>"Nouveau mot de passe",
-            'mapped' => false,
-            'required'=>false,
-            ])
+    
         ->add('nameAsso', null, [
             'label' => 'Nom de l\'association',
             ])
@@ -82,6 +77,11 @@ class RegistrationAssoFormType extends AbstractType
                 ]),
             ],
         ])
+        ->add('plainPassword' , PasswordType::class, [
+            'label'=>"Nouveau mot de passe",
+            'mapped' => false,
+            'required'=>false,
+            ])
         ->add('plainPassword', RepeatedType::class, [
             'type' => PasswordType::class,
             'options' => ['attr' => ['class' => 'password-field']],
@@ -92,13 +92,13 @@ class RegistrationAssoFormType extends AbstractType
             'constraints' => [
                 new NotBlank([
                     'message' => 'Entrez un mot de passe',
-                ]),
+            ]),
                 new Length([
-                    'min' => 4,
-                    'minMessage' => 'Votre message devrait comporter au moins {{ limit }} caractères.',
+                    'min' => 8,
+                    'minMessage' => 'Votre mot de passe devrait comporter au moins {{ limit }} caractères, une minuscule, une majuscule, un chiffre et un caractère spécial.',
                     // max length allowed by Symfony for security reasons
                     'max' => 4096,
-                ]),
+        ]),
             ],
         ]);
     }

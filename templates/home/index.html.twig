@@ -11,46 +11,6 @@
     <img src="{{ asset('/images/home/vecteur1pageacceuil.png') }}" class="img-fluid banniereSize" alt="banniere-home">
 </div>
 
-{# <div class="class-margin">
-    <h2 class="text-center titre-orange mb-3" >Nos dernières annonces</h2>
-
-
-
-    <div class="row m-0 p-0 justify-content-center">
-
-        <div class="col-4 text-center">
-            <img src="/images/lodgings/image3.jpg" class="card-img-top imgEnSavoirPlus rounded" alt="Rouen">
-            <div class="card-body">
-                <h5 class="card-title titre-bleu">76000 ROUEN</h5>
-                <a href="#">
-                <button type="submit" class="btn btn-orange m-2">En savoir plus</button>
-                </a>
-            </div>
-        </div>
-        
-        <div class="col-4 text-center">
-            <img src="/images/lodgings/image4.jpg" class="card-img-top imgEnSavoirPlus rounded" alt="Monpellier">
-            <div class="card-body">
-                <h5 class="card-title titre-bleu">34000 MONTPELLIER</h5>
-                <a href="#">
-                <button type="submit" class="btn btn-orange m-2">En savoir plus</button>
-                </a> 
-            </div>
-        </div>
-
-        <div class="col-4 text-center">
-            <img src="/images/lodgings/image9.jpg" class="card-img-top imgEnSavoirPlus rounded" alt="Saint-ouen">
-            <div class="card-body">
-                <h5 class="card-title titre-bleu">93400 SAINT OUEN</h5>
-                <a href="#">
-                <button type="submit" class="btn btn-orange m-2">En savoir plus</button>
-                </a>
-            </div>
-        </div>
-    </div>
-
-</div> #}
-
 <div class="row d-flex justify-content-center m-2">
     {% for lodging in lodgings %}
     {% if app.user %}

@@ -2,6 +2,15 @@
 {% block title %}Inscription association{% endblock %}
 {% block body %}
 
+{# pop up confirmation envoie email #}
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
 </div>
 <h3 class="text-center my-5 sousTitre-profil-asso">Renseignez les informations de votre association</h3>
 {% for flash_error in app.flashes('verify_email_error') %}
@@ -14,7 +23,7 @@
             <div class="col-md-6">
                 {{ form_row(registrationAssoForm.nameAsso, {
                 'attr': {
-                    'pattern': '[a-zA-Z\s]+', 
+                    'pattern': '^[a-zA-Z0-9\s ]+$',
                     'title': 'Seuls les lettres et les espaces sont autorisés'
                 }
             }) }}
@@ -31,9 +40,13 @@
                 {'attr': {'pattern': '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', "title":"erreur"}})
                 }}
                 {{ form_row(registrationAssoForm.plainPassword, {
-                    label: 'Password'
+                    label: 'Password',
+                    'attr': {
+                    'pattern': '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).+$/',
+                    'title': 'Le mot de passe doit contenir au moins 8 caractères, une minuscule, une majuscule, un chiffre et un caractère spécial.'
+                    } 
                 }) }}
-
+                <p>Le mot de passe doit contenir au moins 8 caractères, une minuscule, une majuscule, un chiffre et un caractère spécial.</p>
                 <input class="form-check-label" type="checkbox">
                 J'accepte les <a href="{{ path('app_mentions_legales') }}">conditions d'utilisation</a>
 
