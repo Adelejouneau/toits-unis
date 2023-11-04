@@ -23,7 +23,7 @@ class AssociationType extends AbstractType
             ->remove('imageNameAsso')
             #->add('imageFile', VichFileType::class, [
                 #'required' => false,
-               # 'label' => "Logo de l'association",
+            # 'label' => "Logo de l'association",
             #])#
             ->remove('updatedAt', DateTimeType::class, [
                 'widget' => 'single_text',

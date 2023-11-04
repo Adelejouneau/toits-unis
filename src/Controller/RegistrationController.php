@@ -48,7 +48,8 @@ class RegistrationController extends AbstractController
                 
             );
             
-
+            //On ajoute un role à l'utilisateur
+            $user->setRoles(['ROLE_USER']);
             $entityManager->persist($user);
             $entityManager->flush();
             
@@ -63,7 +64,7 @@ class RegistrationController extends AbstractController
             );
             
             $this->addFlash('success','Inscription réussie, vous devez valider votre compte via le mail reçu.');
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_register_asso');
         }
         
         return $this->render('registration_asso/register_asso.html.twig', [
@@ -85,8 +86,6 @@ class RegistrationController extends AbstractController
                 return $this->redirectToRoute('app_register_asso');
             }
     
-            // @TODO Change the redirect on success and handle or remove the flash message in your templates
-            $this->addFlash('success', 'Votre e-mail a bien été vérifié. Vous pouvez finaliser votre compte');
     
             return $this->redirectToRoute('app_login');
         }

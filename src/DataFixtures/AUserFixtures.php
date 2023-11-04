@@ -21,6 +21,7 @@ class AUserFixtures extends Fixture
     public const SAMU_SOCIAL = 'Samu-social';
     public const ABBE_PIERRE = 'abbe-pierre';
     public const SECOURS_CATHOLIQUE = 'secours-catholique';
+    public const TOITS_UNIS = 'toits-unis';
     public function load(ObjectManager $manager): void
     {
         $user = new User();
@@ -37,6 +38,23 @@ class AUserFixtures extends Fixture
         $user->setPassword($this->encoder->hashPassword($user, 'pass'));
         $user->setIsVerified(true);
         $this->addReference(self::FONDATION_ARMEE_DU_SALUT, $user);
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail("hello@toitsunis.com");
+        $user->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $user->setNameAsso("Toits Unis");
+        $user->setPhoneNumberAsso("0147234567");
+        $user->setDescriptionAsso("ToitsUnis est né d’une collaboration avec Bintou Sidibé, Nassima Si Bachir et Danielle Tang pour répondre à la problématique suivante :  Comment faire en sorte que les personnes dans le besoin gardent du lien social et retrouvent une dignité ?
+");
+        $user->setWebsiteUrl("https://www.toitsunis.fr/");
+        $user->setImageNameAsso('/public/images/asso/toitsunis.png');
+        $user->setSlugAsso('toits-unis');
+        $user->setImmatriculationAsso("75020");
+        $user->setUpdatedAt(new \DateTimeImmutable());
+        $user->setPassword($this->encoder->hashPassword($user, 'Toitsunis@75020'));
+        $user->setIsVerified(true);
+        $this->addReference(self::TOITS_UNIS, $user);
         $manager->persist($user);
 
         $user = new User();
@@ -92,8 +110,3 @@ class AUserFixtures extends Fixture
         $manager->flush();
     }
 }
-
-
-
-
-            
