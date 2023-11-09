@@ -631,6 +631,12 @@ a{
 /* Zone de saisie du formulaire */
 #contact-form {
     background-color: #FFF0BD;
+    padding: 40px;
+    border-radius: 30px;
+}
+
+.form-control{  
+    border-radius:5px;
 }
 
 .astérix {
