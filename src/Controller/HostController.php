@@ -45,16 +45,17 @@ class HostController extends AbstractController
             $entityManager->persist($host);
             $entityManager->flush();
 
-
+            // Contenu du mail
             $email = (new TemplatedEmail())
                 ->from(new Address('mailer@toitsUnis.com', 'toitsUnis'))
                 ->to($host->getEmail())
                     ->subject('Bienvenue dans le réseau ToitsUnis !')
                     ->htmlTemplate('registration_host/confirmation_host_email.html.twig');
-                    
+
+             // envoyer le mail
             $this->mailer->send($email);
 
-            // do anything else you need here, like send an email
+            // info flsh sur la page pour confirmer la validation
             $this->addFlash('success','Merci ! Un e-mail vient de vous être envoyé');
             return $this->redirectToRoute('app_register_host');
         }
